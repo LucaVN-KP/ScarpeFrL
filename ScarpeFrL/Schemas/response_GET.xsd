@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tns.tibco.com/bw/json/1759399791283" elementFormDefault="qualified" targetNamespace="http://tns.tibco.com/bw/json/1759399791283">
+
+<element name="response_GET" type="tns:response_GET_Type"/>
+
+  <complexType name="response_GET_Type">
+    <sequence>
+      <element name="id_sped" type="string"/>
+      <element name="id_ordine" type="int"/>
+      <element name="stato_sped">
+			<simpleType>
+				<restriction base="string">
+				<enumeration value="Ritiro"/>
+				<enumeration value="In transito"/>
+				<enumeration value="In consegna"/>
+				<enumeration value="Consegnata"/>
+				<enumeration value="Imbarcata" />
+				<enumeration value="In navigazione"/>
+				<enumeration value="Sbarcata"/>
+				<enumeration value="Chek-in"/>
+				<enumeration value="In volo"/>
+				<enumeration value="Arrivata"/>
+				<enumeration value="Delay"/>
+				<enumeration value="Cancelled"/>
+				</restriction>
+			</simpleType>
+		</element>
+        <element name="data_agg" type="dateTime"/>
+		<element name="data_cons" type="dateTime"/>
+		<element name="note" type="string"/>
+    </sequence>
+  </complexType>
+  
+</schema>

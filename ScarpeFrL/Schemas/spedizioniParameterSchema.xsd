@@ -3,14 +3,14 @@
   <xs:element name="spedizioniGetParameters">
     <xs:complexType>
       <xs:sequence>
-        <xs:element maxOccurs="1" minOccurs="1" name="id_sped" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="1" name="id_sped" type="xs:int"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="spedizioniPatchParameters">
     <xs:complexType>
       <xs:sequence>
-        <xs:element maxOccurs="1" minOccurs="1" name="id_sped" type="xs:string"/>
+        <xs:element maxOccurs="1" minOccurs="1" name="id_sped" type="xs:int"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>

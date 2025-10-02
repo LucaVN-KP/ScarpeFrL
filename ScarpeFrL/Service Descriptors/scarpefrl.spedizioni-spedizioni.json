@@ -25,9 +25,9 @@
         } ],
         "responses" : {
           "200" : {
-            "description" : "a string to be returned",
+            "description" : "a response_GET to be returned",
             "schema" : {
-              "type" : "string"
+              "$ref" : "#/definitions/response_GET"
             }
           }
         }
@@ -65,6 +65,34 @@
     }
   },
   "definitions" : {
+    "response_GET" : {
+      "type" : "object",
+      "required" : [ "note", "id_sped", "id_ordine", "data_cons", "data_agg", "stato_sped" ],
+      "properties" : {
+        "id_sped" : {
+          "type" : "string"
+        },
+        "id_ordine" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "stato_sped" : {
+          "type" : "string",
+          "enum" : [ "Ritiro", "In transito", "In consegna", "Consegnata", "Imbarcata", "In navigazione", "Sbarcata", "Chek-in", "In volo", "Arrivata", "Delay", "Cancelled" ]
+        },
+        "data_agg" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "data_cons" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "note" : {
+          "type" : "string"
+        }
+      }
+    },
     "request_PATCH" : {
       "type" : "object",
       "required" : [ "note", "data_cons", "data_agg", "stato_sped" ],
