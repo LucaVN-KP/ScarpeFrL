@@ -15,7 +15,7 @@
 				<enumeration value="Imbarcata" />
 				<enumeration value="In navigazione"/>
 				<enumeration value="Sbarcata"/>
-				<enumeration value="Chek-in"/>
+				<enumeration value="Check-in"/>
 				<enumeration value="In volo"/>
 				<enumeration value="Arrivata"/>
 				<enumeration value="Delay"/>
