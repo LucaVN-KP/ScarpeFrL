@@ -20,7 +20,12 @@
           "name" : "id_sped",
           "in" : "path",
           "description" : "",
-          "type" : "string",
+          "type" : "array",
+          "items" : {
+            "type" : "integer",
+            "format" : "int32",
+            "uniqueItems" : false
+          },
           "required" : true
         } ],
         "responses" : {
@@ -50,7 +55,12 @@
           "name" : "id_sped",
           "in" : "path",
           "description" : "",
-          "type" : "string",
+          "type" : "array",
+          "items" : {
+            "type" : "integer",
+            "format" : "int32",
+            "uniqueItems" : false
+          },
           "required" : true
         } ],
         "responses" : {
