@@ -12,7 +12,4 @@
   <sca:component xmi:id="_lsZawJojEfCWAJKe-jrClQ" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
     <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_lsb3AJojEfCWAJKe-jrClQ" processName="scarpefrl.Process"/>
   </sca:component>
-  <sca:component xmi:id="_Lm8YAJonEfClX62k_t2gVQ" name="ComponentProcessFra" compositeext:version="1.0.0.qualifier">
-    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_Lm8YAZonEfClX62k_t2gVQ" processName="scarpefrl.ProcessFra"/>
-  </sca:component>
 </sca:composite>
