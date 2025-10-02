@@ -1,0 +1,90 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "spedizioni",
+    "description" : "spedizioni service"
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/spedizioni/{id_sped}" : {
+      "get" : {
+        "summary" : "getSpedizioni",
+        "description" : "getSpedizioni",
+        "operationId" : "get-spedizioni",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id_sped",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "patch" : {
+        "summary" : "patchSpedizioni",
+        "description" : "patchSpedizioni",
+        "operationId" : "patch-spedizioni",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/request_PATCH"
+          },
+          "required" : true
+        }, {
+          "name" : "id_sped",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "request_PATCH" : {
+      "type" : "object",
+      "required" : [ "note", "data_cons", "data_agg", "stato_sped" ],
+      "properties" : {
+        "stato_sped" : {
+          "type" : "string",
+          "enum" : [ "Ritiro", "In transito", "In consegna", "Consegnata", "Imbarcata", "In navigazione", "Sbarcata", "Chek-in", "In volo", "Arrivata", "Delay", "Cancelled" ]
+        },
+        "data_agg" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "data_cons" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "note" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

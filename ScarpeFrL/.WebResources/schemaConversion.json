@@ -1,0 +1,5 @@
+{"records": [{
+    "jsonSchemaLocation": "/ScarpeFrL/Service Descriptors/scarpefrl.spedizioni-spedizioni.json",
+    "conversionType": "linked",
+    "xsdSchemaTargetNamespace": "http://xmlns.example.com/spedizioni/parameters"
+}]}
