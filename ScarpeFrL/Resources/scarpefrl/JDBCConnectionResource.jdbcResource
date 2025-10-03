@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://xsd.tns.tibco.com/amf/models/sharedresource/jdbc" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmlns:subject="http://xsd.tns.tibco.com/trinity/models/identity/subject" xmi:id="_cNEIIaA6EfCIG5mTnL9HeA" name="scarpefrl.JDBCConnectionResource" type="jdbc:JdbcDataSource">
+  <jndi:reference xmi:id="_cQ6GUKA6EfCIG5mTnL9HeA" key="subjectJndiName" type="subject:SubjectConfiguration" value=""/>
+  <jndi:configuration xsi:type="jdbc:JdbcDataSource" xmi:id="_cQ6GUaA6EfCIG5mTnL9HeA" username="postgres" password="#!^7L0Rv3Uvz0vWwgXWbyQBxW/8vAbjFcI+pzfCCN98Fu0=">
+    <connectionConfig xsi:type="jdbc:NonXaConnection" xmi:id="_cQ7UcKA6EfCIG5mTnL9HeA" jdbcDriver="org.postgresql.Driver" dbURL="jdbc:postgresql://localhost:5432/ScarpeDB"/>
+  </jndi:configuration>
+</jndi:namedResource>

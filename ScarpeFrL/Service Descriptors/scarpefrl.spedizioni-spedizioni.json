@@ -109,7 +109,7 @@
       "properties" : {
         "stato_sped" : {
           "type" : "string",
-          "enum" : [ "Ritiro", "In transito", "In consegna", "Consegnata", "Imbarcata", "In navigazione", "Sbarcata", "Check-in", "In volo", "Arrivata", "Delay", "Cancelled" ]
+          "enum" : [ "Ritiro", "In_transito", "In_consegna", "Consegnata", "Imbarcata", "In_navigazione", "Sbarcata", "Check-in", "In_volo", "Arrivata", "Delay", "Cancelled" ]
         },
         "data_agg" : {
           "type" : "string",
