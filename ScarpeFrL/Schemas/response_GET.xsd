@@ -11,14 +11,14 @@
 			<simpleType>
 				<restriction base="string">
 				<enumeration value="Ritiro"/>
-				<enumeration value="In transito"/>
-				<enumeration value="In consegna"/>
+				<enumeration value="In_transito"/>
+				<enumeration value="In_consegna"/>
 				<enumeration value="Consegnata"/>
 				<enumeration value="Imbarcata" />
-				<enumeration value="In navigazione"/>
+				<enumeration value="In_navigazione"/>
 				<enumeration value="Sbarcata"/>
-				<enumeration value="Chek-in"/>
-				<enumeration value="In volo"/>
+				<enumeration value="Check-in"/>
+				<enumeration value="In_volo"/>
 				<enumeration value="Arrivata"/>
 				<enumeration value="Delay"/>
 				<enumeration value="Cancelled"/>

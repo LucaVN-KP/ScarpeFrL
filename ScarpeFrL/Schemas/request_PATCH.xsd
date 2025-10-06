@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tns.tibco.com/bw/json/1759397162202" elementFormDefault="qualified" targetNamespace="http://tns.tibco.com/bw/json/1759397162202">
-
+    
 <element name="request_PATCH" type="tns:request_PATCH_Type"/>
 
   <complexType name="request_PATCH_Type">
-      <sequence>
-        <element name="stato_sped">
+ 
+    <sequence>
+      <element name="stato_sped">
 			<simpleType>
 				<restriction base="string">
 				<enumeration value="Ritiro"/>
@@ -26,7 +27,7 @@
         <element name="data_agg" type="dateTime"/>
 		<element name="data_cons" type="dateTime"/>
 		<element name="note" type="string"/>
-      </sequence>
+    </sequence>
   </complexType>
   
 </schema>
