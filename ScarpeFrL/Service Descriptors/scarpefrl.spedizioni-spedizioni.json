@@ -105,7 +105,7 @@
     },
     "request_PATCH" : {
       "type" : "object",
-      "required" : [ "note", "data_cons", "data_agg", "stato_sped" ],
+      "required" : [ "data_consegna", "data_agg", "stato_sped" ],
       "properties" : {
         "stato_sped" : {
           "type" : "string",
@@ -115,7 +115,7 @@
           "type" : "string",
           "format" : "date-time"
         },
-        "data_cons" : {
+        "data_consegna" : {
           "type" : "string",
           "format" : "date-time"
         },

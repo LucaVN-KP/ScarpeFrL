@@ -68,11 +68,17 @@
             <endingVariables>
                 <variable>update_spedizione-input</variable>
                 <variable>update_spedizione</variable>
+                <variable>Mapper</variable>
             </endingVariables>
         </task>
         <task name="Throw">
             <endingVariables>
                 <variable>Throw-input</variable>
+            </endingVariables>
+        </task>
+        <task name="Mapper">
+            <endingVariables>
+                <variable>Mapper-input</variable>
             </endingVariables>
         </task>
         <task name="Log">
@@ -1350,8 +1356,8 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="26"
-                                    xsi:type="notation:Bounds" y="44"/>
+                                    x="76"
+                                    xsi:type="notation:Bounds" y="45"/>
                                     </children>
 
                                     <children type="4002">
@@ -1408,6 +1414,62 @@
                                     xsi:type="notation:Bounds" y="236"/>
                                     </children>
 
+                                    <children type="4002 bw.generalactivities.mapper">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.1/@activity/@activity/@activities.7"/>
+
+                                    <layoutConstraint
+                                    height="40"
+                                    width="40"
+                                    x="-39"
+                                    xsi:type="notation:Bounds" y="45"/>
+                                    </children>
+
                                     <styles xsi:type="notation:DrawerStyle"/>
 
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -1431,7 +1493,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.1/@activity/@activity"/>
 
                                     <layoutConstraint
-                                    height="337"
+                                    height="395"
                                     width="608" xsi:type="notation:Bounds"/>
                                     </children>
 
@@ -1879,6 +1941,17 @@
             <element href="//0/@process/@activity/@activity/@activities.0/@messages.1/@activity/@faultHandlers/@catch.0/@activity/@activity/@links/@children.0"/>
             <bendpoints points="[25, 1, -180, 0]$[181, 0, -24, -1]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.1/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.5"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.1/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.1/@activity/@activity/@links/@children.5"/>
+            <bendpoints points="[25, 0, -90, 0]$[91, 0, -24, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
         <tibex:namespaceItem
@@ -1964,6 +2037,8 @@
         <bpws:variable element="ns1:ActivityInput" name="Log-input" sca-bpel:internal="true"/>
         <bpws:variable messageType="ns:patchResponse"
             name="ErrOut-input" sca-bpel:internal="true"/>
+        <bpws:variable element="tns:request_PATCH" name="Mapper-input" sca-bpel:internal="true"/>
+        <bpws:variable element="tns:request_PATCH" name="Mapper" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -2177,6 +2252,8 @@
                                     name="SQLDirect1ToSelect_id_ord" tibex:linkType="SUCCESSWITHCONDITION"/>
                                 <bpws:link
                                     name="update_spedizioneToThrow" tibex:linkType="SUCCESSWITHCONDITION"/>
+                                <bpws:link
+                                    name="MapperToupdate_spedizione" tibex:linkType="SUCCESS"/>
                             </bpws:links>
                             <bpws:empty name="OnMessageStart1"
                                 tibex:constructor="onMessageStart" tibex:xpdlId="227742dc-0254-42d4-bc0f-662c621abb0f"/>
@@ -2284,12 +2361,15 @@
                             </bpws:extensionActivity>
                             <bpws:extensionActivity>
                                 <tibex:activityExtension
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns12=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+9bcd5e61-af1c-4e05-9ae8-f55eed7306c1+input&quot; xmlns:tns3=&quot;http://xmlns.example.com/spedizioni/parameters&quot; xmlns:tns5=&quot;http://tns.tibco.com/bw/json/1759397162202&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;patch&quot;/>&lt;xsl:template name=&quot;SQLDirect1-input&quot; match=&quot;/&quot;>&lt;tns12:ActivityInputType>&lt;statement>&lt;xsl:value-of select=&quot;concat(&amp;quot;CALL scarpe.update_spedizione('&amp;quot;,$patch/parameters/tns3:spedizioniPatchParameters/tns3:id_sped , &amp;quot;','&amp;quot; ,$patch/item/tns5:request_PATCH/tns5:stato_sped, &amp;quot;','&amp;quot; ,string($patch/item/tns5:request_PATCH/tns5:data_agg), &amp;quot;','&amp;quot;,string($patch/item/tns5:request_PATCH/tns5:data_cons), &amp;quot;','&amp;quot;,$patch/item/tns5:request_PATCH/tns5:note,&amp;quot;')&amp;quot;)&quot;/>&lt;/statement>&lt;/tns12:ActivityInputType>&lt;/xsl:template>&lt;/xsl:stylesheet>"
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns12=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+9bcd5e61-af1c-4e05-9ae8-f55eed7306c1+input&quot; xmlns:tns3=&quot;http://xmlns.example.com/spedizioni/parameters&quot; xmlns:tns5=&quot;http://tns.tibco.com/bw/json/1759397162202&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;patch&quot;/>&lt;xsl:param name=&quot;Mapper&quot;/>&lt;xsl:template name=&quot;update_spedizione-input&quot; match=&quot;/&quot;>&lt;tns12:ActivityInputType>&lt;statement>&lt;xsl:value-of select=&quot;concat(&amp;quot;CALL scarpe.update_spedizione('&amp;quot;,$patch/parameters/tns3:spedizioniPatchParameters/tns3:id_sped , &amp;quot;','&amp;quot; ,$patch/item/tns5:request_PATCH/tns5:stato_sped, &amp;quot;','&amp;quot; ,string($patch/item/tns5:request_PATCH/tns5:data_agg), &amp;quot;','&amp;quot;,string($patch/item/tns5:request_PATCH/tns5:data_consegna), &amp;quot;','&amp;quot;,$Mapper/tns5:note,&amp;quot;')&amp;quot;)&quot;/>&lt;/statement>&lt;/tns12:ActivityInputType>&lt;/xsl:template>&lt;/xsl:stylesheet>"
                                     expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
                                     inputVariable="update_spedizione-input"
                                     name="update_spedizione"
                                     outputVariable="update_spedizione"
                                     tibex:xpdlId="9bcd5e61-af1c-4e05-9ae8-f55eed7306c1" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:targets>
+                                    <bpws:target linkName="MapperToupdate_spedizione"/>
+                                    </bpws:targets>
                                     <bpws:sources>
                                     <bpws:source linkName="SQLDirect1TopatchOut">
                                     <tibex:DesignExpression>
@@ -2315,7 +2395,7 @@
                                     </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns12=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+9bcd5e61-af1c-4e05-9ae8-f55eed7306c1+input&quot; xmlns:tns3=&quot;http://xmlns.example.com/spedizioni/parameters&quot; xmlns:tns5=&quot;http://tns.tibco.com/bw/json/1759397162202&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;patch.item&quot;/>&#xa;    &lt;xsl:param name=&quot;patch.parameters&quot;/>&#xa;    &lt;xsl:template name=&quot;SQLDirect1-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns12:ActivityInputType>&#xa;            &lt;statement>&#xa;                &lt;xsl:value-of select=&quot;concat(&amp;quot;CALL scarpe.update_spedizione('&amp;quot;,$patch.parameters/tns3:id_sped , &amp;quot;','&amp;quot; ,$patch.item/tns5:stato_sped, &amp;quot;','&amp;quot; ,string($patch.item/tns5:data_agg), &amp;quot;','&amp;quot;,string($patch.item/tns5:data_cons), &amp;quot;','&amp;quot;,$patch.item/tns5:note,&amp;quot;')&amp;quot;)&quot;/>&#xa;            &lt;/statement>&#xa;        &lt;/tns12:ActivityInputType>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns12=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+9bcd5e61-af1c-4e05-9ae8-f55eed7306c1+input&quot; xmlns:tns3=&quot;http://xmlns.example.com/spedizioni/parameters&quot; xmlns:tns5=&quot;http://tns.tibco.com/bw/json/1759397162202&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;patch.item&quot;/>&#xa;    &lt;xsl:param name=&quot;patch.parameters&quot;/>&#xa;    &lt;xsl:param name=&quot;Mapper&quot;/>&#xa;    &lt;xsl:template name=&quot;update_spedizione-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns12:ActivityInputType>&#xa;            &lt;statement>&#xa;                &lt;xsl:value-of select=&quot;concat(&amp;quot;CALL scarpe.update_spedizione('&amp;quot;,$patch.parameters/tns3:id_sped , &amp;quot;','&amp;quot; ,$patch.item/tns5:stato_sped, &amp;quot;','&amp;quot; ,string($patch.item/tns5:data_agg), &amp;quot;','&amp;quot;,string($patch.item/tns5:data_consegna), &amp;quot;','&amp;quot;,$Mapper/tns5:note,&amp;quot;')&amp;quot;)&quot;/>&#xa;            &lt;/statement>&#xa;        &lt;/tns12:ActivityInputType>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:config>
                                     <bwext:BWActivity
@@ -2348,6 +2428,41 @@
                                     <bpws:target linkName="update_spedizioneToThrow"/>
                                 </bpws:targets>
                             </bpws:throw>
+                            <bpws:extensionActivity>
+                                <tibex:activityExtension
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns5=&quot;http://tns.tibco.com/bw/json/1759397162202&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;patch&quot;/>&lt;xsl:template name=&quot;Mapper-input&quot; match=&quot;/&quot;>&lt;tns5:request_PATCH>&lt;tns5:stato_sped>&lt;xsl:value-of select=&quot;$patch/item/tns5:request_PATCH/tns5:stato_sped&quot;/>&lt;/tns5:stato_sped>&lt;tns5:data_agg>&lt;xsl:value-of select=&quot;$patch/item/tns5:request_PATCH/tns5:data_agg&quot;/>&lt;/tns5:data_agg>&lt;tns5:data_consegna>&lt;xsl:value-of select=&quot;$patch/item/tns5:request_PATCH/tns5:data_consegna&quot;/>&lt;/tns5:data_consegna>&lt;xsl:choose>&lt;xsl:when test=&quot;exists($patch/item/tns5:request_PATCH/tns5:note)&quot;>&lt;xsl:if test=&quot;$patch/item/tns5:request_PATCH/tns5:note&quot;>&lt;tns5:note>&lt;xsl:value-of select=&quot;$patch/item/tns5:request_PATCH/tns5:note&quot;/>&lt;/tns5:note>&lt;/xsl:if>&lt;/xsl:when>&lt;xsl:otherwise>&lt;tns5:note>&lt;xsl:value-of select=&quot;&amp;quot;null&amp;quot;&quot;/>&lt;/tns5:note>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;/tns5:request_PATCH>&lt;/xsl:template>&lt;/xsl:stylesheet>"
+                                    expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
+                                    inputVariable="Mapper-input"
+                                    name="Mapper"
+                                    outputVariable="Mapper"
+                                    tibex:xpdlId="4821fa1b-c7ea-4bfc-b2c7-a1a79d9aeb8a" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:sources>
+                                    <bpws:source linkName="MapperToupdate_spedizione"/>
+                                    </bpws:sources>
+                                    <tibex:inputBindings>
+                                    <tibex:inputBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns5=&quot;http://tns.tibco.com/bw/json/1759397162202&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;patch.item&quot;/>&#xa;    &lt;xsl:template name=&quot;Mapper-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns5:request_PATCH>&#xa;            &lt;tns5:stato_sped>&#xa;                &lt;xsl:value-of select=&quot;$patch.item/tns5:stato_sped&quot;/>&#xa;            &lt;/tns5:stato_sped>&#xa;            &lt;tns5:data_agg>&#xa;                &lt;xsl:value-of select=&quot;$patch.item/tns5:data_agg&quot;/>&#xa;            &lt;/tns5:data_agg>&#xa;            &lt;tns5:data_consegna>&#xa;                &lt;xsl:value-of select=&quot;$patch.item/tns5:data_consegna&quot;/>&#xa;            &lt;/tns5:data_consegna>&#xa;            &lt;xsl:choose>&#xa;                &lt;xsl:when test=&quot;exists($patch.item/tns5:note)&quot;>&#xa;                    &lt;xsl:if test=&quot;$patch.item/tns5:note&quot;>&#xa;                        &lt;tns5:note>&#xa;                            &lt;xsl:value-of select=&quot;$patch.item/tns5:note&quot;/>&#xa;                        &lt;/tns5:note>&#xa;                    &lt;/xsl:if>&#xa;                &lt;/xsl:when>&#xa;                &lt;xsl:otherwise>&#xa;                    &lt;tns5:note>&#xa;                        &lt;xsl:value-of select=&quot;&amp;quot;null&amp;quot;&quot;/>&#xa;                    &lt;/tns5:note>&#xa;                &lt;/xsl:otherwise>&#xa;            &lt;/xsl:choose>&#xa;        &lt;/tns5:request_PATCH>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    </tibex:inputBindings>
+                                    <tibex:config>
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.generalactivities.mapper"
+                                    version="6.0.0.001"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:generalactivities="http://ns.tibco.com/bw/palette/generalactivities"
+                                    xmlns:json_1759397162202="http://tns.tibco.com/bw/json/1759397162202" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+                                    <properties
+                                    name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/generalactivities#//Mapper"/>
+                                    <value
+                                    inputQName="json_1759397162202:request_PATCH" xsi:type="generalactivities:Mapper"/>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                    </tibex:config>
+                                </tibex:activityExtension>
+                            </bpws:extensionActivity>
                         </bpws:flow>
                     </bpws:scope>
                 </bpws:onMessage>
