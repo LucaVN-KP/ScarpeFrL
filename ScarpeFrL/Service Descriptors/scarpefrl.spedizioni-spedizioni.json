@@ -21,7 +21,7 @@
           "in" : "body",
           "description" : "",
           "schema" : {
-            "type" : "string"
+            "$ref" : "#/definitions/spedizione"
           },
           "required" : true
         } ],
@@ -36,5 +36,33 @@
       }
     }
   },
-  "definitions" : { }
+  "definitions" : {
+    "spedizione" : {
+      "type" : "object",
+      "required" : [ "id_sped", "id_ordine", "data_consena", "data_agg", "stato_sped" ],
+      "properties" : {
+        "id_sped" : {
+          "type" : "string"
+        },
+        "id_ordine" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "stato_sped" : {
+          "type" : "string"
+        },
+        "data_agg" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "data_consena" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "note" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
 }

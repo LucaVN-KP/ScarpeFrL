@@ -77,7 +77,7 @@
   "definitions" : {
     "spedizione" : {
       "type" : "object",
-      "required" : [ "note", "id_sped", "id_ordine", "data_consena", "data_agg", "stato_sped" ],
+      "required" : [ "id_sped", "id_ordine", "data_consena", "data_agg", "stato_sped" ],
       "properties" : {
         "id_sped" : {
           "type" : "string"
