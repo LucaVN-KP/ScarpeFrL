@@ -32,12 +32,12 @@
             <endingVariables>
                 <variable>getOut-input</variable>
                 <variable>get</variable>
-                <variable>JDBCQuery</variable>
+                <variable>select_spedizioni</variable>
             </endingVariables>
         </task>
-        <task name="JDBCQuery">
+        <task name="select_spedizioni">
             <endingVariables>
-                <variable>JDBCQuery-input</variable>
+                <variable>select_spedizioni-input</variable>
             </endingVariables>
         </task>
         <task name="patchOut">
@@ -51,17 +51,17 @@
                 <variable>Select_id_ord-input</variable>
             </endingVariables>
         </task>
-        <task name="SQLDirect">
+        <task name="update_ordine">
             <endingVariables>
-                <variable>SQLDirect-input</variable>
-                <variable>SQLDirect</variable>
+                <variable>update_ordine-input</variable>
+                <variable>update_ordine</variable>
                 <variable>Select_id_ord</variable>
             </endingVariables>
         </task>
-        <task name="SQLDirect1">
+        <task name="update_spedizione">
             <endingVariables>
-                <variable>SQLDirect1-input</variable>
-                <variable>SQLDirect1</variable>
+                <variable>update_spedizione-input</variable>
+                <variable>update_spedizione</variable>
             </endingVariables>
         </task>
     </tibex:VariableDescriptor>
@@ -1600,25 +1600,25 @@
         </bpws:variable>
         <bpws:variable element="ns0:ErrorReport" name="_error" sca-bpel:internal="true"/>
         <bpws:variable element="ns7:jdbcQueryActivityInput"
-            name="JDBCQuery-input" sca-bpel:internal="true"/>
-        <bpws:variable element="ns8:resultSet" name="JDBCQuery" sca-bpel:internal="true"/>
+            name="select_spedizioni-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns8:resultSet" name="select_spedizioni" sca-bpel:internal="true"/>
         <bpws:variable element="ns9:ActivityErrorData"
-            name="_error_JDBCQuery" sca-bpel:internal="true"/>
+            name="_error_select_spedizioni" sca-bpel:internal="true"/>
         <bpws:variable element="ns11:jdbcQueryActivityInput"
             name="Select_id_ord-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns12:resultSet" name="Select_id_ord" sca-bpel:internal="true"/>
         <bpws:variable element="ns9:ActivityErrorData"
             name="_error_Select_id_ord" sca-bpel:internal="true"/>
         <bpws:variable element="ns15:ActivityInputType"
-            name="SQLDirect-input" sca-bpel:internal="true"/>
+            name="update_ordine-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns3:jdbcGeneralActivityOutput"
-            name="SQLDirect" sca-bpel:internal="true"/>
+            name="update_ordine" sca-bpel:internal="true"/>
         <bpws:variable element="ns6:ActivityErrorData"
-            name="_error_SQLDirect" sca-bpel:internal="true"/>
+            name="_error_update_spedizione" sca-bpel:internal="true"/>
         <bpws:variable element="ns16:ActivityInputType"
-            name="SQLDirect1-input" sca-bpel:internal="true"/>
+            name="update_spedizione-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns3:jdbcGeneralActivityOutput"
-            name="SQLDirect1" sca-bpel:internal="true"/>
+            name="update_spedizione" sca-bpel:internal="true"/>
         <bpws:variable element="ns6:ActivityErrorData"
             name="_error_SQLDirect1" sca-bpel:internal="true"/>
     </bpws:variables>
@@ -1652,10 +1652,39 @@
                                 tibex:xpdlId="ce6b4d49-9ede-4f3a-addf-4129b01f3876" variable="getOut-input">
                                 <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://xmlns.example.com/20251002110524PLT&quot; xmlns:tns2=&quot;http://tns.tibco.com/bw/json/1759399791283&quot; xmlns:tns3=&quot;http://xmlns.example.com/spedizioni/parameters&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;get.parameters&quot;/>&#xa;    &lt;xsl:param name=&quot;JDBCQuery&quot;/>&#xa;    &lt;xsl:template name=&quot;getOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns2:response_GET>&#xa;            &lt;tns2:id_sped>&#xa;                &lt;xsl:value-of select=&quot;$get.parameters/tns3:id_sped&quot;/>&#xa;            &lt;/tns2:id_sped>&#xa;            &lt;tns2:id_ordine>&#xa;                &lt;xsl:value-of select=&quot;$JDBCQuery/Record[1]/id_ord&quot;/>&#xa;            &lt;/tns2:id_ordine>&#xa;            &lt;tns2:stato_sped>&#xa;                &lt;xsl:value-of select=&quot;$JDBCQuery/Record[1]/stato_sped&quot;/>&#xa;            &lt;/tns2:stato_sped>&#xa;            &lt;tns2:data_agg>&#xa;                &lt;xsl:value-of select=&quot;$JDBCQuery/Record[1]/ultimo_agg&quot;/>&#xa;            &lt;/tns2:data_agg>&#xa;            &lt;tns2:data_cons>&#xa;                &lt;xsl:value-of select=&quot;$JDBCQuery/Record[1]/arrivo_previsto&quot;/>&#xa;            &lt;/tns2:data_cons>&#xa;            &lt;tns2:note>&#xa;                &lt;xsl:value-of select=&quot;$JDBCQuery/Record[1]/note&quot;/>&#xa;            &lt;/tns2:note>&#xa;        &lt;/tns2:response_GET>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://xmlns.example.com/20251002110524PLT&quot; xmlns:tns2=&quot;http://tns.tibco.com/bw/json/1759399791283&quot; xmlns:tns3=&quot;http://xmlns.example.com/spedizioni/parameters&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;get.parameters&quot;/>&#xa;    &lt;xsl:param name=&quot;select_spedizioni&quot;/>&#xa;    &lt;xsl:template name=&quot;getOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns2:response_GET>&#xa;            &lt;tns2:id_sped>&#xa;                &lt;xsl:value-of select=&quot;$get.parameters/tns3:id_sped&quot;/>&#xa;            &lt;/tns2:id_sped>&#xa;            &lt;tns2:id_ordine>&#xa;                &lt;xsl:value-of select=&quot;$select_spedizioni/Record[1]/id_ord&quot;/>&#xa;            &lt;/tns2:id_ordine>&#xa;            &lt;tns2:stato_sped>&#xa;                &lt;xsl:value-of select=&quot;$select_spedizioni/Record[1]/stato_sped&quot;/>&#xa;            &lt;/tns2:stato_sped>&#xa;            &lt;tns2:data_agg>&#xa;                &lt;xsl:value-of select=&quot;$select_spedizioni/Record[1]/ultimo_agg&quot;/>&#xa;            &lt;/tns2:data_agg>&#xa;            &lt;tns2:data_cons>&#xa;                &lt;xsl:value-of select=&quot;$select_spedizioni/Record[1]/arrivo_previsto&quot;/>&#xa;            &lt;/tns2:data_cons>&#xa;            &lt;tns2:note>&#xa;                &lt;xsl:value-of select=&quot;$select_spedizioni/Record[1]/note&quot;/>&#xa;            &lt;/tns2:note>&#xa;        &lt;/tns2:response_GET>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                 </tibex:inputBindings>
                                 <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns1="http://xmlns.example.com/20251002110524PLT" xmlns:tns2="http://tns.tibco.com/bw/json/1759399791283" xmlns:tns3="http://xmlns.example.com/spedizioni/parameters" version="2.0"&gt;&lt;xsl:param name="get"/&gt;&lt;xsl:param name="JDBCQuery"/&gt;&lt;xsl:template name="getOut-input" match="/"&gt;&lt;tns1:getResponse&gt;&lt;item&gt;&lt;tns2:response_GET&gt;&lt;tns2:id_sped&gt;&lt;xsl:value-of select="$get/parameters/tns3:spedizioniGetParameters/tns3:id_sped"/&gt;&lt;/tns2:id_sped&gt;&lt;tns2:id_ordine&gt;&lt;xsl:value-of select="$JDBCQuery/Record[1]/id_ord"/&gt;&lt;/tns2:id_ordine&gt;&lt;tns2:stato_sped&gt;&lt;xsl:value-of select="$JDBCQuery/Record[1]/stato_sped"/&gt;&lt;/tns2:stato_sped&gt;&lt;tns2:data_agg&gt;&lt;xsl:value-of select="$JDBCQuery/Record[1]/ultimo_agg"/&gt;&lt;/tns2:data_agg&gt;&lt;tns2:data_cons&gt;&lt;xsl:value-of select="$JDBCQuery/Record[1]/arrivo_previsto"/&gt;&lt;/tns2:data_cons&gt;&lt;tns2:note&gt;&lt;xsl:value-of select="$JDBCQuery/Record[1]/note"/&gt;&lt;/tns2:note&gt;&lt;/tns2:response_GET&gt;&lt;/item&gt;&lt;/tns1:getResponse&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns1="http://xmlns.example.com/20251002110524PLT" xmlns:tns2="http://tns.tibco.com/bw/json/1759399791283" xmlns:tns3="http://xmlns.example.com/spedizioni/parameters" version="2.0"&gt;
+    &lt;xsl:param name="get"/&gt;
+    &lt;xsl:param name="select_spedizioni"/&gt;
+    &lt;xsl:template name="getOut-input" match="/"&gt;
+        &lt;tns1:getResponse&gt;
+            &lt;item&gt;
+                &lt;tns2:response_GET&gt;
+                    &lt;tns2:id_sped&gt;
+                        &lt;xsl:value-of select="$get/parameters/tns3:spedizioniGetParameters/tns3:id_sped"/&gt;
+                    &lt;/tns2:id_sped&gt;
+                    &lt;tns2:id_ordine&gt;
+                        &lt;xsl:value-of select="$select_spedizioni/Record[1]/id_ord"/&gt;
+                    &lt;/tns2:id_ordine&gt;
+                    &lt;tns2:stato_sped&gt;
+                        &lt;xsl:value-of select="$select_spedizioni/Record[1]/stato_sped"/&gt;
+                    &lt;/tns2:stato_sped&gt;
+                    &lt;tns2:data_agg&gt;
+                        &lt;xsl:value-of select="$select_spedizioni/Record[1]/ultimo_agg"/&gt;
+                    &lt;/tns2:data_agg&gt;
+                    &lt;tns2:data_cons&gt;
+                        &lt;xsl:value-of select="$select_spedizioni/Record[1]/arrivo_previsto"/&gt;
+                    &lt;/tns2:data_cons&gt;
+                    &lt;tns2:note&gt;
+                        &lt;xsl:value-of select="$select_spedizioni/Record[1]/note"/&gt;
+                    &lt;/tns2:note&gt;
+                &lt;/tns2:response_GET&gt;
+            &lt;/item&gt;
+        &lt;/tns1:getResponse&gt;
+    &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                 <bpws:targets>
                                     <bpws:target linkName="JDBCQueryTogetOut"/>
                                 </bpws:targets>
@@ -1664,9 +1693,9 @@
                                 <tibex:activityExtension
                                     expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns7=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+b2da3f0f-cec3-47f8-84d0-45ea651af917+input&quot; xmlns:tns3=&quot;http://xmlns.example.com/spedizioni/parameters&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;get&quot;/>&lt;xsl:template name=&quot;JDBCQuery-input&quot; match=&quot;/&quot;>&lt;tns7:jdbcQueryActivityInput>&lt;p_id_sped>&lt;xsl:value-of select=&quot;$get/parameters/tns3:spedizioniGetParameters/tns3:id_sped&quot;/>&lt;/p_id_sped>&lt;/tns7:jdbcQueryActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>"
                                     expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
-                                    inputVariable="JDBCQuery-input"
-                                    name="JDBCQuery"
-                                    outputVariable="JDBCQuery"
+                                    inputVariable="select_spedizioni-input"
+                                    name="select_spedizioni"
+                                    outputVariable="select_spedizioni"
                                     tibex:xpdlId="b2da3f0f-cec3-47f8-84d0-45ea651af917" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                                     <bpws:sources>
                                     <bpws:source linkName="JDBCQueryTogetOut"/>
@@ -1813,9 +1842,9 @@
                             </bpws:extensionActivity>
                             <bpws:extensionActivity>
                                 <tibex:activityExtension
-                                    inputVariable="SQLDirect-input"
-                                    name="SQLDirect"
-                                    outputVariable="SQLDirect"
+                                    inputVariable="update_ordine-input"
+                                    name="update_ordine"
+                                    outputVariable="update_ordine"
                                     tibex:xpdlId="d82f8683-cbe5-425d-9628-fd4452a56929" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                                     <bpws:targets>
                                     <bpws:target linkName="Select_id_ordToSQLDirect"/>
@@ -1850,9 +1879,9 @@
                                 <tibex:activityExtension
                                     expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns12=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+9bcd5e61-af1c-4e05-9ae8-f55eed7306c1+input&quot; xmlns:tns3=&quot;http://xmlns.example.com/spedizioni/parameters&quot; xmlns:tns5=&quot;http://tns.tibco.com/bw/json/1759397162202&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;patch&quot;/>&lt;xsl:template name=&quot;SQLDirect1-input&quot; match=&quot;/&quot;>&lt;tns12:ActivityInputType>&lt;statement>&lt;xsl:value-of select=&quot;concat(&amp;quot;CALL scarpe.update_spedizione('&amp;quot;,$patch/parameters/tns3:spedizioniPatchParameters/tns3:id_sped , &amp;quot;','&amp;quot; ,$patch/item/tns5:request_PATCH/tns5:stato_sped, &amp;quot;','&amp;quot; ,string($patch/item/tns5:request_PATCH/tns5:data_agg), &amp;quot;','&amp;quot;,string($patch/item/tns5:request_PATCH/tns5:data_cons), &amp;quot;','&amp;quot;,$patch/item/tns5:request_PATCH/tns5:note,&amp;quot;')&amp;quot;)&quot;/>&lt;/statement>&lt;/tns12:ActivityInputType>&lt;/xsl:template>&lt;/xsl:stylesheet>"
                                     expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
-                                    inputVariable="SQLDirect1-input"
-                                    name="SQLDirect1"
-                                    outputVariable="SQLDirect1"
+                                    inputVariable="update_spedizione-input"
+                                    name="update_spedizione"
+                                    outputVariable="update_spedizione"
                                     tibex:xpdlId="9bcd5e61-af1c-4e05-9ae8-f55eed7306c1" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                                     <bpws:sources>
                                     <bpws:source linkName="SQLDirect1TopatchOut">
