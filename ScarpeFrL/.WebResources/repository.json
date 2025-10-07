@@ -4,8 +4,26 @@
         "items": [],
         "url": "https://integration.cloud.tibco.com:443"
     }],
-    "resources": [{
-        "location": "Service Descriptors/scarpefrl.spedizioni-spedizioni.json",
-        "type": "generated"
-    }]
+    "resources": [
+        {
+            "location": "Service Descriptors/scarpefrl.spedizioni-spedizioni.json",
+            "type": "generated"
+        },
+        {
+            "location": "Service Descriptors/scarpefrl.spedizioni-spedizioniWithUri.json",
+            "type": "generated"
+        },
+        {
+            "location": "Service Descriptors/scarpefrl.spedizioni1-spedizioni.json",
+            "type": "generated"
+        },
+        {
+            "location": "Service Descriptors/scarpefrl.spedizioni_post-spedizioni.json",
+            "type": "generated"
+        },
+        {
+            "location": "Service Descriptors/scarpefrl.spedizioniWithUri-spedizioniWithUri.json",
+            "type": "generated"
+        }
+    ]
 }

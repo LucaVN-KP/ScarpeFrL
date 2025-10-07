@@ -1,0 +1,128 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "spedizioniWithUri",
+    "description" : "spedizioni service"
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/spedizioni/{id_sped}" : {
+      "get" : {
+        "summary" : "getSpedizioni",
+        "description" : "getSpedizioni",
+        "operationId" : "get-spedizioni",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id_sped",
+          "in" : "path",
+          "description" : "",
+          "type" : "array",
+          "items" : {
+            "type" : "integer",
+            "format" : "int32",
+            "uniqueItems" : false
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a response_GET to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/response_GET"
+            }
+          }
+        }
+      },
+      "patch" : {
+        "summary" : "patchSpedizioni",
+        "description" : "patchSpedizioni",
+        "operationId" : "patch-spedizioni",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/request_PATCH"
+          },
+          "required" : true
+        }, {
+          "name" : "id_sped",
+          "in" : "path",
+          "description" : "",
+          "type" : "array",
+          "items" : {
+            "type" : "integer",
+            "format" : "int32",
+            "uniqueItems" : false
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "response_GET" : {
+      "type" : "object",
+      "required" : [ "note", "id_sped", "id_ordine", "data_cons", "data_agg", "stato_sped" ],
+      "properties" : {
+        "id_sped" : {
+          "type" : "string"
+        },
+        "id_ordine" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "stato_sped" : {
+          "type" : "string",
+          "enum" : [ "Ritiro", "In_transito", "In_consegna", "Consegnata", "Imbarcata", "In_navigazione", "Sbarcata", "Check-in", "In_volo", "Arrivata", "Delay", "Cancelled" ]
+        },
+        "data_agg" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "data_cons" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "note" : {
+          "type" : "string"
+        }
+      }
+    },
+    "request_PATCH" : {
+      "type" : "object",
+      "required" : [ "data_consegna", "data_agg", "stato_sped" ],
+      "properties" : {
+        "stato_sped" : {
+          "type" : "string",
+          "enum" : [ "Ritiro", "In_transito", "In_consegna", "Consegnata", "Imbarcata", "In_navigazione", "Sbarcata", "Check-in", "In_volo", "Arrivata", "Delay", "Cancelled" ]
+        },
+        "data_agg" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "data_consegna" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "note" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

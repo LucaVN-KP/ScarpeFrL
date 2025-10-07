@@ -2,7 +2,7 @@
 <sca:composite xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:BW="http://xsd.tns.tibco.com/amf/models/sca/implementationtype/BW" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:compositeext="http://schemas.tibco.com/amx/3.0/compositeext" xmlns:rest="http://xsd.tns.tibco.com/bw/models/binding/rest" xmlns:sca="http://www.osoa.org/xmlns/sca/1.0" xmlns:scact="http://xsd.tns.tibco.com/amf/models/sca/componentType" xmlns:scaext="http://xsd.tns.tibco.com/amf/models/sca/extensions" xmi:id="_i-QZgJojEfCWAJKe-jrClQ" targetNamespace="http://tns.tibco.com/bw/composite/ScarpeFrL" name="ScarpeFrL" compositeext:version="1.0.0" compositeext:formatVersion="2">
   <sca:service xmi:id="_7sBjFJ9uEfCwU9nfzQpQgg" name="spedizioni" promote="Componentspedizioni/spedizioni">
     <sca:interface.wsdl xmi:id="_7sCKI59uEfCwU9nfzQpQgg" interface="http://xmlns.example.com/20251002110524PLT#wsdl.interface(spedizioni)" scaext:wsdlLocation="../Processes/scarpefrl/spedizioni.bwp"/>
-    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_7sCxMJ9uEfCwU9nfzQpQgg" name="RestService" path="/spedizioni/{id_sped}" docBasePath="http://localhost:7777/ScarpeFrL" docResourcePath="spedizioni" basePath="/" connector="spedizioni" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/scarpefrl.spedizioni-spedizioni.json">
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_7sCxMJ9uEfCwU9nfzQpQgg" name="RestService" path="/spedizioni/{id_sped}" docBasePath="http://localhost:7777/ScarpeFrL" docResourcePath="spedizioniWithUri" basePath="/" connector="spedizioni" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/scarpefrl.spedizioni-spedizioni.json">
       <operation xmi:id="_7sD_UJ9uEfCwU9nfzQpQgg" operationName="get" nickname="get-spedizioni" httpMethod="GET" notes="getSpedizioni" responseStyle="element" outputPartName="item">
         <clientFormat>json</clientFormat>
         <clientRequestFormat>json</clientRequestFormat>
@@ -18,6 +18,18 @@
     </scaext:binding>
     <scact:bindingAdjunct xmi:id="_7sD_Up9uEfCwU9nfzQpQgg" bindingName="RestService"/>
   </sca:service>
+  <sca:service xmi:id="_7Uhl8KOIEfCOGIWVl6FzJg" name="spedizioni1" promote="Componentspedizioni1/spedizioni">
+    <sca:interface.wsdl xmi:id="_7U2WEKOIEfCOGIWVl6FzJg" interface="http://xmlns.example.com/20251007162133PLT#wsdl.interface(spedizioni)" scaext:wsdlLocation="../Processes/scarpefrl/spedizioni1.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_7VQlwKOIEfCOGIWVl6FzJg" name="RestService1" path="/spedizioni" docBasePath="http://localhost:7777/ScarpeFrL" docResourcePath="spedizioni" basePath="/" connector="spedizioni" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/scarpefrl.spedizioni1-spedizioni.json">
+      <operation xmi:id="_7VRM0KOIEfCOGIWVl6FzJg" operationName="post" nickname="post-spedizioni" httpMethod="POST" notes="postSpedizioni" responseStyle="element" outputPartName="item">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_7Vf2UKOIEfCOGIWVl6FzJg"/>
+      <advancedConfig xmi:id="_7VQlwaOIEfCOGIWVl6FzJg" blockingQueueSize="8192"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_7VRM0aOIEfCOGIWVl6FzJg" bindingName="RestService1"/>
+  </sca:service>
   <sca:property xmi:id="_o1vKQJojEfCWAJKe-jrClQ" name="BW.DEPLOYMENTUNIT.TYPE" type="XMLSchema:string" scalable="true"/>
   <sca:property xmi:id="_o2IL0JojEfCWAJKe-jrClQ" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
   <sca:property xmi:id="_o2QHoJojEfCWAJKe-jrClQ" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
@@ -31,9 +43,15 @@
     <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_lsb3AJojEfCWAJKe-jrClQ" processName="scarpefrl.Process"/>
   </sca:component>
   <sca:component xmi:id="_7sBjEJ9uEfCwU9nfzQpQgg" name="Componentspedizioni" compositeext:version="1.0.0.qualifier">
-    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_7sBjEZ9uEfCwU9nfzQpQgg" processName="scarpefrl.spedizioni"/>
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_7sBjEZ9uEfCwU9nfzQpQgg" processName="scarpefrl.spedizioniWithUri"/>
     <sca:service xmi:id="_7sBjEp9uEfCwU9nfzQpQgg" name="spedizioni">
       <sca:interface.wsdl xmi:id="_7sBjE59uEfCwU9nfzQpQgg" interface="http://xmlns.example.com/20251002110524PLT#wsdl.interface(spedizioni)" scaext:wsdlLocation="../Processes/scarpefrl/spedizioni.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_7UDr4KOIEfCOGIWVl6FzJg" name="Componentspedizioni1" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_7UDr4aOIEfCOGIWVl6FzJg" processName="scarpefrl.spedizioni"/>
+    <sca:service xmi:id="_7UV_wKOIEfCOGIWVl6FzJg" name="spedizioni">
+      <sca:interface.wsdl xmi:id="_7UfJsKOIEfCOGIWVl6FzJg" interface="http://xmlns.example.com/20251007162133PLT#wsdl.interface(spedizioni)" scaext:wsdlLocation="../Processes/scarpefrl/spedizioni1.bwp"/>
     </sca:service>
   </sca:component>
 </sca:composite>
