@@ -39,7 +39,7 @@
   "definitions" : {
     "spedizione" : {
       "type" : "object",
-      "required" : [ "id_sped", "id_ordine", "data_consena", "data_agg", "stato_sped" ],
+      "required" : [ "data_consegna", "id_sped", "id_ordine", "data_agg", "stato_sped" ],
       "properties" : {
         "id_sped" : {
           "type" : "string"
@@ -55,7 +55,7 @@
           "type" : "string",
           "format" : "date-time"
         },
-        "data_consena" : {
+        "data_consegna" : {
           "type" : "string",
           "format" : "date-time"
         },
