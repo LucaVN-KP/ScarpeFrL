@@ -107,8 +107,7 @@
       "required" : [ "data_consegna", "data_agg", "stato_sped" ],
       "properties" : {
         "stato_sped" : {
-          "type" : "string",
-          "enum" : [ "Ritiro", "In_transito", "In_consegna", "Consegnata", "Imbarcata", "In_navigazione", "Sbarcata", "Check-in", "In_volo", "Arrivata", "Delay", "Cancelled" ]
+          "type" : "string"
         },
         "data_agg" : {
           "type" : "string",
