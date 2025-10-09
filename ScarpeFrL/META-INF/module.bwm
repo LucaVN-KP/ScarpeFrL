@@ -32,7 +32,7 @@
   </sca:service>
   <sca:service xmi:id="_JqKGUKRbEfC-bJztfXtEUg" name="clienti" promote="Componentclienti/clienti">
     <sca:interface.wsdl xmi:id="_JqgEkKRbEfC-bJztfXtEUg" interface="http://xmlns.example.com/20251008172624PLT#wsdl.interface(clienti)" scaext:wsdlLocation="../Processes/scarpefrl/clienti.bwp"/>
-    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_Jqp1kKRbEfC-bJztfXtEUg" name="RestService2" path="/clienti/{id_cliente}" docBasePath="http://localhost:7777/ScarpeFrL" docResourcePath="clienti" basePath="/" connector="spedizioni" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/scarpefrl.clienti-clienti.json">
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_Jqp1kKRbEfC-bJztfXtEUg" name="RestService2" path="/clienti/{id_cliente1}" docBasePath="http://localhost:7777/ScarpeFrL" docResourcePath="clienti" basePath="/" connector="spedizioni" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/scarpefrl.clienti-clienti.json">
       <operation xmi:id="_Jqp1kqRbEfC-bJztfXtEUg" operationName="get" nickname="get-clienti" httpMethod="GET" notes="getClienti" responseStyle="element" outputPartName="clientiGet">
         <clientFormat>json</clientFormat>
         <clientRequestFormat>json</clientRequestFormat>
@@ -42,7 +42,7 @@
         <clientRequestFormat>json</clientRequestFormat>
       </operation>
       <parameters xmi:id="_JrI9wKRbEfC-bJztfXtEUg">
-        <parameterMapping xmi:id="_JrI9waRbEfC-bJztfXtEUg" parameterName="id_cliente" parameterType="Path" required="true" description=""/>
+        <parameterMapping xmi:id="_JrI9waRbEfC-bJztfXtEUg" parameterName="id_cliente1" parameterType="Path" dataType="string" required="true" description=""/>
       </parameters>
       <advancedConfig xmi:id="_Jqp1kaRbEfC-bJztfXtEUg" blockingQueueSize="8192"/>
     </scaext:binding>

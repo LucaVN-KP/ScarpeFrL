@@ -9,7 +9,7 @@
   "basePath" : "/",
   "schemes" : [ "http" ],
   "paths" : {
-    "/clienti/{id_cliente}" : {
+    "/clienti/{id_cliente1}" : {
       "get" : {
         "summary" : "getClienti",
         "description" : "getClienti",
@@ -17,7 +17,7 @@
         "consumes" : [ "application/json" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
-          "name" : "id_cliente",
+          "name" : "id_cliente1",
           "in" : "path",
           "description" : "",
           "type" : "string",
@@ -47,7 +47,7 @@
           },
           "required" : true
         }, {
-          "name" : "id_cliente",
+          "name" : "id_cliente1",
           "in" : "path",
           "description" : "",
           "type" : "string",
@@ -92,12 +92,8 @@
     },
     "clientePatch" : {
       "type" : "object",
-      "required" : [ "id", "telefono" ],
+      "required" : [ "telefono" ],
       "properties" : {
-        "id" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
         "nom" : {
           "type" : "string"
         },

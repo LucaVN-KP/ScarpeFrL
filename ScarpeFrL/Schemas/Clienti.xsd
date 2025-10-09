@@ -24,7 +24,6 @@
 	</complexType>
 	<complexType name="ClientePatchType">
 		<sequence>
-			<element ref="tns:id"/>
 			<element ref="tns:nom" minOccurs="0"/>
 			<element ref="tns:mail" minOccurs="0"/>
 			<element ref="tns:telefono" minOccurs="1"/>
