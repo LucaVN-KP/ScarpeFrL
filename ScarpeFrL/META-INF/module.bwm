@@ -30,6 +30,24 @@
     </scaext:binding>
     <scact:bindingAdjunct xmi:id="_7VRM0aOIEfCOGIWVl6FzJg" bindingName="RestService1"/>
   </sca:service>
+  <sca:service xmi:id="_JqKGUKRbEfC-bJztfXtEUg" name="clienti" promote="Componentclienti/clienti">
+    <sca:interface.wsdl xmi:id="_JqgEkKRbEfC-bJztfXtEUg" interface="http://xmlns.example.com/20251008172624PLT#wsdl.interface(clienti)" scaext:wsdlLocation="../Processes/scarpefrl/clienti.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_Jqp1kKRbEfC-bJztfXtEUg" name="RestService2" path="/clienti/{id_cliente}" docBasePath="http://localhost:7777/ScarpeFrL" docResourcePath="clienti" basePath="/" connector="spedizioni" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/scarpefrl.clienti-clienti.json">
+      <operation xmi:id="_Jqp1kqRbEfC-bJztfXtEUg" operationName="get" nickname="get-clienti" httpMethod="GET" notes="getClienti" responseStyle="element" outputPartName="clientiGet">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <operation xmi:id="_Jqp1k6RbEfC-bJztfXtEUg" operationName="patch" nickname="patch-clienti" httpMethod="PATCH" notes="patchClienti" responseStyle="element" requestStyle="element" outputPartName="response">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_JrI9wKRbEfC-bJztfXtEUg">
+        <parameterMapping xmi:id="_JrI9waRbEfC-bJztfXtEUg" parameterName="id_cliente" parameterType="Path" required="true" description=""/>
+      </parameters>
+      <advancedConfig xmi:id="_Jqp1kaRbEfC-bJztfXtEUg" blockingQueueSize="8192"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_Jqp1lKRbEfC-bJztfXtEUg" bindingName="RestService2"/>
+  </sca:service>
   <sca:property xmi:id="_o1vKQJojEfCWAJKe-jrClQ" name="BW.DEPLOYMENTUNIT.TYPE" type="XMLSchema:string" scalable="true"/>
   <sca:property xmi:id="_o2IL0JojEfCWAJKe-jrClQ" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
   <sca:property xmi:id="_o2QHoJojEfCWAJKe-jrClQ" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
@@ -52,6 +70,12 @@
     <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_7UDr4aOIEfCOGIWVl6FzJg" processName="scarpefrl.spedizioni"/>
     <sca:service xmi:id="_7UV_wKOIEfCOGIWVl6FzJg" name="spedizioni">
       <sca:interface.wsdl xmi:id="_7UfJsKOIEfCOGIWVl6FzJg" interface="http://xmlns.example.com/20251007162133PLT#wsdl.interface(spedizioni)" scaext:wsdlLocation="../Processes/scarpefrl/spedizioni1.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_JpyS4KRbEfC-bJztfXtEUg" name="Componentclienti" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_JpyS4aRbEfC-bJztfXtEUg" processName="scarpefrl.clienti"/>
+    <sca:service xmi:id="_JqF04KRbEfC-bJztfXtEUg" name="clienti">
+      <sca:interface.wsdl xmi:id="_JqF04aRbEfC-bJztfXtEUg" interface="http://xmlns.example.com/20251008172624PLT#wsdl.interface(clienti)" scaext:wsdlLocation="../Processes/scarpefrl/clienti.bwp"/>
     </sca:service>
   </sca:component>
 </sca:composite>

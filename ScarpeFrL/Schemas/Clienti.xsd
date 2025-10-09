@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/Clienti" xmlns:tns="http://www.example.org/Clienti" elementFormDefault="qualified">
+
+	<!-- definisco gli elementi -->
+	<element name="clienteGet" type="tns:ClienteGetType"/>
+	<element name="clientePatch" type="tns:ClientePatchType"/>
+	<element name="id" type="int"/>
+	<element name="nom" type="string"/>
+	<element name="mail" type="string"/>
+	<element name="telefono" type="string"/>
+	<element name="indirizzo" type="string"/>
+	<element name="città_arrivo" type="string"/>
+	
+	<!-- definisco i tipi -->	
+	<complexType name="ClienteGetType">
+		<sequence>
+			<element ref="tns:id"/>
+			<element ref="tns:nom"/>
+			<element ref="tns:mail"/>
+			<element ref="tns:telefono"/>
+			<element ref="tns:indirizzo"/>
+			<element ref="tns:città_arrivo"/>
+		</sequence>
+	</complexType>
+	<complexType name="ClientePatchType">
+		<sequence>
+			<element ref="tns:id"/>
+			<element ref="tns:nom" minOccurs="0"/>
+			<element ref="tns:mail" minOccurs="0"/>
+			<element ref="tns:telefono" minOccurs="1"/>
+			<element ref="tns:indirizzo" minOccurs="0"/>
+			<element ref="tns:città_arrivo" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	
+</schema>
