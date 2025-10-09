@@ -32,4 +32,15 @@
 		</sequence>
 	</complexType>
 	
+	<!-- definisco l'errore della throw activity -->
+	<element name="msg" type="string"/>
+	<element name="msgCode" type="string"/>
+	<element name="myError" type="tns:ErrorType"/>
+	<complexType name="ErrorType">
+		<sequence>
+			<element ref="tns:msg"/>
+			<element ref="tns:msgCode"/>
+		</sequence>
+	</complexType>
+	
 </schema>
