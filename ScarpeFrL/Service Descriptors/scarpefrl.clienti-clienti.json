@@ -1,0 +1,119 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "clienti",
+    "description" : "clienti service"
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/clienti/{id_cliente}" : {
+      "get" : {
+        "summary" : "getClienti",
+        "description" : "getClienti",
+        "operationId" : "get-clienti",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id_cliente",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a clienteGet to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/clienteGet"
+            }
+          }
+        }
+      },
+      "patch" : {
+        "summary" : "patchClienti",
+        "description" : "patchClienti",
+        "operationId" : "patch-clienti",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/clientePatch"
+          },
+          "required" : true
+        }, {
+          "name" : "id_cliente",
+          "in" : "path",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "clienteGet" : {
+      "type" : "object",
+      "required" : [ "mail", "città_arrivo", "indirizzo", "id", "telefono", "nom" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "nom" : {
+          "type" : "string"
+        },
+        "mail" : {
+          "type" : "string"
+        },
+        "telefono" : {
+          "type" : "string"
+        },
+        "indirizzo" : {
+          "type" : "string"
+        },
+        "città_arrivo" : {
+          "type" : "string"
+        }
+      }
+    },
+    "clientePatch" : {
+      "type" : "object",
+      "required" : [ "id", "telefono" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "nom" : {
+          "type" : "string"
+        },
+        "mail" : {
+          "type" : "string"
+        },
+        "telefono" : {
+          "type" : "string"
+        },
+        "indirizzo" : {
+          "type" : "string"
+        },
+        "città_arrivo" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

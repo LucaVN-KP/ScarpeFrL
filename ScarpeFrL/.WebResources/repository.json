@@ -24,6 +24,10 @@
         {
             "location": "Service Descriptors/scarpefrl.spedizioniWithUri-spedizioniWithUri.json",
             "type": "generated"
+        },
+        {
+            "location": "Service Descriptors/scarpefrl.clienti-clienti.json",
+            "type": "generated"
         }
     ]
 }
