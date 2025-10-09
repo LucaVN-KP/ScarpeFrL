@@ -8,8 +8,8 @@
     <sequence>
       <element name="stato_sped" type="string"/>
         <element name="data_agg" type="dateTime"/>
-		<element name="data_consegna" type="dateTime"/>
-		<element name="note" type="string" minOccurs="0"/>
+		<element name="data_consegna" type="dateTime" minOccurs="0"  nillable="true"/>
+		<element name="note" type="string" minOccurs="0" nillable="true"/>
     </sequence>
   </complexType>
   

@@ -104,7 +104,7 @@
     },
     "request_PATCH" : {
       "type" : "object",
-      "required" : [ "data_consegna", "data_agg", "stato_sped" ],
+      "required" : [ "data_agg", "stato_sped" ],
       "properties" : {
         "stato_sped" : {
           "type" : "string"
