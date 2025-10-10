@@ -6,27 +6,10 @@
   <complexType name="request_PATCH_Type">
  
     <sequence>
-      <element name="stato_sped">
-			<simpleType>
-				<restriction base="string">
-				<enumeration value="Ritiro"/>
-				<enumeration value="In_transito"/>
-				<enumeration value="In_consegna"/>
-				<enumeration value="Consegnata"/>
-				<enumeration value="Imbarcata" />
-				<enumeration value="In_navigazione"/>
-				<enumeration value="Sbarcata"/>
-				<enumeration value="Check-in"/>
-				<enumeration value="In_volo"/>
-				<enumeration value="Arrivata"/>
-				<enumeration value="Delay"/>
-				<enumeration value="Cancelled"/>
-				</restriction>
-			</simpleType>
-		</element>
+      <element name="stato_sped" type="string"/>
         <element name="data_agg" type="dateTime"/>
-		<element name="data_consegna" type="dateTime"/>
-		<element name="note" type="string" minOccurs="0"/>
+		<element name="data_consegna" type="dateTime" minOccurs="0"  nillable="true"/>
+		<element name="note" type="string" minOccurs="0" nillable="true"/>
     </sequence>
   </complexType>
   
