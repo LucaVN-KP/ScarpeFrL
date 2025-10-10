@@ -48,8 +48,8 @@
         </task>
         <task name="flow2">
             <endingVariables>
-                <variable>update_spedizione</variable>
                 <variable>patch</variable>
+                <variable>update_spedizione</variable>
             </endingVariables>
         </task>
         <task name="patchOut">
@@ -75,9 +75,9 @@
                 <variable>CallProcess</variable>
             </endingVariables>
         </task>
-        <task name="Throw">
+        <task name="IDerrato">
             <endingVariables>
-                <variable>Throw-input</variable>
+                <variable>IDerrato-input</variable>
             </endingVariables>
         </task>
         <task name="CallProcess">
@@ -85,9 +85,9 @@
                 <variable>CallProcess-input</variable>
             </endingVariables>
         </task>
-        <task name="Throw1">
+        <task name="stato_spedErr">
             <endingVariables>
-                <variable>Throw1-input</variable>
+                <variable>stato_spedErr-input</variable>
             </endingVariables>
         </task>
         <task name="ErrOut">
@@ -2444,7 +2444,7 @@
             name="update_spedizione" sca-bpel:internal="true"/>
         <bpws:variable element="ns6:ActivityErrorData"
             name="_error_SQLDirect1" sca-bpel:internal="true"/>
-        <bpws:variable element="ns20:myError" name="Throw-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns20:myError" name="IDerrato-input" sca-bpel:internal="true"/>
         <bpws:variable messageType="ns:patch404FaultMessage"
             name="ErrOut-input" sca-bpel:internal="true"/>
         <bpws:variable element="tns:request_PATCH"
@@ -2459,7 +2459,8 @@
         <bpws:variable element="ns0:FaultDetail" name="FaultDetails" sca-bpel:internal="true"/>
         <bpws:variable element="ns0:OptionalErrorReport"
             name="_errorOptional" sca-bpel:internal="true"/>
-        <bpws:variable element="ns17:DefaultFault" name="Throw1-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns17:DefaultFault"
+            name="stato_spedErr-input" sca-bpel:internal="true"/>
         <bpws:variable messageType="ns:patch404FaultMessage"
             name="Reply-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns1:ActivityInput" name="Log1-input" sca-bpel:internal="true"/>
@@ -2878,7 +2879,8 @@
                                 </tibex:activityExtension>
                             </bpws:extensionActivity>
                             <bpws:throw faultName="ns20:myError"
-                                faultVariable="Throw-input" name="Throw" tibex:xpdlId="bd2be5d5-9cba-4431-9932-6bf42218375b">
+                                faultVariable="IDerrato-input"
+                                name="IDerrato" tibex:xpdlId="bd2be5d5-9cba-4431-9932-6bf42218375b">
                                 <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns15="http://www.example.org/Clienti" xmlns:tns3="http://xmlns.example.com/spedizioni/parameters" version="2.0"&gt;&lt;xsl:param name="patch"/&gt;&lt;xsl:template name="Throw-input" match="/"&gt;&lt;tns15:myError&gt;&lt;tns15:msg&gt;&lt;xsl:value-of select="concat(&amp;quot;L'id &amp;quot;, $patch/parameters/tns3:spedizioniPatchParameters/tns3:id_sped, &amp;quot; non è presente sul database&amp;quot;)"/&gt;&lt;/tns15:msg&gt;&lt;tns15:msgCode&gt;&lt;xsl:value-of select="&amp;quot;404&amp;quot;"/&gt;&lt;/tns15:msgCode&gt;&lt;/tns15:myError&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                 <tibex:inputBindings>
@@ -2923,8 +2925,8 @@
                                 </tibex:extActivity>
                             </bpws:extensionActivity>
                             <bpws:throw faultName="ns17:DefaultFault"
-                                faultVariable="Throw1-input"
-                                name="Throw1" tibex:xpdlId="f2bc2e86-c506-4be6-ab3c-5d2b5ff87fc8">
+                                faultVariable="stato_spedErr-input"
+                                name="stato_spedErr" tibex:xpdlId="f2bc2e86-c506-4be6-ab3c-5d2b5ff87fc8">
                                 <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns13="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions" xmlns:tns5="http://tns.tibco.com/bw/json/1759397162202" version="2.0"&gt;&lt;xsl:param name="patch"/&gt;&lt;xsl:template name="Throw1-input" match="/"&gt;&lt;tns13:DefaultFault&gt;&lt;message&gt;&lt;xsl:value-of select="concat(&amp;quot;Il valore &amp;quot;, $patch/item/tns5:request_PATCH/tns5:stato_sped, &amp;quot; non è ammissibile per il campo stato_sped&amp;quot;)"/&gt;&lt;/message&gt;&lt;msgCode&gt;&lt;xsl:value-of select="&amp;quot;400&amp;quot;"/&gt;&lt;/msgCode&gt;&lt;/tns13:DefaultFault&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                 <tibex:inputBindings>
