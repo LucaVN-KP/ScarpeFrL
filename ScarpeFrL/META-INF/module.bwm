@@ -8,6 +8,8 @@
         <clientRequestFormat>json</clientRequestFormat>
       </operation>
       <operation xmi:id="_7sD_UZ9uEfCwU9nfzQpQgg" operationName="patch" nickname="patch-spedizioni" httpMethod="PATCH" notes="patchSpedizioni" responseStyle="element" outputPartName="item">
+        <responseStatus xmi:id="_NZT1IKW6EfCmotpfim2enQ" statusCode="200" reasonPhrase="OK" dataType="string"/>
+        <responseStatus xmi:id="_OD97sKW6EfCmotpfim2enQ" statusCode="404" reasonPhrase="Not Found" dataType="string"/>
         <clientFormat>json</clientFormat>
         <clientRequestFormat>json</clientRequestFormat>
       </operation>

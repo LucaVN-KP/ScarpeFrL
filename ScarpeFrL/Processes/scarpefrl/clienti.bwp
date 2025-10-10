@@ -22,8 +22,8 @@
     <tibex:VariableDescriptor type="MemorySaving">
         <task name="flow1">
             <endingVariables>
-                <variable>JDBCQuery</variable>
                 <variable>get</variable>
+                <variable>JDBCQuery</variable>
             </endingVariables>
         </task>
         <task name="JDBCQuery">
