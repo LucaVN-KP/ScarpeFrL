@@ -23,17 +23,17 @@
         <task name="flow1">
             <endingVariables>
                 <variable>get</variable>
-                <variable>JDBCQuery</variable>
+                <variable>select_id_cliente</variable>
             </endingVariables>
         </task>
-        <task name="JDBCQuery">
+        <task name="select_id_cliente">
             <endingVariables>
-                <variable>JDBCQuery-input</variable>
+                <variable>select_id_cliente-input</variable>
             </endingVariables>
         </task>
-        <task name="Throw">
+        <task name="IDerrato">
             <endingVariables>
-                <variable>Throw-input</variable>
+                <variable>IDerrato-input</variable>
             </endingVariables>
         </task>
         <task name="getOut">
@@ -41,14 +41,14 @@
                 <variable>getOut-input</variable>
             </endingVariables>
         </task>
-        <task name="Log">
+        <task name="LogErr">
             <endingVariables>
-                <variable>Log-input</variable>
+                <variable>LogErr-input</variable>
             </endingVariables>
         </task>
-        <task name="Reply">
+        <task name="ReplyErr">
             <endingVariables>
-                <variable>Reply-input</variable>
+                <variable>ReplyErr-input</variable>
             </endingVariables>
         </task>
         <task name="patchOut">
@@ -56,10 +56,10 @@
                 <variable>patchOut-input</variable>
             </endingVariables>
         </task>
-        <task name="SQLDirect">
+        <task name="update_cliente">
             <endingVariables>
-                <variable>SQLDirect-input</variable>
-                <variable>SQLDirect</variable>
+                <variable>update_cliente-input</variable>
+                <variable>update_cliente</variable>
                 <variable>patch</variable>
             </endingVariables>
         </task>
@@ -1641,10 +1641,10 @@
         <bpws:variable messageType="ns:patchResponse"
             name="patchOut-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns1:jdbcQueryActivityInput"
-            name="JDBCQuery-input" sca-bpel:internal="true"/>
-        <bpws:variable element="ns2:resultSet" name="JDBCQuery" sca-bpel:internal="true"/>
+            name="select_id_cliente-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns2:resultSet" name="select_id_cliente" sca-bpel:internal="true"/>
         <bpws:variable element="ns3:ActivityErrorData"
-            name="_error_JDBCQuery" sca-bpel:internal="true"/>
+            name="_error_select_id_cliente" sca-bpel:internal="true"/>
         <bpws:variable element="ns0:ErrorReport" name="_error" sca-bpel:internal="true"/>
         <bpws:variable name="jdbcProperty" sca-bpel:hotUpdate="false"
             sca-bpel:privateProperty="true" sca-bpel:property="yes"
@@ -1654,16 +1654,16 @@
             </bpws:from>
         </bpws:variable>
         <bpws:variable element="ns4:ActivityInputType"
-            name="SQLDirect-input" sca-bpel:internal="true"/>
+            name="update_cliente-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns5:jdbcGeneralActivityOutput"
-            name="SQLDirect" sca-bpel:internal="true"/>
+            name="update_cliente" sca-bpel:internal="true"/>
         <bpws:variable element="ns6:ActivityErrorData"
-            name="_error_SQLDirect" sca-bpel:internal="true"/>
-        <bpws:variable element="ns9:myError" name="Throw-input" sca-bpel:internal="true"/>
-        <bpws:variable element="ns8:ActivityInput" name="Log-input" sca-bpel:internal="true"/>
+            name="_error_update_cliente" sca-bpel:internal="true"/>
+        <bpws:variable element="ns9:myError" name="IDerrato-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns8:ActivityInput" name="LogErr-input" sca-bpel:internal="true"/>
         <bpws:variable messageType="ns:getResponse" name="getOut-input" sca-bpel:internal="true"/>
         <bpws:variable messageType="ns:get404FaultMessage"
-            name="Reply-input" sca-bpel:internal="true"/>
+            name="ReplyErr-input" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -1692,8 +1692,8 @@
                                     </bpws:links>
                                     <bpws:extensionActivity>
                                     <tibex:activityExtension
-                                    inputVariable="Log-input"
-                                    name="Log"
+                                    inputVariable="LogErr-input"
+                                    name="LogErr"
                                     tibex:xpdlId="d0536988-1912-4f9b-9467-d72510584552" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                                     <bpws:sources>
                                     <bpws:source linkName="LogToReply"/>
@@ -1725,10 +1725,11 @@
                                     </bpws:extensionActivity>
                                     <bpws:reply
                                     faultName="server-404-Fault"
-                                    name="Reply" operation="get"
+                                    name="ReplyErr"
+                                    operation="get"
                                     partnerLink="clienti"
                                     portType="ns:clienti"
-                                    tibex:xpdlId="b1b442ad-27ec-4257-aea7-b3825b6bf515" variable="Reply-input">
+                                    tibex:xpdlId="b1b442ad-27ec-4257-aea7-b3825b6bf515" variable="ReplyErr-input">
                                     <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns3="http://www.example.org/Clienti" xmlns:tns2="http://xmlns.example.com/20251008172624PLT" version="2.0"&gt;&lt;xsl:param name="myError"/&gt;&lt;xsl:template name="Reply-input" match="/"&gt;&lt;tns2:get404FaultMessage&gt;&lt;server-404-NotFound&gt;&lt;xsl:value-of select="$myError/tns3:msg"/&gt;&lt;/server-404-NotFound&gt;&lt;/tns2:get404FaultMessage&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                     <tibex:inputBindings>
@@ -1761,24 +1762,24 @@
                                 <tibex:activityExtension
                                     expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+4b3e41d3-96f0-4757-b35a-6cd7ccbf66ac+input&quot; xmlns:tns1=&quot;http://xmlns.example.com/clienti/parameters&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;get&quot;/>&lt;xsl:template name=&quot;JDBCQuery-input&quot; match=&quot;/&quot;>&lt;tns:jdbcQueryActivityInput>&lt;id>&lt;xsl:value-of select=&quot;xsd:short($get/parameters/tns1:clientiGetParameters/tns1:id_cliente1)&quot;/>&lt;/id>&lt;/tns:jdbcQueryActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>"
                                     expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
-                                    inputVariable="JDBCQuery-input"
-                                    name="JDBCQuery"
-                                    outputVariable="JDBCQuery"
+                                    inputVariable="select_id_cliente-input"
+                                    name="select_id_cliente"
+                                    outputVariable="select_id_cliente"
                                     tibex:xpdlId="4b3e41d3-96f0-4757-b35a-6cd7ccbf66ac" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                                     <bpws:sources>
                                     <bpws:source linkName="JDBCQueryTogetOut_successfulquery">
                                     <tibex:DesignExpression>
                                     <tibex:expression
-                                    expression="count($JDBCQuery/Record)=1" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                                    expression="count($select_id_cliente/Record) = 1" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
                                     </tibex:DesignExpression>
-                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[count($JDBCQuery/Record)=1]]></bpws:transitionCondition>
+                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[count($select_id_cliente/Record) = 1]]></bpws:transitionCondition>
                                     </bpws:source>
                                     <bpws:source linkName="JDBCQueryToThrow_unsuccessfulquery">
                                     <tibex:DesignExpression>
                                     <tibex:expression
-                                    expression="count($JDBCQuery/Record)=0" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                                    expression="count($select_id_cliente/Record) = 0" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
                                     </tibex:DesignExpression>
-                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[count($JDBCQuery/Record)=0]]></bpws:transitionCondition>
+                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[count($select_id_cliente/Record) = 0]]></bpws:transitionCondition>
                                     </bpws:source>
                                     </bpws:sources>
                                     <tibex:inputBindings>
@@ -1831,7 +1832,8 @@
                                 </tibex:activityExtension>
                             </bpws:extensionActivity>
                             <bpws:throw faultName="ns9:myError"
-                                faultVariable="Throw-input" name="Throw" tibex:xpdlId="2d3433d3-0871-4193-b1c3-eb172b214825">
+                                faultVariable="IDerrato-input"
+                                name="IDerrato" tibex:xpdlId="2d3433d3-0871-4193-b1c3-eb172b214825">
                                 <tibex:inputBindings>
                                     <tibex:partBinding
                                     expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns3=&quot;http://www.example.org/Clienti&quot; xmlns:tns1=&quot;http://xmlns.example.com/clienti/parameters&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;get.parameters&quot;/>&#xa;    &lt;xsl:template name=&quot;Throw-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns3:myError>&#xa;            &lt;tns3:msg>&#xa;                &lt;xsl:value-of select=&quot;concat(&amp;quot;L'id &amp;quot;, $get.parameters/tns1:id_cliente1, &amp;quot; non è presente sul database&amp;quot;)&quot;/>&#xa;            &lt;/tns3:msg>&#xa;            &lt;tns3:msgCode>&#xa;                &lt;xsl:value-of select=&quot;&amp;quot;404&amp;quot;&quot;/>&#xa;            &lt;/tns3:msgCode>&#xa;        &lt;/tns3:myError>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
@@ -1847,10 +1849,39 @@
                                 portType="ns:clienti"
                                 tibex:xpdlId="85d7d80f-6492-4e06-9b29-e0ea87300623" variable="getOut-input">
                                 <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns1="http://xmlns.example.com/clienti/parameters" xmlns:tns2="http://xmlns.example.com/20251008172624PLT" xmlns:tns3="http://www.example.org/Clienti" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="2.0"&gt;&lt;xsl:param name="get"/&gt;&lt;xsl:param name="JDBCQuery"/&gt;&lt;xsl:template name="getOut-input" match="/"&gt;&lt;tns2:getResponse&gt;&lt;item&gt;&lt;tns3:clienteGet&gt;&lt;tns3:id&gt;&lt;xsl:value-of select="xsd:short($get/parameters/tns1:clientiGetParameters/tns1:id_cliente1)"/&gt;&lt;/tns3:id&gt;&lt;tns3:nom&gt;&lt;xsl:value-of select="$JDBCQuery/Record[1]/nome"/&gt;&lt;/tns3:nom&gt;&lt;tns3:mail&gt;&lt;xsl:value-of select="$JDBCQuery/Record[1]/mail"/&gt;&lt;/tns3:mail&gt;&lt;tns3:telefono&gt;&lt;xsl:value-of select="$JDBCQuery/Record[1]/telefono"/&gt;&lt;/tns3:telefono&gt;&lt;tns3:indirizzo&gt;&lt;xsl:value-of select="$JDBCQuery/Record[1]/indirizzo"/&gt;&lt;/tns3:indirizzo&gt;&lt;tns3:città_arrivo&gt;&lt;xsl:value-of select="$JDBCQuery/Record[1]/citta"/&gt;&lt;/tns3:città_arrivo&gt;&lt;/tns3:clienteGet&gt;&lt;/item&gt;&lt;/tns2:getResponse&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns1="http://xmlns.example.com/clienti/parameters" xmlns:tns2="http://xmlns.example.com/20251008172624PLT" xmlns:tns3="http://www.example.org/Clienti" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="2.0"&gt;
+    &lt;xsl:param name="get"/&gt;
+    &lt;xsl:param name="select_id_cliente"/&gt;
+    &lt;xsl:template name="getOut-input" match="/"&gt;
+        &lt;tns2:getResponse&gt;
+            &lt;item&gt;
+                &lt;tns3:clienteGet&gt;
+                    &lt;tns3:id&gt;
+                        &lt;xsl:value-of select="xsd:short($get/parameters/tns1:clientiGetParameters/tns1:id_cliente1)"/&gt;
+                    &lt;/tns3:id&gt;
+                    &lt;tns3:nom&gt;
+                        &lt;xsl:value-of select="$select_id_cliente/Record[1]/nome"/&gt;
+                    &lt;/tns3:nom&gt;
+                    &lt;tns3:mail&gt;
+                        &lt;xsl:value-of select="$select_id_cliente/Record[1]/mail"/&gt;
+                    &lt;/tns3:mail&gt;
+                    &lt;tns3:telefono&gt;
+                        &lt;xsl:value-of select="$select_id_cliente/Record[1]/telefono"/&gt;
+                    &lt;/tns3:telefono&gt;
+                    &lt;tns3:indirizzo&gt;
+                        &lt;xsl:value-of select="$select_id_cliente/Record[1]/indirizzo"/&gt;
+                    &lt;/tns3:indirizzo&gt;
+                    &lt;tns3:città_arrivo&gt;
+                        &lt;xsl:value-of select="$select_id_cliente/Record[1]/citta"/&gt;
+                    &lt;/tns3:città_arrivo&gt;
+                &lt;/tns3:clienteGet&gt;
+            &lt;/item&gt;
+        &lt;/tns2:getResponse&gt;
+    &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                 <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://xmlns.example.com/clienti/parameters&quot; xmlns:tns2=&quot;http://xmlns.example.com/20251008172624PLT&quot; xmlns:tns3=&quot;http://www.example.org/Clienti&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;get.parameters&quot;/>&#xa;    &lt;xsl:param name=&quot;JDBCQuery&quot;/>&#xa;    &lt;xsl:template name=&quot;getOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns3:clienteGet>&#xa;            &lt;tns3:id>&#xa;                &lt;xsl:value-of select=&quot;xsd:short($get.parameters/tns1:id_cliente1)&quot;/>&#xa;            &lt;/tns3:id>&#xa;            &lt;tns3:nom>&#xa;                &lt;xsl:value-of select=&quot;$JDBCQuery/Record[1]/nome&quot;/>&#xa;            &lt;/tns3:nom>&#xa;            &lt;tns3:mail>&#xa;                &lt;xsl:value-of select=&quot;$JDBCQuery/Record[1]/mail&quot;/>&#xa;            &lt;/tns3:mail>&#xa;            &lt;tns3:telefono>&#xa;                &lt;xsl:value-of select=&quot;$JDBCQuery/Record[1]/telefono&quot;/>&#xa;            &lt;/tns3:telefono>&#xa;            &lt;tns3:indirizzo>&#xa;                &lt;xsl:value-of select=&quot;$JDBCQuery/Record[1]/indirizzo&quot;/>&#xa;            &lt;/tns3:indirizzo>&#xa;            &lt;tns3:città_arrivo>&#xa;                &lt;xsl:value-of select=&quot;$JDBCQuery/Record[1]/citta&quot;/>&#xa;            &lt;/tns3:città_arrivo>&#xa;        &lt;/tns3:clienteGet>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://xmlns.example.com/clienti/parameters&quot; xmlns:tns2=&quot;http://xmlns.example.com/20251008172624PLT&quot; xmlns:tns3=&quot;http://www.example.org/Clienti&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;get.parameters&quot;/>&#xa;    &lt;xsl:param name=&quot;select_id_cliente&quot;/>&#xa;    &lt;xsl:template name=&quot;getOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns3:clienteGet>&#xa;            &lt;tns3:id>&#xa;                &lt;xsl:value-of select=&quot;xsd:short($get.parameters/tns1:id_cliente1)&quot;/>&#xa;            &lt;/tns3:id>&#xa;            &lt;tns3:nom>&#xa;                &lt;xsl:value-of select=&quot;$select_id_cliente/Record[1]/nome&quot;/>&#xa;            &lt;/tns3:nom>&#xa;            &lt;tns3:mail>&#xa;                &lt;xsl:value-of select=&quot;$select_id_cliente/Record[1]/mail&quot;/>&#xa;            &lt;/tns3:mail>&#xa;            &lt;tns3:telefono>&#xa;                &lt;xsl:value-of select=&quot;$select_id_cliente/Record[1]/telefono&quot;/>&#xa;            &lt;/tns3:telefono>&#xa;            &lt;tns3:indirizzo>&#xa;                &lt;xsl:value-of select=&quot;$select_id_cliente/Record[1]/indirizzo&quot;/>&#xa;            &lt;/tns3:indirizzo>&#xa;            &lt;tns3:città_arrivo>&#xa;                &lt;xsl:value-of select=&quot;$select_id_cliente/Record[1]/citta&quot;/>&#xa;            &lt;/tns3:città_arrivo>&#xa;        &lt;/tns3:clienteGet>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                 </tibex:inputBindings>
                                 <bpws:targets>
                                     <bpws:target linkName="JDBCQueryTogetOut_successfulquery"/>
@@ -1890,9 +1921,9 @@
                                 <tibex:activityExtension
                                     expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+1023a599-6f39-4634-bf0d-0bbc31b9d1db+input&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:tns3=&quot;http://www.example.org/Clienti&quot; xmlns:tns1=&quot;http://xmlns.example.com/clienti/parameters&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;patch&quot;/>&lt;xsl:template name=&quot;SQLDirect-input&quot; match=&quot;/&quot;>&lt;tns4:ActivityInputType>&lt;statement>&lt;xsl:value-of select=&quot;concat(&amp;quot;CALL scarpe.update_clienti('&amp;quot;,$patch/parameters/tns1:clientiPatchParameters/tns1:id_cliente1, &amp;quot;','&amp;quot; ,$patch/clientiPatch/tns3:clientePatch/tns3:telefono, &amp;quot;')&amp;quot;)&quot;/>&lt;/statement>&lt;/tns4:ActivityInputType>&lt;/xsl:template>&lt;/xsl:stylesheet>"
                                     expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
-                                    inputVariable="SQLDirect-input"
-                                    name="SQLDirect"
-                                    outputVariable="SQLDirect"
+                                    inputVariable="update_cliente-input"
+                                    name="update_cliente"
+                                    outputVariable="update_cliente"
                                     tibex:xpdlId="1023a599-6f39-4634-bf0d-0bbc31b9d1db" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                                     <bpws:sources>
                                     <bpws:source linkName="SQLDirectTopatchOut"/>

@@ -24,6 +24,8 @@
     <sca:interface.wsdl xmi:id="_7U2WEKOIEfCOGIWVl6FzJg" interface="http://xmlns.example.com/20251007162133PLT#wsdl.interface(spedizioni)" scaext:wsdlLocation="../Processes/scarpefrl/spedizioni1.bwp"/>
     <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_7VQlwKOIEfCOGIWVl6FzJg" name="RestService1" path="/spedizioni" docBasePath="http://localhost:7777/ScarpeFrL" docResourcePath="spedizioni" basePath="/" connector="spedizioni" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/scarpefrl.spedizioni1-spedizioni.json">
       <operation xmi:id="_7VRM0KOIEfCOGIWVl6FzJg" operationName="post" nickname="post-spedizioni" httpMethod="POST" notes="postSpedizioni" responseStyle="element" outputPartName="item">
+        <responseStatus xmi:id="_Xp3NMKXhEfC4U70wA4CpdQ" statusCode="200" reasonPhrase="OK" dataType="string"/>
+        <responseStatus xmi:id="_Xv3ukKXhEfC4U70wA4CpdQ" statusCode="400" reasonPhrase="Bad Request" dataType="string"/>
         <clientFormat>json</clientFormat>
         <clientRequestFormat>json</clientRequestFormat>
       </operation>
