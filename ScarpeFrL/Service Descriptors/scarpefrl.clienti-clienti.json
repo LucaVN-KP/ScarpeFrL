@@ -28,6 +28,13 @@
             "description" : "a clienteGet to be returned",
             "schema" : {
               "$ref" : "#/definitions/clienteGet"
+            },
+            "headers" : { }
+          },
+          "404" : {
+            "description" : "Not Found",
+            "schema" : {
+              "type" : "string"
             }
           }
         }
