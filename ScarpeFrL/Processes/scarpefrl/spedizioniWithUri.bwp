@@ -47,6 +47,7 @@
         <task name="flow2">
             <endingVariables>
                 <variable>patch</variable>
+                <variable>update_spedizione</variable>
             </endingVariables>
         </task>
         <task name="patchOut">
@@ -69,7 +70,6 @@
         <task name="update_spedizione">
             <endingVariables>
                 <variable>update_spedizione-input</variable>
-                <variable>update_spedizione</variable>
                 <variable>CallProcess</variable>
             </endingVariables>
         </task>
@@ -658,6 +658,11 @@
             <wsdl:message name="patch5XXFaultMessage">
                 <wsdl:part element="extns:server5XXError" name="serverError"/>
             </wsdl:message>
+            <wsdl:message name="patch404FaultMessage">
+                <wsdl:part name="server-404-NotFound"
+                    tibex:reasonPhrase="Not Found"
+                    tibex:statusCode="404" type="xsd:string"/>
+            </wsdl:message>
             <wsdl:portType name="spedizioni"
                 tibex:bw.rest.apipath="/spedizioni/{id_sped}"
                 tibex:bw.rest.basepath="spedizioni"
@@ -677,6 +682,7 @@
                     <wsdl:output message="tns:patchResponse" name="patchOutput"/>
                     <wsdl:fault message="tns:patch4XXFaultMessage" name="clientFault"/>
                     <wsdl:fault message="tns:patch5XXFaultMessage" name="serverFault"/>
+                    <wsdl:fault message="tns:patch404FaultMessage" name="server-404-Fault"/>
                 </wsdl:operation>
             </wsdl:portType>
         </wsdl:definitions>
@@ -1118,10 +1124,14 @@
                                     fontName="Segoe UI"
                                     lineColor="0" xsi:type="notation:ShapeStyle"/>
                                     <styles xsi:type="bwnotation:BackgroundStyle"/>
-                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+                                    <styles
+                                    collapsed="true"
+                                    restoreHeight="203"
+                                    restoreWidth="713"
+                                    restoreX="2" xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0"/>
                                     <layoutConstraint
-                                    height="200"
+                                    height="22"
                                     width="686"
                                     x="2" xsi:type="notation:Bounds"/>
                                     </children>
@@ -1438,7 +1448,7 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="134"
+                                    x="128"
                                     xsi:type="notation:Bounds" y="46"/>
                                     </children>
 
@@ -1583,7 +1593,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.1/@activity/@activity"/>
 
                                     <layoutConstraint
-                                    height="405"
+                                    height="407"
                                     width="608" xsi:type="notation:Bounds"/>
                                     </children>
 
@@ -1845,7 +1855,7 @@
                                     height="200"
                                     width="591"
                                     x="21"
-                                    xsi:type="notation:Bounds" y="395"/>
+                                    xsi:type="notation:Bounds" y="406"/>
                                     </children>
                                     <styles xsi:type="notation:SortingStyle"/>
                                     <styles xsi:type="notation:FilteringStyle"/>
@@ -1859,7 +1869,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.1/@activity"/>
 
                                     <layoutConstraint
-                                    height="596"
+                                    height="607"
                                     width="651" xsi:type="notation:Bounds"/>
                                     </children>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -1927,10 +1937,10 @@
                                     restoreY="315" xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.1"/>
                                     <layoutConstraint
-                                    height="615"
+                                    height="626"
                                     width="713"
                                     x="2"
-                                    xsi:type="notation:Bounds" y="211"/>
+                                    xsi:type="notation:Bounds" y="21"/>
                                     </children>
                                     <styles xsi:type="notation:SortingStyle"/>
                                     <styles xsi:type="notation:FilteringStyle"/>
@@ -1942,7 +1952,7 @@
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.0"/>
                                     <layoutConstraint
-                                    height="857" width="732" xsi:type="notation:Bounds"/>
+                                    height="678" width="732" xsi:type="notation:Bounds"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -1956,7 +1966,7 @@
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity"/>
-                                    <layoutConstraint height="867"
+                                    <layoutConstraint height="871"
                                     width="742" xsi:type="notation:Bounds"/>
                                 </children>
                                 <styles xsi:type="notation:SortingStyle"/>
@@ -2010,7 +2020,8 @@
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@activity/@activities.0/@messages.1/@activity/@activity/@links/@children.0"/>
-            <bendpoints points="[25, -7, -118, 0]$[119, 0, -24, 7]" xsi:type="notation:RelativeBendpoints"/>
+            <bendpoints
+                points="[25, 9, -90, 19]$[58, 9, -57, 19]$[58, -10, -57, 0]$[91, -10, -24, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
             source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.1/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2"
@@ -2164,7 +2175,7 @@
             name="_error_SQLDirect1" sca-bpel:internal="true"/>
         <bpws:variable element="ns17:DefaultFault" name="Throw-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns1:ActivityInput" name="Log-input" sca-bpel:internal="true"/>
-        <bpws:variable messageType="ns:patchResponse"
+        <bpws:variable messageType="ns:patch404FaultMessage"
             name="ErrOut-input" sca-bpel:internal="true"/>
         <bpws:variable element="tns:request_PATCH"
             name="CallProcess-input" sca-bpel:internal="true"/>
@@ -2325,16 +2336,18 @@
                                     </tibex:config>
                                     </tibex:activityExtension>
                                     </bpws:extensionActivity>
-                                    <bpws:reply name="ErrOut"
+                                    <bpws:reply
+                                    faultName="server-404-Fault"
+                                    name="ErrOut"
                                     operation="patch"
                                     partnerLink="spedizioni"
                                     portType="ns:spedizioni"
                                     tibex:xpdlId="41b24fb0-3566-4cf1-8013-41ed425d1b42" variable="ErrOut-input">
                                     <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns1="http://xmlns.example.com/20251002110524PLT" version="2.0"&gt;&lt;xsl:param name="DefaultFault"/&gt;&lt;xsl:template name="ErrOut-input" match="/"&gt;&lt;tns1:patchResponse&gt;&lt;item&gt;&lt;xsl:value-of select="$DefaultFault/message"/&gt;&lt;/item&gt;&lt;/tns1:patchResponse&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns1="http://xmlns.example.com/20251002110524PLT" version="2.0"&gt;&lt;xsl:param name="DefaultFault"/&gt;&lt;xsl:template name="ErrOut-input" match="/"&gt;&lt;tns1:patch404FaultMessage&gt;&lt;server-404-NotFound&gt;&lt;xsl:value-of select="$DefaultFault/message"/&gt;&lt;/server-404-NotFound&gt;&lt;/tns1:patch404FaultMessage&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                     <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://xmlns.example.com/20251002110524PLT&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;DefaultFault&quot;/>&#xa;    &lt;xsl:template name=&quot;ErrOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;item>&#xa;            &lt;xsl:value-of select=&quot;$DefaultFault/message&quot;/>&#xa;        &lt;/item>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://xmlns.example.com/20251002110524PLT&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;DefaultFault&quot;/>&#xa;    &lt;xsl:template name=&quot;ErrOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;server-404-NotFound>&#xa;            &lt;xsl:value-of select=&quot;$DefaultFault/message&quot;/>&#xa;        &lt;/server-404-NotFound>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <bpws:targets>
                                     <bpws:target linkName="LogToErrOut"/>
@@ -2463,7 +2476,7 @@
                             </bpws:extensionActivity>
                             <bpws:extensionActivity>
                                 <tibex:activityExtension
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns12=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+9bcd5e61-af1c-4e05-9ae8-f55eed7306c1+input&quot; xmlns:tns3=&quot;http://xmlns.example.com/spedizioni/parameters&quot; xmlns:tns5=&quot;http://tns.tibco.com/bw/json/1759397162202&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;patch&quot;/>&#xa;    &lt;xsl:param name=&quot;CallProcess&quot;/>&#xa;    &lt;xsl:template name=&quot;update_spedizione-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns12:ActivityInputType>&#xa;            &lt;statement>&#xa;                &lt;xsl:value-of select=&quot;concat(&amp;quot;CALL scarpe.update_spedizione('&amp;quot;, $patch/parameters/tns3:spedizioniPatchParameters/tns3:id_sped, &amp;quot;','&amp;quot;, $CallProcess/tns5:stato_sped, &amp;quot;','&amp;quot;, string($CallProcess/tns5:data_agg), &amp;quot;','&amp;quot;, string($CallProcess/tns5:data_consegna), &amp;quot;','&amp;quot;, $CallProcess/tns5:note, &amp;quot;')&amp;quot;)&quot;/>&#xa;            &lt;/statement>&#xa;        &lt;/tns12:ActivityInputType>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>"
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns12=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+9bcd5e61-af1c-4e05-9ae8-f55eed7306c1+input&quot; xmlns:tns3=&quot;http://xmlns.example.com/spedizioni/parameters&quot; xmlns:tns5=&quot;http://tns.tibco.com/bw/json/1759397162202&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;patch&quot;/>&lt;xsl:param name=&quot;CallProcess&quot;/>&lt;xsl:template name=&quot;update_spedizione-input&quot; match=&quot;/&quot;>&lt;tns12:ActivityInputType>&lt;statement>&lt;xsl:value-of select=&quot;concat(&amp;quot;CALL scarpe.update_spedizione('&amp;quot;, $patch/parameters/tns3:spedizioniPatchParameters/tns3:id_sped, &amp;quot;','&amp;quot;, $CallProcess/tns5:stato_sped, &amp;quot;','&amp;quot;, string($CallProcess/tns5:data_agg), &amp;quot;','&amp;quot;, string($CallProcess/tns5:data_consegna), &amp;quot;','&amp;quot;, $CallProcess/tns5:note, &amp;quot;','0')&amp;quot;)&quot;/>&lt;/statement>&lt;/tns12:ActivityInputType>&lt;/xsl:template>&lt;/xsl:stylesheet>"
                                     expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
                                     inputVariable="update_spedizione-input"
                                     name="update_spedizione"
@@ -2476,28 +2489,28 @@
                                     <bpws:source linkName="SQLDirect1TopatchOut">
                                     <tibex:DesignExpression>
                                     <tibex:expression
-                                    expression="$patch/item/tns:request_PATCH/tns:stato_sped != &quot;Consegnata&quot; and starts-with($patch/parameters/tns1:spedizioniPatchParameters/tns1:id_sped, &quot;S-&quot;)" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                                    expression="$patch/item/tns:request_PATCH/tns:stato_sped != &quot;Consegnata&quot; and $update_spedizione/unknownResultset[1]/row[1]/column[1]/value=1" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
                                     </tibex:DesignExpression>
-                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[$patch.item/tns:stato_sped != "Consegnata" and starts-with($patch.parameters/tns1:id_sped, "S-")]]></bpws:transitionCondition>
+                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[$patch.item/tns:stato_sped != "Consegnata" and $update_spedizione/unknownResultset[1]/row[1]/column[1]/value=1]]></bpws:transitionCondition>
                                     </bpws:source>
                                     <bpws:source linkName="SQLDirect1ToSelect_id_ord">
                                     <tibex:DesignExpression>
                                     <tibex:expression
-                                    expression="$patch/item/tns:request_PATCH/tns:stato_sped = &quot;Consegnata&quot; and  starts-with($patch/parameters/tns1:spedizioniPatchParameters/tns1:id_sped, &quot;S-&quot;)" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                                    expression="$patch/item/tns:request_PATCH/tns:stato_sped = &quot;Consegnata&quot; and  $update_spedizione/unknownResultset[1]/row[1]/column[1]/value=1" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
                                     </tibex:DesignExpression>
-                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[$patch.item/tns:stato_sped = "Consegnata" and  starts-with($patch.parameters/tns1:id_sped, "S-")]]></bpws:transitionCondition>
+                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[$patch.item/tns:stato_sped = "Consegnata" and  $update_spedizione/unknownResultset[1]/row[1]/column[1]/value=1]]></bpws:transitionCondition>
                                     </bpws:source>
                                     <bpws:source linkName="update_spedizioneToThrow">
                                     <tibex:DesignExpression>
                                     <tibex:expression
-                                    expression="not(starts-with($patch/parameters/tns1:spedizioniPatchParameters/tns1:id_sped, &quot;S-&quot;))" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                                    expression="$update_spedizione/unknownResultset[1]/row[1]/column[1]/value=0" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
                                     </tibex:DesignExpression>
-                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[not(starts-with($patch.parameters/tns1:id_sped, "S-"))]]></bpws:transitionCondition>
+                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[$update_spedizione/unknownResultset[1]/row[1]/column[1]/value=0]]></bpws:transitionCondition>
                                     </bpws:source>
                                     </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns12=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+9bcd5e61-af1c-4e05-9ae8-f55eed7306c1+input&quot; xmlns:tns3=&quot;http://xmlns.example.com/spedizioni/parameters&quot; xmlns:tns5=&quot;http://tns.tibco.com/bw/json/1759397162202&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;patch.parameters&quot;/>&#xa;    &lt;xsl:param name=&quot;CallProcess&quot;/>&#xa;    &lt;xsl:template name=&quot;update_spedizione-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns12:ActivityInputType>&#xa;            &lt;statement>&#xa;                &lt;xsl:value-of select=&quot;concat(&amp;quot;CALL scarpe.update_spedizione('&amp;quot;, $patch.parameters/tns3:id_sped, &amp;quot;','&amp;quot;, $CallProcess/tns5:stato_sped, &amp;quot;','&amp;quot;, string($CallProcess/tns5:data_agg), &amp;quot;','&amp;quot;, string($CallProcess/tns5:data_consegna), &amp;quot;','&amp;quot;, $CallProcess/tns5:note, &amp;quot;')&amp;quot;)&quot;/>&#xa;            &lt;/statement>&#xa;        &lt;/tns12:ActivityInputType>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns12=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+9bcd5e61-af1c-4e05-9ae8-f55eed7306c1+input&quot; xmlns:tns3=&quot;http://xmlns.example.com/spedizioni/parameters&quot; xmlns:tns5=&quot;http://tns.tibco.com/bw/json/1759397162202&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;patch.parameters&quot;/>&#xa;    &lt;xsl:param name=&quot;CallProcess&quot;/>&#xa;    &lt;xsl:template name=&quot;update_spedizione-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns12:ActivityInputType>&#xa;            &lt;statement>&#xa;                &lt;xsl:value-of select=&quot;concat(&amp;quot;CALL scarpe.update_spedizione('&amp;quot;, $patch.parameters/tns3:id_sped, &amp;quot;','&amp;quot;, $CallProcess/tns5:stato_sped, &amp;quot;','&amp;quot;, string($CallProcess/tns5:data_agg), &amp;quot;','&amp;quot;, string($CallProcess/tns5:data_consegna), &amp;quot;','&amp;quot;, $CallProcess/tns5:note, &amp;quot;','0')&amp;quot;)&quot;/>&#xa;            &lt;/statement>&#xa;        &lt;/tns12:ActivityInputType>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:config>
                                     <bwext:BWActivity
@@ -2521,10 +2534,10 @@
                             <bpws:throw faultName="ns17:DefaultFault"
                                 faultVariable="Throw-input" name="Throw" tibex:xpdlId="bd2be5d5-9cba-4431-9932-6bf42218375b">
                                 <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns13="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions" xmlns:tns3="http://xmlns.example.com/spedizioni/parameters" version="2.0"&gt;&lt;xsl:param name="patch"/&gt;&lt;xsl:template name="Throw-input" match="/"&gt;&lt;tns13:DefaultFault&gt;&lt;message&gt;&lt;xsl:value-of select="concat(&amp;quot;L'id &amp;quot;, $patch/parameters/tns3:spedizioniPatchParameters/tns3:id_sped, &amp;quot; non è presente sul database&amp;quot;)"/&gt;&lt;/message&gt;&lt;msgCode&gt;&lt;xsl:value-of select="&amp;quot;404&amp;quot;"/&gt;&lt;/msgCode&gt;&lt;/tns13:DefaultFault&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns13="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions" xmlns:tns3="http://xmlns.example.com/spedizioni/parameters" version="2.0"&gt;&lt;xsl:param name="patch"/&gt;&lt;xsl:template name="Throw-input" match="/"&gt;&lt;tns13:DefaultFault&gt;&lt;message&gt;&lt;xsl:value-of select="concat(&amp;quot;L'id &amp;quot;, $patch/parameters/tns3:spedizioniPatchParameters/tns3:id_sped, &amp;quot; non è presente sul database&amp;quot;)&amp;#xD;&amp;#xA; "/&gt;&lt;/message&gt;&lt;msgCode&gt;&lt;xsl:value-of select="&amp;quot;404&amp;quot;"/&gt;&lt;/msgCode&gt;&lt;/tns13:DefaultFault&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                 <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns13=&quot;http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions&quot; xmlns:tns3=&quot;http://xmlns.example.com/spedizioni/parameters&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;patch.parameters&quot;/>&#xa;    &lt;xsl:template name=&quot;Throw-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns13:DefaultFault>&#xa;            &lt;message>&#xa;                &lt;xsl:value-of select=&quot;concat(&amp;quot;L'id &amp;quot;, $patch.parameters/tns3:id_sped, &amp;quot; non è presente sul database&amp;quot;)&quot;/>&#xa;            &lt;/message>&#xa;            &lt;msgCode>&#xa;                &lt;xsl:value-of select=&quot;&amp;quot;404&amp;quot;&quot;/>&#xa;            &lt;/msgCode>&#xa;        &lt;/tns13:DefaultFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns13=&quot;http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions&quot; xmlns:tns3=&quot;http://xmlns.example.com/spedizioni/parameters&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;patch.parameters&quot;/>&#xa;    &lt;xsl:template name=&quot;Throw-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns13:DefaultFault>&#xa;            &lt;message>&#xa;                &lt;xsl:value-of select=&quot;concat(&amp;quot;L'id &amp;quot;, $patch.parameters/tns3:id_sped, &amp;quot; non è presente sul database&amp;quot;)&amp;#xD;&amp;#xA; &quot;/>&#xa;            &lt;/message>&#xa;            &lt;msgCode>&#xa;                &lt;xsl:value-of select=&quot;&amp;quot;404&amp;quot;&quot;/>&#xa;            &lt;/msgCode>&#xa;        &lt;/tns13:DefaultFault>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                 </tibex:inputBindings>
                                 <bpws:targets>
                                     <bpws:target linkName="update_spedizioneToThrow"/>

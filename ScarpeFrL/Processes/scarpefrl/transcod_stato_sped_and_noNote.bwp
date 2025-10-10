@@ -21,15 +21,15 @@
                 <variable>Mapper</variable>
             </endingVariables>
         </task>
-        <task name="JDBCQuery">
+        <task name="transcod_stato_sped">
             <endingVariables>
-                <variable>JDBCQuery-input</variable>
+                <variable>transcod_stato_sped-input</variable>
             </endingVariables>
         </task>
         <task name="Mapper">
             <endingVariables>
                 <variable>Mapper-input</variable>
-                <variable>JDBCQuery</variable>
+                <variable>transcod_stato_sped</variable>
                 <variable>Start</variable>
             </endingVariables>
         </task>
@@ -632,10 +632,11 @@
         <bpws:variable element="ns:ProcessContext"
             name="_processContext" sca-bpel:internal="true"/>
         <bpws:variable element="ns1:jdbcQueryActivityInput"
-            name="JDBCQuery-input" sca-bpel:internal="true"/>
-        <bpws:variable element="ns2:resultSet" name="JDBCQuery" sca-bpel:internal="true"/>
+            name="transcod_stato_sped-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns2:resultSet"
+            name="transcod_stato_sped" sca-bpel:internal="true"/>
         <bpws:variable element="ns3:ActivityErrorData"
-            name="_error_JDBCQuery" sca-bpel:internal="true"/>
+            name="_error_transcod_stato_sped" sca-bpel:internal="true"/>
         <bpws:variable element="ns:ErrorReport" name="_error" sca-bpel:internal="true"/>
         <bpws:variable name="jdbcProperty" sca-bpel:hotUpdate="false"
             sca-bpel:privateProperty="true" sca-bpel:property="yes"
@@ -707,8 +708,10 @@
                 </tibex:activityExtension>
             </bpws:extensionActivity>
             <bpws:extensionActivity>
-                <tibex:activityExtension inputVariable="JDBCQuery-input"
-                    name="JDBCQuery" outputVariable="JDBCQuery"
+                <tibex:activityExtension
+                    inputVariable="transcod_stato_sped-input"
+                    name="transcod_stato_sped"
+                    outputVariable="transcod_stato_sped"
                     tibex:xpdlId="f3b2ac24-9412-4d79-8ca3-2b62f633d1f6" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:targets>
                         <bpws:target linkName="StartToEnd"/>
@@ -760,7 +763,7 @@
                     </bpws:sources>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://tns.tibco.com/bw/json/1759397162202&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:param name=&quot;JDBCQuery&quot;/>&lt;xsl:template name=&quot;Mapper-input&quot; match=&quot;/&quot;>&lt;tns1:request_PATCH>&lt;tns1:stato_sped>&lt;xsl:value-of select=&quot;$JDBCQuery/Record[1]/cod_scarpefrl&quot;/>&lt;/tns1:stato_sped>&lt;tns1:data_agg>&lt;xsl:value-of select=&quot;$Start/tns1:data_agg&quot;/>&lt;/tns1:data_agg>&lt;xsl:choose>&lt;xsl:when test=&quot;exists($Start/tns1:data_consegna) and not($Start/tns1:data_consegna/@xsi:nil)&quot;>&lt;xsl:if test=&quot;$Start/tns1:data_consegna&quot;>&lt;tns1:data_consegna>&lt;xsl:copy-of select=&quot;$Start/tns1:data_consegna/@xsi:nil&quot;/>&lt;xsl:value-of select=&quot;$Start/tns1:data_consegna&quot;/>&lt;/tns1:data_consegna>&lt;/xsl:if>&lt;/xsl:when>&lt;xsl:otherwise>&lt;tns1:data_consegna>&lt;xsl:value-of select=&quot;dateTime(xsd:date(&amp;quot;3000-01-01&amp;quot;), xsd:time(&amp;quot;00:00:00&amp;quot;))&quot;/>&lt;/tns1:data_consegna>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;xsl:if test=&quot;$Start/tns1:note&quot;>&lt;tns1:note>&lt;xsl:copy-of select=&quot;$Start/tns1:note/@xsi:nil&quot;/>&lt;xsl:value-of select=&quot;$Start/tns1:note&quot;/>&lt;/tns1:note>&lt;/xsl:if>&lt;/tns1:request_PATCH>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://tns.tibco.com/bw/json/1759397162202&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;Start&quot;/>&#xa;    &lt;xsl:param name=&quot;transcod_stato_sped&quot;/>&#xa;    &lt;xsl:template name=&quot;Mapper-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns1:request_PATCH>&#xa;            &lt;tns1:stato_sped>&#xa;                &lt;xsl:value-of select=&quot;$transcod_stato_sped/Record[1]/cod_scarpefrl&quot;/>&#xa;            &lt;/tns1:stato_sped>&#xa;            &lt;tns1:data_agg>&#xa;                &lt;xsl:value-of select=&quot;$Start/tns1:data_agg&quot;/>&#xa;            &lt;/tns1:data_agg>&#xa;            &lt;xsl:choose>&#xa;                &lt;xsl:when test=&quot;exists($Start/tns1:data_consegna) and not($Start/tns1:data_consegna/@xsi:nil)&quot;>&#xa;                    &lt;xsl:if test=&quot;$Start/tns1:data_consegna&quot;>&#xa;                        &lt;tns1:data_consegna>&#xa;                            &lt;xsl:copy-of select=&quot;$Start/tns1:data_consegna/@xsi:nil&quot;/>&#xa;                            &lt;xsl:value-of select=&quot;$Start/tns1:data_consegna&quot;/>&#xa;                        &lt;/tns1:data_consegna>&#xa;                    &lt;/xsl:if>&#xa;                &lt;/xsl:when>&#xa;                &lt;xsl:otherwise>&#xa;                    &lt;tns1:data_consegna>&#xa;                        &lt;xsl:value-of select=&quot;dateTime(xsd:date(&amp;quot;3000-01-01&amp;quot;), xsd:time(&amp;quot;00:00:00&amp;quot;))&quot;/>&#xa;                    &lt;/tns1:data_consegna>&#xa;                &lt;/xsl:otherwise>&#xa;            &lt;/xsl:choose>&#xa;            &lt;xsl:if test=&quot;$Start/tns1:note&quot;>&#xa;                &lt;tns1:note>&#xa;                    &lt;xsl:copy-of select=&quot;$Start/tns1:note/@xsi:nil&quot;/>&#xa;                    &lt;xsl:value-of select=&quot;$Start/tns1:note&quot;/>&#xa;                &lt;/tns1:note>&#xa;            &lt;/xsl:if>&#xa;        &lt;/tns1:request_PATCH>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
                         <bwext:BWActivity
