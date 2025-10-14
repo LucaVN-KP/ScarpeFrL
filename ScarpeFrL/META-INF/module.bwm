@@ -8,8 +8,10 @@
         <clientRequestFormat>json</clientRequestFormat>
       </operation>
       <operation xmi:id="_7sD_UZ9uEfCwU9nfzQpQgg" operationName="patch" nickname="patch-spedizioni" httpMethod="PATCH" notes="patchSpedizioni" responseStyle="element" outputPartName="item">
-        <responseStatus xmi:id="_NZT1IKW6EfCmotpfim2enQ" statusCode="200" reasonPhrase="OK" dataType="string"/>
-        <responseStatus xmi:id="_OD97sKW6EfCmotpfim2enQ" statusCode="404" reasonPhrase="Not Found" dataType="string"/>
+        <responseStatus xmi:id="_yPKU8KkPEfCrgeRKCOUqVw" statusCode="200" reasonPhrase="OK" dataType="string"/>
+        <responseStatus xmi:id="_yj4nwKkPEfCrgeRKCOUqVw" statusCode="404" reasonPhrase="Not Found" dataType="string"/>
+        <responseStatus xmi:id="_zix48KkPEfCrgeRKCOUqVw" statusCode="406" reasonPhrase="Not Acceptable" dataType="string"/>
+        <responseStatus xmi:id="_07kQ0KkPEfCrgeRKCOUqVw" statusCode="500" reasonPhrase="Internal Server Error" dataType="string"/>
         <clientFormat>json</clientFormat>
         <clientRequestFormat>json</clientRequestFormat>
       </operation>
@@ -26,6 +28,9 @@
       <operation xmi:id="_7VRM0KOIEfCOGIWVl6FzJg" operationName="post" nickname="post-spedizioni" httpMethod="POST" notes="postSpedizioni" responseStyle="element" outputPartName="item">
         <responseStatus xmi:id="_Xp3NMKXhEfC4U70wA4CpdQ" statusCode="200" reasonPhrase="OK" dataType="string"/>
         <responseStatus xmi:id="_Xv3ukKXhEfC4U70wA4CpdQ" statusCode="400" reasonPhrase="Bad Request" dataType="string"/>
+        <responseStatus xmi:id="_n7WUEKkVEfCrgeRKCOUqVw" statusCode="404" reasonPhrase="Not Found" dataType="string"/>
+        <responseStatus xmi:id="_oztfcKkVEfCrgeRKCOUqVw" statusCode="406" reasonPhrase="Not Acceptable" dataType="string"/>
+        <responseStatus xmi:id="_pfQW0KkVEfCrgeRKCOUqVw" statusCode="500" reasonPhrase="Internal Server Error" dataType="string"/>
         <clientFormat>json</clientFormat>
         <clientRequestFormat>json</clientRequestFormat>
       </operation>
@@ -40,6 +45,9 @@
       <operation xmi:id="_Jqp1kqRbEfC-bJztfXtEUg" operationName="get" nickname="get-clienti" httpMethod="GET" notes="getClienti" responseStyle="element" outputPartName="clientiGet">
         <responseStatus xmi:id="_JsmywKUeEfCXoIgC0foWQw" statusCode="200" reasonPhrase="OK" dataType="string"/>
         <responseStatus xmi:id="_KAOSUKUeEfCXoIgC0foWQw" statusCode="404" reasonPhrase="Not Found" dataType="string"/>
+        <responseStatus xmi:id="_fpf9MKkWEfCrgeRKCOUqVw" statusCode="400" reasonPhrase="Bad Request" dataType="string"/>
+        <responseStatus xmi:id="_ghFFcKkWEfCrgeRKCOUqVw" statusCode="406" reasonPhrase="Not Acceptable" dataType="string"/>
+        <responseStatus xmi:id="_hkfqQKkWEfCrgeRKCOUqVw" statusCode="500" reasonPhrase="Internal Server Error" dataType="string"/>
         <clientFormat>json</clientFormat>
         <clientRequestFormat>json</clientRequestFormat>
       </operation>
