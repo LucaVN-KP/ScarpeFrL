@@ -76,6 +76,18 @@
             "schema" : {
               "type" : "string"
             }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "406" : {
+            "description" : "Not Acceptable",
+            "schema" : {
+              "type" : "string"
+            }
           }
         }
       }
