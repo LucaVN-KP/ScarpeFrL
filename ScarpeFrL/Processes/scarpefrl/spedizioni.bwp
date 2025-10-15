@@ -51,11 +51,6 @@
                 <variable>transcod_dati-input</variable>
             </endingVariables>
         </task>
-        <task name="requestErrata">
-            <endingVariables>
-                <variable>requestErrata-input</variable>
-            </endingVariables>
-        </task>
         <task name="validazione_input">
             <endingVariables>
                 <variable>validazione_input-input</variable>
@@ -435,27 +430,6 @@
             </complexType>
         </schema>
         <schema elementFormDefault="unqualified"
-            targetNamespace="http://tns.tibco.com/bw/palette/internal/errorlinkhandler+e273bba3-32d9-4d89-b584-3f6c98991480"
-            xmlns="http://www.w3.org/2001/XMLSchema"
-            xmlns:Q1="http://schemas.tibco.com/bw/plugins/jdbc/5.0/jdbcExceptions"
-            xmlns:Q2="http://schemas.tibco.com/bw/pe/plugin/5.0/exceptions" xmlns:tns="http://tns.tibco.com/bw/palette/internal/errorlinkhandler+e273bba3-32d9-4d89-b584-3f6c98991480">
-            <import namespace="http://schemas.tibco.com/bw/pe/plugin/5.0/exceptions"/>
-            <import namespace="http://schemas.tibco.com/bw/plugins/jdbc/5.0/jdbcExceptions"/>
-            <import namespace="http://schemas.tibco.com/bw/plugins/jdbc/5.0/jdbcExceptions"/>
-            <import namespace="http://schemas.tibco.com/bw/plugins/jdbc/5.0/jdbcExceptions"/>
-            <import namespace="http://schemas.tibco.com/bw/plugins/jdbc/5.0/jdbcExceptions"/>
-            <element name="ErrorLinkHandlerFaultData" type="tns:ErrorLinkHandlerFaultDataType"/>
-            <complexType name="ErrorLinkHandlerFaultDataType">
-                <choice>
-                    <element maxOccurs="1" minOccurs="0" ref="Q1:JDBCConnectionNotFoundException"/>
-                    <element maxOccurs="1" minOccurs="0" ref="Q1:InvalidTimeZoneException"/>
-                    <element maxOccurs="1" minOccurs="0" ref="Q1:JDBCSQLException"/>
-                    <element maxOccurs="1" minOccurs="0" ref="Q1:LoginTimedOutException"/>
-                    <element maxOccurs="1" minOccurs="0" ref="Q2:ActivityTimedOutException"/>
-                </choice>
-            </complexType>
-        </schema>
-        <schema elementFormDefault="unqualified"
             targetNamespace="http://tns.tibco.com/bw/palette/internal/activityerror+b66840d4-8dab-41b5-bb31-faf5fe66e72d"
             xmlns="http://www.w3.org/2001/XMLSchema"
             xmlns:Q1="http://www.example.org/Clienti" xmlns:tns="http://tns.tibco.com/bw/palette/internal/activityerror+b66840d4-8dab-41b5-bb31-faf5fe66e72d">
@@ -464,6 +438,27 @@
             <complexType name="ActivityErrorDataType">
                 <choice>
                     <element maxOccurs="1" minOccurs="0" ref="Q1:ErrorSubprocess"/>
+                </choice>
+            </complexType>
+        </schema>
+        <schema elementFormDefault="unqualified"
+            targetNamespace="http://tns.tibco.com/bw/palette/internal/activityerror+bw.jdbc.SQLDirect"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:Q1="http://schemas.tibco.com/bw/plugins/jdbc/5.0/jdbcExceptions"
+            xmlns:Q2="http://schemas.tibco.com/bw/pe/plugin/5.0/exceptions" xmlns:tns="http://tns.tibco.com/bw/palette/internal/activityerror+bw.jdbc.SQLDirect">
+            <import namespace="http://schemas.tibco.com/bw/pe/plugin/5.0/exceptions"/>
+            <import namespace="http://schemas.tibco.com/bw/plugins/jdbc/5.0/jdbcExceptions"/>
+            <import namespace="http://schemas.tibco.com/bw/plugins/jdbc/5.0/jdbcExceptions"/>
+            <import namespace="http://schemas.tibco.com/bw/plugins/jdbc/5.0/jdbcExceptions"/>
+            <import namespace="http://schemas.tibco.com/bw/plugins/jdbc/5.0/jdbcExceptions"/>
+            <element name="ActivityErrorData" type="tns:ActivityErrorDataType"/>
+            <complexType name="ActivityErrorDataType">
+                <choice>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:JDBCConnectionNotFoundException"/>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:InvalidTimeZoneException"/>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:JDBCSQLException"/>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:LoginTimedOutException"/>
+                    <element maxOccurs="1" minOccurs="0" ref="Q2:ActivityTimedOutException"/>
                 </choice>
             </complexType>
         </schema>
@@ -861,62 +856,6 @@
                                     xsi:type="notation:Bounds" y="28"/>
                                     </children>
 
-                                    <children type="4002 com.tibco.bw.core.design.process.editor.Activity_4002_Throw">
-
-                                    <children type="4017">
-
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-
-                                    <children type="4017">
-
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-
-                                    <children type="4017">
-
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-
-                                    <children type="4017">
-
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-
-                                    <styles
-                                    backgroundColor="16777215"
-                                    gradientEndColor="50431"
-                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
-
-                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.5"/>
-
-                                    <layoutConstraint
-                                    height="40"
-                                    width="40"
-                                    x="181"
-                                    xsi:type="notation:Bounds" y="141"/>
-                                    </children>
-
                                     <children type="4002 bw.generalactivities.callprocess">
 
                                     <children type="4017">
@@ -964,7 +903,7 @@
                                     gradientEndColor="50431"
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
 
-                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.6"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.5"/>
 
                                     <layoutConstraint
                                     height="40"
@@ -1455,17 +1394,6 @@
             <bendpoints points="[25, -1, -133, 0]$[134, 0, -24, 1]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="255" xsi:type="notation:ConnectorStyle"/>
-            <styles fontColor="255" fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.2"/>
-            <bendpoints points="[1, 25, 0, -92]$[0, 93, -1, -24]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
-        <edges
             source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.0"
             target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.1" type="4006">
             <children type="6002">
@@ -1488,14 +1416,14 @@
             <bendpoints points="[25, 7, -164, -44]$[165, 44, -24, -7]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.4"
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3"
             target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
             <children type="6002">
                 <layoutConstraint xsi:type="notation:Location" y="40"/>
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.3"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.2"/>
             <bendpoints points="[25, 6, -101, 0]$[102, 0, -24, -6]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
@@ -1552,15 +1480,11 @@
             name="add_spedizione-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns8:jdbcGeneralActivityOutput"
             name="add_spedizione" sca-bpel:internal="true"/>
-        <bpws:variable element="ns19:ErrorLinkHandlerFaultData"
+        <bpws:variable element="ns9:ActivityErrorData"
             name="_error_add_spedizione" sca-bpel:internal="true"/>
         <bpws:variable element="ns10:request_PATCH"
             name="transcod_dati-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns10:request_PATCH" name="transcod_dati" sca-bpel:internal="true"/>
-        <bpws:variable name="FaultName" sca-bpel:internal="true" type="xsd:string"/>
-        <bpws:variable element="ns0:OptionalErrorReport"
-            name="_errorOptional" sca-bpel:internal="true"/>
-        <bpws:variable element="ns12:myError" name="requestErrata-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns3:ActivityErrorData"
             name="_error_JDBCQuery1" sca-bpel:internal="true"/>
         <bpws:variable element="ns3:ActivityErrorData"
@@ -1670,7 +1594,6 @@
                                 <bpws:link name="SQLDirectTopostOut" tibex:linkType="SUCCESS"/>
                                 <bpws:link
                                     name="CallProcessToadd_spedizione" tibex:linkType="SUCCESS"/>
-                                <bpws:link name="add_spedizioneToThrow1" tibex:linkType="ERROR"/>
                                 <bpws:link
                                     name="validazione_inputTotranscod_dati" tibex:linkType="SUCCESS"/>
                             </bpws:links>
@@ -1705,15 +1628,6 @@
                                     </bpws:targets>
                                     <bpws:sources>
                                     <bpws:source linkName="SQLDirectTopostOut"/>
-                                    <bpws:source
-                                    linkName="add_spedizioneToThrow1"
-                                    tibex:faultDetailsVar="add_spedizione" tibex:faultNameVar="FaultName">
-                                    <tibex:DesignExpression>
-                                    <tibex:expression
-                                    expression="##error##" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
-                                    </tibex:DesignExpression>
-                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[##error##]]></bpws:transitionCondition>
-                                    </bpws:source>
                                     </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
@@ -1761,17 +1675,6 @@
                                     subProcessName="scarpefrl.transcod_stato_sped_and_noNote" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"/>
                                 </tibex:extActivity>
                             </bpws:extensionActivity>
-                            <bpws:throw faultName="ns12:myError"
-                                faultVariable="requestErrata-input"
-                                name="requestErrata" tibex:xpdlId="733ee87c-bf35-41e6-8b44-9b4931b80ff6">
-                                <tibex:inputBindings>
-                                    <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns7=&quot;http://www.example.org/Clienti&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;Throw1-input&quot; match=&quot;/&quot;>&lt;tns7:myError>&lt;tns7:msg>&lt;xsl:value-of select=&quot;&amp;quot;La procedure non è andata a buon fine&amp;quot;&quot;/>&lt;/tns7:msg>&lt;tns7:msgCode>&lt;xsl:value-of select=&quot;&amp;quot;400&amp;quot;&quot;/>&lt;/tns7:msgCode>&lt;/tns7:myError>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
-                                </tibex:inputBindings>
-                                <bpws:targets>
-                                    <bpws:target linkName="add_spedizioneToThrow1"/>
-                                </bpws:targets>
-                            </bpws:throw>
                             <bpws:extensionActivity>
                                 <tibex:extActivity
                                     expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://tns.tibco.com/bw/json/1759399791283&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;post&quot;/>&lt;xsl:template name=&quot;validazione_input-input&quot; match=&quot;/&quot;>&lt;xsl:copy-of select=&quot;$post/item/tns4:spedizione&quot;/>&lt;/xsl:template>&lt;/xsl:stylesheet>"
