@@ -22,8 +22,8 @@
     <tibex:VariableDescriptor type="MemorySaving">
         <task name="flow1">
             <endingVariables>
-                <variable>select_id_cliente</variable>
                 <variable>get</variable>
+                <variable>select_id_cliente</variable>
             </endingVariables>
         </task>
         <task name="select_id_cliente">
@@ -41,9 +41,14 @@
                 <variable>getOut-input</variable>
             </endingVariables>
         </task>
-        <task name="Reply4xx">
+        <task name="CallProcess">
             <endingVariables>
-                <variable>Reply4xx-input</variable>
+                <variable>CallProcess-input</variable>
+            </endingVariables>
+        </task>
+        <task name="Reply404">
+            <endingVariables>
+                <variable>Reply404-input</variable>
             </endingVariables>
         </task>
         <task name="Reply5xx">
@@ -840,7 +845,7 @@
                                     height="40"
                                     width="40"
                                     x="422"
-                                    xsi:type="notation:Bounds" y="107"/>
+                                    xsi:type="notation:Bounds" y="154"/>
                                     </children>
 
                                     <children type="4002 com.tibco.bw.core.design.process.editor.Activity_4002_Reply">
@@ -895,7 +900,63 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="422"
+                                    x="430"
+                                    xsi:type="notation:Bounds" y="10"/>
+                                    </children>
+
+                                    <children type="4002 bw.generalactivities.callprocess">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.5"/>
+
+                                    <layoutConstraint
+                                    height="40"
+                                    width="40"
+                                    x="350"
                                     xsi:type="notation:Bounds" y="10"/>
                                     </children>
 
@@ -922,7 +983,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity"/>
 
                                     <layoutConstraint
-                                    height="260"
+                                    height="264"
                                     width="566" xsi:type="notation:Bounds"/>
                                     </children>
 
@@ -1032,8 +1093,7 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="9"
-                                    xsi:type="notation:Bounds" y="54"/>
+                                    xsi:type="notation:Bounds" y="122"/>
                                     </children>
 
                                     <children type="4002">
@@ -1086,8 +1146,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@faultHandlers/@catchAll/@activity/@activity/@activities.1"/>
 
                                     <layoutConstraint
-                                    x="159"
-                                    xsi:type="notation:Bounds" y="2"/>
+                                    x="273"
+                                    xsi:type="notation:Bounds" y="21"/>
                                     </children>
 
                                     <children type="4002">
@@ -1140,8 +1200,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@faultHandlers/@catchAll/@activity/@activity/@activities.2"/>
 
                                     <layoutConstraint
-                                    x="162"
-                                    xsi:type="notation:Bounds" y="105"/>
+                                    x="273"
+                                    xsi:type="notation:Bounds" y="209"/>
                                     </children>
 
                                     <styles xsi:type="notation:DrawerStyle"/>
@@ -1165,7 +1225,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@faultHandlers/@catchAll/@activity/@activity"/>
 
                                     <layoutConstraint
-                                    height="200"
+                                    height="305"
                                     width="488" xsi:type="notation:Bounds"/>
                                     </children>
 
@@ -1180,11 +1240,15 @@
 
                                     <styles xsi:type="bwnotation:BackgroundStyle"/>
 
-                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+                                    <styles
+                                    restoreHeight="315"
+                                    restoreWidth="539" xsi:type="bwnotation:ResizingStyle"/>
 
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@faultHandlers/@catchAll"/>
 
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    <layoutConstraint
+                                    height="315"
+                                    width="539" xsi:type="notation:Bounds"/>
                                     </children>
 
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -1203,10 +1267,10 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@faultHandlers"/>
 
                                     <layoutConstraint
-                                    height="200"
+                                    height="337"
                                     width="549"
                                     x="21"
-                                    xsi:type="notation:Bounds" y="261"/>
+                                    xsi:type="notation:Bounds" y="263"/>
                                     </children>
                                     <styles xsi:type="notation:SortingStyle"/>
                                     <styles xsi:type="notation:FilteringStyle"/>
@@ -1220,7 +1284,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity"/>
 
                                     <layoutConstraint
-                                    height="462"
+                                    height="601"
                                     width="609" xsi:type="notation:Bounds"/>
                                     </children>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -1280,7 +1344,7 @@
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0"/>
                                     <layoutConstraint
-                                    height="481"
+                                    height="620"
                                     width="671"
                                     x="2" xsi:type="notation:Bounds"/>
                                     </children>
@@ -1568,13 +1632,17 @@
                                     fontName="Segoe UI"
                                     lineColor="0" xsi:type="notation:ShapeStyle"/>
                                     <styles xsi:type="bwnotation:BackgroundStyle"/>
-                                    <styles xsi:type="bwnotation:ResizingStyle"/>
+                                    <styles
+                                    restoreHeight="239"
+                                    restoreWidth="671"
+                                    restoreX="2"
+                                    restoreY="481" xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.1"/>
                                     <layoutConstraint
-                                    height="238"
+                                    height="239"
                                     width="671"
                                     x="2"
-                                    xsi:type="notation:Bounds" y="154"/>
+                                    xsi:type="notation:Bounds" y="481"/>
                                     </children>
                                     <styles xsi:type="notation:SortingStyle"/>
                                     <styles xsi:type="notation:FilteringStyle"/>
@@ -1586,7 +1654,7 @@
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.0"/>
                                     <layoutConstraint
-                                    height="750" width="561" xsi:type="notation:Bounds"/>
+                                    height="890" width="561" xsi:type="notation:Bounds"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -1635,12 +1703,12 @@
         <element href="//0"/>
         <edges
             source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3" type="4006">
             <children type="6002">
-                <layoutConstraint x="73" xsi:type="notation:Location" y="-14"/>
+                <layoutConstraint x="81" xsi:type="notation:Location" y="-14"/>
             </children>
-            <styles lineColor="16711680" xsi:type="notation:ConnectorStyle"/>
-            <styles fontColor="16711680" fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.0"/>
             <bendpoints points="[25, -1, -186, 0]$[187, 0, -24, 1]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
@@ -1661,8 +1729,8 @@
             <children type="6002">
                 <layoutConstraint x="34" xsi:type="notation:Location" y="-75"/>
             </children>
-            <styles lineColor="255" xsi:type="notation:ConnectorStyle"/>
-            <styles fontColor="255" fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <styles lineColor="32768" xsi:type="notation:ConnectorStyle"/>
+            <styles fontColor="32768" fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.1"/>
             <bendpoints points="[25, 7, -339, -90]$[340, 90, -24, -7]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
@@ -1686,6 +1754,17 @@
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@faultHandlers/@catchAll/@activity/@activity/@links/@children.1"/>
+            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@links/@children.2"/>
             <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
@@ -1744,10 +1823,11 @@
         <bpws:variable messageType="ns:getResponse" name="getOut-input" sca-bpel:internal="true"/>
         <bpws:variable name="FaultName" sca-bpel:internal="true" type="xsd:string"/>
         <bpws:variable element="ns0:FaultDetail" name="FaultDetails" sca-bpel:internal="true"/>
-        <bpws:variable messageType="ns:get4XXFaultMessage"
-            name="Reply4xx-input" sca-bpel:internal="true"/>
-        <bpws:variable messageType="ns:get5XXFaultMessage"
+        <bpws:variable messageType="ns:get404FaultMessage"
+            name="Reply404-input" sca-bpel:internal="true"/>
+        <bpws:variable messageType="ns:get500FaultMessage"
             name="Reply5xx-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns9:clienteGet" name="CallProcess-input" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -1775,7 +1855,7 @@
                                     <bpws:link
                                     name="EmptyToReply" tibex:linkType="SUCCESSWITHCONDITION"/>
                                     <bpws:link
-                                    name="EmptyToReply1" tibex:linkType="SUCCESSWITHCONDITION"/>
+                                    name="EmptyToReply1" tibex:linkType="SUCCESSWITHNOCONDITION"/>
                                     </bpws:links>
                                     <bpws:empty name="Empty" tibex:xpdlId="fae98bb2-0f71-46d3-a508-773f64d01799">
                                     <bpws:sources>
@@ -1783,51 +1863,51 @@
                                     <tibex:DesignExpression>
 
                                     <tibex:expression
-                                    expression="starts-with($_error/MsgCode, '4')" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                                    expression="contains($_error/MsgCode, '404')" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
                                     </tibex:DesignExpression>
 
-                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[starts-with($_error/MsgCode, '4')]]></bpws:transitionCondition>
+                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[contains($_error/MsgCode, '404')]]></bpws:transitionCondition>
                                     </bpws:source>
                                     <bpws:source linkName="EmptyToReply1">
                                     <tibex:DesignExpression>
 
                                     <tibex:expression
-                                    expression="not(starts-with($_error/MsgCode, '4'))" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                                    expression="##otherwise##" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
                                     </tibex:DesignExpression>
 
-                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[not(starts-with($_error/MsgCode, '4'))]]></bpws:transitionCondition>
+                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[##otherwise##]]></bpws:transitionCondition>
                                     </bpws:source>
                                     </bpws:sources>
                                     </bpws:empty>
                                     <bpws:reply
-                                    faultName="clientFault"
-                                    name="Reply4xx"
+                                    faultName="server-404-Fault"
+                                    name="Reply404"
                                     operation="get"
                                     partnerLink="clienti"
                                     portType="ns:clienti"
-                                    tibex:xpdlId="904b5f62-c99e-406f-b605-b6077840b371" variable="Reply4xx-input">
+                                    tibex:xpdlId="904b5f62-c99e-406f-b605-b6077840b371" variable="Reply404-input">
                                     <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns2="http://xmlns.example.com/20251008172624PLT" xmlns:tns7="http://tns.tibco.com/bw/REST" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="2.0"&gt;&lt;xsl:param name="_error"/&gt;&lt;xsl:template name="Reply-input" match="/"&gt;&lt;tns2:get4XXFaultMessage&gt;&lt;clientError&gt;&lt;tns7:client4XXError&gt;&lt;statusCode&gt;&lt;xsl:value-of select="xsd:integer($_error/MsgCode)"/&gt;&lt;/statusCode&gt;&lt;message&gt;&lt;xsl:value-of select="$_error/Msg"/&gt;&lt;/message&gt;&lt;/tns7:client4XXError&gt;&lt;/clientError&gt;&lt;/tns2:get4XXFaultMessage&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns2="http://xmlns.example.com/20251008172624PLT" xmlns:tns7="http://tns.tibco.com/bw/REST" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="2.0"&gt;&lt;xsl:param name="_error"/&gt;&lt;xsl:template name="Reply4xx-input" match="/"&gt;&lt;tns2:get404FaultMessage&gt;&lt;server-404-NotFound&gt;&lt;xsl:value-of select="$_error/Msg"/&gt;&lt;/server-404-NotFound&gt;&lt;/tns2:get404FaultMessage&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                     <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://xmlns.example.com/20251008172624PLT&quot; xmlns:tns7=&quot;http://tns.tibco.com/bw/REST&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;_error&quot;/>&#xa;    &lt;xsl:template name=&quot;Reply-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns7:client4XXError>&#xa;            &lt;statusCode>&#xa;                &lt;xsl:value-of select=&quot;xsd:integer($_error/MsgCode)&quot;/>&#xa;            &lt;/statusCode>&#xa;            &lt;message>&#xa;                &lt;xsl:value-of select=&quot;$_error/Msg&quot;/>&#xa;            &lt;/message>&#xa;        &lt;/tns7:client4XXError>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://xmlns.example.com/20251008172624PLT&quot; xmlns:tns7=&quot;http://tns.tibco.com/bw/REST&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;_error&quot;/>&#xa;    &lt;xsl:template name=&quot;Reply4xx-input&quot; match=&quot;/&quot;>&#xa;        &lt;server-404-NotFound>&#xa;            &lt;xsl:value-of select=&quot;$_error/Msg&quot;/>&#xa;        &lt;/server-404-NotFound>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <bpws:targets>
                                     <bpws:target linkName="EmptyToReply"/>
                                     </bpws:targets>
                                     </bpws:reply>
                                     <bpws:reply
-                                    faultName="serverFault"
+                                    faultName="server-500-Fault"
                                     name="Reply5xx"
                                     operation="get"
                                     partnerLink="clienti"
                                     portType="ns:clienti"
                                     tibex:xpdlId="9324ed4e-72d3-486c-abd0-2cb24ab4173d" variable="Reply5xx-input">
                                     <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns2="http://xmlns.example.com/20251008172624PLT" xmlns:tns7="http://tns.tibco.com/bw/REST" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="2.0"&gt;&lt;xsl:param name="_error"/&gt;&lt;xsl:template name="Reply5xx-input" match="/"&gt;&lt;tns2:get5XXFaultMessage&gt;&lt;serverError&gt;&lt;tns7:server5XXError&gt;&lt;statusCode&gt;&lt;xsl:value-of select="xsd:integer($_error/MsgCode)"/&gt;&lt;/statusCode&gt;&lt;message&gt;&lt;xsl:value-of select="$_error/Msg"/&gt;&lt;/message&gt;&lt;/tns7:server5XXError&gt;&lt;/serverError&gt;&lt;/tns2:get5XXFaultMessage&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns2="http://xmlns.example.com/20251008172624PLT" xmlns:tns7="http://tns.tibco.com/bw/REST" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="2.0"&gt;&lt;xsl:param name="_error"/&gt;&lt;xsl:template name="Reply5xx-input" match="/"&gt;&lt;tns2:get500FaultMessage&gt;&lt;server-500-InternalServerError&gt;&lt;xsl:value-of select="$_error/Msg"/&gt;&lt;/server-500-InternalServerError&gt;&lt;/tns2:get500FaultMessage&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                     <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://xmlns.example.com/20251008172624PLT&quot; xmlns:tns7=&quot;http://tns.tibco.com/bw/REST&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;_error&quot;/>&#xa;    &lt;xsl:template name=&quot;Reply5xx-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns7:server5XXError>&#xa;            &lt;statusCode>&#xa;                &lt;xsl:value-of select=&quot;xsd:integer($_error/MsgCode)&quot;/>&#xa;            &lt;/statusCode>&#xa;            &lt;message>&#xa;                &lt;xsl:value-of select=&quot;$_error/Msg&quot;/>&#xa;            &lt;/message>&#xa;        &lt;/tns7:server5XXError>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://xmlns.example.com/20251008172624PLT&quot; xmlns:tns7=&quot;http://tns.tibco.com/bw/REST&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;_error&quot;/>&#xa;    &lt;xsl:template name=&quot;Reply5xx-input&quot; match=&quot;/&quot;>&#xa;        &lt;server-500-InternalServerError>&#xa;            &lt;xsl:value-of select=&quot;$_error/Msg&quot;/>&#xa;        &lt;/server-500-InternalServerError>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <bpws:targets>
                                     <bpws:target linkName="EmptyToReply1"/>
@@ -1845,6 +1925,7 @@
                                 <bpws:link
                                     name="JDBCQueryToThrow_unsuccessfulquery"
                                     tibex:label="unsuccessful query" tibex:linkType="SUCCESSWITHCONDITION"/>
+                                <bpws:link name="CallProcessTogetOut" tibex:linkType="SUCCESS"/>
                             </bpws:links>
                             <bpws:empty name="OnMessageStart"
                                 tibex:constructor="onMessageStart" tibex:xpdlId="be397f49-07b3-4df8-91c1-115bebb4ad01"/>
@@ -1976,9 +2057,31 @@
                                     expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://xmlns.example.com/clienti/parameters&quot; xmlns:tns2=&quot;http://xmlns.example.com/20251008172624PLT&quot; xmlns:tns3=&quot;http://www.example.org/Clienti&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;get.parameters&quot;/>&#xa;    &lt;xsl:param name=&quot;select_id_cliente&quot;/>&#xa;    &lt;xsl:template name=&quot;getOut-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns3:clienteGet>&#xa;            &lt;tns3:id>&#xa;                &lt;xsl:value-of select=&quot;xsd:short($get.parameters/tns1:id_cliente1)&quot;/>&#xa;            &lt;/tns3:id>&#xa;            &lt;tns3:nom>&#xa;                &lt;xsl:value-of select=&quot;$select_id_cliente/Record[1]/nome&quot;/>&#xa;            &lt;/tns3:nom>&#xa;            &lt;tns3:mail>&#xa;                &lt;xsl:value-of select=&quot;$select_id_cliente/Record[1]/mail&quot;/>&#xa;            &lt;/tns3:mail>&#xa;            &lt;tns3:telefono>&#xa;                &lt;xsl:value-of select=&quot;$select_id_cliente/Record[1]/telefono&quot;/>&#xa;            &lt;/tns3:telefono>&#xa;            &lt;tns3:indirizzo>&#xa;                &lt;xsl:value-of select=&quot;$select_id_cliente/Record[1]/indirizzo&quot;/>&#xa;            &lt;/tns3:indirizzo>&#xa;            &lt;tns3:città_arrivo>&#xa;                &lt;xsl:value-of select=&quot;$select_id_cliente/Record[1]/citta&quot;/>&#xa;            &lt;/tns3:città_arrivo>&#xa;        &lt;/tns3:clienteGet>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                 </tibex:inputBindings>
                                 <bpws:targets>
-                                    <bpws:target linkName="JDBCQueryTogetOut_successfulquery"/>
+                                    <bpws:target linkName="CallProcessTogetOut"/>
                                 </bpws:targets>
                             </bpws:reply>
+                            <bpws:extensionActivity>
+                                <tibex:extActivity
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns3=&quot;http://www.example.org/Clienti&quot; xmlns:tns1=&quot;http://xmlns.example.com/clienti/parameters&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;get&quot;/>&lt;xsl:param name=&quot;select_id_cliente&quot;/>&lt;xsl:template name=&quot;CallProcess-input&quot; match=&quot;/&quot;>&lt;tns3:clienteGet>&lt;tns3:id>&lt;xsl:value-of select=&quot;xsd:int($get/parameters/tns1:clientiGetParameters/tns1:id_cliente1)&quot;/>&lt;/tns3:id>&lt;tns3:nom>&lt;xsl:value-of select=&quot;$select_id_cliente/Record[1]/nome&quot;/>&lt;/tns3:nom>&lt;tns3:mail>&lt;xsl:value-of select=&quot;$select_id_cliente/Record[1]/mail&quot;/>&lt;/tns3:mail>&lt;tns3:telefono>&lt;xsl:value-of select=&quot;$select_id_cliente/Record[1]/telefono&quot;/>&lt;/tns3:telefono>&lt;tns3:indirizzo>&lt;xsl:value-of select=&quot;$select_id_cliente/Record[1]/indirizzo&quot;/>&lt;/tns3:indirizzo>&lt;tns3:città_arrivo>&lt;xsl:value-of select=&quot;$select_id_cliente/Record[1]/citta&quot;/>&lt;/tns3:città_arrivo>&lt;/tns3:clienteGet>&lt;/xsl:template>&lt;/xsl:stylesheet>"
+                                    expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"
+                                    inputVariable="CallProcess-input"
+                                    name="CallProcess"
+                                    tibex:xpdlId="c18f8140-0f22-4c65-a271-957b9e0107d6"
+                                    type="bw.generalactivities.callprocess" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:targets>
+                                    <bpws:target linkName="JDBCQueryTogetOut_successfulquery"/>
+                                    </bpws:targets>
+                                    <bpws:sources>
+                                    <bpws:source linkName="CallProcessTogetOut"/>
+                                    </bpws:sources>
+                                    <tibex:inputBindings>
+                                    <tibex:inputBinding coercion=""
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns3=&quot;http://www.example.org/Clienti&quot; xmlns:tns1=&quot;http://xmlns.example.com/clienti/parameters&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;get.parameters&quot;/>&#xa;    &lt;xsl:param name=&quot;select_id_cliente&quot;/>&#xa;    &lt;xsl:template name=&quot;CallProcess-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns3:clienteGet>&#xa;            &lt;tns3:id>&#xa;                &lt;xsl:value-of select=&quot;xsd:int($get.parameters/tns1:id_cliente1)&quot;/>&#xa;            &lt;/tns3:id>&#xa;            &lt;tns3:nom>&#xa;                &lt;xsl:value-of select=&quot;$select_id_cliente/Record[1]/nome&quot;/>&#xa;            &lt;/tns3:nom>&#xa;            &lt;tns3:mail>&#xa;                &lt;xsl:value-of select=&quot;$select_id_cliente/Record[1]/mail&quot;/>&#xa;            &lt;/tns3:mail>&#xa;            &lt;tns3:telefono>&#xa;                &lt;xsl:value-of select=&quot;$select_id_cliente/Record[1]/telefono&quot;/>&#xa;            &lt;/tns3:telefono>&#xa;            &lt;tns3:indirizzo>&#xa;                &lt;xsl:value-of select=&quot;$select_id_cliente/Record[1]/indirizzo&quot;/>&#xa;            &lt;/tns3:indirizzo>&#xa;            &lt;tns3:città_arrivo>&#xa;                &lt;xsl:value-of select=&quot;$select_id_cliente/Record[1]/citta&quot;/>&#xa;            &lt;/tns3:città_arrivo>&#xa;        &lt;/tns3:clienteGet>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    </tibex:inputBindings>
+                                    <tibex:CallProcess
+                                    subProcessName="scarpefrl.trascrizione_response" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"/>
+                                </tibex:extActivity>
+                            </bpws:extensionActivity>
                         </bpws:flow>
                     </bpws:scope>
                 </bpws:onMessage>
