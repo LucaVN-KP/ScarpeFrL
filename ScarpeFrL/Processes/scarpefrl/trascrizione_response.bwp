@@ -988,7 +988,7 @@
                                     <type href="http://ns.tibco.com/bw/palette/file#//WriteFile"/>
                                     <value compressFile="None"
                                     encoding="text"
-                                    fileName="C:\Users\LucaValerioNepote\Desktop\Response_GETclienti.txt" xsi:type="file:WriteFile"/>
+                                    fileName="C:\Users\FrancescaMacchiagode\Desktop\Response_GETclienti.txt" xsi:type="file:WriteFile"/>
                                 </properties>
                             </activityConfig>
                         </bwext:BWActivity>
