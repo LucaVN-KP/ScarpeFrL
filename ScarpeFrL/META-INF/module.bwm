@@ -72,7 +72,7 @@
   <sca:property xmi:id="_o23LoJojEfCWAJKe-jrClQ" name="BW.MODULE.VERSION" type="XMLSchema:string" scalable="true"/>
   <sca:property xmi:id="_o3AVkJojEfCWAJKe-jrClQ" name="BW.MODULE.NAME" type="XMLSchema:string" scalable="true"/>
   <sca:component xmi:id="_lsZawJojEfCWAJKe-jrClQ" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
-    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_lsb3AJojEfCWAJKe-jrClQ" processName="scarpefrl.Process"/>
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_lsb3AJojEfCWAJKe-jrClQ" processName="scarpefrl.Sottoscrizione"/>
   </sca:component>
   <sca:component xmi:id="_7sBjEJ9uEfCwU9nfzQpQgg" name="Componentspedizioni" compositeext:version="1.0.0.qualifier">
     <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_7sBjEZ9uEfCwU9nfzQpQgg" processName="scarpefrl.spedizioniWithUri"/>

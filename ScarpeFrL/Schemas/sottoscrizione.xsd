@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/sottoscrizione" xmlns:tns="http://www.example.org/sottoscrizione" elementFormDefault="qualified">
+
+<element name="preventivo" type="tns:preventivoType"/>
+ <element name="request_ordiniKP" type="tns:request_ordiniKPType"/>
+
+  <complexType name="preventivoType">
+    <sequence>
+      <element name="id_ordine" type="int"/>
+      <element name="id_preventivo" type="string"/>
+      <element maxOccurs="unbounded" name="opzioni">
+        <complexType>
+          <sequence>
+            <element name="id_opzione" type="string"/>
+            <element name="modalità" type="string"/>
+            <element name="prezzo" type="string"/>
+            <element name="data_consegna" type="dateTime"/>
+            <element name="durata_Ore" type="string"/>
+          </sequence>
+        </complexType>
+      </element>
+    </sequence>
+  </complexType>
+ 
+
+  <complexType name="request_ordiniKPType">
+    <sequence>
+      <element name="idPreventivo" type="string"/>
+      <element name="opzioneId" type="string"/>
+      <element name="idCliente" type="string"/>
+    </sequence>
+  </complexType>
+
+
+
+
+</schema>
