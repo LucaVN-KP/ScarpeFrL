@@ -83,14 +83,13 @@
 			<useLookupValue>false</useLookupValue>
 		</globalVariable>
 		<globalVariable>
-			<name>//ScarpeFrL//FilepathProperty</name>
-			<value>&quot;pippo&quot;</value>
+			<name>//ScarpeFrL//FileOrdiniProperty</name>
+			<value></value>
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>String</type>
-			<isOverride>true</isOverride>
+			<isOverride>false</isOverride>
 			<useLookupValue>false</useLookupValue>
-			<lookupValue>&quot;pippo&quot;</lookupValue>
 		</globalVariable>
 	</globalVariables>
 </repository>

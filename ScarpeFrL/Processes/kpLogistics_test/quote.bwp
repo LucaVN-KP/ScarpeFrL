@@ -704,7 +704,8 @@
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://xmlns.example.com/quote/parameters"/>
     <bpws:partnerLinks>
         <bpws:partnerLink myRole="use" name="quote"
-            partnerLinkType="ns:partnerLinkType" sca-bpel:ignore="false" sca-bpel:service="quote"/>
+            partnerLinkType="ns:partnerLinkType" sca-bpel:ignore="false"
+            sca-bpel:service="quote" tibex:register="false"/>
     </bpws:partnerLinks>
     <bpws:variables>
         <bpws:variable element="ns0:ProcessContext"

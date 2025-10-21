@@ -34,10 +34,6 @@
             "type": "generated"
         },
         {
-            "location": "Service Descriptors/scarpefrl.quote-quote.json",
-            "type": "generated"
-        },
-        {
             "location": "Service Descriptors/kpLogistics_test.quote-quote.json",
             "type": "generated"
         }
