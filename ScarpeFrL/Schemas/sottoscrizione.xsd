@@ -2,7 +2,7 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/sottoscrizione" xmlns:tns="http://www.example.org/sottoscrizione" elementFormDefault="qualified">
 
 <element name="preventivo" type="tns:preventivoType"/>
- <element name="request_ordiniKP" type="tns:request_ordiniKPType"/>
+<element name="request_ordiniKP" type="tns:request_ordiniKPType"/>
 
   <complexType name="preventivoType">
     <sequence>
@@ -13,7 +13,7 @@
           <sequence>
             <element name="id_opzione" type="string"/>
             <element name="modalità" type="string"/>
-            <element name="prezzo" type="string"/>
+            <element name="prezzo" type="int"/>
             <element name="data_consegna" type="dateTime"/>
             <element name="durata_Ore" type="string"/>
           </sequence>
@@ -30,8 +30,6 @@
       <element name="idCliente" type="string"/>
     </sequence>
   </complexType>
-
-
 
 
 </schema>
