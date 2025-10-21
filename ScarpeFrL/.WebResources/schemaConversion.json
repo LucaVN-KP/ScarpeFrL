@@ -8,5 +8,10 @@
         "jsonSchemaLocation": "/ScarpeFrL/Service Descriptors/scarpefrl.clienti-clienti.json",
         "conversionType": "linked",
         "xsdSchemaTargetNamespace": "http://www.example.org/Clienti"
+    },
+    {
+        "jsonSchemaLocation": "/ScarpeFrL/Service Descriptors/kpLogistics_test.quote-quote.json",
+        "conversionType": "linked",
+        "xsdSchemaTargetNamespace": "http://www.example.org/sottoscrizione"
     }
 ]}
