@@ -82,5 +82,15 @@
 			<isOverride>false</isOverride>
 			<useLookupValue>false</useLookupValue>
 		</globalVariable>
+		<globalVariable>
+			<name>//ScarpeFrL//FilepathProperty</name>
+			<value>&quot;ciao&quot;</value>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<isOverride>true</isOverride>
+			<useLookupValue>false</useLookupValue>
+			<lookupValue>&quot;ciao&quot;</lookupValue>
+		</globalVariable>
 	</globalVariables>
 </repository>

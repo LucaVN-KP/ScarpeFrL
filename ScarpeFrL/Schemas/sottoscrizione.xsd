@@ -13,7 +13,7 @@
           <sequence>
             <element name="id_opzione" type="string"/>
             <element name="modalità" type="string"/>
-            <element name="prezzo" type="string"/>
+            <element name="prezzo" type="int"/>
             <element name="data_consegna" type="dateTime"/>
             <element name="durata_Ore" type="string"/>
           </sequence>
