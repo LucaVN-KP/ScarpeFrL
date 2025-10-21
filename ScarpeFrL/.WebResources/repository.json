@@ -28,6 +28,10 @@
         {
             "location": "Service Descriptors/scarpefrl.clienti-clienti.json",
             "type": "generated"
+        },
+        {
+            "location": "Service Descriptors/scarpefrl.ordini-ordini.json",
+            "type": "generated"
         }
     ]
 }

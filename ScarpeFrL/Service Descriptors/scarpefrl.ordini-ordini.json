@@ -1,0 +1,78 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "ordini",
+    "description" : "ordini service"
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/ordini" : {
+      "post" : {
+        "summary" : "postOrdini",
+        "description" : "postOrdini",
+        "operationId" : "post-ordini",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "description" : "",
+          "schema" : {
+            "$ref" : "#/definitions/ordine"
+          },
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a string to be returned",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "ordine" : {
+      "type" : "object",
+      "required" : [ "stato_ord", "id_cliente", "qta_ord", "id_ord", "id_prod", "data_ordine", "data_voluta", "data_massima" ],
+      "properties" : {
+        "id_ord" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "id_cliente" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "id_prod" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "qta_ord" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "data_ordine" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "data_voluta" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "data_massima" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "stato_ord" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}
