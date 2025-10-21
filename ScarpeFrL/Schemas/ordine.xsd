@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/ordine" xmlns:tns="http://www.example.org/ordine" elementFormDefault="qualified">
+
+<element name="ordine" type="tns:ordine_Type"/>
+
+  <complexType name="ordine_Type">
+    <sequence>
+      <element name="id_ord" type="int"/>
+      <element name="id_cliente" type="int"/>
+      <element name="id_prod" type="int"/>
+      <element name="qta_ord" type="int"/>
+      <element name="data_ordine" type="dateTime"/>
+      <element name="data_voluta" type="dateTime"/>
+      <element name="data_massima" type="dateTime"/>
+      <element name="stato_ord" type="string"/>
+    </sequence>
+  </complexType>
+
+
+</schema>

@@ -62,6 +62,39 @@
     </scaext:binding>
     <scact:bindingAdjunct xmi:id="_Jqp1lKRbEfC-bJztfXtEUg" bindingName="RestService2"/>
   </sca:service>
+  <sca:service xmi:id="_411oMq5YEfCwuYEP_or6Vw" name="ordini" promote="Componentordini/ordini">
+    <sca:interface.wsdl xmi:id="_42JxQK5YEfCwuYEP_or6Vw" interface="http://xmlns.example.com/20251021103524PLT#wsdl.interface(ordini)" scaext:wsdlLocation="../Processes/scarpefrl/ordini.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_42YawK5YEfCwuYEP_or6Vw" name="RestService3" path="/ordini" docBasePath="http://localhost:7777/ScarpeFrL" docResourcePath="ordini" basePath="/" connector="spedizioni" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/scarpefrl.ordini-ordini.json">
+      <operation xmi:id="_42cFIK5YEfCwuYEP_or6Vw" operationName="post" nickname="post-ordini" httpMethod="POST" notes="postOrdini" responseStyle="element" outputPartName="item">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_424xEK5YEfCwuYEP_or6Vw"/>
+      <advancedConfig xmi:id="_42Yawa5YEfCwuYEP_or6Vw" blockingQueueSize="8192"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_42cFIa5YEfCwuYEP_or6Vw" bindingName="RestService3"/>
+  </sca:service>
+  <sca:service xmi:id="_fYYb9K6QEfCwuYEP_or6Vw" name="quote" promote="Componentquote/quote">
+    <sca:interface.wsdl xmi:id="_fYZDAq6QEfCwuYEP_or6Vw" interface="http://xmlns.example.com/20251021171325PLT#wsdl.interface(quote)" scaext:wsdlLocation="../Processes/kpLogistics_test/quote.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_fYZDA66QEfCwuYEP_or6Vw" name="RestService4" path="/quote" docBasePath="http://localhost:7777/ScarpeFrL" docResourcePath="quote" basePath="/" connector="spedizioni" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/kpLogistics_test.quote-quote.json">
+      <operation xmi:id="_fYZqEK6QEfCwuYEP_or6Vw" operationName="get" nickname="get-quote" httpMethod="GET" notes="getQuote" responseStyle="element" outputPartName="item">
+        <parameters xmi:id="_6hDSYK6QEfCwuYEP_or6Vw">
+          <parameterMapping xmi:id="_6hDSYa6QEfCwuYEP_or6Vw" parameterName="id_ordine" parameterType="Query" dataType="string" required="true" description=""/>
+          <parameterMapping xmi:id="_73CN4K6QEfCwuYEP_or6Vw" parameterName="peso" parameterType="Query" dataType="string" required="true" description=""/>
+          <parameterMapping xmi:id="_82SEYK6QEfCwuYEP_or6Vw" parameterName="origine" parameterType="Query" dataType="string" required="true" description=""/>
+          <parameterMapping xmi:id="_95vFcK6QEfCwuYEP_or6Vw" parameterName="destinazione" parameterType="Query" dataType="string" required="true" description=""/>
+          <parameterMapping xmi:id="__BGWIK6QEfCwuYEP_or6Vw" parameterName="data_ordine" parameterType="Query" dataType="string" required="true" description=""/>
+          <parameterMapping xmi:id="_AMUMEK6REfCwuYEP_or6Vw" parameterName="data_voluta" parameterType="Query" dataType="string" required="true" description=""/>
+          <parameterMapping xmi:id="_BWfgMK6REfCwuYEP_or6Vw" parameterName="data_massima" parameterType="Query" dataType="string" required="true" description=""/>
+        </parameters>
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_fZRMwK6QEfCwuYEP_or6Vw"/>
+      <advancedConfig xmi:id="_fYZDBK6QEfCwuYEP_or6Vw" blockingQueueSize="8192"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_fYZqEa6QEfCwuYEP_or6Vw" bindingName="RestService4"/>
+  </sca:service>
   <sca:property xmi:id="_o1vKQJojEfCWAJKe-jrClQ" name="BW.DEPLOYMENTUNIT.TYPE" type="XMLSchema:string" scalable="true"/>
   <sca:property xmi:id="_o2IL0JojEfCWAJKe-jrClQ" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
   <sca:property xmi:id="_o2QHoJojEfCWAJKe-jrClQ" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
@@ -91,6 +124,18 @@
     <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_JpyS4aRbEfC-bJztfXtEUg" processName="scarpefrl.clienti"/>
     <sca:service xmi:id="_JqF04KRbEfC-bJztfXtEUg" name="clienti">
       <sca:interface.wsdl xmi:id="_JqF04aRbEfC-bJztfXtEUg" interface="http://xmlns.example.com/20251008172624PLT#wsdl.interface(clienti)" scaext:wsdlLocation="../Processes/scarpefrl/clienti.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_41r3MK5YEfCwuYEP_or6Vw" name="Componentordini" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_41r3Ma5YEfCwuYEP_or6Vw" processName="scarpefrl.ordini"/>
+    <sca:service xmi:id="_411oMK5YEfCwuYEP_or6Vw" name="ordini">
+      <sca:interface.wsdl xmi:id="_411oMa5YEfCwuYEP_or6Vw" interface="http://xmlns.example.com/20251021103524PLT#wsdl.interface(ordini)" scaext:wsdlLocation="../Processes/scarpefrl/ordini.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_fYYb8K6QEfCwuYEP_or6Vw" name="Componentquote" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_fYYb8a6QEfCwuYEP_or6Vw" processName="kpLogistics_test.quote"/>
+    <sca:service xmi:id="_fYYb8q6QEfCwuYEP_or6Vw" name="quote">
+      <sca:interface.wsdl xmi:id="_fYYb866QEfCwuYEP_or6Vw" interface="http://xmlns.example.com/20251021171325PLT#wsdl.interface(quote)" scaext:wsdlLocation="../Processes/kpLogistics_test/quote.bwp"/>
     </sca:service>
   </sca:component>
 </sca:composite>

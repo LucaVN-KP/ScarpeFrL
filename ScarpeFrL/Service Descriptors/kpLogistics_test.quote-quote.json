@@ -1,0 +1,118 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0",
+    "title" : "quote",
+    "description" : "quote service"
+  },
+  "host" : "localhost:8080",
+  "basePath" : "/",
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/quote" : {
+      "get" : {
+        "summary" : "getQuote",
+        "description" : "getQuote",
+        "operationId" : "get-quote",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id_ordine",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "peso",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "data_ordine",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "origine",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "destinazione",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "data_voluta",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        }, {
+          "name" : "data_massima",
+          "in" : "query",
+          "description" : "",
+          "type" : "string",
+          "required" : true
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "a preventivo to be returned",
+            "schema" : {
+              "$ref" : "#/definitions/preventivo"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "opzioni" : {
+      "type" : "object",
+      "required" : [ "data_consegna", "id_opzione", "prezzo", "modalità", "durata_Ore" ],
+      "properties" : {
+        "id_opzione" : {
+          "type" : "string"
+        },
+        "modalità" : {
+          "type" : "string"
+        },
+        "prezzo" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "data_consegna" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "durata_Ore" : {
+          "type" : "string"
+        }
+      }
+    },
+    "preventivo" : {
+      "type" : "object",
+      "required" : [ "id_preventivo", "opzioni", "id_ordine" ],
+      "properties" : {
+        "id_ordine" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "id_preventivo" : {
+          "type" : "string"
+        },
+        "opzioni" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/opzioni",
+            "uniqueItems" : false
+          }
+        }
+      }
+    }
+  }
+}
