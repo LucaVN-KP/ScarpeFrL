@@ -2386,8 +2386,7 @@
                                     <type href="http://ns.tibco.com/bw/palette/file#//WriteFile"/>
                                     <value
                                     compressFile="None"
-                                    encoding="text"
-                                    fileName="C:\Users\FrancescaMacchiagode\Desktop\Response_POSTsped.txt" xsi:type="file:WriteFile"/>
+                                    encoding="text" xsi:type="file:WriteFile"/>
                                     </properties>
                                     </activityConfig>
                                     </bwext:BWActivity>
