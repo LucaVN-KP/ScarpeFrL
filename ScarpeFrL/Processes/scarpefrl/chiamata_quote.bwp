@@ -15,7 +15,10 @@
     xmlns:ns15="http://www.tibco.com/namespaces/tnt/plugins/restinvoke+30ad3b05-3481-469f-a1db-139007cfa161+RestInvokeInput"
     xmlns:ns16="http://www.tibco.com/namespaces/tnt/plugins/restinvoke+30ad3b05-3481-469f-a1db-139007cfa161+RestInvokeOutput"
     xmlns:ns17="http://tns.tibco.com/bw/palette/internal/activityerror+bw.restjson.Rest"
+    xmlns:ns18="http://xmlns.example.com/20251020123448PLT"
+    xmlns:ns19="activity.jsonParser.input+7fc47bf0-b146-4525-847c-da6ee9bb1b60+ActivityInputType"
     xmlns:ns2="http://tns.tibco.com/bw/palette/internal/activityerror+bw.parse.parsedata"
+    xmlns:ns20="http://tns.tibco.com/bw/palette/internal/activityerror+bw.restjson.JsonParser"
     xmlns:ns3="http://www.tibco.com/namespaces/tnt/plugins/file/v2"
     xmlns:ns4="http://www.tibco.com/namespaces/tnt/plugins/file"
     xmlns:ns5="http://tns.tibco.com/bw/palette/internal/activityerror+bw.file.read"
@@ -28,6 +31,11 @@
     xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
     xmlns:tibprop="http://ns.tibco.com/bw/property" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <tibex:VariableDescriptor type="MemorySaving">
+        <task name="End">
+            <endingVariables>
+                <variable>ParseJSON</variable>
+            </endingVariables>
+        </task>
         <task name="ReadFile_ordini">
             <endingVariables>
                 <variable>ReadFile_ordini-input</variable>
@@ -45,11 +53,16 @@
                 <variable>ParseData</variable>
             </endingVariables>
         </task>
-        <task name="InvokeRESTAPI">
+        <task name="invoke_quote">
             <endingVariables>
-                <variable>InvokeRESTAPI-input</variable>
-                <variable>InvokeRESTAPI</variable>
+                <variable>invoke_quote-input</variable>
                 <variable>select_dati_richiesta</variable>
+            </endingVariables>
+        </task>
+        <task name="ParseJSON">
+            <endingVariables>
+                <variable>ParseJSON-input</variable>
+                <variable>invoke_quote</variable>
             </endingVariables>
         </task>
     </tibex:VariableDescriptor>
@@ -838,6 +851,9 @@
                         name="MessageBody" type="tns:MessageBodyType"/>
                     <xsd:element maxOccurs="1" minOccurs="0"
                         name="HttpHeaders" type="tns:httpTransportHeaders"/>
+                    <xsd:element maxOccurs="1" minOccurs="0"
+                        name="DynamicConfigurations" type="tns:dynamicConfigurationsType"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" ref="tns:QueryParameters"/>
                 </xsd:sequence>
             </xsd:complexType>
             <xsd:element name="RestActivityInput" type="tns:RestInvokeInputType"/>
@@ -896,6 +912,33 @@
                         name="Header" type="tns:dynamicHeadersTypeDetails"/>
                 </xsd:sequence>
             </xsd:complexType>
+            <xsd:element name="dynamicConfigurations" type="tns:dynamicConfigurationsType"/>
+            <xsd:complexType name="dynamicConfigurationsType">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="1" minOccurs="0"
+                        name="activityTimeout" type="xsd:integer"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="QueryParameters">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element maxOccurs="1" minOccurs="0"
+                            name="id_ordine" type="xsd:string"/>
+                        <xsd:element maxOccurs="1" minOccurs="0"
+                            name="peso" type="xsd:string"/>
+                        <xsd:element maxOccurs="1" minOccurs="0"
+                            name="origine" type="xsd:string"/>
+                        <xsd:element maxOccurs="1" minOccurs="0"
+                            name="destinazione" type="xsd:string"/>
+                        <xsd:element maxOccurs="1" minOccurs="0"
+                            name="data_ordine" type="xsd:string"/>
+                        <xsd:element maxOccurs="1" minOccurs="0"
+                            name="data_voluta" type="xsd:string"/>
+                        <xsd:element maxOccurs="1" minOccurs="0"
+                            name="data_massima" type="xsd:string"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
         </xsd:schema>
         <xsd:schema
             targetNamespace="http://www.tibco.com/namespaces/tnt/plugins/restinvoke+30ad3b05-3481-469f-a1db-139007cfa161+RestInvokeOutput"
@@ -1065,6 +1108,119 @@
                 </choice>
             </complexType>
         </schema>
+        <schema elementFormDefault="unqualified"
+            targetNamespace="activity.jsonParser.input+7fc47bf0-b146-4525-847c-da6ee9bb1b60+ActivityInputType"
+            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="activity.jsonParser.input+7fc47bf0-b146-4525-847c-da6ee9bb1b60+ActivityInputType">
+            <complexType name="ActivityInputClassType">
+                <sequence>
+                    <element maxOccurs="1" minOccurs="1"
+                        name="jsonString" type="string"/>
+                </sequence>
+            </complexType>
+            <element name="ActivityInputClass" type="tns:ActivityInputClassType"/>
+        </schema>
+        <schema elementFormDefault="unqualified"
+            targetNamespace="http://schemas.tibco.com/bw/plugins/xml/5.0/JSONActivitiesExceptions"
+            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.tibco.com/bw/plugins/xml/5.0/JSONActivitiesExceptions">
+            <element name="JSONActivityException" type="tns:JSONActivityException"/>
+            <complexType name="JSONActivityException">
+                <sequence>
+                    <element name="msg" type="string"/>
+                    <element minOccurs="0" name="msgCode" type="string"/>
+                </sequence>
+            </complexType>
+            <element name="UnsupportedEncodingException" type="tns:UnsupportedEncodingExceptionType"/>
+            <complexType name="UnsupportedEncodingExceptionType">
+                <complexContent>
+                    <extension base="tns:JSONActivityException">
+                        <sequence>
+                            <element name="encoding" type="string"/>
+                        </sequence>
+                    </extension>
+                </complexContent>
+            </complexType>
+            <complexType name="JSONParserExceptionType">
+                <complexContent>
+                    <extension base="tns:JSONActivityException"/>
+                </complexContent>
+            </complexType>
+            <element name="JSONParserException" type="tns:JSONParserExceptionType"/>
+            <complexType name="JSONTransformExceptionType">
+                <complexContent>
+                    <extension base="tns:JSONActivityException"/>
+                </complexContent>
+            </complexType>
+            <element name="JSONTransformException" type="tns:JSONTransformExceptionType"/>
+            <complexType name="JSONRenderExceptionType">
+                <complexContent>
+                    <extension base="tns:JSONActivityException"/>
+                </complexContent>
+            </complexType>
+            <element name="JSONRenderException" type="tns:JSONRenderExceptionType"/>
+            <complexType name="JSONRestExceptionType">
+                <complexContent>
+                    <extension base="tns:JSONActivityException"/>
+                </complexContent>
+            </complexType>
+            <element name="JSONRestException" type="tns:JSONRestExceptionType"/>
+            <complexType name="ValidationExceptionType">
+                <complexContent>
+                    <extension base="tns:JSONActivityException"/>
+                </complexContent>
+            </complexType>
+            <element name="ValidationException" type="tns:ValidationExceptionType"/>
+        </schema>
+        <schema elementFormDefault="unqualified"
+            targetNamespace="http://tns.tibco.com/bw/palette/internal/activityerror+bw.restjson.JsonParser"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:Q1="http://schemas.tibco.com/bw/plugins/xml/5.0/JSONActivitiesExceptions" xmlns:tns="http://tns.tibco.com/bw/palette/internal/activityerror+bw.restjson.JsonParser">
+            <import namespace="http://schemas.tibco.com/bw/plugins/xml/5.0/JSONActivitiesExceptions"/>
+            <element name="ActivityErrorData" type="tns:ActivityErrorDataType"/>
+            <complexType name="ActivityErrorDataType">
+                <choice>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:JSONParserException"/>
+                </choice>
+            </complexType>
+        </schema>
+        <wsdl:definitions
+            targetNamespace="http://xmlns.example.com/20251020123448PLT"
+            xmlns:extns="http://tns.tibco.com/bw/REST"
+            xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+            xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
+            xmlns:tns="http://xmlns.example.com/20251020123448PLT"
+            xmlns:vprop="http://docs.oasis-open.org/wsbpel/2.0/varprop"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <wsdl:import namespace="http://tns.tibco.com/bw/REST"/>
+            <wsdl:message name="getRequest">
+                <wsdl:part element="extns:httpHeaders"
+                    name="httpHeaders" tibex:source="bw.rest"/>
+                <wsdl:part element="extns:dynamicConfigurations"
+                    name="dynamicConfigurations" tibex:source="bw.rest"/>
+            </wsdl:message>
+            <wsdl:message name="getResponse">
+                <wsdl:part name="item"
+                    tibex:hasMultipleNamespaces="false" type="xsd:string"/>
+            </wsdl:message>
+            <wsdl:message name="get4XXFaultMessage">
+                <wsdl:part element="extns:client4XXError" name="clientError"/>
+            </wsdl:message>
+            <wsdl:message name="get5XXFaultMessage">
+                <wsdl:part element="extns:server5XXError" name="serverError"/>
+            </wsdl:message>
+            <wsdl:portType name="quote" tibex:bw.rest.apipath="/quote"
+                tibex:bw.rest.basepath="/"
+                tibex:bw.rest.host="localhost:8081"
+                tibex:bw.rest.resource.source="generated" tibex:source="bw.rest.reference">
+                <wsdl:documentation>summary documentation</wsdl:documentation>
+                <wsdl:operation name="get">
+                    <wsdl:documentation>getQuote</wsdl:documentation>
+                    <wsdl:input message="tns:getRequest" name="getInput"/>
+                    <wsdl:output message="tns:getResponse" name="getOutput"/>
+                    <wsdl:fault message="tns:get4XXFaultMessage" name="clientFault"/>
+                    <wsdl:fault message="tns:get5XXFaultMessage" name="serverFault"/>
+                </wsdl:operation>
+            </wsdl:portType>
+        </wsdl:definitions>
     </tibex:Types>
     <tibex:ProcessInfo callable="true" createdBy="FrancescaMacchiagode"
         createdOn="Mon Oct 20 12:34:48 CEST 2025" description=""
@@ -1160,7 +1316,7 @@
                                     gradientEndColor="50431"
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.1"/>
-                                    <layoutConstraint x="514"
+                                    <layoutConstraint x="559"
                                     xsi:type="notation:Bounds" y="75"/>
                                     </children>
                                     <children type="4002 bw.file.read">
@@ -1311,6 +1467,43 @@
                                     x="382"
                                     xsi:type="notation:Bounds" y="66"/>
                                     </children>
+                                    <children type="4002 bw.restjson.JsonParser">
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.6"/>
+                                    <layoutConstraint
+                                    height="40" width="40"
+                                    x="471"
+                                    xsi:type="notation:Bounds" y="66"/>
+                                    </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
                                     <styles xsi:type="notation:FilteringStyle"/>
@@ -1324,7 +1517,7 @@
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity"/>
                                     <layoutConstraint height="384"
-                                    width="647" xsi:type="notation:Bounds"/>
+                                    width="692" xsi:type="notation:Bounds"/>
                                 </children>
                                 <styles xsi:type="notation:SortingStyle"/>
                                 <styles xsi:type="notation:FilteringStyle"/>
@@ -1333,7 +1526,7 @@
                             <styles xsi:type="bwnotation:BackgroundStyle"/>
                             <styles xsi:type="bwnotation:ResizingStyle"/>
                             <element href="//0/@process/@activity"/>
-                            <layoutConstraint height="384" width="650" xsi:type="notation:Bounds"/>
+                            <layoutConstraint height="384" width="695" xsi:type="notation:Bounds"/>
                         </children>
                         <styles xsi:type="notation:SortingStyle"/>
                         <styles xsi:type="notation:FilteringStyle"/>
@@ -1343,7 +1536,7 @@
                     <styles xsi:type="bwnotation:BackgroundStyle"/>
                     <styles xsi:type="bwnotation:ResizingStyle"/>
                     <element href="//0/@process/@activity"/>
-                    <layoutConstraint height="408" width="650" x="1"
+                    <layoutConstraint height="408" width="695" x="1"
                         xsi:type="notation:Bounds" y="1"/>
                 </children>
                 <styles xsi:type="notation:SortingStyle"/>
@@ -1352,7 +1545,7 @@
             </children>
             <styles fontName="Segoe UI" lineColor="0" xsi:type="notation:ShapeStyle"/>
             <element href="//0/@process"/>
-            <layoutConstraint height="460" width="992" xsi:type="notation:Bounds"/>
+            <layoutConstraint height="460" width="1037" xsi:type="notation:Bounds"/>
         </children>
         <styles xsi:type="notation:DiagramStyle"/>
         <element href="//0"/>
@@ -1402,13 +1595,24 @@
         </edges>
         <edges
             source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.5"
-            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1" type="4006">
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.6" type="4006">
             <children type="6002">
                 <layoutConstraint xsi:type="notation:Location" y="40"/>
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@activity/@links/@children.4"/>
+            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.6"
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.5"/>
             <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
@@ -1428,9 +1632,12 @@
             namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
         <tibex:namespaceItem
             namespace="http://www.tibco.com/namespaces/tnt/plugins/restinvoke+30ad3b05-3481-469f-a1db-139007cfa161+RestInvokeInput" prefix="tns5"/>
+        <tibex:namespaceItem
+            namespace="activity.jsonParser.input+7fc47bf0-b146-4525-847c-da6ee9bb1b60+ActivityInputType" prefix="tns6"/>
     </tibex:NamespaceRegistry>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/sottoscrizione"/>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/ordine"/>
+    <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://tns.tibco.com/bw/REST"/>
     <bpws:variables>
         <bpws:variable element="ns:ProcessContext"
             name="_processContext" sca-bpel:internal="true"/>
@@ -1477,15 +1684,20 @@
             </bpws:from>
         </bpws:variable>
         <bpws:variable element="ns15:RestActivityInput"
-            name="InvokeRESTAPI-input" sca-bpel:internal="true"/>
+            name="invoke_quote-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns16:RestActivityOutput"
-            name="InvokeRESTAPI" sca-bpel:internal="true"/>
+            name="invoke_quote" sca-bpel:internal="true"/>
         <bpws:variable element="ns17:ActivityErrorData"
-            name="_error_InvokeRESTAPI" sca-bpel:internal="true"/>
+            name="_error_invoke_quote" sca-bpel:internal="true"/>
         <bpws:variable name="FileOrdiniProperty"
             sca-bpel:hotUpdate="false" sca-bpel:privateProperty="true"
             sca-bpel:property="yes"
             tibex:propertySource="FileOrdiniProperty" type="xsd:string"/>
+        <bpws:variable element="ns19:ActivityInputClass"
+            name="ParseJSON-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns0:preventivo" name="ParseJSON" sca-bpel:internal="true"/>
+        <bpws:variable element="ns20:ActivityErrorData"
+            name="_error_ParseJSON" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -1503,6 +1715,7 @@
                 <bpws:link name="ParseDataToJDBCQuery" tibex:linkType="SUCCESS"/>
                 <bpws:link name="JDBCQueryToEnd" tibex:linkType="SUCCESS"/>
                 <bpws:link name="InvokeRESTAPIToEnd" tibex:linkType="SUCCESS"/>
+                <bpws:link name="ParseJSONToEnd" tibex:linkType="SUCCESS"/>
             </bpws:links>
             <bpws:extensionActivity>
                 <tibex:receiveEvent createInstance="yes"
@@ -1518,14 +1731,14 @@
             </bpws:extensionActivity>
             <bpws:extensionActivity>
                 <tibex:activityExtension inputVariable="End-input"
-                    name="End"
+                    name="End" tibex:copyOf="ParseJSON"
                     tibex:xpdlId="ddd3d338-89b2-4054-bc0c-8848c18edcdd" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:targets>
-                        <bpws:target linkName="InvokeRESTAPIToEnd"/>
+                        <bpws:target linkName="ParseJSONToEnd"/>
                     </bpws:targets>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/sottoscrizione&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;End-input&quot; match=&quot;/&quot;>&lt;tns:preventivo>&lt;tns:id_ordine>&lt;xsl:value-of select=&quot;1&quot;/>&lt;/tns:id_ordine>&lt;tns:id_preventivo>&lt;xsl:value-of select=&quot;1234&quot;/>&lt;/tns:id_preventivo>&lt;tns:opzioni>&lt;tns:id_opzione>&lt;xsl:value-of select=&quot;&amp;quot;&amp;quot;&quot;/>&lt;/tns:id_opzione>&lt;tns:modalità>&lt;xsl:value-of select=&quot;&amp;quot;&amp;quot;&quot;/>&lt;/tns:modalità>&lt;tns:prezzo>&lt;xsl:value-of select=&quot;5&quot;/>&lt;/tns:prezzo>&lt;tns:data_consegna>&lt;xsl:value-of select=&quot;current-dateTime()&quot;/>&lt;/tns:data_consegna>&lt;tns:durata_Ore>&lt;xsl:value-of select=&quot;&amp;quot;&amp;quot;&quot;/>&lt;/tns:durata_Ore>&lt;/tns:opzioni>&lt;/tns:preventivo>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/sottoscrizione&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;ParseJSON&quot;/>&lt;xsl:template name=&quot;End-input&quot; match=&quot;/&quot;>&lt;xsl:copy-of select=&quot;$ParseJSON&quot;/>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
                         <bwext:BWActivity
@@ -1557,7 +1770,7 @@
                     </bpws:sources>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns6=&quot;http://www.tibco.com/namespaces/tnt/plugins/file/v2&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:template name=&quot;ReadFile-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns6:ReadActivityInputClass/>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns7=&quot;http://www.tibco.com/namespaces/tnt/plugins/file/v2&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:template name=&quot;ReadFile-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns7:ReadActivityInputClass/>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
                         <bwext:BWActivity activityTypeID="bw.file.read"
@@ -1679,8 +1892,8 @@
             <bpws:extensionActivity>
                 <tibex:activityExtension
                     governedObjectTypes="BWHttpReference"
-                    inputVariable="InvokeRESTAPI-input"
-                    name="InvokeRESTAPI" outputVariable="InvokeRESTAPI"
+                    inputVariable="invoke_quote-input"
+                    name="invoke_quote" outputVariable="invoke_quote"
                     tibex:xpdlId="30ad3b05-3481-469f-a1db-139007cfa161" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:targets>
                         <bpws:target linkName="JDBCQueryToEnd"/>
@@ -1690,7 +1903,7 @@
                     </bpws:sources>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns5=&quot;http://www.tibco.com/namespaces/tnt/plugins/restinvoke+30ad3b05-3481-469f-a1db-139007cfa161+RestInvokeInput&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;select_dati_richiesta&quot;/>&lt;xsl:template name=&quot;InvokeRESTAPI-input&quot; match=&quot;/&quot;>&lt;tns5:RestActivityInput>&lt;HttpHeaders>&lt;DynamicHeaders>&lt;Header>&lt;Name>&lt;xsl:value-of select=&quot;'id_ord'&quot;/>&lt;/Name>&lt;Value>&lt;xsl:value-of select=&quot;$select_dati_richiesta/Record[1]/id_ord&quot;/>&lt;/Value>&lt;/Header>&lt;Header>&lt;Name>&lt;xsl:value-of select=&quot;'id_ord'&quot;/>&lt;/Name>&lt;Value>&lt;xsl:value-of select=&quot;$select_dati_richiesta/Record[1]/id_ord&quot;/>&lt;/Value>&lt;/Header>&lt;Header>&lt;Name>&lt;xsl:value-of select=&quot;'partenza'&quot;/>&lt;/Name>&lt;Value>&lt;xsl:value-of select=&quot;$select_dati_richiesta/Record[1]/partenza&quot;/>&lt;/Value>&lt;/Header>&lt;Header>&lt;Name>&lt;xsl:value-of select=&quot;'destinazione'&quot;/>&lt;/Name>&lt;Value>&lt;xsl:value-of select=&quot;$select_dati_richiesta/Record[1]/destinazione&quot;/>&lt;/Value>&lt;/Header>&lt;Header>&lt;Name>&lt;xsl:value-of select=&quot;'data_ord'&quot;/>&lt;/Name>&lt;Value>&lt;xsl:value-of select=&quot;$select_dati_richiesta/Record[1]/data_ord&quot;/>&lt;/Value>&lt;/Header>&lt;Header>&lt;Name>&lt;xsl:value-of select=&quot;'data_vol'&quot;/>&lt;/Name>&lt;Value>&lt;xsl:value-of select=&quot;$select_dati_richiesta/Record[1]/data_vol&quot;/>&lt;/Value>&lt;/Header>&lt;Header>&lt;Name>&lt;xsl:value-of select=&quot;'data_max'&quot;/>&lt;/Name>&lt;Value>&lt;xsl:value-of select=&quot;$select_dati_richiesta/Record[1]/data_max&quot;/>&lt;/Value>&lt;/Header>&lt;/DynamicHeaders>&lt;/HttpHeaders>&lt;/tns5:RestActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns5=&quot;http://www.tibco.com/namespaces/tnt/plugins/restinvoke+30ad3b05-3481-469f-a1db-139007cfa161+RestInvokeInput&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;select_dati_richiesta&quot;/>&lt;xsl:template name=&quot;InvokeRESTAPI-input&quot; match=&quot;/&quot;>&lt;tns5:RestActivityInput>&lt;HttpHeaders/>&lt;tns5:QueryParameters>&lt;xsl:if test=&quot;$select_dati_richiesta/Record[1]/id_ord&quot;>&lt;id_ordine>&lt;xsl:value-of select=&quot;$select_dati_richiesta/Record[1]/id_ord&quot;/>&lt;/id_ordine>&lt;/xsl:if>&lt;xsl:if test=&quot;$select_dati_richiesta/Record[1]/peso_tot&quot;>&lt;peso>&lt;xsl:value-of select=&quot;$select_dati_richiesta/Record[1]/peso_tot&quot;/>&lt;/peso>&lt;/xsl:if>&lt;xsl:if test=&quot;$select_dati_richiesta/Record[1]/partenza&quot;>&lt;origine>&lt;xsl:value-of select=&quot;$select_dati_richiesta/Record[1]/partenza&quot;/>&lt;/origine>&lt;/xsl:if>&lt;xsl:if test=&quot;$select_dati_richiesta/Record[1]/destinazione&quot;>&lt;destinazione>&lt;xsl:value-of select=&quot;$select_dati_richiesta/Record[1]/destinazione&quot;/>&lt;/destinazione>&lt;/xsl:if>&lt;xsl:if test=&quot;$select_dati_richiesta/Record[1]/data_ord&quot;>&lt;data_ordine>&lt;xsl:value-of select=&quot;$select_dati_richiesta/Record[1]/data_ord&quot;/>&lt;/data_ordine>&lt;/xsl:if>&lt;xsl:if test=&quot;$select_dati_richiesta/Record[1]/data_vol&quot;>&lt;data_voluta>&lt;xsl:value-of select=&quot;$select_dati_richiesta/Record[1]/data_vol&quot;/>&lt;/data_voluta>&lt;/xsl:if>&lt;xsl:if test=&quot;$select_dati_richiesta/Record[1]/data_max&quot;>&lt;data_massima>&lt;xsl:value-of select=&quot;$select_dati_richiesta/Record[1]/data_max&quot;/>&lt;/data_massima>&lt;/xsl:if>&lt;/tns5:QueryParameters>&lt;/tns5:RestActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
                         <bwext:BWActivity
@@ -1704,8 +1917,41 @@
                                     <value
                                     httpClientSR="httpClientResource"
                                     requestContentType="Custom"
-                                    resourcePath="/quote"
+                                    resourcePath="/quote?id_ordine&amp;peso&amp;origine&amp;destinazione&amp;data_ordine&amp;data_voluta&amp;data_massima"
                                     responseAcceptType="JSON" xsi:type="restjson:RestInvokeActivity"/>
+                                </properties>
+                            </activityConfig>
+                        </bwext:BWActivity>
+                    </tibex:config>
+                </tibex:activityExtension>
+            </bpws:extensionActivity>
+            <bpws:extensionActivity>
+                <tibex:activityExtension inputVariable="ParseJSON-input"
+                    name="ParseJSON" outputVariable="ParseJSON"
+                    tibex:xpdlId="7fc47bf0-b146-4525-847c-da6ee9bb1b60" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                    <bpws:targets>
+                        <bpws:target linkName="InvokeRESTAPIToEnd"/>
+                    </bpws:targets>
+                    <bpws:sources>
+                        <bpws:source linkName="ParseJSONToEnd"/>
+                    </bpws:sources>
+                    <tibex:inputBindings>
+                        <tibex:inputBinding
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns6=&quot;activity.jsonParser.input+7fc47bf0-b146-4525-847c-da6ee9bb1b60+ActivityInputType&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;invoke_quote&quot;/>&#xa;    &lt;xsl:template name=&quot;ParseJSON-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns6:ActivityInputClass>&#xa;            &lt;jsonString>&#xa;                &lt;xsl:value-of select=&quot;$invoke_quote/MessageBody/asciiContent&quot;/>&#xa;            &lt;/jsonString>&#xa;        &lt;/tns6:ActivityInputClass>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                    </tibex:inputBindings>
+                    <tibex:config>
+                        <bwext:BWActivity
+                            activityTypeID="bw.restjson.JsonParser"
+                            xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                            xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                            xmlns:restjson="http://ns.tibco.com/bw/palette/restjson" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <activityConfig>
+                                <properties name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/restjson#//JsonParser"/>
+                                    <value jsonInputStyle="None"
+                                    schemaType="Xsd" xsi:type="restjson:JsonParser">
+                                    <outputEditorElement href="platform:/resource/ScarpeFrL/Schemas/sottoscrizione.xsd#//preventivo;XSDElementDeclaration"/>
+                                    </value>
                                 </properties>
                             </activityConfig>
                         </bwext:BWActivity>
