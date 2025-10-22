@@ -2204,6 +2204,10 @@
             name="WriteFile_error" sca-bpel:internal="true"/>
         <bpws:variable element="ns24:ActivityErrorData"
             name="_error_CWriteFile" sca-bpel:internal="true"/>
+        <bpws:variable element="ns24:ActivityErrorData"
+            name="_error_WriteFile" sca-bpel:internal="true"/>
+        <bpws:variable element="ns24:ActivityErrorData"
+            name="_error_WriteFile_error" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>

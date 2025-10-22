@@ -24,6 +24,7 @@
     xmlns:ns23="http://tns.tibco.com/bw/palette/internal/activityerror+7bdf9fef-964d-4b7e-a121-d273af788ca6"
     xmlns:ns24="http://www.tibco.com/namespaces/tnt/plugins/file"
     xmlns:ns25="http://tns.tibco.com/bw/palette/internal/activityerror+bw.file.write"
+    xmlns:ns26="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw"
     xmlns:ns3="http://www.tibco.com/namespaces/tnt/plugins/jdbc"
     xmlns:ns4="http://tns.tibco.com/bw/palette/internal/activityerror+bw.jdbc.update"
     xmlns:ns5="http://www.tibco.com/namespaces/tnt/plugins/jdbc+36e9864f-36e1-446b-84a0-72fc09214a39+input"
@@ -52,8 +53,8 @@
         </task>
         <task name="flow2">
             <endingVariables>
-                <variable>update_spedizione</variable>
                 <variable>patch</variable>
+                <variable>update_spedizione</variable>
             </endingVariables>
         </task>
         <task name="patchOut">
@@ -1022,6 +1023,18 @@
             </xs:complexType>
             <xs:element name="ActivityInput" type="tns:LogParametersType"/>
         </xs:schema>
+        <schema elementFormDefault="unqualified"
+            targetNamespace="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:Q1="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions" xmlns:tns="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw">
+            <import namespace="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions"/>
+            <element name="ActivityErrorData" type="tns:ActivityErrorDataType"/>
+            <complexType name="ActivityErrorDataType">
+                <choice>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:DefaultFault"/>
+                </choice>
+            </complexType>
+        </schema>
         <wsdl:definitions
             targetNamespace="http://xmlns.example.com/20251002110524PLT"
             xmlns:custom="http://tns.tibco.com/bw/json/1759397162202"
@@ -3019,6 +3032,10 @@
             name="WriteFile_error" sca-bpel:internal="true"/>
         <bpws:variable element="ns25:ActivityErrorData"
             name="_error_WriteFile_error" sca-bpel:internal="true"/>
+        <bpws:variable element="ns6:ActivityErrorData"
+            name="_error_update_ordine" sca-bpel:internal="true"/>
+        <bpws:variable element="ns26:ActivityErrorData"
+            name="_error_Throw" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>

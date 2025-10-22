@@ -838,8 +838,6 @@
                         name="MessageBody" type="tns:MessageBodyType"/>
                     <xsd:element maxOccurs="1" minOccurs="0"
                         name="HttpHeaders" type="tns:httpTransportHeaders"/>
-                    <xsd:element maxOccurs="1" minOccurs="0"
-                        name="DynamicConfigurations" type="tns:dynamicConfigurationsType"/>
                 </xsd:sequence>
             </xsd:complexType>
             <xsd:element name="RestActivityInput" type="tns:RestInvokeInputType"/>
@@ -896,13 +894,6 @@
                     <xsd:element form="unqualified"
                         maxOccurs="unbounded" minOccurs="0"
                         name="Header" type="tns:dynamicHeadersTypeDetails"/>
-                </xsd:sequence>
-            </xsd:complexType>
-            <xsd:element name="dynamicConfigurations" type="tns:dynamicConfigurationsType"/>
-            <xsd:complexType name="dynamicConfigurationsType">
-                <xsd:sequence>
-                    <xsd:element maxOccurs="1" minOccurs="0"
-                        name="activityTimeout" type="xsd:integer"/>
                 </xsd:sequence>
             </xsd:complexType>
         </xsd:schema>
@@ -1491,6 +1482,10 @@
             name="InvokeRESTAPI" sca-bpel:internal="true"/>
         <bpws:variable element="ns17:ActivityErrorData"
             name="_error_InvokeRESTAPI" sca-bpel:internal="true"/>
+        <bpws:variable name="FileOrdiniProperty"
+            sca-bpel:hotUpdate="false" sca-bpel:privateProperty="true"
+            sca-bpel:property="yes"
+            tibex:propertySource="FileOrdiniProperty" type="xsd:string"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -1569,12 +1564,13 @@
                             xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
                             xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
                             xmlns:file="http://ns.tibco.com/bw/palette/file" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <attributeBindings
+                                bindingType="moduleProperty"
+                                eAttributeName="fileName" processProperty="FileOrdiniProperty"/>
                             <activityConfig>
                                 <properties name="config" xsi:type="activityconfig:EMFProperty">
                                     <type href="http://ns.tibco.com/bw/palette/file#//ReadFile"/>
-                                    <value
-                                    fileName="C:\Users\FrancescaMacchiagode\Desktop\ordini.txt"
-                                    readAs="text" xsi:type="file:ReadFile"/>
+                                    <value readAs="text" xsi:type="file:ReadFile"/>
                                 </properties>
                             </activityConfig>
                         </bwext:BWActivity>

@@ -9,6 +9,7 @@
     xmlns:ns1="http://www.tibco.com/namespaces/tnt/plugins/jdbc+4b3e41d3-96f0-4757-b35a-6cd7ccbf66ac+input"
     xmlns:ns10="http://www.tibco.com/namespaces/tnt/plugins/file"
     xmlns:ns11="http://tns.tibco.com/bw/palette/internal/activityerror+bw.file.write"
+    xmlns:ns12="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw"
     xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/jdbc+4b3e41d3-96f0-4757-b35a-6cd7ccbf66ac+output"
     xmlns:ns3="http://tns.tibco.com/bw/palette/internal/activityerror+bw.jdbc.JDBCQuery"
     xmlns:ns4="http://www.tibco.com/namespaces/tnt/plugins/jdbc+1023a599-6f39-4634-bf0d-0bbc31b9d1db+input"
@@ -24,8 +25,8 @@
     <tibex:VariableDescriptor type="MemorySaving">
         <task name="flow1">
             <endingVariables>
-                <variable>select_id_cliente</variable>
                 <variable>get</variable>
+                <variable>select_id_cliente</variable>
             </endingVariables>
         </task>
         <task name="select_id_cliente">
@@ -910,6 +911,18 @@
             </xs:complexType>
             <xs:element name="ActivityInput" type="tns:LogParametersType"/>
         </xs:schema>
+        <schema elementFormDefault="unqualified"
+            targetNamespace="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:Q1="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions" xmlns:tns="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw">
+            <import namespace="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions"/>
+            <element name="ActivityErrorData" type="tns:ActivityErrorDataType"/>
+            <complexType name="ActivityErrorDataType">
+                <choice>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:DefaultFault"/>
+                </choice>
+            </complexType>
+        </schema>
         <wsdl:definitions
             targetNamespace="http://xmlns.example.com/20251008172624PLT"
             xmlns:extns="http://www.example.org/Clienti"
@@ -2383,6 +2396,8 @@
         <bpws:variable element="ns11:ActivityErrorData"
             name="_error_WriteFile" sca-bpel:internal="true"/>
         <bpws:variable element="ns8:ActivityInput" name="Log-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns12:ActivityErrorData"
+            name="_error_IDerrato" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
