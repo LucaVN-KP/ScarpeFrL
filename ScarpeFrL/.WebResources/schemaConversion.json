@@ -13,5 +13,10 @@
         "jsonSchemaLocation": "/ScarpeFrL/Service Descriptors/kpLogistics_test.quote-quote.json",
         "conversionType": "linked",
         "xsdSchemaTargetNamespace": "http://www.example.org/sottoscrizione"
+    },
+    {
+        "jsonSchemaLocation": "/ScarpeFrL/Service Descriptors/kpLogistics_test.kpOrdini-kpOrdini.json",
+        "conversionType": "linked",
+        "xsdSchemaTargetNamespace": "http://www.example.org/sottoscrizione"
     }
 ]}
