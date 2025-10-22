@@ -18,7 +18,6 @@
         <task name="Mapper">
             <endingVariables>
                 <variable>Mapper-input</variable>
-                <variable>Mapper</variable>
                 <variable>Start</variable>
             </endingVariables>
         </task>
@@ -26,6 +25,7 @@
             <endingVariables>
                 <variable>InvokeRESTAPI-input</variable>
                 <variable>InvokeRESTAPI</variable>
+                <variable>Mapper</variable>
             </endingVariables>
         </task>
     </tibex:VariableDescriptor>
@@ -682,6 +682,8 @@
             namespace="http://www.example.org/sottoscrizione" prefix="tns"/>
         <tibex:namespaceItem
             namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
+        <tibex:namespaceItem
+            namespace="http://www.tibco.com/namespaces/tnt/plugins/restinvoke+08372529-a880-414e-bd54-f7f301c37c21+RestInvokeInput" prefix="tns1"/>
     </tibex:NamespaceRegistry>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/sottoscrizione"/>
     <bpws:variables>
@@ -805,7 +807,7 @@
                     </bpws:sources>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?> &lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.tibco.com/namespaces/tnt/plugins/restinvoke+08372529-a880-414e-bd54-f7f301c37c21+RestInvokeInput&quot; version=&quot;2.0&quot;> &lt;xsl:template name=&quot;InvokeRESTAPI-input&quot; match=&quot;/&quot;> &lt;tns:RestActivityInput/>&lt;/xsl:template> &lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://www.tibco.com/namespaces/tnt/plugins/restinvoke+08372529-a880-414e-bd54-f7f301c37c21+RestInvokeInput&quot; xmlns:tns=&quot;http://www.example.org/sottoscrizione&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;Mapper&quot;/>&lt;xsl:template name=&quot;InvokeRESTAPI-input&quot; match=&quot;/&quot;>&lt;tns1:RestActivityInput>&lt;MessageBody>&lt;asciiContent>&lt;xsl:value-of select=&quot;concat('{    &amp;quot;idPreventivo&amp;quot;: &amp;quot;',$Mapper/tns:idPreventivo,'&amp;quot;,&amp;#xD;&amp;#xA;    &amp;quot;opzioneId&amp;quot;: &amp;quot;', $Mapper/tns:opzioneId ,'&amp;quot;,&amp;#xD;&amp;#xA;    &amp;quot;idCliente&amp;quot;: &amp;quot;',$Mapper/tns:idCliente,'&amp;quot; }')&quot;/>&lt;/asciiContent>&lt;/MessageBody>&lt;/tns1:RestActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
                         <bwext:BWActivity
@@ -820,7 +822,7 @@
                                     httpClientSR="httpClientResource"
                                     httpMethod="POST"
                                     requestContentType="JSON"
-                                    resourcePath="/ordini"
+                                    resourcePath="/kpordini"
                                     responseAcceptType="JSON" xsi:type="restjson:RestInvokeActivity"/>
                                 </properties>
                             </activityConfig>

@@ -2539,7 +2539,7 @@
                                     <value
                                     compressFile="None"
                                     encoding="text"
-                                    fileName="C:\Users\FrancescaMacchiagode\Desktop\Response_POSTsped.txt" xsi:type="file:WriteFile"/>
+                                    fileName="C:\UsersLucaValerioNepote\Desktop\Response_POSTsped.txt" xsi:type="file:WriteFile"/>
                                     </properties>
                                     </activityConfig>
                                     </bwext:BWActivity>
