@@ -95,6 +95,18 @@
     </scaext:binding>
     <scact:bindingAdjunct xmi:id="_fYZqEa6QEfCwuYEP_or6Vw" bindingName="RestService4"/>
   </sca:service>
+  <sca:service xmi:id="_z5wPAK8kEfCOFOyFy-t4FA" name="kpordini" promote="ComponentkpOrdini/kpordini">
+    <sca:interface.wsdl xmi:id="_z61NEK8kEfCOFOyFy-t4FA" interface="http://xmlns.example.com/20251022105508PLT#wsdl.interface(kpordini)" scaext:wsdlLocation="../Processes/kpLogistics_test/kpOrdini.bwp"/>
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_z6--EK8kEfCOFOyFy-t4FA" name="RestService5" path="/kpordini" docBasePath="http://localhost:7777/ScarpeFrL" docResourcePath="kpOrdini" basePath="/" connector="kpLogistics_test.KP_HTTPConnectorResource" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/kpLogistics_test.kpOrdini-kpOrdini.json">
+      <operation xmi:id="_z7NnkK8kEfCOFOyFy-t4FA" operationName="post" nickname="post-kpordini" httpMethod="POST" notes="postKpOrdini" responseStyle="element" requestStyle="element" outputPartName="item">
+        <clientFormat>json</clientFormat>
+        <clientRequestFormat>json</clientRequestFormat>
+      </operation>
+      <parameters xmi:id="_z7dfMK8kEfCOFOyFy-t4FA"/>
+      <advancedConfig xmi:id="_z6--Ea8kEfCOFOyFy-t4FA" blockingQueueSize="8192"/>
+    </scaext:binding>
+    <scact:bindingAdjunct xmi:id="_z7Nnka8kEfCOFOyFy-t4FA" bindingName="RestService5"/>
+  </sca:service>
   <sca:property xmi:id="_o1vKQJojEfCWAJKe-jrClQ" name="BW.DEPLOYMENTUNIT.TYPE" type="XMLSchema:string" scalable="true"/>
   <sca:property xmi:id="_o2IL0JojEfCWAJKe-jrClQ" name="BW.APPNODE.NAME" type="XMLSchema:string" scalable="true"/>
   <sca:property xmi:id="_o2QHoJojEfCWAJKe-jrClQ" name="BW.DEPLOYMENTUNIT.NAME" type="XMLSchema:string" scalable="true"/>
@@ -136,6 +148,12 @@
     <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_fYYb8a6QEfCwuYEP_or6Vw" processName="kpLogistics_test.quote"/>
     <sca:service xmi:id="_fYYb8q6QEfCwuYEP_or6Vw" name="quote">
       <sca:interface.wsdl xmi:id="_fYYb866QEfCwuYEP_or6Vw" interface="http://xmlns.example.com/20251021171325PLT#wsdl.interface(quote)" scaext:wsdlLocation="../Processes/kpLogistics_test/quote.bwp"/>
+    </sca:service>
+  </sca:component>
+  <sca:component xmi:id="_z5g-cK8kEfCOFOyFy-t4FA" name="ComponentkpOrdini" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_z5g-ca8kEfCOFOyFy-t4FA" processName="kpLogistics_test.kpOrdini"/>
+    <sca:service xmi:id="_z5meAK8kEfCOFOyFy-t4FA" name="kpordini">
+      <sca:interface.wsdl xmi:id="_z5phUK8kEfCOFOyFy-t4FA" interface="http://xmlns.example.com/20251022105508PLT#wsdl.interface(kpordini)" scaext:wsdlLocation="../Processes/kpLogistics_test/kpOrdini.bwp"/>
     </sca:service>
   </sca:component>
 </sca:composite>

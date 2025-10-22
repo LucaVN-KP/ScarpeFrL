@@ -36,6 +36,10 @@
         {
             "location": "Service Descriptors/kpLogistics_test.quote-quote.json",
             "type": "generated"
+        },
+        {
+            "location": "Service Descriptors/kpLogistics_test.kpOrdini-kpOrdini.json",
+            "type": "generated"
         }
     ]
 }
