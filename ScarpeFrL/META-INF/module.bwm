@@ -76,7 +76,7 @@
   </sca:service>
   <sca:service xmi:id="_fYYb9K6QEfCwuYEP_or6Vw" name="quote" promote="Componentquote/quote">
     <sca:interface.wsdl xmi:id="_fYZDAq6QEfCwuYEP_or6Vw" interface="http://xmlns.example.com/20251021171325PLT#wsdl.interface(quote)" scaext:wsdlLocation="../Processes/kpLogistics_test/quote.bwp"/>
-    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_fYZDA66QEfCwuYEP_or6Vw" name="RestService4" path="/quote" docBasePath="http://localhost:7777/ScarpeFrL" docResourcePath="quote" basePath="/" connector="spedizioni" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/kpLogistics_test.quote-quote.json">
+    <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_fYZDA66QEfCwuYEP_or6Vw" name="RestService4" path="/quote" docBasePath="http://localhost:7777/ScarpeFrL" docResourcePath="quote" basePath="/" connector="kpLogistics_test.KP_HTTPConnectorResource" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/kpLogistics_test.quote-quote.json">
       <operation xmi:id="_fYZqEK6QEfCwuYEP_or6Vw" operationName="get" nickname="get-quote" httpMethod="GET" notes="getQuote" responseStyle="element" outputPartName="item">
         <parameters xmi:id="_6hDSYK6QEfCwuYEP_or6Vw">
           <parameterMapping xmi:id="_6hDSYa6QEfCwuYEP_or6Vw" parameterName="id_ordine" parameterType="Query" dataType="string" required="true" description=""/>
