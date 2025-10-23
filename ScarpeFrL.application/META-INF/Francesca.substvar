@@ -102,5 +102,15 @@
 			<useLookupValue>false</useLookupValue>
 			<lookupValue>C:\Users\FrancescaMacchiagode\Desktop\ScarpeFrL\Chiamata_ordini_KPLog.txt</lookupValue>
 		</globalVariable>
+		<globalVariable>
+			<name>//ScarpeFrL//FileQueryParamProperty</name>
+			<value>C:\Users\FrancescaMacchiagode\Desktop\ScarpeFrL\query_params_GETquote.txt</value>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<isOverride>true</isOverride>
+			<useLookupValue>false</useLookupValue>
+			<lookupValue>C:\Users\FrancescaMacchiagode\Desktop\ScarpeFrL\query_params_GETquote.txt</lookupValue>
+		</globalVariable>
 	</globalVariables>
 </repository>
