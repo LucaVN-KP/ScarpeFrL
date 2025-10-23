@@ -66,6 +66,10 @@
     <sca:interface.wsdl xmi:id="_42JxQK5YEfCwuYEP_or6Vw" interface="http://xmlns.example.com/20251021103524PLT#wsdl.interface(ordini)" scaext:wsdlLocation="../Processes/scarpefrl/ordini.bwp"/>
     <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_42YawK5YEfCwuYEP_or6Vw" name="RestService3" path="/ordini" docBasePath="http://localhost:7777/ScarpeFrL" docResourcePath="ordini" basePath="/" connector="spedizioni" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/scarpefrl.ordini-ordini.json">
       <operation xmi:id="_42cFIK5YEfCwuYEP_or6Vw" operationName="post" nickname="post-ordini" httpMethod="POST" notes="postOrdini" responseStyle="element" outputPartName="item">
+        <responseStatus xmi:id="_rrdW0K_zEfC7GfzQqun5Gg" statusCode="200" reasonPhrase="OK" dataType="string"/>
+        <responseStatus xmi:id="_r0SisK_zEfC7GfzQqun5Gg" statusCode="404" reasonPhrase="Not Found" dataType="string"/>
+        <responseStatus xmi:id="_siXJoK_zEfC7GfzQqun5Gg" statusCode="406" reasonPhrase="Not Acceptable" dataType="string"/>
+        <responseStatus xmi:id="_tn8RoK_zEfC7GfzQqun5Gg" statusCode="500" reasonPhrase="Internal Server Error" dataType="string"/>
         <clientFormat>json</clientFormat>
         <clientRequestFormat>json</clientRequestFormat>
       </operation>
