@@ -92,5 +92,15 @@
 			<useLookupValue>false</useLookupValue>
 			<lookupValue>C:\Users\LucaValerioNepote\Desktop\ordini.txt</lookupValue>
 		</globalVariable>
+		<globalVariable>
+			<name>//ScarpeFrL//FileQueryParamProperty</name>
+			<value>C:\Users\LucaValerioNepote\Desktop\ScarpeFrL\query_params_GETquote.txt</value>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<isOverride>true</isOverride>
+			<useLookupValue>false</useLookupValue>
+			<lookupValue>C:\Users\LucaValerioNepote\Desktop\ScarpeFrL\query_params_GETquote.txt</lookupValue>
+		</globalVariable>
 	</globalVariables>
 </repository>
