@@ -3,22 +3,23 @@
 
 <element name="preventivo" type="tns:preventivoType"/>
 <element name="request_ordiniKP" type="tns:request_ordiniKPType"/>
-
-  <complexType name="preventivoType">
-    <sequence>
-      <element name="id_ordine" type="int"/>
-      <element name="id_preventivo" type="string"/>
-      <element maxOccurs="unbounded" name="opzioni">
-        <complexType>
-          <sequence>
+<element name="opzioni">
+	<complexType>
+		<sequence>
             <element name="id_opzione" type="string"/>
             <element name="modalità" type="string"/>
             <element name="prezzo" type="int"/>
             <element name="data_consegna" type="dateTime"/>
             <element name="durata_Ore" type="string"/>
           </sequence>
-        </complexType>
-      </element>
+	</complexType>
+</element> 
+
+  <complexType name="preventivoType">
+    <sequence>
+      <element name="id_ordine" type="int"/>
+      <element name="id_preventivo" type="string"/>
+      <element maxOccurs="unbounded" ref="tns:opzioni"/>
     </sequence>
   </complexType>
  
