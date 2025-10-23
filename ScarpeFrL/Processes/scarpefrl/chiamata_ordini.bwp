@@ -9,6 +9,8 @@
     xmlns:ns1="http://www.example.org/Clienti"
     xmlns:ns10="http://www.tibco.com/pe/WriteToLogActivitySchema"
     xmlns:ns11="http://tns.tibco.com/bw/palette/internal/accumulateoutput+5c510b42-3514-4d54-a96f-48a4a8054342"
+    xmlns:ns12="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions"
+    xmlns:ns13="http://tns.tibco.com/bw/palette/internal/errorlinkhandler+fe0d071b-0d57-4d73-887a-a1cf23d38fcb"
     xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/restinvoke+08372529-a880-414e-bd54-f7f301c37c21+RestInvokeInput"
     xmlns:ns3="http://www.tibco.com/namespaces/tnt/plugins/restinvoke+08372529-a880-414e-bd54-f7f301c37c21+RestInvokeOutput"
     xmlns:ns4="http://tns.tibco.com/bw/palette/internal/activityerror+bw.restjson.Rest"
@@ -56,6 +58,16 @@
         <task name="MapperSi">
             <endingVariables>
                 <variable>MapperSi-input</variable>
+            </endingVariables>
+        </task>
+        <task name="Log">
+            <endingVariables>
+                <variable>Log-input</variable>
+            </endingVariables>
+        </task>
+        <task name="Throw">
+            <endingVariables>
+                <variable>Throw-input</variable>
             </endingVariables>
         </task>
     </tibex:VariableDescriptor>
@@ -815,20 +827,6 @@
             </complexType>
             <element name="ReadFileFaultData" type="tns:ReadFileFaultDataType"/>
         </schema>
-        <schema elementFormDefault="unqualified"
-            targetNamespace="http://tns.tibco.com/bw/palette/internal/activityerror+bw.file.write"
-            xmlns="http://www.w3.org/2001/XMLSchema"
-            xmlns:Q1="http://schemas.tibco.com/bw/plugins/file/5.0/fileExceptions" xmlns:tns="http://tns.tibco.com/bw/palette/internal/activityerror+bw.file.write">
-            <import namespace="http://schemas.tibco.com/bw/plugins/file/5.0/fileExceptions"/>
-            <element name="ActivityErrorData" type="tns:ActivityErrorDataType"/>
-            <complexType name="ActivityErrorDataType">
-                <choice>
-                    <element maxOccurs="1" minOccurs="0" ref="Q1:FileNotFoundException"/>
-                    <element maxOccurs="1" minOccurs="0" ref="Q1:UnsupportedEncodingException"/>
-                    <element maxOccurs="1" minOccurs="0" ref="Q1:FileIOException"/>
-                </choice>
-            </complexType>
-        </schema>
         <schema
             targetNamespace="http://www.tibco.com/namespaces/tnt/plugins/jdbc+ad3c8c8b-5168-425d-96b0-eb716feb3d20+input"
             xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.tibco.com/namespaces/tnt/plugins/jdbc+ad3c8c8b-5168-425d-96b0-eb716feb3d20+input">
@@ -983,6 +981,52 @@
                     <xs:element maxOccurs="unbounded" minOccurs="0" ref="Q1:opzioni"/>
                 </xs:sequence>
             </xs:complexType>
+        </xs:schema>
+        <schema
+            targetNamespace="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:tibex="http://www.tibco.com/bpel/2007/extensions" xmlns:tns="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions">
+            <element name="DefaultFault">
+                <complexType>
+                    <sequence>
+                        <element maxOccurs="1" minOccurs="0"
+                            name="message" type="string"/>
+                        <element maxOccurs="1" minOccurs="0"
+                            name="msgCode" type="string"/>
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
+        <schema elementFormDefault="unqualified"
+            targetNamespace="http://tns.tibco.com/bw/palette/internal/errorlinkhandler+fe0d071b-0d57-4d73-887a-a1cf23d38fcb"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:Q1="http://schemas.tibco.com/bw/plugins/file/5.0/fileExceptions" xmlns:tns="http://tns.tibco.com/bw/palette/internal/errorlinkhandler+fe0d071b-0d57-4d73-887a-a1cf23d38fcb">
+            <import namespace="http://schemas.tibco.com/bw/plugins/file/5.0/fileExceptions"/>
+            <element name="ErrorLinkHandlerFaultData" type="tns:ErrorLinkHandlerFaultDataType"/>
+            <complexType name="ErrorLinkHandlerFaultDataType">
+                <choice>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:FileNotFoundException"/>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:UnsupportedEncodingException"/>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:FileIOException"/>
+                </choice>
+            </complexType>
+        </schema>
+        <xs:schema attributeFormDefault="unqualified"
+            elementFormDefault="qualified"
+            targetNamespace="http://www.tibco.com/pe/WriteToLogActivitySchema"
+            xmlns:tns="http://www.tibco.com/pe/WriteToLogActivitySchema" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:complexType name="LogParametersType">
+                <xs:sequence>
+                    <xs:element form="unqualified" minOccurs="0"
+                        name="msgCode" type="xs:string"/>
+                    <xs:element form="unqualified" minOccurs="0"
+                        name="loggerName" type="xs:string"/>
+                    <xs:element form="unqualified" minOccurs="0"
+                        name="logLevel" type="xs:string"/>
+                    <xs:element form="unqualified" name="message" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="ActivityInput" type="tns:LogParametersType"/>
         </xs:schema>
     </tibex:Types>
     <tibex:ProcessInfo callable="true" createdBy="FrancescaMacchiagode"
@@ -1290,8 +1334,8 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="228"
-                                    xsi:type="notation:Bounds" y="77"/>
+                                    x="245"
+                                    xsi:type="notation:Bounds" y="106"/>
                                     </children>
 
                                     <children type="4002 com.tibco.bw.core.design.process.editor.Activity_4002_Empty">
@@ -1346,8 +1390,64 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="4"
-                                    xsi:type="notation:Bounds" y="101"/>
+                                    x="81"
+                                    xsi:type="notation:Bounds" y="106"/>
+                                    </children>
+
+                                    <children type="4002 bw.generalactivities.log">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.6/@activity/@activities.1/@activity/@activity/@activities.4"/>
+
+                                    <layoutConstraint
+                                    height="40"
+                                    width="40"
+                                    x="246"
+                                    xsi:type="notation:Bounds" y="202"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -1364,7 +1464,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.6/@activity/@activities.1/@activity/@activity"/>
 
                                     <layoutConstraint
-                                    height="250"
+                                    height="286"
                                     width="529" xsi:type="notation:Bounds"/>
                                     </children>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -1377,7 +1477,7 @@
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.6"/>
                                     <layoutConstraint
-                                    height="250"
+                                    height="286"
                                     width="532"
                                     x="15"
                                     xsi:type="notation:Bounds" y="20"/>
@@ -1469,9 +1569,46 @@
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.6"/>
                                     <layoutConstraint
-                                    height="294" width="572"
+                                    height="330" width="572"
                                     x="66"
-                                    xsi:type="notation:Bounds" y="353"/>
+                                    xsi:type="notation:Bounds" y="360"/>
+                                    </children>
+                                    <children type="4002 com.tibco.bw.core.design.process.editor.Activity_4002_Throw">
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.7"/>
+                                    <layoutConstraint
+                                    height="40" width="40"
+                                    x="447"
+                                    xsi:type="notation:Bounds" y="280"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -1485,7 +1622,7 @@
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity"/>
-                                    <layoutConstraint height="680"
+                                    <layoutConstraint height="700"
                                     width="776" xsi:type="notation:Bounds"/>
                                 </children>
                                 <styles xsi:type="notation:SortingStyle"/>
@@ -1495,7 +1632,7 @@
                             <styles xsi:type="bwnotation:BackgroundStyle"/>
                             <styles xsi:type="bwnotation:ResizingStyle"/>
                             <element href="//0/@process/@activity"/>
-                            <layoutConstraint height="680" width="779" xsi:type="notation:Bounds"/>
+                            <layoutConstraint height="700" width="779" xsi:type="notation:Bounds"/>
                         </children>
                         <styles xsi:type="notation:SortingStyle"/>
                         <styles xsi:type="notation:FilteringStyle"/>
@@ -1505,7 +1642,7 @@
                     <styles xsi:type="bwnotation:BackgroundStyle"/>
                     <styles xsi:type="bwnotation:ResizingStyle"/>
                     <element href="//0/@process/@activity"/>
-                    <layoutConstraint height="704" width="779" x="1"
+                    <layoutConstraint height="724" width="779" x="1"
                         xsi:type="notation:Bounds" y="1"/>
                 </children>
                 <styles xsi:type="notation:SortingStyle"/>
@@ -1514,7 +1651,7 @@
             </children>
             <styles fontName="Segoe UI" lineColor="0" xsi:type="notation:ShapeStyle"/>
             <element href="//0/@process"/>
-            <layoutConstraint height="756" width="1121" xsi:type="notation:Bounds"/>
+            <layoutConstraint height="776" width="1121" xsi:type="notation:Bounds"/>
         </children>
         <styles xsi:type="notation:DiagramStyle"/>
         <element href="//0"/>
@@ -1618,6 +1755,28 @@
             <element href="//0/@process/@activity/@activity/@activities.6/@activity/@activities.1/@activity/@activity/@links/@children.2"/>
             <bendpoints points="[25, -3, -199, 21]$[200, -21, -24, 3]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
+        <edges
+            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.4"
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.7" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="255" xsi:type="notation:ConnectorStyle"/>
+            <styles fontColor="255" fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.6"/>
+            <bendpoints points="[1, 25, 0, -115]$[0, 116, -1, -24]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.6/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.6/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.6/@activity/@activities.1/@activity/@activity/@links/@children.3"/>
+            <bendpoints points="[25, 14, -140, -82]$[141, 82, -24, -14]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
         <tibex:namespaceItem
@@ -1632,6 +1791,8 @@
             namespace="http://www.tibco.com/namespaces/tnt/plugins/jdbc+ad3c8c8b-5168-425d-96b0-eb716feb3d20+input" prefix="tns3"/>
         <tibex:namespaceItem
             namespace="http://www.tibco.com/pe/WriteToLogActivitySchema" prefix="tns4"/>
+        <tibex:namespaceItem
+            namespace="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions" prefix="tns5"/>
     </tibex:NamespaceRegistry>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/sottoscrizione"/>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://www.example.org/sottoscrizione"/>
@@ -1663,7 +1824,7 @@
             name="WriteFile-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns5:WriteActivityOutputClass"
             name="WriteFile" sca-bpel:internal="true"/>
-        <bpws:variable element="ns6:ActivityErrorData"
+        <bpws:variable element="ns13:ErrorLinkHandlerFaultData"
             name="_error_WriteFile" sca-bpel:internal="true"/>
         <bpws:variable element="ns7:jdbcQueryActivityInput"
             name="select_IDcliente-input" sca-bpel:internal="true"/>
@@ -1685,6 +1846,11 @@
         <bpws:variable element="ns0:opzioni" name="MapperSi" sca-bpel:internal="true"/>
         <bpws:variable element="ns11:AccumulatedOutput"
             name="Accumulate" sca-bpel:internal="true"/>
+        <bpws:variable name="FaultName" sca-bpel:internal="true" type="xsd:string"/>
+        <bpws:variable element="ns:OptionalErrorReport"
+            name="_errorOptional" sca-bpel:internal="true"/>
+        <bpws:variable element="ns12:DefaultFault" name="Throw-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns10:ActivityInput" name="Log-input" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -1703,6 +1869,7 @@
                 <bpws:link name="WriteFileToInvokeRESTAPI" tibex:linkType="SUCCESS"/>
                 <bpws:link name="select_IDclienteToForEach" tibex:linkType="SUCCESS"/>
                 <bpws:link name="ForEachTocreaOrdine" tibex:linkType="SUCCESS"/>
+                <bpws:link name="WriteFileToThrow" tibex:linkType="ERROR"/>
             </bpws:links>
             <bpws:extensionActivity>
                 <tibex:receiveEvent createInstance="yes"
@@ -1820,6 +1987,13 @@
                     </bpws:targets>
                     <bpws:sources>
                         <bpws:source linkName="WriteFileToInvokeRESTAPI"/>
+                        <bpws:source linkName="WriteFileToThrow"
+                            tibex:faultDetailsVar="WriteFile" tibex:faultNameVar="FaultName">
+                            <tibex:DesignExpression>
+                                <tibex:expression expression="##error##" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                            </tibex:DesignExpression>
+                            <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[##error##]]></bpws:transitionCondition>
+                        </bpws:source>
                     </bpws:sources>
                     <tibex:inputBindings>
                         <tibex:inputBinding
@@ -1922,6 +2096,7 @@
                                     <bpws:link name="GroupStartToEmpty" tibex:linkType="SUCCESS"/>
                                     <bpws:link name="MapperSiToGroupEnd" tibex:linkType="SUCCESS"/>
                                     <bpws:link name="EmptyToMapperSi" tibex:linkType="SUCCESSWITHCONDITION"/>
+                                    <bpws:link name="EmptyToLog" tibex:linkType="SUCCESSWITHNOCONDITION"/>
                                 </bpws:links>
                                 <bpws:empty name="GroupStart"
                                     tibex:group="groupStart" tibex:xpdlId="330e4dd0-cf70-4073-b77c-aa1ea97fdd2f">
@@ -2005,13 +2180,63 @@
                                     </tibex:DesignExpression>
                                     <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[($Start/ns0:opzioni[$index]/ns0:data_consegna <= $select_IDcliente/Record[1]/data_max) and ($select_IDcliente/Record[1]/data_vol <= $Start/ns0:opzioni[$index]/ns0:data_consegna)]]></bpws:transitionCondition>
                                     </bpws:source>
+                                    <bpws:source linkName="EmptyToLog">
+                                    <tibex:DesignExpression>
+                                    <tibex:expression
+                                    expression="##otherwise##" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                                    </tibex:DesignExpression>
+                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[##otherwise##]]></bpws:transitionCondition>
+                                    </bpws:source>
                                     </bpws:sources>
                                 </bpws:empty>
+                                <bpws:extensionActivity>
+                                    <tibex:activityExtension
+                                    inputVariable="Log-input"
+                                    name="Log"
+                                    tibex:xpdlId="461a3332-2bf5-4a4c-a8f0-032ff8c75934" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:targets>
+                                    <bpws:target linkName="EmptyToLog"/>
+                                    </bpws:targets>
+                                    <tibex:inputBindings>
+                                    <tibex:inputBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; xmlns:tns=&quot;http://www.example.org/sottoscrizione&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;index&quot;/>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:template name=&quot;Log-input&quot; match=&quot;/&quot;>&lt;tns4:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;concat(&amp;quot;L'opzione del preventivo con id: &amp;quot;, $Start/tns:opzioni[$index]/tns:id_opzione, &amp;quot; non rispetta la finestra di consegna&amp;quot;)&quot;/>&lt;/message>&lt;/tns4:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    </tibex:inputBindings>
+                                    <tibex:config>
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.generalactivities.log"
+                                    version="6.0.0.001"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:generalactivities="http://ns.tibco.com/bw/palette/generalactivities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+                                    <properties
+                                    name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/generalactivities#//Log"/>
+                                    <value
+                                    controlBy="Application"
+                                    role="Info"
+                                    suppressJobInfo="true" xsi:type="generalactivities:Log"/>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                    </tibex:config>
+                                    </tibex:activityExtension>
+                                </bpws:extensionActivity>
                             </bpws:flow>
                         </bpws:scope>
                     </bpws:forEach>
                 </bpws:sequence>
             </bpws:scope>
+            <bpws:throw faultName="ns12:DefaultFault"
+                faultVariable="Throw-input" name="Throw" tibex:xpdlId="097b5c5b-1fa5-4aa3-9e3a-deaf51e464c3">
+                <tibex:inputBindings>
+                    <tibex:partBinding
+                        expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns5=&quot;http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;Throw-input&quot; match=&quot;/&quot;>&lt;tns5:DefaultFault>&lt;message>&lt;xsl:value-of select=&quot;&amp;quot;Filepath errato&amp;quot;&quot;/>&lt;/message>&lt;msgCode>&lt;xsl:value-of select=&quot;&amp;quot;500&amp;quot;&quot;/>&lt;/msgCode>&lt;/tns5:DefaultFault>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                </tibex:inputBindings>
+                <bpws:targets>
+                    <bpws:target linkName="WriteFileToThrow"/>
+                </bpws:targets>
+            </bpws:throw>
         </bpws:flow>
     </bpws:scope>
 </bpws:process>
