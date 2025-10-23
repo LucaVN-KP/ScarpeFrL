@@ -84,13 +84,13 @@
 		</globalVariable>
 		<globalVariable>
 			<name>//ScarpeFrL//FileOrdiniProperty</name>
-			<value>C:\Users\LucaValerioNepote\Desktop\ordini.txt</value>
+			<value>C:\Users\LucaValerioNepote\Desktop\ScarpeFrL\ordini.txt</value>
 			<deploymentSettable>false</deploymentSettable>
 			<serviceSettable>false</serviceSettable>
 			<type>String</type>
 			<isOverride>true</isOverride>
 			<useLookupValue>false</useLookupValue>
-			<lookupValue>C:\Users\LucaValerioNepote\Desktop\ordini.txt</lookupValue>
+			<lookupValue>C:\Users\LucaValerioNepote\Desktop\ScarpeFrL\ordini.txt</lookupValue>
 		</globalVariable>
 	</globalVariables>
 </repository>
