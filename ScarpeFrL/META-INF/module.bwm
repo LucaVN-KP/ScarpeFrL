@@ -123,6 +123,7 @@
   <sca:property xmi:id="_MhCG0K5hEfCQo5FnIbdnwg" name="FileOrdiniProperty" type="XMLSchema:string" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="_0YuQ0LASEfCiqasLyIY9eg" name="FileQueryParamProperty" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="_ld2esK_rEfC2wf1VUtvE-Q" name="FileKPordiniProperty" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_A9M6QLCxEfCxsPJSbq7Nsw" name="FileKPQuoteProperty" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
   <sca:component xmi:id="_lsZawJojEfCWAJKe-jrClQ" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
     <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_lsb3AJojEfCWAJKe-jrClQ" processName="scarpefrl.Sottoscrizione"/>
   </sca:component>

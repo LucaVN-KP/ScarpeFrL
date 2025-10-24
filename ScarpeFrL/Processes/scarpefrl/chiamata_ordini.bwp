@@ -24,12 +24,16 @@
     xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
     xmlns:tibprop="http://ns.tibco.com/bw/property" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <tibex:VariableDescriptor type="MemorySaving">
+        <task name="flow">
+            <endingVariables>
+                <variable>Accumulate</variable>
+            </endingVariables>
+        </task>
         <task name="creaOrdine">
             <endingVariables>
                 <variable>creaOrdine-input</variable>
                 <variable>Start</variable>
                 <variable>select_IDcliente</variable>
-                <variable>Accumulate</variable>
             </endingVariables>
         </task>
         <task name="invoke_kpordini">
@@ -65,9 +69,15 @@
                 <variable>Log-input</variable>
             </endingVariables>
         </task>
-        <task name="Throw">
+        <task name="File_errato">
             <endingVariables>
-                <variable>Throw-input</variable>
+                <variable>File_errato-input</variable>
+                <variable>FileKPordiniProperty</variable>
+            </endingVariables>
+        </task>
+        <task name="no_consegne">
+            <endingVariables>
+                <variable>no_consegne-input</variable>
             </endingVariables>
         </task>
     </tibex:VariableDescriptor>
@@ -978,7 +988,7 @@
             <xs:element name="AccumulatedOutput" type="tns:AccumulatedOutputType"/>
             <xs:complexType name="AccumulatedOutputType">
                 <xs:sequence maxOccurs="1" minOccurs="0">
-                    <xs:element maxOccurs="unbounded" minOccurs="0" ref="Q1:opzioni"/>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" ref="Q1:opzione"/>
                 </xs:sequence>
             </xs:complexType>
         </xs:schema>
@@ -1610,6 +1620,43 @@
                                     x="447"
                                     xsi:type="notation:Bounds" y="280"/>
                                     </children>
+                                    <children type="4002 com.tibco.bw.core.design.process.editor.Activity_4002_Throw">
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.8"/>
+                                    <layoutConstraint
+                                    height="40" width="40"
+                                    x="646"
+                                    xsi:type="notation:Bounds" y="402"/>
+                                    </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
                                     <styles xsi:type="notation:FilteringStyle"/>
@@ -1623,7 +1670,7 @@
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity"/>
                                     <layoutConstraint height="700"
-                                    width="776" xsi:type="notation:Bounds"/>
+                                    width="887" xsi:type="notation:Bounds"/>
                                 </children>
                                 <styles xsi:type="notation:SortingStyle"/>
                                 <styles xsi:type="notation:FilteringStyle"/>
@@ -1651,7 +1698,7 @@
             </children>
             <styles fontName="Segoe UI" lineColor="0" xsi:type="notation:ShapeStyle"/>
             <element href="//0/@process"/>
-            <layoutConstraint height="776" width="1121" xsi:type="notation:Bounds"/>
+            <layoutConstraint height="776" width="1232" xsi:type="notation:Bounds"/>
         </children>
         <styles xsi:type="notation:DiagramStyle"/>
         <element href="//0"/>
@@ -1745,17 +1792,6 @@
             <bendpoints points="[25, 10, -68, -29]$[81, 34, -12, -5]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
-            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.6/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
-            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.6/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.6/@activity/@activities.1/@activity/@activity/@links/@children.2"/>
-            <bendpoints points="[25, -3, -199, 21]$[200, -21, -24, 3]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
-        <edges
             source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.4"
             target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.7" type="4006">
             <children type="6002">
@@ -1774,8 +1810,30 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.6/@activity/@activities.1/@activity/@activity/@links/@children.3"/>
+            <element href="//0/@process/@activity/@activity/@activities.6/@activity/@activities.1/@activity/@activity/@links/@children.2"/>
             <bendpoints points="[25, 14, -140, -82]$[141, 82, -24, -14]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.6"
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.8" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.7"/>
+            <bendpoints points="[269, -46, -132, 23]$[377, -65, -24, 4]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.6/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.6/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.6/@activity/@activities.1/@activity/@activity/@links/@children.3"/>
+            <bendpoints points="[25, 0, -139, 0]$[140, 0, -24, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
@@ -1842,15 +1900,18 @@
             sca-bpel:hotUpdate="false" sca-bpel:privateProperty="true"
             sca-bpel:property="yes"
             tibex:propertySource="FileKPordiniProperty" type="xsd:string"/>
-        <bpws:variable element="ns0:opzioni" name="MapperSi-input" sca-bpel:internal="true"/>
-        <bpws:variable element="ns0:opzioni" name="MapperSi" sca-bpel:internal="true"/>
+        <bpws:variable element="ns0:opzione" name="MapperSi-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns0:opzione" name="MapperSi" sca-bpel:internal="true"/>
         <bpws:variable element="ns11:AccumulatedOutput"
             name="Accumulate" sca-bpel:internal="true"/>
         <bpws:variable name="FaultName" sca-bpel:internal="true" type="xsd:string"/>
         <bpws:variable element="ns:OptionalErrorReport"
             name="_errorOptional" sca-bpel:internal="true"/>
-        <bpws:variable element="ns12:DefaultFault" name="Throw-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns12:DefaultFault"
+            name="File_errato-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns10:ActivityInput" name="Log-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns12:DefaultFault"
+            name="no_consegne-input" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -1868,8 +1929,9 @@
                 <bpws:link name="InvokeRESTAPIToEnd" tibex:linkType="SUCCESS"/>
                 <bpws:link name="WriteFileToInvokeRESTAPI" tibex:linkType="SUCCESS"/>
                 <bpws:link name="select_IDclienteToForEach" tibex:linkType="SUCCESS"/>
-                <bpws:link name="ForEachTocreaOrdine" tibex:linkType="SUCCESS"/>
+                <bpws:link name="ForEachTocreaOrdine" tibex:linkType="SUCCESSWITHCONDITION"/>
                 <bpws:link name="WriteFileToThrow" tibex:linkType="ERROR"/>
+                <bpws:link name="ForEachToThrow1" tibex:linkType="SUCCESSWITHCONDITION"/>
             </bpws:links>
             <bpws:extensionActivity>
                 <tibex:receiveEvent createInstance="yes"
@@ -1919,7 +1981,7 @@
                     </bpws:sources>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/sottoscrizione&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:param name=&quot;select_IDcliente&quot;/>&lt;xsl:param name=&quot;Accumulate&quot;/>&lt;xsl:template name=&quot;creaOrdine-input&quot; match=&quot;/&quot;>&lt;tns:request_ordiniKP>&lt;tns:idPreventivo>&lt;xsl:value-of select=&quot;$Start/tns:id_preventivo&quot;/>&lt;/tns:idPreventivo>&lt;tns:opzioneId>&lt;xsl:value-of select=&quot;$Accumulate/tns:opzioni[tns:prezzo = min(..//tns:prezzo)]/tns:id_opzione&quot;/>&lt;/tns:opzioneId>&lt;tns:idCliente>&lt;xsl:value-of select=&quot;$select_IDcliente/Record[1]/id_cliente&quot;/>&lt;/tns:idCliente>&lt;/tns:request_ordiniKP>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/sottoscrizione&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:param name=&quot;select_IDcliente&quot;/>&lt;xsl:param name=&quot;Accumulate&quot;/>&lt;xsl:template name=&quot;creaOrdine-input&quot; match=&quot;/&quot;>&lt;tns:request_ordiniKP>&lt;tns:idPreventivo>&lt;xsl:value-of select=&quot;$Start/tns:id_preventivo&quot;/>&lt;/tns:idPreventivo>&lt;tns:opzioneId>&lt;xsl:value-of select=&quot;$Accumulate/tns:opzione[tns:prezzo = min(..//tns:prezzo)]/tns:id_opzione&quot;/>&lt;/tns:opzioneId>&lt;tns:idCliente>&lt;xsl:value-of select=&quot;$select_IDcliente/Record[1]/id_cliente&quot;/>&lt;/tns:idCliente>&lt;/tns:request_ordiniKP>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
                         <bwext:BWActivity
@@ -2066,17 +2128,30 @@
                 </tibex:activityExtension>
             </bpws:extensionActivity>
             <bpws:scope name="ForEach" tibex:group="foreach"
-                tibex:indexOriginalName="index"
                 tibex:indexToGlobal="false" tibex:xpdlId="be7bbce4-d189-4766-b973-5ad9bc593d17">
                 <bpws:targets>
                     <bpws:target linkName="select_IDclienteToForEach"/>
                 </bpws:targets>
                 <bpws:sources>
-                    <bpws:source linkName="ForEachTocreaOrdine"/>
+                    <bpws:source linkName="ForEachTocreaOrdine">
+                        <tibex:DesignExpression>
+                            <tibex:expression
+                                expression="count($Accumulate/ns0:opzione)>0" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                        </tibex:DesignExpression>
+                        <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[count($Accumulate/ns0:opzione)>0]]></bpws:transitionCondition>
+                    </bpws:source>
+                    <bpws:source linkName="ForEachToThrow1">
+                        <tibex:DesignExpression>
+                            <tibex:expression
+                                expression="count($Accumulate/ns0:opzione)=0" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                        </tibex:DesignExpression>
+                        <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[count($Accumulate/ns0:opzione)=0]]></bpws:transitionCondition>
+                    </bpws:source>
                 </bpws:sources>
                 <bpws:sequence name="sequence" tibex:group="foreach">
                     <bpws:assign name="GroupInit"
-                        tibex:group="groupInit" validate="no">
+                        tibex:group="groupInit"
+                        tibex:xpdlId="fb08e52e-51ad-4f76-b502-12299b07f577" validate="no">
                         <bpws:copy>
                             <bpws:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"><![CDATA[<?xml version="1.0" encoding="UTF-8"?> <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://tns.tibco.com/bw/palette/internal/accumulateoutput+5c510b42-3514-4d54-a96f-48a4a8054342" version="2.0"> <xsl:template name="Accumulate" match="/"> <tns:AccumulatedOutput/></xsl:template> </xsl:stylesheet>]]></bpws:from>
                             <bpws:to variable="Accumulate"/>
@@ -2086,17 +2161,17 @@
                         parallel="no" tibex:group="foreach">
                         <tibex:DesignExpression name="final">
                             <tibex:expression
-                                expression="count($Start/ns0:opzioni)" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                                expression="count($Start/ns0:opzione)" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
                         </tibex:DesignExpression>
                         <bpws:startCounterValue><![CDATA[1]]></bpws:startCounterValue>
-                        <bpws:finalCounterValue expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[count($Start/ns0:opzioni)]]></bpws:finalCounterValue>
+                        <bpws:finalCounterValue expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[count($Start/ns0:opzione)]]></bpws:finalCounterValue>
                         <bpws:scope name="innerScope">
                             <bpws:flow name="flow1">
                                 <bpws:links>
                                     <bpws:link name="GroupStartToEmpty" tibex:linkType="SUCCESS"/>
                                     <bpws:link name="MapperSiToGroupEnd" tibex:linkType="SUCCESS"/>
-                                    <bpws:link name="EmptyToMapperSi" tibex:linkType="SUCCESSWITHCONDITION"/>
                                     <bpws:link name="EmptyToLog" tibex:linkType="SUCCESSWITHNOCONDITION"/>
+                                    <bpws:link name="EmptyToMapperSi" tibex:linkType="SUCCESSWITHCONDITION"/>
                                 </bpws:links>
                                 <bpws:empty name="GroupStart"
                                     tibex:group="groupStart" tibex:xpdlId="330e4dd0-cf70-4073-b77c-aa1ea97fdd2f">
@@ -2146,7 +2221,7 @@
                                     </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/sottoscrizione&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;index&quot;/>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:template name=&quot;MapperSi-input&quot; match=&quot;/&quot;>&lt;tns:opzioni>&lt;tns:id_opzione>&lt;xsl:value-of select=&quot;$Start/tns:opzioni[$index]/tns:id_opzione&quot;/>&lt;/tns:id_opzione>&lt;tns:modalità>&lt;xsl:value-of select=&quot;$Start/tns:opzioni[$index]/tns:modalità&quot;/>&lt;/tns:modalità>&lt;tns:prezzo>&lt;xsl:value-of select=&quot;$Start/tns:opzioni[$index]/tns:prezzo&quot;/>&lt;/tns:prezzo>&lt;tns:data_consegna>&lt;xsl:value-of select=&quot;$Start/tns:opzioni[$index]/tns:data_consegna&quot;/>&lt;/tns:data_consegna>&lt;tns:durata_Ore>&lt;xsl:value-of select=&quot;$Start/tns:opzioni[$index]/tns:durata_Ore&quot;/>&lt;/tns:durata_Ore>&lt;/tns:opzioni>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://www.example.org/sottoscrizione&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;index&quot;/>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:template name=&quot;MapperSi-input&quot; match=&quot;/&quot;>&lt;tns:opzione>&lt;tns:id_opzione>&lt;xsl:value-of select=&quot;$Start/tns:opzione[$index]/tns:id_opzione&quot;/>&lt;/tns:id_opzione>&lt;tns:modalità>&lt;xsl:value-of select=&quot;$Start/tns:opzione[$index]/tns:modalità&quot;/>&lt;/tns:modalità>&lt;tns:prezzo>&lt;xsl:value-of select=&quot;$Start/tns:opzione[$index]/tns:prezzo&quot;/>&lt;/tns:prezzo>&lt;tns:data_consegna>&lt;xsl:value-of select=&quot;$Start/tns:opzione[$index]/tns:data_consegna&quot;/>&lt;/tns:data_consegna>&lt;tns:durata_ore>&lt;xsl:value-of select=&quot;$Start/tns:opzione[$index]/tns:durata_ore&quot;/>&lt;/tns:durata_ore>&lt;/tns:opzione>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:config>
                                     <bwext:BWActivity
@@ -2161,7 +2236,7 @@
                                     name="config" xsi:type="activityconfig:EMFProperty">
                                     <type href="http://ns.tibco.com/bw/palette/generalactivities#//Mapper"/>
                                     <value
-                                    inputQName="sottoscrizione:opzioni" xsi:type="generalactivities:Mapper"/>
+                                    inputQName="sottoscrizione:opzione" xsi:type="generalactivities:Mapper"/>
                                     </properties>
                                     </activityConfig>
                                     </bwext:BWActivity>
@@ -2173,19 +2248,19 @@
                                     <bpws:target linkName="GroupStartToEmpty"/>
                                     </bpws:targets>
                                     <bpws:sources>
-                                    <bpws:source linkName="EmptyToMapperSi">
-                                    <tibex:DesignExpression>
-                                    <tibex:expression
-                                    expression="($Start/ns0:opzioni[$index]/ns0:data_consegna &lt;= $select_IDcliente/Record[1]/data_max) and ($select_IDcliente/Record[1]/data_vol &lt;= $Start/ns0:opzioni[$index]/ns0:data_consegna)" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
-                                    </tibex:DesignExpression>
-                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[($Start/ns0:opzioni[$index]/ns0:data_consegna <= $select_IDcliente/Record[1]/data_max) and ($select_IDcliente/Record[1]/data_vol <= $Start/ns0:opzioni[$index]/ns0:data_consegna)]]></bpws:transitionCondition>
-                                    </bpws:source>
                                     <bpws:source linkName="EmptyToLog">
                                     <tibex:DesignExpression>
                                     <tibex:expression
                                     expression="##otherwise##" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
                                     </tibex:DesignExpression>
                                     <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[##otherwise##]]></bpws:transitionCondition>
+                                    </bpws:source>
+                                    <bpws:source linkName="EmptyToMapperSi">
+                                    <tibex:DesignExpression>
+                                    <tibex:expression
+                                    expression="($Start/ns0:opzione[$index]/ns0:data_consegna >= $select_IDcliente/Record[1]/data_vol) and ($Start/ns0:opzione[$index]/ns0:data_consegna &lt;= $select_IDcliente/Record[1]/data_max)" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                                    </tibex:DesignExpression>
+                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[($Start/ns0:opzione[$index]/ns0:data_consegna >= $select_IDcliente/Record[1]/data_vol) and ($Start/ns0:opzione[$index]/ns0:data_consegna <= $select_IDcliente/Record[1]/data_max)]]></bpws:transitionCondition>
                                     </bpws:source>
                                     </bpws:sources>
                                 </bpws:empty>
@@ -2199,7 +2274,7 @@
                                     </bpws:targets>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; xmlns:tns=&quot;http://www.example.org/sottoscrizione&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;index&quot;/>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:template name=&quot;Log-input&quot; match=&quot;/&quot;>&lt;tns4:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;concat(&amp;quot;L'opzione del preventivo con id: &amp;quot;, $Start/tns:opzioni[$index]/tns:id_opzione, &amp;quot; non rispetta la finestra di consegna&amp;quot;)&quot;/>&lt;/message>&lt;/tns4:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; xmlns:tns=&quot;http://www.example.org/sottoscrizione&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;index&quot;/>&lt;xsl:param name=&quot;Start&quot;/>&lt;xsl:template name=&quot;Log-input&quot; match=&quot;/&quot;>&lt;tns4:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;concat(&amp;quot;L'opzione del preventivo con id: &amp;quot;, $Start/tns:opzione[$index]/tns:id_opzione, &amp;quot; non rispetta la finestra di consegna&amp;quot;)&quot;/>&lt;/message>&lt;/tns4:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:config>
                                     <bwext:BWActivity
@@ -2228,13 +2303,23 @@
                 </bpws:sequence>
             </bpws:scope>
             <bpws:throw faultName="ns12:DefaultFault"
-                faultVariable="Throw-input" name="Throw" tibex:xpdlId="097b5c5b-1fa5-4aa3-9e3a-deaf51e464c3">
+                faultVariable="File_errato-input" name="File_errato" tibex:xpdlId="097b5c5b-1fa5-4aa3-9e3a-deaf51e464c3">
                 <tibex:inputBindings>
                     <tibex:partBinding
-                        expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns5=&quot;http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;Throw-input&quot; match=&quot;/&quot;>&lt;tns5:DefaultFault>&lt;message>&lt;xsl:value-of select=&quot;&amp;quot;Filepath errato&amp;quot;&quot;/>&lt;/message>&lt;msgCode>&lt;xsl:value-of select=&quot;&amp;quot;500&amp;quot;&quot;/>&lt;/msgCode>&lt;/tns5:DefaultFault>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                        expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns5=&quot;http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;FileKPordiniProperty&quot;/>&lt;xsl:template name=&quot;File_errato-input&quot; match=&quot;/&quot;>&lt;tns5:DefaultFault>&lt;message>&lt;xsl:value-of select=&quot;concat(&amp;quot;Il path &amp;quot;, $FileKPordiniProperty,  &amp;quot;è errato&amp;quot;)&quot;/>&lt;/message>&lt;msgCode>&lt;xsl:value-of select=&quot;&amp;quot;FILEPATH.ERROR&amp;quot;&quot;/>&lt;/msgCode>&lt;/tns5:DefaultFault>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                 </tibex:inputBindings>
                 <bpws:targets>
                     <bpws:target linkName="WriteFileToThrow"/>
+                </bpws:targets>
+            </bpws:throw>
+            <bpws:throw faultName="ns12:DefaultFault"
+                faultVariable="no_consegne-input" name="no_consegne" tibex:xpdlId="eafa5386-a639-4316-a56c-7aaa4ed6857b">
+                <tibex:inputBindings>
+                    <tibex:partBinding
+                        expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns5=&quot;http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;no_consegne-input&quot; match=&quot;/&quot;>&lt;tns5:DefaultFault>&lt;message>&lt;xsl:value-of select=&quot;&amp;quot;Non sono state offerte opzioni che consegnino nelle date richieste&amp;quot;&quot;/>&lt;/message>&lt;msgCode>&lt;xsl:value-of select=&quot;&amp;quot;PREVENTIVO.ERROR&amp;quot;&quot;/>&lt;/msgCode>&lt;/tns5:DefaultFault>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                </tibex:inputBindings>
+                <bpws:targets>
+                    <bpws:target linkName="ForEachToThrow1"/>
                 </bpws:targets>
             </bpws:throw>
         </bpws:flow>

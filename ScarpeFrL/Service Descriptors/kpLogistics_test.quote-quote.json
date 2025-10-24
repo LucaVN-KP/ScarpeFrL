@@ -71,9 +71,29 @@
     }
   },
   "definitions" : {
-    "opzioni" : {
+    "preventivo" : {
       "type" : "object",
-      "required" : [ "data_consegna", "id_opzione", "prezzo", "modalità", "durata_Ore" ],
+      "required" : [ "id_preventivo", "id_ordine", "opzione" ],
+      "properties" : {
+        "id_ordine" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "id_preventivo" : {
+          "type" : "string"
+        },
+        "opzione" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/opzione",
+            "uniqueItems" : false
+          }
+        }
+      }
+    },
+    "opzione" : {
+      "type" : "object",
+      "required" : [ "data_consegna", "id_opzione", "prezzo", "modalità", "durata_ore" ],
       "properties" : {
         "id_opzione" : {
           "type" : "string"
@@ -89,28 +109,8 @@
           "type" : "string",
           "format" : "date-time"
         },
-        "durata_Ore" : {
+        "durata_ore" : {
           "type" : "string"
-        }
-      }
-    },
-    "preventivo" : {
-      "type" : "object",
-      "required" : [ "id_preventivo", "opzioni", "id_ordine" ],
-      "properties" : {
-        "id_ordine" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
-        "id_preventivo" : {
-          "type" : "string"
-        },
-        "opzioni" : {
-          "type" : "array",
-          "items" : {
-            "$ref" : "#/definitions/opzioni",
-            "uniqueItems" : false
-          }
         }
       }
     }
