@@ -74,13 +74,20 @@
     </packaging:property>
     <packaging:property>
       <packaging:name>//ScarpeFrL//FileQueryParamProperty</packaging:name>
-       <packaging:type>xsd:string</packaging:type>
+      <packaging:type>xsd:string</packaging:type>
       <packaging:visibility>public</packaging:visibility>
       <packaging:scalable>true</packaging:scalable>
       <packaging:overrideValue>false</packaging:overrideValue>
     </packaging:property>
     <packaging:property>
       <packaging:name>//ScarpeFrL//FileKPordiniProperty</packaging:name>
+      <packaging:type>xsd:string</packaging:type>
+      <packaging:visibility>public</packaging:visibility>
+      <packaging:scalable>true</packaging:scalable>
+      <packaging:overrideValue>false</packaging:overrideValue>
+    </packaging:property>
+    <packaging:property>
+      <packaging:name>//ScarpeFrL//FileKPQuoteProperty</packaging:name>
       <packaging:type>xsd:string</packaging:type>
       <packaging:visibility>public</packaging:visibility>
       <packaging:scalable>true</packaging:scalable>

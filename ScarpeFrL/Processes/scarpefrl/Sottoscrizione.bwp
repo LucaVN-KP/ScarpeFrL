@@ -730,8 +730,8 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="65"
-                                    xsi:type="notation:Bounds" y="59"/>
+                                    x="59"
+                                    xsi:type="notation:Bounds" y="53"/>
                                     </children>
                                     <children type="4002 bw.generalactivities.log">
                                     <children type="4017">
@@ -774,7 +774,7 @@
                                     height="40"
                                     width="40"
                                     x="344"
-                                    xsi:type="notation:Bounds" y="27"/>
+                                    xsi:type="notation:Bounds" y="53"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
