@@ -3009,15 +3009,15 @@
         <bpws:variable element="ns0:FaultDetail" name="FaultDetails" sca-bpel:internal="true"/>
         <bpws:variable name="FaultName1" sca-bpel:internal="true" type="xsd:string"/>
         <bpws:variable element="ns0:FaultDetail" name="FaultDetails1" sca-bpel:internal="true"/>
-        <bpws:variable messageType="ns:patch404FaultMessage"
+        <bpws:variable messageType="ns:patch4XXFaultMessage"
             name="Reply404-input" sca-bpel:internal="true"/>
-        <bpws:variable messageType="ns:patch500FaultMessage"
+        <bpws:variable messageType="ns:patch5XXFaultMessage"
             name="Reply5XX-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns23:ActivityErrorData"
             name="_error_transcod_dati" sca-bpel:internal="true"/>
         <bpws:variable name="FaultName" sca-bpel:internal="true" type="xsd:string"/>
         <bpws:variable element="ns17:DefaultFault" name="Throw-input" sca-bpel:internal="true"/>
-        <bpws:variable messageType="ns:patch406FaultMessage"
+        <bpws:variable messageType="ns:patch4XXFaultMessage"
             name="Reply406-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns24:WriteActivityInputTextClass"
             name="WriteFile-input" sca-bpel:internal="true"/>
@@ -3170,34 +3170,34 @@
                                     name="WriteFile_errorToEmpty" tibex:linkType="SUCCESS"/>
                                     </bpws:links>
                                     <bpws:reply
-                                    faultName="server-404-Fault"
+                                    faultName="clientFault"
                                     name="Reply404"
                                     operation="patch"
                                     partnerLink="spedizioni"
                                     portType="ns:spedizioni"
                                     tibex:xpdlId="5745070e-64e8-4a84-aff7-c9c4fb37b24c" variable="Reply404-input">
                                     <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns1="http://xmlns.example.com/20251002110524PLT" xmlns:tns16="http://tns.tibco.com/bw/REST" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="2.0"&gt;&lt;xsl:param name="_error"/&gt;&lt;xsl:template name="Reply404-input" match="/"&gt;&lt;tns1:patch404FaultMessage&gt;&lt;server-404-NotFound&gt;&lt;xsl:value-of select="$_error/Msg"/&gt;&lt;/server-404-NotFound&gt;&lt;/tns1:patch404FaultMessage&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns1="http://xmlns.example.com/20251002110524PLT" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns16="http://tns.tibco.com/bw/REST" version="2.0"&gt;&lt;xsl:param name="_error"/&gt;&lt;xsl:template name="Reply404-input" match="/"&gt;&lt;tns1:patch4XXFaultMessage&gt;&lt;clientError&gt;&lt;tns16:client4XXError&gt;&lt;statusCode&gt;&lt;xsl:value-of select="xsd:integer($_error/MsgCode)"/&gt;&lt;/statusCode&gt;&lt;message&gt;&lt;xsl:value-of select="$_error/Msg"/&gt;&lt;/message&gt;&lt;/tns16:client4XXError&gt;&lt;/clientError&gt;&lt;/tns1:patch4XXFaultMessage&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                     <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://xmlns.example.com/20251002110524PLT&quot; xmlns:tns16=&quot;http://tns.tibco.com/bw/REST&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;_error&quot;/>&#xa;    &lt;xsl:template name=&quot;Reply404-input&quot; match=&quot;/&quot;>&#xa;        &lt;server-404-NotFound>&#xa;            &lt;xsl:value-of select=&quot;$_error/Msg&quot;/>&#xa;        &lt;/server-404-NotFound>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://xmlns.example.com/20251002110524PLT&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:tns16=&quot;http://tns.tibco.com/bw/REST&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;_error&quot;/>&#xa;    &lt;xsl:template name=&quot;Reply404-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns16:client4XXError>&#xa;            &lt;statusCode>&#xa;                &lt;xsl:value-of select=&quot;xsd:integer($_error/MsgCode)&quot;/>&#xa;            &lt;/statusCode>&#xa;            &lt;message>&#xa;                &lt;xsl:value-of select=&quot;$_error/Msg&quot;/>&#xa;            &lt;/message>&#xa;        &lt;/tns16:client4XXError>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <bpws:targets>
                                     <bpws:target linkName="EmptyToReply1_Name"/>
                                     </bpws:targets>
                                     </bpws:reply>
                                     <bpws:reply
-                                    faultName="server-500-Fault"
+                                    faultName="serverFault"
                                     name="Reply5XX"
                                     operation="patch"
                                     partnerLink="spedizioni"
                                     portType="ns:spedizioni"
                                     tibex:xpdlId="99763185-2e49-41a8-b920-0dcc722a356f" variable="Reply5XX-input">
                                     <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns1="http://xmlns.example.com/20251002110524PLT" xmlns:tns16="http://tns.tibco.com/bw/REST" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="2.0"&gt;&lt;xsl:param name="_error"/&gt;&lt;xsl:template name="Reply5XX-input" match="/"&gt;&lt;tns1:patch500FaultMessage&gt;&lt;server-500-InternalServerError&gt;&lt;xsl:value-of select="$_error/Msg"/&gt;&lt;/server-500-InternalServerError&gt;&lt;/tns1:patch500FaultMessage&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns1="http://xmlns.example.com/20251002110524PLT" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns16="http://tns.tibco.com/bw/REST" version="2.0"&gt;&lt;xsl:param name="_error"/&gt;&lt;xsl:template name="Reply5XX-input" match="/"&gt;&lt;tns1:patch5XXFaultMessage&gt;&lt;serverError&gt;&lt;tns16:server5XXError&gt;&lt;statusCode&gt;&lt;xsl:value-of select="xsd:integer($_error/MsgCode)"/&gt;&lt;/statusCode&gt;&lt;message&gt;&lt;xsl:value-of select="$_error/Msg"/&gt;&lt;/message&gt;&lt;/tns16:server5XXError&gt;&lt;/serverError&gt;&lt;/tns1:patch5XXFaultMessage&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                     <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://xmlns.example.com/20251002110524PLT&quot; xmlns:tns16=&quot;http://tns.tibco.com/bw/REST&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;_error&quot;/>&#xa;    &lt;xsl:template name=&quot;Reply5XX-input&quot; match=&quot;/&quot;>&#xa;        &lt;server-500-InternalServerError>&#xa;            &lt;xsl:value-of select=&quot;$_error/Msg&quot;/>&#xa;        &lt;/server-500-InternalServerError>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://xmlns.example.com/20251002110524PLT&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:tns16=&quot;http://tns.tibco.com/bw/REST&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;_error&quot;/>&#xa;    &lt;xsl:template name=&quot;Reply5XX-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns16:server5XXError>&#xa;            &lt;statusCode>&#xa;                &lt;xsl:value-of select=&quot;xsd:integer($_error/MsgCode)&quot;/>&#xa;            &lt;/statusCode>&#xa;            &lt;message>&#xa;                &lt;xsl:value-of select=&quot;$_error/Msg&quot;/>&#xa;            &lt;/message>&#xa;        &lt;/tns16:server5XXError>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <bpws:targets>
                                     <bpws:target linkName="EmptyToReply2_Name"/>
@@ -3241,7 +3241,7 @@
                                     </bpws:sources>
                                     </bpws:empty>
                                     <bpws:reply
-                                    faultName="server-406-Fault"
+                                    faultName="clientFault"
                                     name="Reply406"
                                     operation="patch"
                                     partnerLink="spedizioni"
@@ -3249,10 +3249,10 @@
                                     tibex:xpdlId="318c9a73-a4f4-41d9-ad23-6c88335c6977" variable="Reply406-input">
                                     <tibex:inputBindings>
                                     <tibex:partBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://xmlns.example.com/20251002110524PLT&quot; xmlns:tns16=&quot;http://tns.tibco.com/bw/REST&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;_error&quot;/>&#xa;    &lt;xsl:template name=&quot;Reply406-input&quot; match=&quot;/&quot;>&#xa;        &lt;server-406-NotAcceptable>&#xa;            &lt;xsl:value-of select=&quot;$_error/Msg&quot;/>&#xa;        &lt;/server-406-NotAcceptable>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://xmlns.example.com/20251002110524PLT&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:tns16=&quot;http://tns.tibco.com/bw/REST&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;_error&quot;/>&#xa;    &lt;xsl:template name=&quot;Reply406-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns16:client4XXError>&#xa;            &lt;statusCode>&#xa;                &lt;xsl:value-of select=&quot;xsd:integer($_error/MsgCode)&quot;/>&#xa;            &lt;/statusCode>&#xa;            &lt;message>&#xa;                &lt;xsl:value-of select=&quot;$_error/Msg&quot;/>&#xa;            &lt;/message>&#xa;        &lt;/tns16:client4XXError>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:inputBinding expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns1="http://xmlns.example.com/20251002110524PLT" xmlns:tns16="http://tns.tibco.com/bw/REST" xmlns:xsd="http://www.w3.org/2001/XMLSchema" version="2.0"&gt;&lt;xsl:param name="_error"/&gt;&lt;xsl:template name="Reply406-input" match="/"&gt;&lt;tns1:patch406FaultMessage&gt;&lt;server-406-NotAcceptable&gt;&lt;xsl:value-of select="$_error/Msg"/&gt;&lt;/server-406-NotAcceptable&gt;&lt;/tns1:patch406FaultMessage&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
+&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns1="http://xmlns.example.com/20251002110524PLT" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns16="http://tns.tibco.com/bw/REST" version="2.0"&gt;&lt;xsl:param name="_error"/&gt;&lt;xsl:template name="Reply406-input" match="/"&gt;&lt;tns1:patch4XXFaultMessage&gt;&lt;clientError&gt;&lt;tns16:client4XXError&gt;&lt;statusCode&gt;&lt;xsl:value-of select="xsd:integer($_error/MsgCode)"/&gt;&lt;/statusCode&gt;&lt;message&gt;&lt;xsl:value-of select="$_error/Msg"/&gt;&lt;/message&gt;&lt;/tns16:client4XXError&gt;&lt;/clientError&gt;&lt;/tns1:patch4XXFaultMessage&gt;&lt;/xsl:template&gt;&lt;/xsl:stylesheet&gt;</tibex:inputBinding>
                                     <bpws:targets>
                                     <bpws:target linkName="EmptyToCopy_1_Reply404"/>
                                     </bpws:targets>
