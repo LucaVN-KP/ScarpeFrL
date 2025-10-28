@@ -91,6 +91,9 @@
           <parameterMapping xmi:id="_AMUMEK6REfCwuYEP_or6Vw" parameterName="data_voluta" parameterType="Query" dataType="string" required="true" description=""/>
           <parameterMapping xmi:id="_BWfgMK6REfCwuYEP_or6Vw" parameterName="data_massima" parameterType="Query" dataType="string" required="true" description=""/>
         </parameters>
+        <responseStatus xmi:id="_hmT90LNLEfCJUNrWSxEL2w" statusCode="200" reasonPhrase="OK" dataType="string"/>
+        <responseStatus xmi:id="_hpSZULNLEfCJUNrWSxEL2w" statusCode="400" reasonPhrase="Bad Request" dataType="string"/>
+        <responseStatus xmi:id="_igwM0LNLEfCJUNrWSxEL2w" statusCode="500" reasonPhrase="Internal Server Error" dataType="string"/>
         <clientFormat>json</clientFormat>
         <clientRequestFormat>json</clientRequestFormat>
       </operation>
