@@ -94,6 +94,7 @@
         <responseStatus xmi:id="_hmT90LNLEfCJUNrWSxEL2w" statusCode="200" reasonPhrase="OK" dataType="string"/>
         <responseStatus xmi:id="_hpSZULNLEfCJUNrWSxEL2w" statusCode="400" reasonPhrase="Bad Request" dataType="string"/>
         <responseStatus xmi:id="_igwM0LNLEfCJUNrWSxEL2w" statusCode="500" reasonPhrase="Internal Server Error" dataType="string"/>
+        <responseStatus xmi:id="_obnWkLPsEfCto-Q5QliXJA" statusCode="404" reasonPhrase="Not Found" dataType="string"/>
         <clientFormat>json</clientFormat>
         <clientRequestFormat>json</clientRequestFormat>
       </operation>
@@ -106,6 +107,12 @@
     <sca:interface.wsdl xmi:id="_z61NEK8kEfCOFOyFy-t4FA" interface="http://xmlns.example.com/20251022105508PLT#wsdl.interface(kpordini)" scaext:wsdlLocation="../Processes/kpLogistics_test/kpOrdini.bwp"/>
     <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_z6--EK8kEfCOFOyFy-t4FA" name="RestService5" path="/kpordini" docBasePath="http://localhost:7777/ScarpeFrL" docResourcePath="kpOrdini" basePath="/" connector="kpLogistics_test.KP_HTTPConnectorResource" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/kpLogistics_test.kpOrdini-kpOrdini.json">
       <operation xmi:id="_z7NnkK8kEfCOFOyFy-t4FA" operationName="post" nickname="post-kpordini" httpMethod="POST" notes="postKpOrdini" responseStyle="element" requestStyle="element" outputPartName="item">
+        <responseStatus xmi:id="_BGWVgLPuEfCto-Q5QliXJA" statusCode="200" reasonPhrase="OK" dataType="string"/>
+        <responseStatus xmi:id="_BYE-sLPuEfCto-Q5QliXJA" statusCode="201" reasonPhrase="Created" dataType="string"/>
+        <responseStatus xmi:id="_BotbsLPuEfCto-Q5QliXJA" statusCode="404" reasonPhrase="Not Found" dataType="string"/>
+        <responseStatus xmi:id="_EcGwYLPuEfCto-Q5QliXJA" statusCode="500" reasonPhrase="Internal Server Error" dataType="string"/>
+        <responseStatus xmi:id="_FaMJQLPuEfCto-Q5QliXJA" statusCode="501" reasonPhrase="KPLogistics error 1" dataType="string"/>
+        <responseStatus xmi:id="_GXuIgLPuEfCto-Q5QliXJA" statusCode="502" reasonPhrase="KPLogistics error 2" dataType="string"/>
         <clientFormat>json</clientFormat>
         <clientRequestFormat>json</clientRequestFormat>
       </operation>
@@ -127,6 +134,7 @@
   <sca:property xmi:id="_0YuQ0LASEfCiqasLyIY9eg" name="FileQueryParamProperty" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="_ld2esK_rEfC2wf1VUtvE-Q" name="FileKPordiniProperty" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="_A9M6QLCxEfCxsPJSbq7Nsw" name="FileKPQuoteProperty" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_OIQ3MLPvEfCto-Q5QliXJA" name="FileResponseKPordiniProperty" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
   <sca:component xmi:id="_lsZawJojEfCWAJKe-jrClQ" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
     <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_lsb3AJojEfCWAJKe-jrClQ" processName="scarpefrl.Sottoscrizione"/>
   </sca:component>

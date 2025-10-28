@@ -30,6 +30,37 @@
             "description" : "a string to be returned",
             "schema" : {
               "type" : "string"
+            },
+            "headers" : { }
+          },
+          "404" : {
+            "description" : "Not Found",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "501" : {
+            "description" : "KPLogistics error 1",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "502" : {
+            "description" : "KPLogistics error 2",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "201" : {
+            "description" : "Created",
+            "schema" : {
+              "type" : "string"
             }
           }
         }

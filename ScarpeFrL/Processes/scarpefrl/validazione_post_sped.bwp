@@ -23,8 +23,8 @@
     <tibex:VariableDescriptor type="MemorySaving">
         <task name="flow">
             <endingVariables>
-                <variable>Controllo_IDOrd</variable>
                 <variable>Start</variable>
+                <variable>Controllo_IDOrd</variable>
                 <variable>Controllo_IDSped</variable>
             </endingVariables>
         </task>
@@ -474,7 +474,7 @@
         productVersion="6.11.0 V17 2024-12-09" scalable="true"
         singleton="true" stateless="false" type="IT"/>
     <tibex:ProcessInterface context=""
-        input="{http://tns.tibco.com/bw/json/1759399791283}spedizione" output="{http://www.example.org/Clienti}msg"/>
+        input="{http://tns.tibco.com/bw/json/1759399791283}spedizione" output="{http://www.example.org/Clienti}message"/>
     <tibex:ProcessTemplateConfigurations/>
     <notation:Diagram measurementUnit="Pixel" type="BWProcess"
         xmlns:bwnotation="http://tns.tibco.com/bw/runtime/BWNotation"
@@ -953,8 +953,6 @@
             name="_error_IDordInSped" sca-bpel:internal="true"/>
         <bpws:variable element="ns6:DefaultFault"
             name="id_ordine_errato-input" sca-bpel:internal="true"/>
-        <bpws:variable element="ns9:msg" name="End-input"
-            sca-bpel:internal="true" tibex:parameter="out"/>
         <bpws:variable element="ns6:DefaultFault"
             name="id_ord_doppio-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns10:ActivityErrorData"
@@ -964,6 +962,8 @@
             name="_error_id_ordine_errato" sca-bpel:internal="true"/>
         <bpws:variable element="ns10:ActivityErrorData"
             name="_error_id_ord_doppio" sca-bpel:internal="true"/>
+        <bpws:variable element="ns9:message" name="End-input"
+            sca-bpel:internal="true" tibex:parameter="out"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -1006,7 +1006,7 @@
                     </bpws:targets>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://www.example.org/Clienti&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;End-input&quot; match=&quot;/&quot;>&lt;tns1:msg>&lt;xsl:value-of select=&quot;&amp;quot;tutto ok&amp;quot;&quot;/>&lt;/tns1:msg>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://www.example.org/Clienti&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;End-input&quot; match=&quot;/&quot;>&lt;tns1:message>&lt;xsl:value-of select=&quot;&amp;quot;tutto ok&amp;quot;&quot;/>&lt;/tns1:message>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
                         <bwext:BWActivity
