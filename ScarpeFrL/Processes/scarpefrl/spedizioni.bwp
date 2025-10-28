@@ -2188,7 +2188,7 @@
             name="Reply5xx-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns22:spedizione"
             name="validazione_input-input" sca-bpel:internal="true"/>
-        <bpws:variable element="ns12:msg" name="validazione_input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns12:message" name="validazione_input" sca-bpel:internal="true"/>
         <bpws:variable messageType="ns:post4XXFaultMessage"
             name="Reply406-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns23:WriteActivityInputTextClass"

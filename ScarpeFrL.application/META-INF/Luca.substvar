@@ -122,5 +122,15 @@
 			<useLookupValue>false</useLookupValue>
 			<lookupValue>C:\Users\LucaValerioNepote\Desktop\ScarpeFrL\Risposta_quote_KPLog.txt</lookupValue>
 		</globalVariable>
+		<globalVariable>
+			<name>//ScarpeFrL//FileResponseKPordiniProperty</name>
+			<value>C:\Users\LucaValerioNepote\Desktop\ScarpeFrL\Risposta_ordini_KPLog.txt</value>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<isOverride>true</isOverride>
+			<useLookupValue>false</useLookupValue>
+			<lookupValue>C:\Users\LucaValerioNepote\Desktop\ScarpeFrL\Risposta_ordini_KPLog.txt</lookupValue>
+		</globalVariable>
 	</globalVariables>
 </repository>

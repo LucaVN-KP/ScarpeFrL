@@ -33,13 +33,13 @@
 	</complexType>
 	
 	<!-- definisco l'errore della throw activity -->
-	<element name="msg" type="string"/>
-	<element name="msgCode" type="string"/>
+	<element name="statusCode" type="integer"/>
+	<element name="message" type="string"/>
 	<element name="myError" type="tns:ErrorType"/>
 	<complexType name="ErrorType">
 		<sequence>
-			<element ref="tns:msg"/>
-			<element ref="tns:msgCode"/>
+			<element ref="tns:statusCode"/>
+			<element ref="tns:message"/>
 		</sequence>
 	</complexType>
 	<element name="ErrorSubprocess" type="tns:ErrorType"/>
