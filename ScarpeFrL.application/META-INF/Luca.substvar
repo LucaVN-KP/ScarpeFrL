@@ -132,5 +132,41 @@
 			<useLookupValue>false</useLookupValue>
 			<lookupValue>C:\Users\LucaValerioNepote\Desktop\ScarpeFrL\Risposta_ordini_KPLog.txt</lookupValue>
 		</globalVariable>
+		<globalVariable>
+			<name>newProperty</name>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<isOverride>false</isOverride>
+			<useLookupValue>false</useLookupValue>
+		</globalVariable>
+		<globalVariable>
+			<name>newProperty1</name>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<isOverride>false</isOverride>
+			<useLookupValue>false</useLookupValue>
+		</globalVariable>
+		<globalVariable>
+			<name>//ScarpeFrL//FileResponseGETClientiProperty</name>
+			<value>C:\Users\LucaValerioNepote\Desktop\ScarpeFrL\Response_GETclienti.txt</value>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<isOverride>true</isOverride>
+			<useLookupValue>false</useLookupValue>
+			<lookupValue>C:\Users\LucaValerioNepote\Desktop\ScarpeFrL\Response_GETclienti.txt</lookupValue>
+		</globalVariable>
+		<globalVariable>
+			<name>//ScarpeFrL//FileResponsePATCHspedizioni</name>
+			<value>C:\Users\LucaValerioNepote\Desktop\ScarpeFrL\Response_PATCHspedizioni.txt</value>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<isOverride>true</isOverride>
+			<useLookupValue>false</useLookupValue>
+			<lookupValue>C:\Users\LucaValerioNepote\Desktop\ScarpeFrL\Response_PATCHspedizioni.txt</lookupValue>
+		</globalVariable>
 	</globalVariables>
 </repository>

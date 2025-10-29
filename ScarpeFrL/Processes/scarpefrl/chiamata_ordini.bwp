@@ -87,6 +87,12 @@
                 <variable>_error_invoke_kpordini</variable>
             </endingVariables>
         </task>
+        <task name="valore_id_cliente">
+            <endingVariables>
+                <variable>valore_id_cliente-input</variable>
+                <variable>valore_id_cliente</variable>
+            </endingVariables>
+        </task>
     </tibex:VariableDescriptor>
     <tibex:Types>
         <xs:schema attributeFormDefault="unqualified"
@@ -1106,7 +1112,7 @@
                                     gradientEndColor="50431"
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.0"/>
-                                    <layoutConstraint x="-27"
+                                    <layoutConstraint x="-89"
                                     xsi:type="notation:Bounds" y="215"/>
                                     </children>
                                     <children type="4002">
@@ -1289,7 +1295,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.5"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="60"
+                                    x="-8"
                                     xsi:type="notation:Bounds" y="215"/>
                                     </children>
                                     <children type="4018">
@@ -1699,6 +1705,43 @@
                                     <layoutConstraint x="924"
                                     xsi:type="notation:Bounds" y="363"/>
                                     </children>
+                                    <children type="4002 bw.internal.setSharedVariable">
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.10"/>
+                                    <layoutConstraint
+                                    height="53" width="53"
+                                    x="79"
+                                    xsi:type="notation:Bounds" y="215"/>
+                                    </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
                                     <styles xsi:type="notation:FilteringStyle"/>
@@ -1790,7 +1833,7 @@
         </edges>
         <edges
             source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.5"
-            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.6" type="4006">
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.10" type="4006">
             <children type="6002">
                 <layoutConstraint xsi:type="notation:Location" y="40"/>
             </children>
@@ -1888,6 +1931,17 @@
             <element href="//0/@process/@activity/@activity/@links/@children.8"/>
             <bendpoints points="[0, 25, 0, -122]$[0, 123, 0, -24]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
+        <edges
+            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.10"
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.6" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.9"/>
+            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
         <tibex:namespaceItem
@@ -1969,6 +2023,9 @@
             name="_error_Body_chiamata" sca-bpel:internal="true"/>
         <bpws:variable element="ns12:DefaultFault"
             name="Ordini_error-input" sca-bpel:internal="true"/>
+        <bpws:variable name="valore_id_cliente-input"
+            sca-bpel:internal="true" type="xsd:integer"/>
+        <bpws:variable name="valore_id_cliente" sca-bpel:internal="true" type="xsd:integer"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -1990,6 +2047,7 @@
                 <bpws:link name="WriteFileToThrow" tibex:linkType="ERROR"/>
                 <bpws:link name="ForEachToThrow1" tibex:linkType="SUCCESSWITHCONDITION"/>
                 <bpws:link name="invoke_kpordiniToThrow" tibex:linkType="ERROR"/>
+                <bpws:link name="SetSharedVariableToForEach" tibex:linkType="SUCCESS"/>
             </bpws:links>
             <bpws:extensionActivity>
                 <tibex:receiveEvent createInstance="yes"
@@ -2193,10 +2251,9 @@
                     </tibex:config>
                 </tibex:activityExtension>
             </bpws:extensionActivity>
-            <bpws:scope name="ForEach" tibex:group="foreach"
-                tibex:indexToGlobal="false" tibex:xpdlId="be7bbce4-d189-4766-b973-5ad9bc593d17">
+            <bpws:scope name="ForEach" tibex:group="foreach" tibex:xpdlId="be7bbce4-d189-4766-b973-5ad9bc593d17">
                 <bpws:targets>
-                    <bpws:target linkName="select_IDclienteToForEach"/>
+                    <bpws:target linkName="SetSharedVariableToForEach"/>
                 </bpws:targets>
                 <bpws:sources>
                     <bpws:source linkName="ForEachTocreaOrdine">
@@ -2398,6 +2455,27 @@
                     <bpws:target linkName="invoke_kpordiniToThrow"/>
                 </bpws:targets>
             </bpws:throw>
+            <bpws:extensionActivity>
+                <tibex:extActivity
+                    inputVariable="valore_id_cliente-input"
+                    name="valore_id_cliente"
+                    outputVariable="valore_id_cliente"
+                    tibex:xpdlId="77b4db06-d9b1-4c5a-80ab-2f0ccb33c822"
+                    type="bw.internal.setSharedVariable" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                    <bpws:targets>
+                        <bpws:target linkName="select_IDclienteToForEach"/>
+                    </bpws:targets>
+                    <bpws:sources>
+                        <bpws:source linkName="SetSharedVariableToForEach"/>
+                    </bpws:sources>
+                    <tibex:inputBindings>
+                        <tibex:inputBinding coercion=""
+                            expression="$select_IDcliente/Record[1]/id_cliente" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                    </tibex:inputBindings>
+                    <tibex:SetSharedVariable
+                        variableName="var_id_cliente" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"/>
+                </tibex:extActivity>
+            </bpws:extensionActivity>
         </bpws:flow>
     </bpws:scope>
 </bpws:process>

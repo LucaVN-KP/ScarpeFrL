@@ -48,6 +48,7 @@
         <responseStatus xmi:id="_fpf9MKkWEfCrgeRKCOUqVw" statusCode="400" reasonPhrase="Bad Request" dataType="string"/>
         <responseStatus xmi:id="_ghFFcKkWEfCrgeRKCOUqVw" statusCode="406" reasonPhrase="Not Acceptable" dataType="string"/>
         <responseStatus xmi:id="_hkfqQKkWEfCrgeRKCOUqVw" statusCode="500" reasonPhrase="Internal Server Error" dataType="string"/>
+        <responseStatus xmi:id="_ck2HYLSxEfCTXaPwmDO99A" statusCode="403" reasonPhrase="Forbidden" dataType="string"/>
         <clientFormat>json</clientFormat>
         <clientRequestFormat>json</clientRequestFormat>
       </operation>
@@ -135,6 +136,8 @@
   <sca:property xmi:id="_ld2esK_rEfC2wf1VUtvE-Q" name="FileKPordiniProperty" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="_A9M6QLCxEfCxsPJSbq7Nsw" name="FileKPQuoteProperty" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="_OIQ3MLPvEfCto-Q5QliXJA" name="FileResponseKPordiniProperty" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_a9RasLSzEfCTXaPwmDO99A" name="FileResponseGETClientiProperty" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_xpglQLS3EfCTXaPwmDO99A" name="FileResponsePATCHspedizioni" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
   <sca:component xmi:id="_lsZawJojEfCWAJKe-jrClQ" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
     <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_lsb3AJojEfCWAJKe-jrClQ" processName="scarpefrl.Sottoscrizione"/>
   </sca:component>
