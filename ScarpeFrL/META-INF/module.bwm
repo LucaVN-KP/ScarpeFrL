@@ -26,11 +26,13 @@
     <sca:interface.wsdl xmi:id="_7U2WEKOIEfCOGIWVl6FzJg" interface="http://xmlns.example.com/20251007162133PLT#wsdl.interface(spedizioni)" scaext:wsdlLocation="../Processes/scarpefrl/spedizioni1.bwp"/>
     <scaext:binding xsi:type="rest:RestServiceBinding" xmi:id="_7VQlwKOIEfCOGIWVl6FzJg" name="RestService1" path="/spedizioni" docBasePath="http://localhost:7777/ScarpeFrL" docResourcePath="spedizioni" basePath="/" connector="spedizioni" structuredData="true" technologyVersion="2.0" implementation="Service Descriptors/scarpefrl.spedizioni1-spedizioni.json">
       <operation xmi:id="_7VRM0KOIEfCOGIWVl6FzJg" operationName="post" nickname="post-spedizioni" httpMethod="POST" notes="postSpedizioni" responseStyle="element" outputPartName="item">
-        <responseStatus xmi:id="_Xp3NMKXhEfC4U70wA4CpdQ" statusCode="200" reasonPhrase="OK" dataType="string"/>
+        <responseStatus xmi:id="_Xp3NMKXhEfC4U70wA4CpdQ" statusCode="403" reasonPhrase="Forbidden" dataType="string"/>
         <responseStatus xmi:id="_Xv3ukKXhEfC4U70wA4CpdQ" statusCode="400" reasonPhrase="Bad Request" dataType="string"/>
         <responseStatus xmi:id="_n7WUEKkVEfCrgeRKCOUqVw" statusCode="404" reasonPhrase="Not Found" dataType="string"/>
         <responseStatus xmi:id="_oztfcKkVEfCrgeRKCOUqVw" statusCode="406" reasonPhrase="Not Acceptable" dataType="string"/>
         <responseStatus xmi:id="_pfQW0KkVEfCrgeRKCOUqVw" statusCode="500" reasonPhrase="Internal Server Error" dataType="string"/>
+        <responseStatus xmi:id="_0ajlILWqEfCc4s4mq-Hb8g" statusCode="201" reasonPhrase="Created" dataType="string"/>
+        <responseStatus xmi:id="_1qx24LWqEfCc4s4mq-Hb8g" statusCode="200" reasonPhrase="OK" dataType="string"/>
         <clientFormat>json</clientFormat>
         <clientRequestFormat>json</clientRequestFormat>
       </operation>
@@ -138,6 +140,7 @@
   <sca:property xmi:id="_OIQ3MLPvEfCto-Q5QliXJA" name="FileResponseKPordiniProperty" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="_a9RasLSzEfCTXaPwmDO99A" name="FileResponseGETClientiProperty" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="_xpglQLS3EfCTXaPwmDO99A" name="FileResponsePATCHspedizioni" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_xsLsgLS8EfCFjL2psdPyHg" name="FileResponsePOSTspedizioni" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
   <sca:component xmi:id="_lsZawJojEfCWAJKe-jrClQ" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
     <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_lsb3AJojEfCWAJKe-jrClQ" processName="scarpefrl.Sottoscrizione"/>
   </sca:component>

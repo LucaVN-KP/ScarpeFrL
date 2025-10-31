@@ -122,12 +122,12 @@
             <endingVariables>
                 <variable>WriteFile_response_PATCHù-input</variable>
                 <variable>WriteFile_response_PATCHù</variable>
-                <variable>RenderJSON</variable>
+                <variable>JSON_Error</variable>
             </endingVariables>
         </task>
-        <task name="RenderJSON">
+        <task name="JSON_Error">
             <endingVariables>
-                <variable>RenderJSON-input</variable>
+                <variable>JSON_Error-input</variable>
             </endingVariables>
         </task>
     </tibex:VariableDescriptor>
@@ -3189,11 +3189,11 @@
             sca-bpel:hotUpdate="false" sca-bpel:privateProperty="true"
             sca-bpel:property="yes"
             tibex:propertySource="FileResponsePATCHspedizioni" type="xsd:string"/>
-        <bpws:variable element="ns20:myError" name="RenderJSON-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns20:myError" name="JSON_Error-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns27:ActivityOutputClass"
-            name="RenderJSON" sca-bpel:internal="true"/>
+            name="JSON_Error" sca-bpel:internal="true"/>
         <bpws:variable element="ns28:ActivityErrorData"
-            name="_error_RenderJSON" sca-bpel:internal="true"/>
+            name="_error_JSON_Error" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -3464,7 +3464,7 @@
                                     </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns17=&quot;http://www.tibco.com/namespaces/tnt/plugins/file&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;RenderJSON&quot;/>&lt;xsl:template name=&quot;WriteFile_response_PATCHù-input&quot; match=&quot;/&quot;>&lt;tns17:WriteActivityInputTextClass>&lt;textContent>&lt;xsl:value-of select=&quot;$RenderJSON/jsonString&quot;/>&lt;/textContent>&lt;/tns17:WriteActivityInputTextClass>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns17=&quot;http://www.tibco.com/namespaces/tnt/plugins/file&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;JSON_Error&quot;/>&#xa;    &lt;xsl:template name=&quot;WriteFile_response_PATCHù-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns17:WriteActivityInputTextClass>&#xa;            &lt;textContent>&#xa;                &lt;xsl:value-of select=&quot;$JSON_Error/jsonString&quot;/>&#xa;            &lt;/textContent>&#xa;        &lt;/tns17:WriteActivityInputTextClass>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:config>
                                     <bwext:BWActivity
@@ -3491,9 +3491,9 @@
                                     </bpws:extensionActivity>
                                     <bpws:extensionActivity>
                                     <tibex:activityExtension
-                                    inputVariable="RenderJSON-input"
-                                    name="RenderJSON"
-                                    outputVariable="RenderJSON"
+                                    inputVariable="JSON_Error-input"
+                                    name="JSON_Error"
+                                    outputVariable="JSON_Error"
                                     tibex:xpdlId="f387c82f-15bc-48b6-b4b8-cad7ed7741de" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                                     <bpws:targets>
                                     <bpws:target linkName="LogToWriteFile_error"/>

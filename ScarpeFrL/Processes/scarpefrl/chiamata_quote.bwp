@@ -89,10 +89,16 @@
                 <variable>FileQueryParamProperty</variable>
             </endingVariables>
         </task>
-        <task name="Throw">
+        <task name="quote_error">
             <endingVariables>
-                <variable>Throw-input</variable>
+                <variable>quote_error-input</variable>
                 <variable>_error_invoke_quote</variable>
+            </endingVariables>
+        </task>
+        <task name="Set_id_ord">
+            <endingVariables>
+                <variable>Set_id_ord-input</variable>
+                <variable>Set_id_ord</variable>
             </endingVariables>
         </task>
     </tibex:VariableDescriptor>
@@ -1366,7 +1372,7 @@
                                     gradientEndColor="50431"
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.1"/>
-                                    <layoutConstraint x="533"
+                                    <layoutConstraint x="645"
                                     xsi:type="notation:Bounds" y="14"/>
                                     </children>
                                     <children type="4002 bw.file.read">
@@ -1403,7 +1409,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.2"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="-84"
+                                    x="-86"
                                     xsi:type="notation:Bounds" y="14"/>
                                     </children>
                                     <children type="4002 bw.parse.parsedata">
@@ -1440,7 +1446,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.3"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="4"
+                                    x="19"
                                     xsi:type="notation:Bounds" y="14"/>
                                     </children>
                                     <children type="4002 bw.jdbc.JDBCQuery">
@@ -1477,7 +1483,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.4"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="105"
+                                    x="123"
                                     xsi:type="notation:Bounds" y="14"/>
                                     </children>
                                     <children type="4002 bw.restjson.Rest">
@@ -1514,7 +1520,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.5"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="345"
+                                    x="459"
                                     xsi:type="notation:Bounds" y="14"/>
                                     </children>
                                     <children type="4002 bw.restjson.JsonParser">
@@ -1551,7 +1557,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.6"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="426"
+                                    x="555"
                                     xsi:type="notation:Bounds" y="14"/>
                                     </children>
                                     <children type="4002 bw.file.write">
@@ -1588,7 +1594,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.7"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="234"
+                                    x="342"
                                     xsi:type="notation:Bounds" y="14"/>
                                     </children>
                                     <children type="4002 com.tibco.bw.core.design.process.editor.Activity_4002_Throw">
@@ -1625,7 +1631,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.8"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="-84"
+                                    x="-86"
                                     xsi:type="notation:Bounds" y="117"/>
                                     </children>
                                     <children type="4002 com.tibco.bw.core.design.process.editor.Activity_4002_Throw">
@@ -1662,7 +1668,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.9"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="234"
+                                    x="342"
                                     xsi:type="notation:Bounds" y="117"/>
                                     </children>
                                     <children type="4002">
@@ -1697,8 +1703,45 @@
                                     gradientEndColor="50431"
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.10"/>
-                                    <layoutConstraint x="345"
+                                    <layoutConstraint x="459"
                                     xsi:type="notation:Bounds" y="117"/>
+                                    </children>
+                                    <children type="4002 bw.internal.setSharedVariable">
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.11"/>
+                                    <layoutConstraint
+                                    height="40" width="40"
+                                    x="228"
+                                    xsi:type="notation:Bounds" y="14"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -1712,8 +1755,8 @@
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity"/>
-                                    <layoutConstraint height="422"
-                                    width="692" xsi:type="notation:Bounds"/>
+                                    <layoutConstraint height="366"
+                                    width="985" xsi:type="notation:Bounds"/>
                                 </children>
                                 <styles xsi:type="notation:SortingStyle"/>
                                 <styles xsi:type="notation:FilteringStyle"/>
@@ -1780,7 +1823,7 @@
         </edges>
         <edges
             source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.4"
-            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.7" type="4006">
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.11" type="4006">
             <children type="6002">
                 <layoutConstraint xsi:type="notation:Location" y="40"/>
             </children>
@@ -1853,6 +1896,17 @@
             <styles lineColor="255" xsi:type="notation:ConnectorStyle"/>
             <styles fontColor="255" fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@activity/@links/@children.9"/>
+            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.11"
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.7" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.10"/>
             <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
@@ -1961,7 +2015,10 @@
             name="_errorOptional" sca-bpel:internal="true"/>
         <bpws:variable element="ns23:DefaultFault"
             name="path_errato-input" sca-bpel:internal="true"/>
-        <bpws:variable element="ns23:DefaultFault" name="Throw-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns23:DefaultFault"
+            name="quote_error-input" sca-bpel:internal="true"/>
+        <bpws:variable name="Set_id_ord-input" sca-bpel:internal="true" type="xsd:integer"/>
+        <bpws:variable name="Set_id_ord" sca-bpel:internal="true" type="xsd:integer"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -1984,6 +2041,7 @@
                 <bpws:link name="ReadFile_ordiniToThrow" tibex:linkType="ERROR"/>
                 <bpws:link name="stringa_queryParamsToThrow" tibex:linkType="ERROR"/>
                 <bpws:link name="invoke_quoteToThrow" tibex:linkType="ERROR"/>
+                <bpws:link name="SetSharedVariableTostringa_queryParams" tibex:linkType="SUCCESS"/>
             </bpws:links>
             <bpws:extensionActivity>
                 <tibex:receiveEvent createInstance="yes"
@@ -2247,7 +2305,7 @@
                     outputVariable="stringa_queryParams"
                     tibex:xpdlId="33006a50-cfe0-480d-a437-932d710c708e" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:targets>
-                        <bpws:target linkName="JDBCQueryToEnd"/>
+                        <bpws:target linkName="SetSharedVariableTostringa_queryParams"/>
                     </bpws:targets>
                     <bpws:sources>
                         <bpws:source linkName="WriteFileToinvoke_quote"/>
@@ -2305,7 +2363,7 @@
                 </bpws:targets>
             </bpws:throw>
             <bpws:throw faultName="ns23:DefaultFault"
-                faultVariable="Throw-input" name="Throw" tibex:xpdlId="1d8e5128-8899-4762-b8f9-3d74af42e752">
+                faultVariable="quote_error-input" name="quote_error" tibex:xpdlId="1d8e5128-8899-4762-b8f9-3d74af42e752">
                 <tibex:inputBindings>
                     <tibex:partBinding
                         expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns8=&quot;http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions&quot; xmlns:tns9=&quot;http://schemas.tibco.com/bw/plugins/http/5.0/httpExceptions&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;_error_invoke_quote&quot;/>&lt;xsl:param name=&quot;_error&quot;/>&lt;xsl:template name=&quot;Throw-input&quot; match=&quot;/&quot;>&lt;tns8:DefaultFault>&lt;xsl:choose>&lt;xsl:when test=&quot;starts-with(xsd:string($_error_invoke_quote/tns9:HttpClientException/statusLine/statusCode),'4')&quot;>&lt;xsl:if test=&quot;$_error_invoke_quote/tns9:HttpClientException/httpMessage/asciiContent&quot;>&lt;message>&lt;xsl:value-of select=&quot;$_error_invoke_quote/tns9:HttpClientException/httpMessage/asciiContent&quot;/>&lt;/message>&lt;/xsl:if>&lt;/xsl:when>&lt;xsl:when test=&quot;starts-with(xsd:string($_error_invoke_quote/tns9:HttpServerException/statusLine/statusCode),'5')&quot;>&lt;xsl:if test=&quot;$_error_invoke_quote/tns9:HttpServerException/httpMessage/asciiContent&quot;>&lt;message>&lt;xsl:value-of select=&quot;$_error_invoke_quote/tns9:HttpServerException/httpMessage/asciiContent&quot;/>&lt;/message>&lt;/xsl:if>&lt;/xsl:when>&lt;xsl:otherwise>&lt;message>&lt;xsl:value-of select=&quot;$_error/Msg&quot;/>&lt;/message>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;xsl:choose>&lt;xsl:when test=&quot;starts-with(xsd:string($_error_invoke_quote/tns9:HttpClientException/statusLine/statusCode),'4')&quot;>&lt;xsl:if test=&quot;$_error_invoke_quote/tns9:HttpClientException/statusLine/statusCode&quot;>&lt;msgCode>&lt;xsl:value-of select=&quot;$_error_invoke_quote/tns9:HttpClientException/statusLine/statusCode&quot;/>&lt;/msgCode>&lt;/xsl:if>&lt;/xsl:when>&lt;xsl:when test=&quot;starts-with(xsd:string($_error_invoke_quote/tns9:HttpServerException/statusLine/statusCode),'5')&quot;>&lt;xsl:if test=&quot;$_error_invoke_quote/tns9:HttpServerException/statusLine/statusCode&quot;>&lt;msgCode>&lt;xsl:value-of select=&quot;$_error_invoke_quote/tns9:HttpServerException/statusLine/statusCode&quot;/>&lt;/msgCode>&lt;/xsl:if>&lt;/xsl:when>&lt;xsl:otherwise>&lt;xsl:if test=&quot;$_error/MsgCode&quot;>&lt;msgCode>&lt;xsl:value-of select=&quot;$_error/MsgCode&quot;/>&lt;/msgCode>&lt;/xsl:if>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;/tns8:DefaultFault>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
@@ -2314,6 +2372,24 @@
                     <bpws:target linkName="invoke_quoteToThrow"/>
                 </bpws:targets>
             </bpws:throw>
+            <bpws:extensionActivity>
+                <tibex:extActivity inputVariable="Set_id_ord-input"
+                    name="Set_id_ord" outputVariable="Set_id_ord"
+                    tibex:xpdlId="961156cd-8c7c-4812-93a5-5722ea30ce56"
+                    type="bw.internal.setSharedVariable" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                    <bpws:targets>
+                        <bpws:target linkName="JDBCQueryToEnd"/>
+                    </bpws:targets>
+                    <bpws:sources>
+                        <bpws:source linkName="SetSharedVariableTostringa_queryParams"/>
+                    </bpws:sources>
+                    <tibex:inputBindings>
+                        <tibex:inputBinding coercion=""
+                            expression="$select_dati_richiesta/Record[1]/id_ord" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                    </tibex:inputBindings>
+                    <tibex:SetSharedVariable variableName="var_id_ord" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"/>
+                </tibex:extActivity>
+            </bpws:extensionActivity>
         </bpws:flow>
     </bpws:scope>
 </bpws:process>

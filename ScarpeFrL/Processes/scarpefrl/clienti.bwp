@@ -28,8 +28,8 @@
     <tibex:VariableDescriptor type="MemorySaving">
         <task name="flow1">
             <endingVariables>
-                <variable>select_id_cliente</variable>
                 <variable>get</variable>
+                <variable>select_id_cliente</variable>
             </endingVariables>
         </task>
         <task name="select_id_cliente">
@@ -72,7 +72,7 @@
             <endingVariables>
                 <variable>WriteFile-input</variable>
                 <variable>WriteFile</variable>
-                <variable>RenderJSON</variable>
+                <variable>JSON_Error</variable>
             </endingVariables>
         </task>
         <task name="Log">
@@ -80,9 +80,9 @@
                 <variable>Log-input</variable>
             </endingVariables>
         </task>
-        <task name="RenderJSON">
+        <task name="JSON_Error">
             <endingVariables>
-                <variable>RenderJSON-input</variable>
+                <variable>JSON_Error-input</variable>
             </endingVariables>
         </task>
         <task name="patchOut">
@@ -1717,8 +1717,8 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="63"
-                                    xsi:type="notation:Bounds" y="108"/>
+                                    x="-18"
+                                    xsi:type="notation:Bounds" y="310"/>
                                     </children>
 
                                     <children type="4002">
@@ -2018,7 +2018,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@faultHandlers/@catchAll/@activity/@activity"/>
 
                                     <layoutConstraint
-                                    height="305"
+                                    height="395"
                                     width="514" xsi:type="notation:Bounds"/>
                                     </children>
 
@@ -2040,8 +2040,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@faultHandlers/@catchAll"/>
 
                                     <layoutConstraint
-                                    height="315"
-                                    width="539" xsi:type="notation:Bounds"/>
+                                    height="405"
+                                    width="565" xsi:type="notation:Bounds"/>
                                     </children>
 
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -2060,10 +2060,10 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@faultHandlers"/>
 
                                     <layoutConstraint
-                                    height="337"
-                                    width="549"
+                                    height="431"
+                                    width="575"
                                     x="21"
-                                    xsi:type="notation:Bounds" y="263"/>
+                                    xsi:type="notation:Bounds" y="264"/>
                                     </children>
                                     <styles xsi:type="notation:SortingStyle"/>
                                     <styles xsi:type="notation:FilteringStyle"/>
@@ -2077,7 +2077,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity"/>
 
                                     <layoutConstraint
-                                    height="602"
+                                    height="696"
                                     width="635" xsi:type="notation:Bounds"/>
                                     </children>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -2137,7 +2137,7 @@
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0"/>
                                     <layoutConstraint
-                                    height="621"
+                                    height="715"
                                     width="697"
                                     x="2" xsi:type="notation:Bounds"/>
                                     </children>
@@ -2426,15 +2426,14 @@
                                     lineColor="0" xsi:type="notation:ShapeStyle"/>
                                     <styles xsi:type="bwnotation:BackgroundStyle"/>
                                     <styles
-                                    collapsed="true"
                                     restoreHeight="240"
                                     restoreWidth="697"
                                     restoreX="2"
                                     restoreY="620" xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.1"/>
                                     <layoutConstraint
-                                    height="22"
-                                    width="671"
+                                    height="240"
+                                    width="697"
                                     x="2"
                                     xsi:type="notation:Bounds" y="620"/>
                                     </children>
@@ -2448,7 +2447,7 @@
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.0"/>
                                     <layoutConstraint
-                                    height="672" width="716" xsi:type="notation:Bounds"/>
+                                    height="985" width="805" xsi:type="notation:Bounds"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -2462,8 +2461,8 @@
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity"/>
-                                    <layoutConstraint height="939"
-                                    width="726" xsi:type="notation:Bounds"/>
+                                    <layoutConstraint height="995"
+                                    width="833" xsi:type="notation:Bounds"/>
                                 </children>
                                 <styles xsi:type="notation:SortingStyle"/>
                                 <styles xsi:type="notation:FilteringStyle"/>
@@ -2472,7 +2471,7 @@
                             <styles xsi:type="bwnotation:BackgroundStyle"/>
                             <styles xsi:type="bwnotation:ResizingStyle"/>
                             <element href="//0/@process/@activity"/>
-                            <layoutConstraint height="939" width="729" xsi:type="notation:Bounds"/>
+                            <layoutConstraint height="995" width="729" xsi:type="notation:Bounds"/>
                         </children>
                         <styles xsi:type="notation:SortingStyle"/>
                         <styles xsi:type="notation:FilteringStyle"/>
@@ -2482,7 +2481,7 @@
                     <styles xsi:type="bwnotation:BackgroundStyle"/>
                     <styles xsi:type="bwnotation:ResizingStyle"/>
                     <element href="//0/@process/@activity"/>
-                    <layoutConstraint height="963" width="729" x="1"
+                    <layoutConstraint height="1019" width="729" x="1"
                         xsi:type="notation:Bounds" y="1"/>
                 </children>
                 <styles xsi:type="notation:SortingStyle"/>
@@ -2491,7 +2490,7 @@
             </children>
             <styles fontName="Segoe UI" lineColor="0" xsi:type="notation:ShapeStyle"/>
             <element href="//0/@process"/>
-            <layoutConstraint height="1015" width="1071" xsi:type="notation:Bounds"/>
+            <layoutConstraint height="1071" width="1178" xsi:type="notation:Bounds"/>
         </children>
         <styles xsi:type="notation:DiagramStyle"/>
         <element href="//0"/>
@@ -2699,11 +2698,11 @@
             sca-bpel:hotUpdate="false" sca-bpel:privateProperty="true"
             sca-bpel:property="yes"
             tibex:propertySource="FileResponseGETClientiProperty" type="xsd:string"/>
-        <bpws:variable element="ns9:myError" name="RenderJSON-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns9:myError" name="JSON_Error-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns13:ActivityOutputClass"
-            name="RenderJSON" sca-bpel:internal="true"/>
+            name="JSON_Error" sca-bpel:internal="true"/>
         <bpws:variable element="ns14:ActivityErrorData"
-            name="_error_RenderJSON" sca-bpel:internal="true"/>
+            name="_error_JSON_Error" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -2812,7 +2811,7 @@
                                     </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns12=&quot;http://www.tibco.com/namespaces/tnt/plugins/file&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;RenderJSON&quot;/>&lt;xsl:template name=&quot;WriteFile-input&quot; match=&quot;/&quot;>&lt;tns12:WriteActivityInputTextClass>&lt;textContent>&lt;xsl:value-of select=&quot;$RenderJSON/jsonString&quot;/>&lt;/textContent>&lt;/tns12:WriteActivityInputTextClass>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns12=&quot;http://www.tibco.com/namespaces/tnt/plugins/file&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;JSON_Error&quot;/>&#xa;    &lt;xsl:template name=&quot;WriteFile-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns12:WriteActivityInputTextClass>&#xa;            &lt;textContent>&#xa;                &lt;xsl:value-of select=&quot;$JSON_Error/jsonString&quot;/>&#xa;            &lt;/textContent>&#xa;        &lt;/tns12:WriteActivityInputTextClass>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:config>
                                     <bwext:BWActivity
@@ -2872,9 +2871,9 @@
                                     </bpws:extensionActivity>
                                     <bpws:extensionActivity>
                                     <tibex:activityExtension
-                                    inputVariable="RenderJSON-input"
-                                    name="RenderJSON"
-                                    outputVariable="RenderJSON"
+                                    inputVariable="JSON_Error-input"
+                                    name="JSON_Error"
+                                    outputVariable="JSON_Error"
                                     tibex:xpdlId="f2d34a42-a564-4357-815e-fdd9f488e0bd" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                                     <bpws:targets>
                                     <bpws:target linkName="LogToWriteFile"/>

@@ -2,5 +2,6 @@
 <msv:DocumentRoot xmlns:msv="http://tns.tibco.com/bw/model/core/moduleSV">
   <moduleSharedVariables>
     <moduleSharedVariable name="var_id_cliente" type="{http://www.w3.org/2001/XMLSchema}integer" initialValueMode="none"/>
+    <moduleSharedVariable name="var_id_ord" type="{http://www.w3.org/2001/XMLSchema}integer" initialValueMode="none"/>
   </moduleSharedVariables>
 </msv:DocumentRoot>

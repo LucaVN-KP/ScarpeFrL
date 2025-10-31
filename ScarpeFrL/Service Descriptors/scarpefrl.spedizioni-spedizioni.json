@@ -39,6 +39,12 @@
               "type" : "string"
             }
           },
+          "403" : {
+            "description" : "Forbidden",
+            "schema" : {
+              "type" : "string"
+            }
+          },
           "404" : {
             "description" : "Not Found",
             "schema" : {
@@ -53,6 +59,12 @@
           },
           "406" : {
             "description" : "Not Acceptable",
+            "schema" : {
+              "type" : "string"
+            }
+          },
+          "201" : {
+            "description" : "Created",
             "schema" : {
               "type" : "string"
             }

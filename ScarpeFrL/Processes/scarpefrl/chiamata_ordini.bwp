@@ -1112,7 +1112,7 @@
                                     gradientEndColor="50431"
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.0"/>
-                                    <layoutConstraint x="-89"
+                                    <layoutConstraint x="-129"
                                     xsi:type="notation:Bounds" y="215"/>
                                     </children>
                                     <children type="4002">
@@ -1147,8 +1147,8 @@
                                     gradientEndColor="50431"
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.1"/>
-                                    <layoutConstraint x="1027"
-                                    xsi:type="notation:Bounds" y="216"/>
+                                    <layoutConstraint x="963"
+                                    xsi:type="notation:Bounds" y="215"/>
                                     </children>
                                     <children type="4002 bw.generalactivities.mapper">
                                     <children type="4017">
@@ -1184,8 +1184,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.2"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="732"
-                                    xsi:type="notation:Bounds" y="216"/>
+                                    x="574"
+                                    xsi:type="notation:Bounds" y="215"/>
                                     </children>
                                     <children type="4002 bw.restjson.Rest">
                                     <children type="4017">
@@ -1221,8 +1221,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.3"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="924"
-                                    xsi:type="notation:Bounds" y="216"/>
+                                    x="830"
+                                    xsi:type="notation:Bounds" y="215"/>
                                     </children>
                                     <children type="4002 bw.file.write">
                                     <children type="4017">
@@ -1258,8 +1258,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.4"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="819"
-                                    xsi:type="notation:Bounds" y="216"/>
+                                    x="713"
+                                    xsi:type="notation:Bounds" y="215"/>
                                     </children>
                                     <children type="4002 bw.jdbc.JDBCQuery">
                                     <children type="4017">
@@ -1295,7 +1295,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.5"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="-8"
+                                    x="-48"
                                     xsi:type="notation:Bounds" y="215"/>
                                     </children>
                                     <children type="4018">
@@ -1357,7 +1357,7 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="245"
+                                    x="124"
                                     xsi:type="notation:Bounds" y="106"/>
                                     </children>
 
@@ -1413,7 +1413,7 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="71"
+                                    x="-5"
                                     xsi:type="notation:Bounds" y="106"/>
                                     </children>
 
@@ -1469,8 +1469,8 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="246"
-                                    xsi:type="notation:Bounds" y="202"/>
+                                    x="124"
+                                    xsi:type="notation:Bounds" y="188"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -1488,7 +1488,7 @@
 
                                     <layoutConstraint
                                     height="287"
-                                    width="529" xsi:type="notation:Bounds"/>
+                                    width="415" xsi:type="notation:Bounds"/>
                                     </children>
                                     <styles xsi:type="notation:SortingStyle"/>
                                     <styles xsi:type="notation:FilteringStyle"/>
@@ -1501,7 +1501,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.6"/>
                                     <layoutConstraint
                                     height="287"
-                                    width="532"
+                                    width="296"
                                     x="15"
                                     xsi:type="notation:Bounds" y="20"/>
                                     </children>
@@ -1592,8 +1592,8 @@
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.6"/>
                                     <layoutConstraint
-                                    height="331" width="572"
-                                    x="182"
+                                    height="331" width="336"
+                                    x="220"
                                     xsi:type="notation:Bounds" y="82"/>
                                     </children>
                                     <children type="4002 com.tibco.bw.core.design.process.editor.Activity_4002_Throw">
@@ -1630,7 +1630,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.7"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="819"
+                                    x="713"
                                     xsi:type="notation:Bounds" y="363"/>
                                     </children>
                                     <children type="4002 com.tibco.bw.core.design.process.editor.Activity_4002_Throw">
@@ -1667,8 +1667,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.8"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="400"
-                                    xsi:type="notation:Bounds" y="449"/>
+                                    x="329"
+                                    xsi:type="notation:Bounds" y="440"/>
                                     </children>
                                     <children type="4002">
                                     <children type="4017">
@@ -1702,7 +1702,7 @@
                                     gradientEndColor="50431"
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.9"/>
-                                    <layoutConstraint x="924"
+                                    <layoutConstraint x="830"
                                     xsi:type="notation:Bounds" y="363"/>
                                     </children>
                                     <children type="4002 bw.internal.setSharedVariable">
@@ -1739,7 +1739,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.10"/>
                                     <layoutConstraint
                                     height="53" width="53"
-                                    x="79"
+                                    x="71"
                                     xsi:type="notation:Bounds" y="215"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
@@ -1755,7 +1755,7 @@
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity"/>
                                     <layoutConstraint height="560"
-                                    width="1160" xsi:type="notation:Bounds"/>
+                                    width="1431" xsi:type="notation:Bounds"/>
                                 </children>
                                 <styles xsi:type="notation:SortingStyle"/>
                                 <styles xsi:type="notation:FilteringStyle"/>
@@ -1783,7 +1783,7 @@
             </children>
             <styles fontName="Segoe UI" lineColor="0" xsi:type="notation:ShapeStyle"/>
             <element href="//0/@process"/>
-            <layoutConstraint height="636" width="1505" xsi:type="notation:Bounds"/>
+            <layoutConstraint height="636" width="1574" xsi:type="notation:Bounds"/>
         </children>
         <styles xsi:type="notation:DiagramStyle"/>
         <element href="//0"/>
@@ -2047,7 +2047,7 @@
                 <bpws:link name="WriteFileToThrow" tibex:linkType="ERROR"/>
                 <bpws:link name="ForEachToThrow1" tibex:linkType="SUCCESSWITHCONDITION"/>
                 <bpws:link name="invoke_kpordiniToThrow" tibex:linkType="ERROR"/>
-                <bpws:link name="SetSharedVariableToForEach" tibex:linkType="SUCCESS"/>
+                <bpws:link name="valore_id_clienteToForEach" tibex:linkType="SUCCESS"/>
             </bpws:links>
             <bpws:extensionActivity>
                 <tibex:receiveEvent createInstance="yes"
@@ -2253,7 +2253,7 @@
             </bpws:extensionActivity>
             <bpws:scope name="ForEach" tibex:group="foreach" tibex:xpdlId="be7bbce4-d189-4766-b973-5ad9bc593d17">
                 <bpws:targets>
-                    <bpws:target linkName="SetSharedVariableToForEach"/>
+                    <bpws:target linkName="valore_id_clienteToForEach"/>
                 </bpws:targets>
                 <bpws:sources>
                     <bpws:source linkName="ForEachTocreaOrdine">
@@ -2466,7 +2466,7 @@
                         <bpws:target linkName="select_IDclienteToForEach"/>
                     </bpws:targets>
                     <bpws:sources>
-                        <bpws:source linkName="SetSharedVariableToForEach"/>
+                        <bpws:source linkName="valore_id_clienteToForEach"/>
                     </bpws:sources>
                     <tibex:inputBindings>
                         <tibex:inputBinding coercion=""
