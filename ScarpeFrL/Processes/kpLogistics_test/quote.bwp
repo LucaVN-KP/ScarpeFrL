@@ -1904,6 +1904,7 @@
                                 <bpws:targets>
                                     <bpws:target linkName="ParseJSONTogetOut"/>
                                 </bpws:targets>
+                                <bpws:correlations/>
                             </bpws:reply>
                             <bpws:extensionActivity>
                                 <tibex:activityExtension

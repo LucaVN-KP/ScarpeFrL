@@ -2251,7 +2251,8 @@
                     </tibex:config>
                 </tibex:activityExtension>
             </bpws:extensionActivity>
-            <bpws:scope name="ForEach" tibex:group="foreach" tibex:xpdlId="be7bbce4-d189-4766-b973-5ad9bc593d17">
+            <bpws:scope name="ForEach" tibex:group="foreach"
+                tibex:indexToGlobal="false" tibex:xpdlId="be7bbce4-d189-4766-b973-5ad9bc593d17">
                 <bpws:targets>
                     <bpws:target linkName="valore_id_clienteToForEach"/>
                 </bpws:targets>
