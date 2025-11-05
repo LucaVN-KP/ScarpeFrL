@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tns.tibco.com/bw/json/1762360231862" elementFormDefault="qualified" targetNamespace="http://tns.tibco.com/bw/json/1762360231862">
+ 
+ <element name="datiFattura" type="tns:datiFatturaType"/>
+ 
+  <complexType name="datiFatturaType">
+    <sequence>
+      <element maxOccurs="1" minOccurs="0" name="id_fattura" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="id_sped" type="string"/>
+      <element maxOccurs="1" minOccurs="0" name="importo" type="integer"/>
+      <element maxOccurs="1" minOccurs="0" name="data_fatt" type="dateTime"/>
+      <element maxOccurs="1" minOccurs="0" name="stato_pagamento" type="string"/>
+    </sequence>
+  </complexType>
+  
+ 
+</schema>
