@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpws:process exitOnStandardFault="no" name="scarpefrl.TestFTP"
+<bpws:process exitOnStandardFault="no" name="scarpefrl.Test_SFTP"
     suppressJoinFailure="yes"
-    targetNamespace="http://xmlns.example.com/20251104174050"
+    targetNamespace="http://xmlns.example.com/20251105123755"
     xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
     xmlns:info="http://www.tibco.com/bw/process/info"
     xmlns:ns="http://www.tibco.com/pe/EngineTypes"
     xmlns:ns0="http://tns.tibco.com/bw/activity/timer/xsd/output"
-    xmlns:ns1="http://tns.tibco.com/bw/activity/put/input+5a310942-36be-460a-86f7-22430c26e1f5+FTPPutInputDataFile"
-    xmlns:ns2="http://tns.tibco.com/bw/activity/output+5a310942-36be-460a-86f7-22430c26e1f5+FTPPutOutputFile"
-    xmlns:ns3="http://tns.tibco.com/bw/palette/internal/activityerror+bw.ftp.put"
-    xmlns:ns4="http://tns.tibco.com/bw/activity/get/input+f942adaf-1f1b-4f66-97da-bbccd5f36fb1+FTPGetInputData"
-    xmlns:ns5="http://tns.tibco.com/bw/activity/get/output+f942adaf-1f1b-4f66-97da-bbccd5f36fb1+FTPGetOutputASCII"
-    xmlns:ns6="http://tns.tibco.com/bw/palette/internal/activityerror+bw.ftp.get"
+    xmlns:ns1="http://tns.tibco.com/bw/activity/getDefaultDir"
+    xmlns:ns2="http://tns.tibco.com/bw/palette/internal/activityerror+bw.sftp.getDefaultDir"
+    xmlns:ns3="http://www.tibco.com/pe/WriteToLogActivitySchema"
     xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912"
     xmlns:sca-bpel="http://docs.oasis-open.org/ns/opencsa/sca-bpel/200801"
     xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
@@ -22,16 +19,15 @@
                 <variable>Timer</variable>
             </endingVariables>
         </task>
-        <task name="FTPPut">
+        <task name="SFTPGetDefaultDirectory">
             <endingVariables>
-                <variable>FTPPut-input</variable>
-                <variable>FTPPut</variable>
+                <variable>SFTPGetDefaultDirectory-input</variable>
             </endingVariables>
         </task>
-        <task name="FTPGet">
+        <task name="Log">
             <endingVariables>
-                <variable>FTPGet-input</variable>
-                <variable>FTPGet</variable>
+                <variable>Log-input</variable>
+                <variable>SFTPGetDefaultDirectory</variable>
             </endingVariables>
         </task>
     </tibex:VariableDescriptor>
@@ -141,6 +137,12 @@
                         form="unqualified" name="ProcessInstanceId" type="xs:string"/>
                     <xs:element
                         block="extension restriction substitution"
+                        form="unqualified" name="TraceId" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
+                        form="unqualified" name="SpanId" type="xs:string"/>
+                    <xs:element
+                        block="extension restriction substitution"
                         form="unqualified" minOccurs="0"
                         name="CustomJobId" type="xs:string"/>
                     <!--xs:element name="RestartedFromCheckpoint" form="unqualified" block="extension restriction substitution" type="xs:boolean"/-->
@@ -218,52 +220,8 @@
         </xs:schema>
         <schema attributeFormDefault="unqualified"
             elementFormDefault="qualified"
-            targetNamespace="http://tns.tibco.com/bw/activity/put/input+5a310942-36be-460a-86f7-22430c26e1f5+FTPPutInputDataFile"
-            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:Q1="http://tns.tibco.com/bw/activity/put/input+5a310942-36be-460a-86f7-22430c26e1f5+FTPPutInputDataFile">
-            <element name="FTPPutInputDataFile" type="Q1:FTPPutInputType"/>
-            <complexType name="FTPPutInputType">
-                <sequence>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="1" name="RemoteFileName" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="1" name="LocalFileName" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="Host" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="Port" type="int"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="UserName" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="Password" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="Timeout" type="int"/>
-                </sequence>
-            </complexType>
-        </schema>
-        <schema attributeFormDefault="unqualified"
-            elementFormDefault="qualified"
-            targetNamespace="http://tns.tibco.com/bw/activity/output+5a310942-36be-460a-86f7-22430c26e1f5+FTPPutOutputFile"
-            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:Q1="http://tns.tibco.com/bw/activity/output+5a310942-36be-460a-86f7-22430c26e1f5+FTPPutOutputFile">
-            <complexType name="FTPTransferFile">
-                <sequence>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="Name" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="NumOfBytes" type="int"/>
-                </sequence>
-            </complexType>
-            <element name="FTPPutOutputFile" type="Q1:FTPPutOutputClassLocal50"/>
-            <complexType name="FTPPutOutputClassLocal50">
-                <sequence>
-                    <element form="unqualified" maxOccurs="unbounded"
-                        minOccurs="0" name="FileTransferred" type="Q1:FTPTransferFile"/>
-                </sequence>
-            </complexType>
-        </schema>
-        <schema attributeFormDefault="unqualified"
-            elementFormDefault="qualified"
-            targetNamespace="http://tns.tibco.com/bw/palette/ftp/exception"
-            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tns.tibco.com/bw/palette/ftp/exception">
+            targetNamespace="http://tns.tibco.com/bw/palette/sp/exception"
+            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tns.tibco.com/bw/palette/sp/exception">
             <complexType name="CommandExecutionExceptionType">
                 <sequence>
                     <element form="unqualified" name="msg" type="string"/>
@@ -305,87 +263,80 @@
             <element name="ConnectionErrorException" type="tns:ConnectionErrorExceptionType"/>
             <element name="PutFilesException" type="tns:PutFilesExceptionType"/>
         </schema>
+        <xs:schema attributeFormDefault="unqualified"
+            elementFormDefault="qualified"
+            targetNamespace="http://tns.tibco.com/bw/activity/getDefaultDir"
+            xmlns:tns="http://tns.tibco.com/bw/activity/getDefaultDir" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:complexType name="Input">
+                <xs:sequence>
+                    <xs:element form="unqualified" minOccurs="0"
+                        name="Host" type="xs:string"/>
+                    <xs:element form="unqualified" minOccurs="0"
+                        name="Port" type="xs:int"/>
+                    <xs:element form="unqualified" minOccurs="0"
+                        name="UserName" type="xs:string"/>
+                    <xs:element form="unqualified" minOccurs="0"
+                        name="Password" type="xs:string"/>
+                    <xs:element form="unqualified" minOccurs="0"
+                        name="PrivKey" type="xs:string"/>
+                    <xs:element form="unqualified" minOccurs="0"
+                        name="PrivKeyPass" type="xs:string"/>
+                    <xs:element form="unqualified" minOccurs="0"
+                        name="ProxyHost" type="xs:string"/>
+                    <xs:element form="unqualified" minOccurs="0"
+                        name="ProxyPort" type="xs:int"/>
+                    <xs:element form="unqualified" minOccurs="0"
+                        name="ProxyUserName" type="xs:string"/>
+                    <xs:element form="unqualified" minOccurs="0"
+                        name="ProxyPassword" type="xs:string"/>
+                    <xs:element form="unqualified" minOccurs="0"
+                        name="Timeout" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Output">
+                <xs:sequence>
+                    <xs:element form="unqualified"
+                        name="CurrentDirectory" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="Input" type="tns:Input"/>
+            <xs:element name="Output" type="tns:Output"/>
+        </xs:schema>
+        <xs:schema attributeFormDefault="unqualified"
+            elementFormDefault="qualified"
+            targetNamespace="http://www.tibco.com/pe/WriteToLogActivitySchema"
+            xmlns:tns="http://www.tibco.com/pe/WriteToLogActivitySchema" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:complexType name="LogParametersType">
+                <xs:sequence>
+                    <xs:element form="unqualified" minOccurs="0"
+                        name="msgCode" type="xs:string"/>
+                    <xs:element form="unqualified" minOccurs="0"
+                        name="loggerName" type="xs:string"/>
+                    <xs:element form="unqualified" minOccurs="0"
+                        name="logLevel" type="xs:string"/>
+                    <xs:element form="unqualified" name="message" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="ActivityInput" type="tns:LogParametersType"/>
+        </xs:schema>
         <schema elementFormDefault="unqualified"
-            targetNamespace="http://tns.tibco.com/bw/palette/internal/activityerror+bw.ftp.put"
+            targetNamespace="http://tns.tibco.com/bw/palette/internal/activityerror+bw.sftp.getDefaultDir"
             xmlns="http://www.w3.org/2001/XMLSchema"
-            xmlns:Q1="http://tns.tibco.com/bw/palette/ftp/exception" xmlns:tns="http://tns.tibco.com/bw/palette/internal/activityerror+bw.ftp.put">
-            <import namespace="http://tns.tibco.com/bw/palette/ftp/exception"/>
+            xmlns:Q1="http://tns.tibco.com/bw/palette/sp/exception" xmlns:tns="http://tns.tibco.com/bw/palette/internal/activityerror+bw.sftp.getDefaultDir">
+            <import namespace="http://tns.tibco.com/bw/palette/sp/exception"/>
             <element name="ActivityErrorData" type="tns:ActivityErrorDataType"/>
             <complexType name="ActivityErrorDataType">
                 <choice>
-                    <element maxOccurs="1" minOccurs="0" ref="Q1:PutFilesException"/>
-                    <element maxOccurs="1" minOccurs="0" ref="Q1:ConnectionErrorException"/>
                     <element maxOccurs="1" minOccurs="0" ref="Q1:CommandExecutionException"/>
-                    <element maxOccurs="1" minOccurs="0" ref="Q1:ConnectionTimeoutException"/>
-                </choice>
-            </complexType>
-        </schema>
-        <schema attributeFormDefault="unqualified"
-            elementFormDefault="qualified"
-            targetNamespace="http://tns.tibco.com/bw/activity/get/input+f942adaf-1f1b-4f66-97da-bbccd5f36fb1+FTPGetInputData"
-            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:Q1="http://tns.tibco.com/bw/activity/get/input+f942adaf-1f1b-4f66-97da-bbccd5f36fb1+FTPGetInputData">
-            <element name="FTPGetInputData" type="Q1:FTPInputType"/>
-            <complexType name="FTPInputType">
-                <sequence>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="1" name="RemoteFileName" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="Host" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="Port" type="int"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="UserName" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="Password" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="Encoding" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="Timeout" type="int"/>
-                </sequence>
-            </complexType>
-        </schema>
-        <schema attributeFormDefault="unqualified"
-            elementFormDefault="qualified"
-            targetNamespace="http://tns.tibco.com/bw/activity/get/output+f942adaf-1f1b-4f66-97da-bbccd5f36fb1+FTPGetOutputASCII"
-            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:Q1="http://tns.tibco.com/bw/activity/get/output+f942adaf-1f1b-4f66-97da-bbccd5f36fb1+FTPGetOutputASCII">
-            <complexType name="FTPTransferFile">
-                <sequence>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="Name" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="NumOfBytes" type="int"/>
-                </sequence>
-            </complexType>
-            <element name="FTPGetOutputASCII" type="Q1:FTPGetOutputClassLocal50"/>
-            <complexType name="FTPGetOutputClassLocal50">
-                <sequence>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="1" name="ASCIIData" type="string"/>
-                    <element form="unqualified" maxOccurs="unbounded"
-                        minOccurs="0" name="FileTransferred" type="Q1:FTPTransferFile"/>
-                </sequence>
-            </complexType>
-        </schema>
-        <schema elementFormDefault="unqualified"
-            targetNamespace="http://tns.tibco.com/bw/palette/internal/activityerror+bw.ftp.get"
-            xmlns="http://www.w3.org/2001/XMLSchema"
-            xmlns:Q1="http://tns.tibco.com/bw/palette/ftp/exception" xmlns:tns="http://tns.tibco.com/bw/palette/internal/activityerror+bw.ftp.get">
-            <import namespace="http://tns.tibco.com/bw/palette/ftp/exception"/>
-            <element name="ActivityErrorData" type="tns:ActivityErrorDataType"/>
-            <complexType name="ActivityErrorDataType">
-                <choice>
-                    <element maxOccurs="1" minOccurs="0" ref="Q1:GetFilesException"/>
                     <element maxOccurs="1" minOccurs="0" ref="Q1:ConnectionErrorException"/>
-                    <element maxOccurs="1" minOccurs="0" ref="Q1:CommandExecutionException"/>
-                    <element maxOccurs="1" minOccurs="0" ref="Q1:ConnectionTimeoutException"/>
                 </choice>
             </complexType>
         </schema>
     </tibex:Types>
-    <tibex:ProcessInfo callable="false" createdBy="LucaValerioNepote"
-        createdOn="Tue Nov 04 17:40:50 CET 2025" description=""
+    <tibex:ProcessInfo callable="false" createdBy="FrancescaMacchiagode"
+        createdOn="Wed Nov 05 12:37:55 CET 2025" description=""
         extraErrorVars="true" modifiers="public"
-        productVersion="6.10.0 V23 2023-11-10" scalable="true"
+        productVersion="6.11.0 V17 2024-12-09" scalable="true"
         singleton="true" stateless="false" type="IT"/>
     <tibex:ProcessInterface context="" input="" output=""/>
     <tibex:ProcessTemplateConfigurations/>
@@ -448,10 +399,10 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="-14"
-                                    xsi:type="notation:Bounds" y="129"/>
+                                    x="55"
+                                    xsi:type="notation:Bounds" y="116"/>
                                     </children>
-                                    <children type="4002 bw.ftp.put">
+                                    <children type="4002 bw.sftp.getDefaultDir">
                                     <children type="4017">
                                     <styles
                                     fontName="Segoe UI"
@@ -485,10 +436,10 @@
                                     <element href="//0/@process/@activity/@activity/@activities.1"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="115"
-                                    xsi:type="notation:Bounds" y="129"/>
+                                    x="179"
+                                    xsi:type="notation:Bounds" y="116"/>
                                     </children>
-                                    <children type="4002 bw.ftp.get">
+                                    <children type="4002 bw.generalactivities.log">
                                     <children type="4017">
                                     <styles
                                     fontName="Segoe UI"
@@ -522,8 +473,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.2"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="205"
-                                    xsi:type="notation:Bounds" y="129"/>
+                                    x="323"
+                                    xsi:type="notation:Bounds" y="133"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -579,7 +530,7 @@
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@activity/@links/@children.0"/>
-            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+            <bendpoints points="[25, 0, -99, 0]$[100, 0, -24, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
             source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
@@ -590,37 +541,37 @@
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@activity/@links/@children.1"/>
-            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+            <bendpoints points="[25, 3, -119, -14]$[120, 14, -24, -3]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
         <tibex:namespaceItem
-            namespace="http://tns.tibco.com/bw/activity/put/input+5a310942-36be-460a-86f7-22430c26e1f5+FTPPutInputDataFile" prefix="tns"/>
+            namespace="http://tns.tibco.com/bw/activity/put/input+1aad6871-5e06-45f4-a567-76c5f57f83a2+SFTPPutInputDataASCII" prefix="tns"/>
         <tibex:namespaceItem
-            namespace="http://tns.tibco.com/bw/activity/get/input+f942adaf-1f1b-4f66-97da-bbccd5f36fb1+FTPGetInputData" prefix="tns1"/>
+            namespace="http://tns.tibco.com/bw/activity/get/input+e3026c46-5212-4215-b5e2-d7a687217736+SFTPGetInputData" prefix="tns1"/>
+        <tibex:namespaceItem
+            namespace="http://www.tibco.com/pe/WriteToLogActivitySchema" prefix="tns2"/>
     </tibex:NamespaceRegistry>
     <bpws:variables>
         <bpws:variable element="ns:ProcessContext"
             name="_processContext" sca-bpel:internal="true"/>
         <bpws:variable element="ns0:TimerOutputSchema" name="Timer" sca-bpel:internal="true"/>
-        <bpws:variable name="FTPConnectionProperty"
+        <bpws:variable name="SFTPConnectionProperty"
             sca-bpel:hotUpdate="false" sca-bpel:privateProperty="true"
             sca-bpel:property="yes"
-            sca-bpel:sharedResourceType="{http://ns.tibco.com/bw/palette/ftpconnection}ftpconnection" type="xsd:string">
+            sca-bpel:sharedResourceType="{http://ns.tibco.com/bw/palette/sftpconnection}sftpconnection" type="xsd:string">
             <bpws:from>
-                <bpws:literal>scarpefrl.FTPConnectionResource</bpws:literal>
+                <bpws:literal>scarpefrl.SFTPConnectionResource</bpws:literal>
             </bpws:from>
         </bpws:variable>
-        <bpws:variable element="ns1:FTPPutInputDataFile"
-            name="FTPPut-input" sca-bpel:internal="true"/>
-        <bpws:variable element="ns2:FTPPutOutputFile" name="FTPPut" sca-bpel:internal="true"/>
-        <bpws:variable element="ns3:ActivityErrorData"
-            name="_error_FTPPut" sca-bpel:internal="true"/>
+        <bpws:variable element="ns1:Input"
+            name="SFTPGetDefaultDirectory-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns1:Output"
+            name="SFTPGetDefaultDirectory" sca-bpel:internal="true"/>
+        <bpws:variable element="ns2:ActivityErrorData"
+            name="_error_SFTPGetDefaultDirectory" sca-bpel:internal="true"/>
         <bpws:variable element="ns:ErrorReport" name="_error" sca-bpel:internal="true"/>
-        <bpws:variable element="ns4:FTPGetInputData" name="FTPGet-input" sca-bpel:internal="true"/>
-        <bpws:variable element="ns5:FTPGetOutputASCII" name="FTPGet" sca-bpel:internal="true"/>
-        <bpws:variable element="ns6:ActivityErrorData"
-            name="_error_FTPGet" sca-bpel:internal="true"/>
+        <bpws:variable element="ns3:ActivityInput" name="Log-input" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -633,16 +584,16 @@
     <bpws:scope name="scope">
         <bpws:flow name="flow">
             <bpws:links>
-                <bpws:link name="TimerToFTPPut" tibex:linkType="SUCCESS"/>
-                <bpws:link name="FTPPutToFTPGet" tibex:linkType="SUCCESS"/>
+                <bpws:link name="TimerToSFTPGetDefaultDirectory" tibex:linkType="SUCCESS"/>
+                <bpws:link name="SFTPGetDefaultDirectoryToLog" tibex:linkType="SUCCESS"/>
             </bpws:links>
             <bpws:extensionActivity>
                 <tibex:receiveEvent createInstance="yes"
                     eventTimeout="60" name="Timer"
-                    tibex:xpdlId="add990cf-af6b-4626-8fd8-b3b439f3068c"
+                    tibex:xpdlId="9344d441-cbd1-446b-8f99-e27fe8d467f0"
                     variable="Timer" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:sources>
-                        <bpws:source linkName="TimerToFTPPut"/>
+                        <bpws:source linkName="TimerToSFTPGetDefaultDirectory"/>
                     </bpws:sources>
                     <tibex:eventSource>
                         <bwext:BWActivity
@@ -654,11 +605,12 @@
                             <activityConfig>
                                 <properties name="config" xsi:type="activityconfig:EMFProperty">
                                     <type href="http://ns.tibco.com/bw/palette/generalactivities#//Timer"/>
-                                    <value
-                                    endTime="2025-11-04T17:41:46.224+0100"
+                                    <value cronExpression=""
+                                    endTime="2025-11-05T12:41:28.492+0100"
+                                    endTimeForCronJob="2025-11-05T12:41:28.492+0100"
                                     intervalUnit="Second"
                                     runOnce="true"
-                                    startTime="2025-11-04T17:41:46.224+0100"
+                                    startTime="2025-11-05T12:41:28.492+0100"
                                     timeInterval="1" xsi:type="generalactivities:Timer"/>
                                 </properties>
                             </activityConfig>
@@ -667,31 +619,32 @@
                 </tibex:receiveEvent>
             </bpws:extensionActivity>
             <bpws:extensionActivity>
-                <tibex:activityExtension inputVariable="FTPPut-input"
-                    name="FTPPut" outputVariable="FTPPut"
-                    tibex:xpdlId="5a310942-36be-460a-86f7-22430c26e1f5" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                <tibex:activityExtension
+                    inputVariable="SFTPGetDefaultDirectory-input"
+                    name="SFTPGetDefaultDirectory"
+                    outputVariable="SFTPGetDefaultDirectory"
+                    tibex:xpdlId="8e274659-fb0e-4f30-af24-6b7d0de39dda" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:targets>
-                        <bpws:target linkName="TimerToFTPPut"/>
+                        <bpws:target linkName="TimerToSFTPGetDefaultDirectory"/>
                     </bpws:targets>
                     <bpws:sources>
-                        <bpws:source linkName="FTPPutToFTPGet"/>
+                        <bpws:source linkName="SFTPGetDefaultDirectoryToLog"/>
                     </bpws:sources>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://tns.tibco.com/bw/activity/put/input+5a310942-36be-460a-86f7-22430c26e1f5+FTPPutInputDataFile&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;FTPPut-input&quot; match=&quot;/&quot;>&lt;tns:FTPPutInputDataFile>&lt;RemoteFileName>&lt;xsl:value-of select=&quot;&amp;quot;ciao.txt&amp;quot;&quot;/>&lt;/RemoteFileName>&lt;LocalFileName>&lt;xsl:value-of select=&quot;&amp;quot;C:\Users\LucaValerioNepote\Desktop\comandi SQL.txt&amp;quot;&quot;/>&lt;/LocalFileName>&lt;/tns:FTPPutInputDataFile>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns3=&quot;http://tns.tibco.com/bw/activity/getDefaultDir&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:template name=&quot;SFTPGetDefaultDirectory-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns3:Input/>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
-                        <bwext:BWActivity activityTypeID="bw.ftp.put"
+                        <bwext:BWActivity
+                            activityTypeID="bw.sftp.getDefaultDir"
                             xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
                             xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
-                            xmlns:ftpPalette="http://ns.tibco.com/bw/palette/ftp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            xmlns:sftpPalette="http://ns.tibco.com/bw/palette/sp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
                             <activityConfig>
                                 <properties name="config" xsi:type="activityconfig:EMFProperty">
-                                    <type href="http://ns.tibco.com/bw/palette/ftp#//FTPPut"/>
+                                    <type href="http://ns.tibco.com/bw/palette/sp#//SFTPGetDefaultDirectory"/>
                                     <value
-                                    ftpConnection="FTPConnectionProperty"
-                                    overwriteExistingFile="true"
-                                    timeout="120000" xsi:type="ftpPalette:FTPPut"/>
+                                    sftpConnection="SFTPConnectionProperty" xsi:type="sftpPalette:SFTPGetDefaultDirectory"/>
                                 </properties>
                             </activityConfig>
                         </bwext:BWActivity>
@@ -699,27 +652,29 @@
                 </tibex:activityExtension>
             </bpws:extensionActivity>
             <bpws:extensionActivity>
-                <tibex:activityExtension inputVariable="FTPGet-input"
-                    name="FTPGet" outputVariable="FTPGet"
-                    tibex:xpdlId="f942adaf-1f1b-4f66-97da-bbccd5f36fb1" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                <tibex:activityExtension inputVariable="Log-input"
+                    name="Log"
+                    tibex:xpdlId="fc420ce6-756b-4ece-8565-005392725477" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:targets>
-                        <bpws:target linkName="FTPPutToFTPGet"/>
+                        <bpws:target linkName="SFTPGetDefaultDirectoryToLog"/>
                     </bpws:targets>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://tns.tibco.com/bw/activity/get/input+f942adaf-1f1b-4f66-97da-bbccd5f36fb1+FTPGetInputData&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;FTPGet-input&quot; match=&quot;/&quot;>&lt;tns1:FTPGetInputData>&lt;RemoteFileName>&lt;xsl:value-of select=&quot;&amp;quot;ciao.txt&amp;quot;&quot;/>&lt;/RemoteFileName>&lt;/tns1:FTPGetInputData>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;SFTPGetDefaultDirectory&quot;/>&lt;xsl:template name=&quot;Log-input&quot; match=&quot;/&quot;>&lt;tns2:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;$SFTPGetDefaultDirectory/CurrentDirectory&quot;/>&lt;/message>&lt;/tns2:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
-                        <bwext:BWActivity activityTypeID="bw.ftp.get"
+                        <bwext:BWActivity
+                            activityTypeID="bw.generalactivities.log"
+                            version="6.0.0.001"
                             xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
                             xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
-                            xmlns:ftpPalette="http://ns.tibco.com/bw/palette/ftp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            xmlns:generalactivities="http://ns.tibco.com/bw/palette/generalactivities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
                             <activityConfig>
                                 <properties name="config" xsi:type="activityconfig:EMFProperty">
-                                    <type href="http://ns.tibco.com/bw/palette/ftp#//FTPGet"/>
-                                    <value
-                                    ftpConnection="FTPConnectionProperty"
-                                    useProcessData="true" xsi:type="ftpPalette:FTPGet"/>
+                                    <type href="http://ns.tibco.com/bw/palette/generalactivities#//Log"/>
+                                    <value controlBy="Application"
+                                    role="Info"
+                                    suppressJobInfo="true" xsi:type="generalactivities:Log"/>
                                 </properties>
                             </activityConfig>
                         </bwext:BWActivity>
