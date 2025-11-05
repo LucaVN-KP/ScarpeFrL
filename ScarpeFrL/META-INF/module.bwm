@@ -180,4 +180,7 @@
       <sca:interface.wsdl xmi:id="_z5phUK8kEfCOFOyFy-t4FA" interface="http://xmlns.example.com/20251022105508PLT#wsdl.interface(kpordini)" scaext:wsdlLocation="../Processes/kpLogistics_test/kpOrdini.bwp"/>
     </sca:service>
   </sca:component>
+  <sca:component xmi:id="_3veWULo7EfCYN62EVx6oYw" name="ComponentTest_SFTP" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_3veWUbo7EfCYN62EVx6oYw" processName="scarpefrl.Test_SFTP"/>
+  </sca:component>
 </sca:composite>
