@@ -42,6 +42,6 @@
 			<element ref="tns:message"/>
 		</sequence>
 	</complexType>
-	<element name="ErrorSubprocess" type="tns:ErrorType"/>
+
 	
 </schema>
