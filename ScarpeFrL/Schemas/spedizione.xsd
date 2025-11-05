@@ -14,4 +14,13 @@
     </sequence>
   </complexType>
   
+  <!-- definisco la variabile contenuto_directory per il server FTP dei pagamenti -->
+  <element name="contenuto_dir">
+  	<complexType>
+  		<sequence minOccurs="0" maxOccurs="unbounded">
+  			<element name = "String" type = "string"/>
+  		</sequence>
+  	</complexType>
+  </element>
+  
 </schema>
