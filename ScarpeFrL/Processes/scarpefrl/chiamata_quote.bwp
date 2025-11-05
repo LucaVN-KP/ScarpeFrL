@@ -25,6 +25,7 @@
     xmlns:ns24="http://tns.tibco.com/bw/palette/internal/errorlinkhandler+d58ea897-faa3-47b8-af1e-eee22a8b6ab7"
     xmlns:ns25="http://tns.tibco.com/bw/palette/internal/errorlinkhandler+33006a50-cfe0-480d-a437-932d710c708e"
     xmlns:ns26="http://tns.tibco.com/bw/palette/internal/errorlinkhandler+30ad3b05-3481-469f-a1db-139007cfa161"
+    xmlns:ns27="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw"
     xmlns:ns3="http://www.tibco.com/namespaces/tnt/plugins/file/v2"
     xmlns:ns4="http://www.tibco.com/namespaces/tnt/plugins/file"
     xmlns:ns5="http://tns.tibco.com/bw/palette/internal/activityerror+bw.file.read"
@@ -1238,6 +1239,18 @@
                 </choice>
             </complexType>
         </schema>
+        <schema elementFormDefault="unqualified"
+            targetNamespace="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:Q1="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions" xmlns:tns="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw">
+            <import namespace="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions"/>
+            <element name="ActivityErrorData" type="tns:ActivityErrorDataType"/>
+            <complexType name="ActivityErrorDataType">
+                <choice>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:DefaultFault"/>
+                </choice>
+            </complexType>
+        </schema>
         <wsdl:definitions
             targetNamespace="http://xmlns.example.com/20251020123448PLT"
             xmlns:extns="http://tns.tibco.com/bw/REST"
@@ -2019,6 +2032,12 @@
             name="quote_error-input" sca-bpel:internal="true"/>
         <bpws:variable name="Set_id_ord-input" sca-bpel:internal="true" type="xsd:integer"/>
         <bpws:variable name="Set_id_ord" sca-bpel:internal="true" type="xsd:integer"/>
+        <bpws:variable element="ns27:ActivityErrorData"
+            name="_error_file_non_trovato" sca-bpel:internal="true"/>
+        <bpws:variable element="ns27:ActivityErrorData"
+            name="_error_path_errato" sca-bpel:internal="true"/>
+        <bpws:variable element="ns27:ActivityErrorData"
+            name="_error_quote_error" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>

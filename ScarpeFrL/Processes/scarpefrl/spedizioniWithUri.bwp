@@ -55,8 +55,8 @@
         </task>
         <task name="flow2">
             <endingVariables>
-                <variable>update_spedizione</variable>
                 <variable>patch</variable>
+                <variable>update_spedizione</variable>
             </endingVariables>
         </task>
         <task name="patchOut">
@@ -3194,6 +3194,8 @@
             name="JSON_Error" sca-bpel:internal="true"/>
         <bpws:variable element="ns28:ActivityErrorData"
             name="_error_JSON_Error" sca-bpel:internal="true"/>
+        <bpws:variable element="ns25:ActivityErrorData"
+            name="_error_WriteFile_response_PATCH" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>

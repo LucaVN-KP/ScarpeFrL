@@ -12,6 +12,7 @@
     xmlns:ns12="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions"
     xmlns:ns13="http://tns.tibco.com/bw/palette/internal/errorlinkhandler+fe0d071b-0d57-4d73-887a-a1cf23d38fcb"
     xmlns:ns14="http://tns.tibco.com/bw/palette/internal/errorlinkhandler+08372529-a880-414e-bd54-f7f301c37c21"
+    xmlns:ns15="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw"
     xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/restinvoke+08372529-a880-414e-bd54-f7f301c37c21+RestInvokeInput"
     xmlns:ns3="http://www.tibco.com/namespaces/tnt/plugins/restinvoke+08372529-a880-414e-bd54-f7f301c37c21+RestInvokeOutput"
     xmlns:ns4="http://tns.tibco.com/bw/palette/internal/activityerror+bw.restjson.Rest"
@@ -1051,6 +1052,18 @@
                 </choice>
             </complexType>
         </schema>
+        <schema elementFormDefault="unqualified"
+            targetNamespace="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:Q1="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions" xmlns:tns="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw">
+            <import namespace="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions"/>
+            <element name="ActivityErrorData" type="tns:ActivityErrorDataType"/>
+            <complexType name="ActivityErrorDataType">
+                <choice>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:DefaultFault"/>
+                </choice>
+            </complexType>
+        </schema>
     </tibex:Types>
     <tibex:ProcessInfo callable="true" createdBy="FrancescaMacchiagode"
         createdOn="Mon Oct 20 12:35:11 CEST 2025" description=""
@@ -2026,6 +2039,12 @@
         <bpws:variable name="valore_id_cliente-input"
             sca-bpel:internal="true" type="xsd:integer"/>
         <bpws:variable name="valore_id_cliente" sca-bpel:internal="true" type="xsd:integer"/>
+        <bpws:variable element="ns15:ActivityErrorData"
+            name="_error_File_errato" sca-bpel:internal="true"/>
+        <bpws:variable element="ns15:ActivityErrorData"
+            name="_error_no_consegne" sca-bpel:internal="true"/>
+        <bpws:variable element="ns15:ActivityErrorData"
+            name="_error_Ordini_error" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>

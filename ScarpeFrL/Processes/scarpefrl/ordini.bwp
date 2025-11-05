@@ -9,6 +9,7 @@
     xmlns:ns1="http://www.tibco.com/namespaces/tnt/plugins/jdbc+5263ab46-a673-42c5-8a57-ce9572765f48+input"
     xmlns:ns10="http://tns.tibco.com/bw/palette/internal/errorlinkhandler+5263ab46-a673-42c5-8a57-ce9572765f48"
     xmlns:ns11="http://tns.tibco.com/bw/palette/internal/errorlinkhandler+28e4573b-4bcf-4853-b5c8-03231b110360"
+    xmlns:ns12="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw"
     xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/jdbc"
     xmlns:ns3="http://tns.tibco.com/bw/palette/internal/activityerror+bw.jdbc.SQLDirect"
     xmlns:ns4="http://www.tibco.com/namespaces/tnt/plugins/file"
@@ -870,6 +871,18 @@
                     <element maxOccurs="1" minOccurs="0" ref="Q1:FileNotFoundException"/>
                     <element maxOccurs="1" minOccurs="0" ref="Q1:UnsupportedEncodingException"/>
                     <element maxOccurs="1" minOccurs="0" ref="Q1:FileIOException"/>
+                </choice>
+            </complexType>
+        </schema>
+        <schema elementFormDefault="unqualified"
+            targetNamespace="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:Q1="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions" xmlns:tns="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw">
+            <import namespace="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions"/>
+            <element name="ActivityErrorData" type="tns:ActivityErrorDataType"/>
+            <complexType name="ActivityErrorDataType">
+                <choice>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:DefaultFault"/>
                 </choice>
             </complexType>
         </schema>
@@ -2067,6 +2080,8 @@
             name="path_errato-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns0:OptionalErrorReport"
             name="_errorOptional" sca-bpel:internal="true"/>
+        <bpws:variable element="ns12:ActivityErrorData"
+            name="_error_path_errato" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>

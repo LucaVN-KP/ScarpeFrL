@@ -25,6 +25,7 @@
     xmlns:ns24="http://tns.tibco.com/bw/palette/internal/activityerror+bw.file.write"
     xmlns:ns25="activity.jsonRender.output+490a5f1d-1ec7-4632-9f2d-05d35352ce6e+ActivityOutputType"
     xmlns:ns26="http://tns.tibco.com/bw/palette/internal/activityerror+bw.restjson.JsonRender"
+    xmlns:ns27="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw"
     xmlns:ns3="http://tns.tibco.com/bw/palette/internal/activityerror+bw.jdbc.JDBCQuery"
     xmlns:ns4="http://www.tibco.com/pe/WriteToLogActivitySchema"
     xmlns:ns5="http://www.tibco.com/namespaces/tnt/plugins/jdbc+e99712c4-186d-4dea-9f8c-42ab056ca5b7+input"
@@ -978,6 +979,18 @@
                     </sequence>
                 </complexType>
             </element>
+        </schema>
+        <schema elementFormDefault="unqualified"
+            targetNamespace="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:Q1="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions" xmlns:tns="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw">
+            <import namespace="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions"/>
+            <element name="ActivityErrorData" type="tns:ActivityErrorDataType"/>
+            <complexType name="ActivityErrorDataType">
+                <choice>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:DefaultFault"/>
+                </choice>
+            </complexType>
         </schema>
         <wsdl:definitions
             targetNamespace="http://xmlns.example.com/20251007162133PLT"
@@ -2464,6 +2477,8 @@
             name="_error_JSON_Error" sca-bpel:internal="true"/>
         <bpws:variable name="GetSharedVariable" sca-bpel:internal="true" type="xsd:integer"/>
         <bpws:variable element="ns11:DefaultFault" name="Throw-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns27:ActivityErrorData"
+            name="_error_Throw" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>

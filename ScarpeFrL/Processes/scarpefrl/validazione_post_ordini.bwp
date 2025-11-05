@@ -14,6 +14,7 @@
     xmlns:ns6="http://www.tibco.com/namespaces/tnt/plugins/jdbc+eac45e3b-3380-483d-ae3d-a12443a42545+output"
     xmlns:ns7="http://www.tibco.com/namespaces/tnt/plugins/jdbc+73c62d31-2103-4b7a-9e87-3f3da90292bf+input"
     xmlns:ns8="http://www.tibco.com/namespaces/tnt/plugins/jdbc+73c62d31-2103-4b7a-9e87-3f3da90292bf+output"
+    xmlns:ns9="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw"
     xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912"
     xmlns:sca-bpel="http://docs.oasis-open.org/ns/opencsa/sca-bpel/200801"
     xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
@@ -21,10 +22,10 @@
     <tibex:VariableDescriptor type="MemorySaving">
         <task name="flow">
             <endingVariables>
-                <variable>controllo_IDprod</variable>
-                <variable>controllo_IDordi</variable>
                 <variable>Start</variable>
+                <variable>controllo_IDordi</variable>
                 <variable>controllo_IDcliente</variable>
+                <variable>controllo_IDprod</variable>
             </endingVariables>
         </task>
         <task name="controllo_IDordi">
@@ -450,6 +451,18 @@
                     </sequence>
                 </complexType>
             </element>
+        </schema>
+        <schema elementFormDefault="unqualified"
+            targetNamespace="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:Q1="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions" xmlns:tns="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw">
+            <import namespace="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions"/>
+            <element name="ActivityErrorData" type="tns:ActivityErrorDataType"/>
+            <complexType name="ActivityErrorDataType">
+                <choice>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:DefaultFault"/>
+                </choice>
+            </complexType>
         </schema>
     </tibex:Types>
     <tibex:ProcessInfo callable="true" createdBy="FrancescaMacchiagode"
@@ -938,6 +951,12 @@
             name="_error_controllo_IDprod" sca-bpel:internal="true"/>
         <bpws:variable element="ns4:DefaultFault"
             name="id_prod_errato-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns9:ActivityErrorData"
+            name="_error_id_ordine_errato" sca-bpel:internal="true"/>
+        <bpws:variable element="ns9:ActivityErrorData"
+            name="_error_id_cliente_errato" sca-bpel:internal="true"/>
+        <bpws:variable element="ns9:ActivityErrorData"
+            name="_error_id_prod_errato" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>

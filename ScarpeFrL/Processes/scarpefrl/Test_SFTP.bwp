@@ -399,8 +399,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="55"
-                                    xsi:type="notation:Bounds" y="116"/>
+                                    x="36"
+                                    xsi:type="notation:Bounds" y="133"/>
                                     </children>
                                     <children type="4002 bw.sftp.getDefaultDir">
                                     <children type="4017">
@@ -605,9 +605,8 @@
                             <activityConfig>
                                 <properties name="config" xsi:type="activityconfig:EMFProperty">
                                     <type href="http://ns.tibco.com/bw/palette/generalactivities#//Timer"/>
-                                    <value cronExpression=""
+                                    <value
                                     endTime="2025-11-05T12:41:28.492+0100"
-                                    endTimeForCronJob="2025-11-05T12:41:28.492+0100"
                                     intervalUnit="Second"
                                     runOnce="true"
                                     startTime="2025-11-05T12:41:28.492+0100"

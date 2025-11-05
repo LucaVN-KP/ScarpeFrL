@@ -28,8 +28,8 @@
     <tibex:VariableDescriptor type="MemorySaving">
         <task name="flow1">
             <endingVariables>
-                <variable>select_id_cliente</variable>
                 <variable>get</variable>
+                <variable>select_id_cliente</variable>
             </endingVariables>
         </task>
         <task name="select_id_cliente">
@@ -2703,6 +2703,8 @@
             name="JSON_Error" sca-bpel:internal="true"/>
         <bpws:variable element="ns14:ActivityErrorData"
             name="_error_JSON_Error" sca-bpel:internal="true"/>
+        <bpws:variable element="ns12:ActivityErrorData"
+            name="_error_Throw" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
