@@ -7,8 +7,16 @@
     xmlns:ns="http://www.tibco.com/pe/EngineTypes"
     xmlns:ns0="http://tns.tibco.com/bw/activity/timer/xsd/output"
     xmlns:ns1="http://tns.tibco.com/bw/activity/getDefaultDir"
+    xmlns:ns10="http://tns.tibco.com/bw/activity/put/input+a6304db4-df37-40b8-972b-06d568d8f811+SFTPPutInputDataASCII"
+    xmlns:ns11="http://tns.tibco.com/bw/activity/output+a6304db4-df37-40b8-972b-06d568d8f811+SFTPPutOutputFile"
     xmlns:ns2="http://tns.tibco.com/bw/palette/internal/activityerror+bw.sftp.getDefaultDir"
     xmlns:ns3="http://www.tibco.com/pe/WriteToLogActivitySchema"
+    xmlns:ns4="http://tns.tibco.com/bw/activity/put/input+0439cb45-6603-4060-aff8-75a0e28ffcfb+SFTPPutInputDataASCII"
+    xmlns:ns5="http://tns.tibco.com/bw/activity/output+0439cb45-6603-4060-aff8-75a0e28ffcfb+SFTPPutOutputFile"
+    xmlns:ns6="http://tns.tibco.com/bw/palette/internal/activityerror+bw.sftp.put"
+    xmlns:ns7="http://tns.tibco.com/bw/activity/get/input+ffe9fe48-675a-494d-8d66-605e44a7a702+SFTPGetInputData"
+    xmlns:ns8="http://tns.tibco.com/bw/activity/get/output+ffe9fe48-675a-494d-8d66-605e44a7a702+SFTPGetOutputASCII"
+    xmlns:ns9="http://tns.tibco.com/bw/palette/internal/activityerror+bw.sftp.get"
     xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912"
     xmlns:sca-bpel="http://docs.oasis-open.org/ns/opencsa/sca-bpel/200801"
     xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
@@ -17,17 +25,6 @@
         <task name="Timer">
             <endingVariables>
                 <variable>Timer</variable>
-            </endingVariables>
-        </task>
-        <task name="SFTPGetDefaultDirectory">
-            <endingVariables>
-                <variable>SFTPGetDefaultDirectory-input</variable>
-            </endingVariables>
-        </task>
-        <task name="Log">
-            <endingVariables>
-                <variable>Log-input</variable>
-                <variable>SFTPGetDefaultDirectory</variable>
             </endingVariables>
         </task>
     </tibex:VariableDescriptor>
@@ -218,120 +215,6 @@
             </xs:complexType>
             <xs:element name="TimerOutputSchema" type="tns:TimerOutputSchemaType"/>
         </xs:schema>
-        <schema attributeFormDefault="unqualified"
-            elementFormDefault="qualified"
-            targetNamespace="http://tns.tibco.com/bw/palette/sp/exception"
-            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tns.tibco.com/bw/palette/sp/exception">
-            <complexType name="CommandExecutionExceptionType">
-                <sequence>
-                    <element form="unqualified" name="msg" type="string"/>
-                    <element form="unqualified" name="msgCode" type="string"/>
-                </sequence>
-            </complexType>
-            <complexType name="ConnectionErrorExceptionType">
-                <complexContent>
-                    <extension base="tns:CommandExecutionExceptionType"/>
-                </complexContent>
-            </complexType>
-            <complexType name="ConnectionTimeoutExceptionType">
-                <complexContent>
-                    <extension base="tns:CommandExecutionExceptionType"/>
-                </complexContent>
-            </complexType>
-            <complexType name="GetFilesExceptionType">
-                <sequence>
-                    <element form="unqualified" maxOccurs="unbounded"
-                        minOccurs="0" name="SuccessfulFiles" type="string"/>
-                    <element form="unqualified" maxOccurs="unbounded"
-                        minOccurs="0" name="FailedFiles" type="tns:FAIL_TYPE"/>
-                </sequence>
-            </complexType>
-            <complexType name="PutFilesExceptionType">
-                <complexContent>
-                    <extension base="tns:GetFilesExceptionType"/>
-                </complexContent>
-            </complexType>
-            <complexType name="FAIL_TYPE">
-                <sequence>
-                    <element form="unqualified" name="Filename" type="string"/>
-                    <element form="unqualified" name="Error" type="string"/>
-                </sequence>
-            </complexType>
-            <element name="GetFilesException" type="tns:GetFilesExceptionType"/>
-            <element name="ConnectionTimeoutException" type="tns:ConnectionTimeoutExceptionType"/>
-            <element name="CommandExecutionException" type="tns:CommandExecutionExceptionType"/>
-            <element name="ConnectionErrorException" type="tns:ConnectionErrorExceptionType"/>
-            <element name="PutFilesException" type="tns:PutFilesExceptionType"/>
-        </schema>
-        <xs:schema attributeFormDefault="unqualified"
-            elementFormDefault="qualified"
-            targetNamespace="http://tns.tibco.com/bw/activity/getDefaultDir"
-            xmlns:tns="http://tns.tibco.com/bw/activity/getDefaultDir" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-            <xs:complexType name="Input">
-                <xs:sequence>
-                    <xs:element form="unqualified" minOccurs="0"
-                        name="Host" type="xs:string"/>
-                    <xs:element form="unqualified" minOccurs="0"
-                        name="Port" type="xs:int"/>
-                    <xs:element form="unqualified" minOccurs="0"
-                        name="UserName" type="xs:string"/>
-                    <xs:element form="unqualified" minOccurs="0"
-                        name="Password" type="xs:string"/>
-                    <xs:element form="unqualified" minOccurs="0"
-                        name="PrivKey" type="xs:string"/>
-                    <xs:element form="unqualified" minOccurs="0"
-                        name="PrivKeyPass" type="xs:string"/>
-                    <xs:element form="unqualified" minOccurs="0"
-                        name="ProxyHost" type="xs:string"/>
-                    <xs:element form="unqualified" minOccurs="0"
-                        name="ProxyPort" type="xs:int"/>
-                    <xs:element form="unqualified" minOccurs="0"
-                        name="ProxyUserName" type="xs:string"/>
-                    <xs:element form="unqualified" minOccurs="0"
-                        name="ProxyPassword" type="xs:string"/>
-                    <xs:element form="unqualified" minOccurs="0"
-                        name="Timeout" type="xs:int"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:complexType name="Output">
-                <xs:sequence>
-                    <xs:element form="unqualified"
-                        name="CurrentDirectory" type="xs:string"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:element name="Input" type="tns:Input"/>
-            <xs:element name="Output" type="tns:Output"/>
-        </xs:schema>
-        <xs:schema attributeFormDefault="unqualified"
-            elementFormDefault="qualified"
-            targetNamespace="http://www.tibco.com/pe/WriteToLogActivitySchema"
-            xmlns:tns="http://www.tibco.com/pe/WriteToLogActivitySchema" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-            <xs:complexType name="LogParametersType">
-                <xs:sequence>
-                    <xs:element form="unqualified" minOccurs="0"
-                        name="msgCode" type="xs:string"/>
-                    <xs:element form="unqualified" minOccurs="0"
-                        name="loggerName" type="xs:string"/>
-                    <xs:element form="unqualified" minOccurs="0"
-                        name="logLevel" type="xs:string"/>
-                    <xs:element form="unqualified" name="message" type="xs:string"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:element name="ActivityInput" type="tns:LogParametersType"/>
-        </xs:schema>
-        <schema elementFormDefault="unqualified"
-            targetNamespace="http://tns.tibco.com/bw/palette/internal/activityerror+bw.sftp.getDefaultDir"
-            xmlns="http://www.w3.org/2001/XMLSchema"
-            xmlns:Q1="http://tns.tibco.com/bw/palette/sp/exception" xmlns:tns="http://tns.tibco.com/bw/palette/internal/activityerror+bw.sftp.getDefaultDir">
-            <import namespace="http://tns.tibco.com/bw/palette/sp/exception"/>
-            <element name="ActivityErrorData" type="tns:ActivityErrorDataType"/>
-            <complexType name="ActivityErrorDataType">
-                <choice>
-                    <element maxOccurs="1" minOccurs="0" ref="Q1:CommandExecutionException"/>
-                    <element maxOccurs="1" minOccurs="0" ref="Q1:ConnectionErrorException"/>
-                </choice>
-            </complexType>
-        </schema>
     </tibex:Types>
     <tibex:ProcessInfo callable="false" createdBy="FrancescaMacchiagode"
         createdOn="Wed Nov 05 12:37:55 CET 2025" description=""
@@ -402,80 +285,6 @@
                                     x="55"
                                     xsi:type="notation:Bounds" y="116"/>
                                     </children>
-                                    <children type="4002 bw.sftp.getDefaultDir">
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <styles fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <styles
-                                    backgroundColor="16777215"
-                                    gradientEndColor="50431"
-                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
-                                    <element href="//0/@process/@activity/@activity/@activities.1"/>
-                                    <layoutConstraint
-                                    height="40" width="40"
-                                    x="179"
-                                    xsi:type="notation:Bounds" y="116"/>
-                                    </children>
-                                    <children type="4002 bw.generalactivities.log">
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <styles fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <styles
-                                    backgroundColor="16777215"
-                                    gradientEndColor="50431"
-                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
-                                    <element href="//0/@process/@activity/@activity/@activities.2"/>
-                                    <layoutConstraint
-                                    height="40" width="40"
-                                    x="323"
-                                    xsi:type="notation:Bounds" y="133"/>
-                                    </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
                                     <styles xsi:type="notation:FilteringStyle"/>
@@ -521,28 +330,6 @@
         </children>
         <styles xsi:type="notation:DiagramStyle"/>
         <element href="//0"/>
-        <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.0"/>
-            <bendpoints points="[25, 0, -99, 0]$[100, 0, -24, 0]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
-        <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.1"/>
-            <bendpoints points="[25, 3, -119, -14]$[120, 14, -24, -3]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
         <tibex:namespaceItem
@@ -551,6 +338,12 @@
             namespace="http://tns.tibco.com/bw/activity/get/input+e3026c46-5212-4215-b5e2-d7a687217736+SFTPGetInputData" prefix="tns1"/>
         <tibex:namespaceItem
             namespace="http://www.tibco.com/pe/WriteToLogActivitySchema" prefix="tns2"/>
+        <tibex:namespaceItem
+            namespace="http://tns.tibco.com/bw/activity/put/input+0439cb45-6603-4060-aff8-75a0e28ffcfb+SFTPPutInputDataASCII" prefix="tns3"/>
+        <tibex:namespaceItem
+            namespace="http://tns.tibco.com/bw/activity/get/input+ffe9fe48-675a-494d-8d66-605e44a7a702+SFTPGetInputData" prefix="tns4"/>
+        <tibex:namespaceItem
+            namespace="http://tns.tibco.com/bw/activity/put/input+a6304db4-df37-40b8-972b-06d568d8f811+SFTPPutInputDataASCII" prefix="tns5"/>
     </tibex:NamespaceRegistry>
     <bpws:variables>
         <bpws:variable element="ns:ProcessContext"
@@ -564,14 +357,6 @@
                 <bpws:literal>scarpefrl.SFTPConnectionResource</bpws:literal>
             </bpws:from>
         </bpws:variable>
-        <bpws:variable element="ns1:Input"
-            name="SFTPGetDefaultDirectory-input" sca-bpel:internal="true"/>
-        <bpws:variable element="ns1:Output"
-            name="SFTPGetDefaultDirectory" sca-bpel:internal="true"/>
-        <bpws:variable element="ns2:ActivityErrorData"
-            name="_error_SFTPGetDefaultDirectory" sca-bpel:internal="true"/>
-        <bpws:variable element="ns:ErrorReport" name="_error" sca-bpel:internal="true"/>
-        <bpws:variable element="ns3:ActivityInput" name="Log-input" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -583,18 +368,11 @@
     </bpws:extensions>
     <bpws:scope name="scope">
         <bpws:flow name="flow">
-            <bpws:links>
-                <bpws:link name="TimerToSFTPGetDefaultDirectory" tibex:linkType="SUCCESS"/>
-                <bpws:link name="SFTPGetDefaultDirectoryToLog" tibex:linkType="SUCCESS"/>
-            </bpws:links>
             <bpws:extensionActivity>
                 <tibex:receiveEvent createInstance="yes"
                     eventTimeout="60" name="Timer"
                     tibex:xpdlId="9344d441-cbd1-446b-8f99-e27fe8d467f0"
                     variable="Timer" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
-                    <bpws:sources>
-                        <bpws:source linkName="TimerToSFTPGetDefaultDirectory"/>
-                    </bpws:sources>
                     <tibex:eventSource>
                         <bwext:BWActivity
                             activityTypeID="bw.generalactivities.timer"
@@ -617,69 +395,6 @@
                         </bwext:BWActivity>
                     </tibex:eventSource>
                 </tibex:receiveEvent>
-            </bpws:extensionActivity>
-            <bpws:extensionActivity>
-                <tibex:activityExtension
-                    inputVariable="SFTPGetDefaultDirectory-input"
-                    name="SFTPGetDefaultDirectory"
-                    outputVariable="SFTPGetDefaultDirectory"
-                    tibex:xpdlId="8e274659-fb0e-4f30-af24-6b7d0de39dda" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
-                    <bpws:targets>
-                        <bpws:target linkName="TimerToSFTPGetDefaultDirectory"/>
-                    </bpws:targets>
-                    <bpws:sources>
-                        <bpws:source linkName="SFTPGetDefaultDirectoryToLog"/>
-                    </bpws:sources>
-                    <tibex:inputBindings>
-                        <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns3=&quot;http://tns.tibco.com/bw/activity/getDefaultDir&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:template name=&quot;SFTPGetDefaultDirectory-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns3:Input/>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
-                    </tibex:inputBindings>
-                    <tibex:config>
-                        <bwext:BWActivity
-                            activityTypeID="bw.sftp.getDefaultDir"
-                            xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
-                            xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
-                            xmlns:sftpPalette="http://ns.tibco.com/bw/palette/sp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-                            <activityConfig>
-                                <properties name="config" xsi:type="activityconfig:EMFProperty">
-                                    <type href="http://ns.tibco.com/bw/palette/sp#//SFTPGetDefaultDirectory"/>
-                                    <value
-                                    sftpConnection="SFTPConnectionProperty" xsi:type="sftpPalette:SFTPGetDefaultDirectory"/>
-                                </properties>
-                            </activityConfig>
-                        </bwext:BWActivity>
-                    </tibex:config>
-                </tibex:activityExtension>
-            </bpws:extensionActivity>
-            <bpws:extensionActivity>
-                <tibex:activityExtension inputVariable="Log-input"
-                    name="Log"
-                    tibex:xpdlId="fc420ce6-756b-4ece-8565-005392725477" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
-                    <bpws:targets>
-                        <bpws:target linkName="SFTPGetDefaultDirectoryToLog"/>
-                    </bpws:targets>
-                    <tibex:inputBindings>
-                        <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;SFTPGetDefaultDirectory&quot;/>&lt;xsl:template name=&quot;Log-input&quot; match=&quot;/&quot;>&lt;tns2:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;$SFTPGetDefaultDirectory/CurrentDirectory&quot;/>&lt;/message>&lt;/tns2:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
-                    </tibex:inputBindings>
-                    <tibex:config>
-                        <bwext:BWActivity
-                            activityTypeID="bw.generalactivities.log"
-                            version="6.0.0.001"
-                            xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
-                            xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
-                            xmlns:generalactivities="http://ns.tibco.com/bw/palette/generalactivities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-                            <activityConfig>
-                                <properties name="config" xsi:type="activityconfig:EMFProperty">
-                                    <type href="http://ns.tibco.com/bw/palette/generalactivities#//Log"/>
-                                    <value controlBy="Application"
-                                    role="Info"
-                                    suppressJobInfo="true" xsi:type="generalactivities:Log"/>
-                                </properties>
-                            </activityConfig>
-                        </bwext:BWActivity>
-                    </tibex:config>
-                </tibex:activityExtension>
             </bpws:extensionActivity>
         </bpws:flow>
     </bpws:scope>
