@@ -9,24 +9,24 @@
 <element name="data_fatt" type="dateTime"/>
 <element name="stato_pagamento" type="string"/>
 <element name="nome_file" type="string"/>
-
+ 
 <!-- definisco i tipi -->
 <complexType name="datiFatturaType">
-<sequence>
-<element maxOccurs="1" minOccurs="0" ref="tns:id_fattura"/>
-<element maxOccurs="1" minOccurs="0" ref="tns:id_sped"/>
-<element maxOccurs="1" minOccurs="0" ref="tns:importo"/>
-<element maxOccurs="1" minOccurs="0" ref="tns:data_fatt"/>
-<element maxOccurs="1" minOccurs="0" ref="tns:stato_pagamento"/>
-</sequence>
+	<sequence>
+		<element maxOccurs="1" minOccurs="0" ref="tns:id_fattura"/>
+		<element maxOccurs="1" minOccurs="0" ref="tns:id_sped"/>
+		<element maxOccurs="1" minOccurs="0" ref="tns:importo"/>
+		<element maxOccurs="1" minOccurs="0" ref="tns:data_fatt"/>
+		<element maxOccurs="1" minOccurs="0" ref="tns:stato_pagamento"/>
+	</sequence>
 </complexType>
-
+ 
 <!-- definisco la variabile contenuto_directory per il server FTP dei pagamenti -->
 <element name="contenuto_dir">
-<complexType>
-<sequence minOccurs="0" maxOccurs="unbounded">
-<element ref="tns:nome_file"/>
-</sequence>
-</complexType>
+	<complexType>
+		<sequence minOccurs="0" maxOccurs="unbounded">
+			<element ref="tns:nome_file"/>
+		</sequence>
+	</complexType>
 </element>
 </schema>

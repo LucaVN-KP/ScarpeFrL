@@ -3,7 +3,7 @@
   <moduleSharedVariables>
     <moduleSharedVariable name="var_id_cliente" type="{http://www.w3.org/2001/XMLSchema}integer" initialValueMode="none"/>
     <moduleSharedVariable name="var_id_ord" type="{http://www.w3.org/2001/XMLSchema}integer" initialValueMode="none"/>
-    <moduleSharedVariable name="contenuto_dir" type="{http://tns.tibco.com/bw/json/1759399791283}contenuto_dir" initialValueMode="none"/>
+    <moduleSharedVariable name="contenuto_directory" type="{http://tns.tibco.com/bw/json/1762360231862}contenuto_dir" initialValueMode="none"/>
   </moduleSharedVariables>
-  <import importType="http://www.w3.org/2001/XMLSchema" namespace="http://tns.tibco.com/bw/json/1759399791283" location="../Schemas/spedizione.xsd"/>
+  <import importType="http://www.w3.org/2001/XMLSchema" namespace="http://tns.tibco.com/bw/json/1762360231862" location="../Schemas/pagamento.xsd"/>
 </msv:DocumentRoot>
