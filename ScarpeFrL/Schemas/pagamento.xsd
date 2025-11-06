@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tns.tibco.com/bw/json/1762360231862" elementFormDefault="qualified" targetNamespace="http://tns.tibco.com/bw/json/1762360231862">
- 
+
 <!-- definisco gli elementi -->
 <element name="datiFattura" type="tns:datiFatturaType"/>
 <element name="id_fattura" type="string"/>
