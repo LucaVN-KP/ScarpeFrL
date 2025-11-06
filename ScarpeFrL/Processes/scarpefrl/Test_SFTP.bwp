@@ -9,6 +9,7 @@
     xmlns:ns1="http://tns.tibco.com/bw/activity/getDefaultDir"
     xmlns:ns10="http://tns.tibco.com/bw/activity/put/input+a6304db4-df37-40b8-972b-06d568d8f811+SFTPPutInputDataASCII"
     xmlns:ns11="http://tns.tibco.com/bw/activity/output+a6304db4-df37-40b8-972b-06d568d8f811+SFTPPutOutputFile"
+    xmlns:ns12="http://tns.tibco.com/bw/json/1762360231862"
     xmlns:ns2="http://tns.tibco.com/bw/palette/internal/activityerror+bw.sftp.getDefaultDir"
     xmlns:ns3="http://www.tibco.com/pe/WriteToLogActivitySchema"
     xmlns:ns4="http://tns.tibco.com/bw/activity/put/input+0439cb45-6603-4060-aff8-75a0e28ffcfb+SFTPPutInputDataASCII"
@@ -25,6 +26,11 @@
         <task name="Timer">
             <endingVariables>
                 <variable>Timer</variable>
+            </endingVariables>
+        </task>
+        <task name="CallProcess">
+            <endingVariables>
+                <variable>CallProcess-input</variable>
             </endingVariables>
         </task>
     </tibex:VariableDescriptor>
@@ -285,6 +291,43 @@
                                     x="36"
                                     xsi:type="notation:Bounds" y="133"/>
                                     </children>
+                                    <children type="4002 bw.generalactivities.callprocess">
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.1"/>
+                                    <layoutConstraint
+                                    height="40" width="40"
+                                    x="265"
+                                    xsi:type="notation:Bounds" y="133"/>
+                                    </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
                                     <styles xsi:type="notation:FilteringStyle"/>
@@ -330,6 +373,17 @@
         </children>
         <styles xsi:type="notation:DiagramStyle"/>
         <element href="//0"/>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.0"/>
+            <bendpoints points="[25, 2, -150, -11]$[151, 11, -24, -2]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
         <tibex:namespaceItem
@@ -344,7 +398,10 @@
             namespace="http://tns.tibco.com/bw/activity/get/input+ffe9fe48-675a-494d-8d66-605e44a7a702+SFTPGetInputData" prefix="tns4"/>
         <tibex:namespaceItem
             namespace="http://tns.tibco.com/bw/activity/put/input+a6304db4-df37-40b8-972b-06d568d8f811+SFTPPutInputDataASCII" prefix="tns5"/>
+        <tibex:namespaceItem
+            namespace="http://tns.tibco.com/bw/json/1762360231862" prefix="tns6"/>
     </tibex:NamespaceRegistry>
+    <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://tns.tibco.com/bw/json/1762360231862"/>
     <bpws:variables>
         <bpws:variable element="ns:ProcessContext"
             name="_processContext" sca-bpel:internal="true"/>
@@ -357,6 +414,7 @@
                 <bpws:literal>scarpefrl.SFTPConnectionResource</bpws:literal>
             </bpws:from>
         </bpws:variable>
+        <bpws:variable element="ns12:nome_file" name="CallProcess-input" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -368,11 +426,17 @@
     </bpws:extensions>
     <bpws:scope name="scope">
         <bpws:flow name="flow">
+            <bpws:links>
+                <bpws:link name="TimerToCallProcess" tibex:linkType="SUCCESS"/>
+            </bpws:links>
             <bpws:extensionActivity>
                 <tibex:receiveEvent createInstance="yes"
                     eventTimeout="60" name="Timer"
                     tibex:xpdlId="9344d441-cbd1-446b-8f99-e27fe8d467f0"
                     variable="Timer" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                    <bpws:sources>
+                        <bpws:source linkName="TimerToCallProcess"/>
+                    </bpws:sources>
                     <tibex:eventSource>
                         <bwext:BWActivity
                             activityTypeID="bw.generalactivities.timer"
@@ -394,6 +458,22 @@
                         </bwext:BWActivity>
                     </tibex:eventSource>
                 </tibex:receiveEvent>
+            </bpws:extensionActivity>
+            <bpws:extensionActivity>
+                <tibex:extActivity inputVariable="CallProcess-input"
+                    name="CallProcess"
+                    tibex:xpdlId="f316e820-28df-435a-9df0-14dcd7394afc"
+                    type="bw.generalactivities.callprocess" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                    <bpws:targets>
+                        <bpws:target linkName="TimerToCallProcess"/>
+                    </bpws:targets>
+                    <tibex:inputBindings>
+                        <tibex:inputBinding coercion=""
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns6=&quot;http://tns.tibco.com/bw/json/1762360231862&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;CallProcess-input&quot; match=&quot;/&quot;>&lt;tns6:nome_file>&lt;xsl:value-of select=&quot;&amp;quot;/in_lavorazione/INVOICE_2025-11-06T163700.txt&amp;quot;&quot;/>&lt;/tns6:nome_file>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                    </tibex:inputBindings>
+                    <tibex:CallProcess
+                        subProcessName="scarpefrl.pagamento" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"/>
+                </tibex:extActivity>
             </bpws:extensionActivity>
         </bpws:flow>
     </bpws:scope>

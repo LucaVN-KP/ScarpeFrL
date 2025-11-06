@@ -24,8 +24,8 @@
         <task name="flow">
             <endingVariables>
                 <variable>Start</variable>
-                <variable>Controllo_IDSped</variable>
                 <variable>Controllo_IDOrd</variable>
+                <variable>Controllo_IDSped</variable>
             </endingVariables>
         </task>
         <task name="Controllo_IDSped">
