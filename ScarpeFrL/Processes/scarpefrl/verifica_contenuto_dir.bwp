@@ -1075,9 +1075,7 @@
                         variableName="contenuto_directory" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"/>
                 </tibex:extActivity>
             </bpws:extensionActivity>
-            <bpws:scope name="ForEach" tibex:group="foreach"
-                tibex:indexOriginalName="index"
-                tibex:indexToGlobal="false" tibex:xpdlId="8e12fc07-0240-45cf-acb6-7654359c09c7">
+            <bpws:scope name="ForEach" tibex:group="foreach" tibex:xpdlId="8e12fc07-0240-45cf-acb6-7654359c09c7">
                 <bpws:targets>
                     <bpws:target linkName="SetSharedVariableToForEach"/>
                 </bpws:targets>
@@ -1099,7 +1097,7 @@
                                 <bpws:links>
                                     <bpws:link name="GroupStartToLog" tibex:linkType="SUCCESS"/>
                                     <bpws:link name="LogToGroupEnd" tibex:linkType="SUCCESS"/>
-                                    <bpws:link name="EmptyToLog" tibex:linkType="SUCCESSWITHCONDITION"/>
+                                    <bpws:link name="EmptyToLog" tibex:linkType="SUCCESS"/>
                                 </bpws:links>
                                 <bpws:empty name="GroupStart"
                                     tibex:group="groupStart" tibex:xpdlId="c4ec5c00-adfe-409e-bafe-f21fb9a9af34">
@@ -1155,11 +1153,7 @@
                                     </bpws:targets>
                                     <bpws:sources>
                                     <bpws:source linkName="EmptyToLog">
-                                    <tibex:DesignExpression>
-                                    <tibex:expression
-                                    expression="$SFTPDir/DirectoryItems[$index]" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
-                                    </tibex:DesignExpression>
-                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[$SFTPDir/DirectoryItems[$index]]]></bpws:transitionCondition>
+                                    <tibex:DesignExpression/>
                                     </bpws:source>
                                     </bpws:sources>
                                 </bpws:empty>

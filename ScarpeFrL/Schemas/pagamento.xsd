@@ -9,7 +9,8 @@
 <element name="data_fatt" type="dateTime"/>
 <element name="stato_pagamento" type="string"/>
 <element name="nome_file" type="string"/>
- 
+<element name="numero_casuale" type="int"/>
+
 <!-- definisco i tipi -->
 <complexType name="datiFatturaType">
 	<sequence>
@@ -29,4 +30,19 @@
 		</sequence>
 	</complexType>
 </element>
+
+<!-- definisco la risposta della banca-->
+<element name="statusCode" type="integer"/>
+	<element name="message" type="string"/>
+	<element name="risposta_banca" type="tns:risposta_bancaType"/>
+	<complexType name="risposta_bancaType">
+		<sequence>
+			<element ref="tns:statusCode"/>
+			<element ref="tns:message"/>
+		</sequence>
+	</complexType>
+	
 </schema>
+
+
+

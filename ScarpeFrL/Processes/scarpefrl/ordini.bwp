@@ -10,6 +10,9 @@
     xmlns:ns10="http://tns.tibco.com/bw/palette/internal/errorlinkhandler+5263ab46-a673-42c5-8a57-ce9572765f48"
     xmlns:ns11="http://tns.tibco.com/bw/palette/internal/errorlinkhandler+28e4573b-4bcf-4853-b5c8-03231b110360"
     xmlns:ns12="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw"
+    xmlns:ns13="http://www.tibco.com/namespaces/tnt/plugins/jdbc+bde84c92-7e02-4107-99d1-5684ad8f3531+input"
+    xmlns:ns14="http://www.tibco.com/namespaces/tnt/plugins/jdbc+bde84c92-7e02-4107-99d1-5684ad8f3531+output"
+    xmlns:ns15="http://tns.tibco.com/bw/palette/internal/activityerror+bw.jdbc.JDBCQuery"
     xmlns:ns2="http://www.tibco.com/namespaces/tnt/plugins/jdbc"
     xmlns:ns3="http://tns.tibco.com/bw/palette/internal/activityerror+bw.jdbc.SQLDirect"
     xmlns:ns4="http://www.tibco.com/namespaces/tnt/plugins/file"
@@ -1134,8 +1137,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity/@activities.2"/>
 
                                     <layoutConstraint
-                                    x="379"
-                                    xsi:type="notation:Bounds" y="35"/>
+                                    x="676"
+                                    xsi:type="notation:Bounds" y="14"/>
                                     </children>
 
                                     <children type="4002 bw.jdbc.SQLDirect">
@@ -1190,8 +1193,8 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="69"
-                                    xsi:type="notation:Bounds" y="27"/>
+                                    x="277"
+                                    xsi:type="notation:Bounds" y="23"/>
                                     </children>
 
                                     <children type="4002 bw.file.write">
@@ -1246,8 +1249,8 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="279"
-                                    xsi:type="notation:Bounds" y="27"/>
+                                    x="596"
+                                    xsi:type="notation:Bounds" y="14"/>
                                     </children>
 
                                     <children type="4002 bw.parse.renderdata">
@@ -1302,8 +1305,8 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="173"
-                                    xsi:type="notation:Bounds" y="21"/>
+                                    x="499"
+                                    xsi:type="notation:Bounds" y="14"/>
                                     </children>
 
                                     <children type="4002 bw.generalactivities.callprocess">
@@ -1358,8 +1361,8 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="-12"
-                                    xsi:type="notation:Bounds" y="27"/>
+                                    x="99"
+                                    xsi:type="notation:Bounds" y="23"/>
                                     </children>
 
                                     <children type="4002 com.tibco.bw.core.design.process.editor.Activity_4002_Throw">
@@ -1414,8 +1417,8 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="280"
-                                    xsi:type="notation:Bounds" y="137"/>
+                                    x="581"
+                                    xsi:type="notation:Bounds" y="160"/>
                                     </children>
 
                                     <styles xsi:type="notation:DrawerStyle"/>
@@ -1441,8 +1444,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity/@activity"/>
 
                                     <layoutConstraint
-                                    height="260"
-                                    width="512" xsi:type="notation:Bounds"/>
+                                    height="330"
+                                    width="839" xsi:type="notation:Bounds"/>
                                     </children>
 
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -1461,8 +1464,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity"/>
 
                                     <layoutConstraint
-                                    height="260"
-                                    width="515"
+                                    height="330"
+                                    width="842"
                                     x="15" xsi:type="notation:Bounds"/>
                                     </children>
 
@@ -1795,8 +1798,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0/@activity"/>
 
                                     <layoutConstraint
-                                    height="538"
-                                    width="555" xsi:type="notation:Bounds"/>
+                                    height="608"
+                                    width="882" xsi:type="notation:Bounds"/>
                                     </children>
                                     <styles xsi:type="notation:SortingStyle"/>
                                     <styles xsi:type="notation:FilteringStyle"/>
@@ -1855,8 +1858,8 @@
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.0/@messages.0"/>
                                     <layoutConstraint
-                                    height="557"
-                                    width="617"
+                                    height="627"
+                                    width="944"
                                     x="2" xsi:type="notation:Bounds"/>
                                     </children>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -1869,7 +1872,7 @@
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.0"/>
                                     <layoutConstraint
-                                    height="587" width="636" xsi:type="notation:Bounds"/>
+                                    height="657" width="831" xsi:type="notation:Bounds"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -1883,8 +1886,8 @@
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity"/>
-                                    <layoutConstraint height="649"
-                                    width="646" xsi:type="notation:Bounds"/>
+                                    <layoutConstraint height="667"
+                                    width="973" xsi:type="notation:Bounds"/>
                                 </children>
                                 <styles xsi:type="notation:SortingStyle"/>
                                 <styles xsi:type="notation:FilteringStyle"/>
@@ -1893,7 +1896,7 @@
                             <styles xsi:type="bwnotation:BackgroundStyle"/>
                             <styles xsi:type="bwnotation:ResizingStyle"/>
                             <element href="//0/@process/@activity"/>
-                            <layoutConstraint height="649" width="649" xsi:type="notation:Bounds"/>
+                            <layoutConstraint height="667" width="976" xsi:type="notation:Bounds"/>
                         </children>
                         <styles xsi:type="notation:SortingStyle"/>
                         <styles xsi:type="notation:FilteringStyle"/>
@@ -1903,7 +1906,7 @@
                     <styles xsi:type="bwnotation:BackgroundStyle"/>
                     <styles xsi:type="bwnotation:ResizingStyle"/>
                     <element href="//0/@process/@activity"/>
-                    <layoutConstraint height="673" width="649" x="1"
+                    <layoutConstraint height="691" width="976" x="1"
                         xsi:type="notation:Bounds" y="1"/>
                 </children>
                 <styles xsi:type="notation:SortingStyle"/>
@@ -1912,7 +1915,7 @@
             </children>
             <styles fontName="Segoe UI" lineColor="0" xsi:type="notation:ShapeStyle"/>
             <element href="//0/@process"/>
-            <layoutConstraint height="725" width="1090" xsi:type="notation:Bounds"/>
+            <layoutConstraint height="743" width="1318" xsi:type="notation:Bounds"/>
         </children>
         <styles xsi:type="notation:DiagramStyle"/>
         <element href="//0"/>
@@ -2250,7 +2253,7 @@
                         </bpws:faultHandlers>
                         <bpws:flow name="flow1">
                             <bpws:links>
-                                <bpws:link name="SQLDirectTopostOut" tibex:linkType="SUCCESS"/>
+                                <bpws:link name="add_ordineToRenderdata" tibex:linkType="SUCCESS"/>
                                 <bpws:link name="WriteFileTopostOut" tibex:linkType="SUCCESS"/>
                                 <bpws:link name="RenderdataToWriteFile" tibex:linkType="SUCCESS"/>
                                 <bpws:link
@@ -2288,7 +2291,7 @@
                                     <bpws:target linkName="CallProcessToadd_ordine"/>
                                     </bpws:targets>
                                     <bpws:sources>
-                                    <bpws:source linkName="SQLDirectTopostOut"/>
+                                    <bpws:source linkName="add_ordineToRenderdata"/>
                                     </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
@@ -2369,7 +2372,7 @@
                                     outputVariable="Renderdata"
                                     tibex:xpdlId="b973b452-8696-42d2-8df0-5d32e2287fa8" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                                     <bpws:targets>
-                                    <bpws:target linkName="SQLDirectTopostOut"/>
+                                    <bpws:target linkName="add_ordineToRenderdata"/>
                                     </bpws:targets>
                                     <bpws:sources>
                                     <bpws:source linkName="RenderdataToWriteFile"/>
