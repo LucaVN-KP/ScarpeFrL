@@ -183,4 +183,7 @@
   <sca:component xmi:id="_3veWULo7EfCYN62EVx6oYw" name="ComponentTest_SFTP" compositeext:version="1.0.0.qualifier">
     <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_3veWUbo7EfCYN62EVx6oYw" processName="scarpefrl.Test_SFTP"/>
   </sca:component>
+  <sca:component xmi:id="_CXIOgLpdEfCnN-CmteH4kw" name="ComponentschedulazioneSFTP" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_CXIOgbpdEfCnN-CmteH4kw" processName="scarpefrl.flusso4_SFTP"/>
+  </sca:component>
 </sca:composite>
