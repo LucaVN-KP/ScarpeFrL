@@ -32,16 +32,28 @@
 </element>
 
 <!-- definisco la risposta della banca-->
-<element name="statusCode" type="integer"/>
-	<element name="message" type="string"/>
+<element name="codice_risposta" type="string"/>
+	<element name="messaggio_risposta" type="string"/>
 	<element name="risposta_banca" type="tns:risposta_bancaType"/>
 	<complexType name="risposta_bancaType">
 		<sequence>
-			<element ref="tns:statusCode"/>
-			<element ref="tns:message"/>
+			<element ref="tns:codice_risposta"/>
+			<element ref="tns:messaggio_risposta"/>
 		</sequence>
 	</complexType>
 	
+<!-- definisco un oggetto valido sia per un errore che per una risposta, nel flusso 4  -->
+	<element name="codice" type="string"/>
+	<element name="messaggio" type="string"/>
+	<element name="statoProcesso" type="tns:statoProcessoType"/>
+	
+	<complexType name="statoProcessoType">
+		<sequence>
+			<element ref="tns:codice"/>
+			<element ref="tns:messaggio"/>
+		</sequence>
+	</complexType>
+
 </schema>
 
 
