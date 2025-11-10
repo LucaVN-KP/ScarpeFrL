@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://tns.tibco.com/bw/json/1762360231862" elementFormDefault="qualified" targetNamespace="http://tns.tibco.com/bw/json/1762360231862">
-
+ 
 <!-- definisco gli elementi -->
 <element name="datiFattura" type="tns:datiFatturaType"/>
 <element name="id_fattura" type="string"/>
@@ -9,24 +9,46 @@
 <element name="data_fatt" type="dateTime"/>
 <element name="stato_pagamento" type="string"/>
 <element name="nome_file" type="string"/>
+<element name="numero_casuale" type="int"/>
  
 <!-- definisco i tipi -->
 <complexType name="datiFatturaType">
-	<sequence>
-		<element maxOccurs="1" minOccurs="0" ref="tns:id_fattura"/>
-		<element maxOccurs="1" minOccurs="0" ref="tns:id_sped"/>
-		<element maxOccurs="1" minOccurs="0" ref="tns:importo"/>
-		<element maxOccurs="1" minOccurs="0" ref="tns:data_fatt"/>
-		<element maxOccurs="1" minOccurs="0" ref="tns:stato_pagamento"/>
-	</sequence>
+<sequence>
+<element maxOccurs="1" minOccurs="0" ref="tns:id_fattura"/>
+<element maxOccurs="1" minOccurs="0" ref="tns:id_sped"/>
+<element maxOccurs="1" minOccurs="0" ref="tns:importo"/>
+<element maxOccurs="1" minOccurs="0" ref="tns:data_fatt"/>
+<element maxOccurs="1" minOccurs="0" ref="tns:stato_pagamento"/>
+</sequence>
 </complexType>
- 
 <!-- definisco la variabile contenuto_directory per il server FTP dei pagamenti -->
 <element name="contenuto_dir">
-	<complexType>
-		<sequence minOccurs="0" maxOccurs="unbounded">
-			<element ref="tns:nome_file"/>
-		</sequence>
-	</complexType>
+<complexType>
+<sequence minOccurs="0" maxOccurs="unbounded">
+<element ref="tns:nome_file"/>
+</sequence>
+</complexType>
 </element>
+ 
+<!-- definisco la risposta della banca-->
+<element name="codice_risposta" type="string"/>
+<element name="messaggio_risposta" type="string"/>
+<element name="risposta_banca" type="tns:risposta_bancaType"/>
+<complexType name="risposta_bancaType">
+<sequence>
+<element ref="tns:codice_risposta"/>
+<element ref="tns:messaggio_risposta"/>
+</sequence>
+</complexType>
+<!-- definisco un oggetto valido sia per un errore che per una risposta, nel flusso 4  -->
+<element name="codice" type="string"/>
+<element name="messaggio" type="string"/>
+<element name="statoProcesso" type="tns:statoProcessoType"/>
+<complexType name="statoProcessoType">
+<sequence>
+<element ref="tns:codice"/>
+<element ref="tns:messaggio"/>
+</sequence>
+</complexType>
+ 
 </schema>
