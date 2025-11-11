@@ -21,7 +21,6 @@
         <task name="Call_pagamento">
             <endingVariables>
                 <variable>Call_pagamento-input</variable>
-                <variable>Call_pagamento</variable>
                 <variable>JMSReceiveMessage</variable>
             </endingVariables>
         </task>
@@ -603,6 +602,8 @@
     <tibex:NamespaceRegistry enabled="true">
         <tibex:namespaceItem
             namespace="http://www.tibco.com/pe/WriteToLogActivitySchema" prefix="tns"/>
+        <tibex:namespaceItem
+            namespace="http://tns.tibco.com/bw/json/1762360231862" prefix="tns1"/>
     </tibex:NamespaceRegistry>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://tns.tibco.com/bw/json/1762360231862"/>
     <bpws:variables>
@@ -618,10 +619,8 @@
             </bpws:from>
         </bpws:variable>
         <bpws:variable element="ns1:ActivityInput" name="Log-input" sca-bpel:internal="true"/>
-        <bpws:variable element="ns2:id_fattura"
+        <bpws:variable element="ns2:nome_file"
             name="Call_pagamento-input" sca-bpel:internal="true"/>
-        <bpws:variable element="ns2:risposta_banca"
-            name="Call_pagamento" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -703,7 +702,6 @@
             <bpws:extensionActivity>
                 <tibex:extActivity inputVariable="Call_pagamento-input"
                     name="Call_pagamento"
-                    outputVariable="Call_pagamento"
                     tibex:xpdlId="19389c3f-ead7-44f5-97c9-0f50ad3343fd"
                     type="bw.generalactivities.callprocess" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:targets>
@@ -711,10 +709,10 @@
                     </bpws:targets>
                     <tibex:inputBindings>
                         <tibex:inputBinding coercion=""
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://tns.tibco.com/bw/json/1762360231862&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;JMSReceiveMessage&quot;/>&lt;xsl:template name=&quot;Call_pagamento-input&quot; match=&quot;/&quot;>&lt;tns:id_fattura>&lt;xsl:value-of select=&quot;$JMSReceiveMessage/Body&quot;/>&lt;/tns:id_fattura>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://tns.tibco.com/bw/json/1762360231862&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;JMSReceiveMessage&quot;/>&lt;xsl:template name=&quot;Call_pagamento-input&quot; match=&quot;/&quot;>&lt;tns1:nome_file>&lt;xsl:value-of select=&quot;$JMSReceiveMessage/Body&quot;/>&lt;/tns1:nome_file>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:CallProcess
-                        subProcessName="banca.simulazione_pagamento" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"/>
+                        subProcessName="scarpefrl.pagamento" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"/>
                 </tibex:extActivity>
             </bpws:extensionActivity>
         </bpws:flow>
