@@ -22,10 +22,10 @@
     <tibex:VariableDescriptor type="MemorySaving">
         <task name="flow">
             <endingVariables>
-                <variable>controllo_IDprod</variable>
                 <variable>controllo_IDcliente</variable>
-                <variable>controllo_IDordi</variable>
                 <variable>Start</variable>
+                <variable>controllo_IDprod</variable>
+                <variable>controllo_IDordi</variable>
             </endingVariables>
         </task>
         <task name="controllo_IDordi">

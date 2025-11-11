@@ -1544,8 +1544,6 @@
             name="_error_spostamentoFile" sca-bpel:internal="true"/>
         <bpws:variable element="ns8:nome_file" name="Start"
             sca-bpel:internal="true" tibex:parameter="in"/>
-        <bpws:variable element="ns8:risposta_banca" name="pag.Banca" sca-bpel:internal="true"/>
-        <bpws:variable element="ns8:id_fattura" name="pag.Banca-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns24:Input" name="spostamentoFil-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns25:ActivityErrorData"
             name="_error_spostamentoFil" sca-bpel:internal="true"/>
@@ -1555,6 +1553,8 @@
             name="_errorOptional" sca-bpel:internal="true"/>
         <bpws:variable element="ns28:ActivityErrorData"
             name="_error_Throw" sca-bpel:internal="true"/>
+        <bpws:variable element="ns8:id_fattura" name="pag.Banca-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns8:risposta_banca" name="pag.Banca" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
