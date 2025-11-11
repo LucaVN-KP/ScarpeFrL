@@ -13,6 +13,7 @@
     xmlns:ns5="http://www.tibco.com/namespaces/tnt/plugins/jms+68099e97-a121-4bab-9e3c-4837afb3771d+input"
     xmlns:ns6="http://www.tibco.com/namespaces/tnt/plugins/jms"
     xmlns:ns7="http://tns.tibco.com/bw/palette/internal/activityerror+bw.jms.send"
+    xmlns:ns8="http://tns.tibco.com/bw/palette/internal/activityerror+bw.restjson.JsonRender"
     xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912"
     xmlns:sca-bpel="http://docs.oasis-open.org/ns/opencsa/sca-bpel/200801"
     xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
@@ -374,6 +375,8 @@
                     <xsd:element form="unqualified" minOccurs="0"
                         name="JMSExpiration" type="xsd:int"/>
                     <xsd:element form="unqualified" minOccurs="0"
+                        name="JMSDeliveryDelay" type="xsd:long"/>
+                    <xsd:element form="unqualified" minOccurs="0"
                         name="JMSPriority" type="xsd:int"/>
                     <xsd:element form="unqualified" minOccurs="0"
                         name="JMSDeliveryMode" type="xsd:string"/>
@@ -430,6 +433,8 @@
                     <xsd:element maxOccurs="1" minOccurs="0"
                         name="JMSExpiration" type="xsd:long"/>
                     <!-- Java timestamp, millis from era -->
+                    <xsd:element maxOccurs="1" minOccurs="0"
+                        name="JMSDeliveryDelay" type="xsd:long"/>
                     <xsd:element maxOccurs="1" minOccurs="0"
                         name="JMSRedelivered" type="xsd:boolean"/>
                     <xsd:element maxOccurs="1" minOccurs="0"
@@ -872,7 +877,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    xsi:type="notation:Bounds" y="97"/>
+                                    x="-64"
+                                    xsi:type="notation:Bounds" y="108"/>
                                     </children>
                                     <children type="4002 bw.sftp.dir">
                                     <children type="4017">
@@ -912,8 +918,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.1"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="87"
-                                    xsi:type="notation:Bounds" y="97"/>
+                                    x="95"
+                                    xsi:type="notation:Bounds" y="117"/>
                                     </children>
                                     <children type="4018">
                                     <children type="3018">
@@ -982,8 +988,8 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="9"
-                                    xsi:type="notation:Bounds" y="33"/>
+                                    x="34"
+                                    xsi:type="notation:Bounds" y="10"/>
                                     </children>
 
                                     <children type="4002 bw.generalactivities.log">
@@ -1102,7 +1108,7 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="141"
+                                    x="179"
                                     xsi:type="notation:Bounds" y="33"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
@@ -1122,7 +1128,7 @@
 
                                     <layoutConstraint
                                     height="234"
-                                    width="526" xsi:type="notation:Bounds"/>
+                                    width="365" xsi:type="notation:Bounds"/>
                                     </children>
                                     <styles xsi:type="notation:SortingStyle"/>
                                     <styles xsi:type="notation:FilteringStyle"/>
@@ -1255,7 +1261,7 @@
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity"/>
-                                    <layoutConstraint height="433"
+                                    <layoutConstraint height="457"
                                     width="736" xsi:type="notation:Bounds"/>
                                 </children>
                                 <styles xsi:type="notation:SortingStyle"/>
@@ -1276,7 +1282,7 @@
                     <styles xsi:type="bwnotation:BackgroundStyle"/>
                     <styles xsi:type="bwnotation:ResizingStyle"/>
                     <element href="//0/@process/@activity"/>
-                    <layoutConstraint height="587" width="1333" x="1"
+                    <layoutConstraint height="490" width="739" x="1"
                         xsi:type="notation:Bounds" y="1"/>
                 </children>
                 <styles xsi:type="notation:SortingStyle"/>
@@ -1285,7 +1291,7 @@
             </children>
             <styles fontName="Segoe UI" lineColor="0" xsi:type="notation:ShapeStyle"/>
             <element href="//0/@process"/>
-            <layoutConstraint height="509" width="1081" xsi:type="notation:Bounds"/>
+            <layoutConstraint height="542" width="1081" xsi:type="notation:Bounds"/>
         </children>
         <styles xsi:type="notation:DiagramStyle"/>
         <element href="//0"/>
@@ -1312,17 +1318,6 @@
             <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.2" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.2/@activity/@activities.1/@activity/@activity/@links/@children.1"/>
-            <bendpoints points="[25, 20, -108, -87]$[109, 87, -24, -20]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
-        <edges
             source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
             target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
             <children type="6002">
@@ -1331,18 +1326,29 @@
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@activity/@links/@children.1"/>
-            <bendpoints points="[25, 1, -273, 0]$[135, 0, -163, -1]" xsi:type="notation:RelativeBendpoints"/>
+            <bendpoints points="[25, 1, -294, 0]$[133, 0, -186, -1]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.2/@activity/@activities.1/@activity/@activity/@links/@children.1"/>
+            <bendpoints points="[22, 25, -85, -93]$[85, 94, -22, -24]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
             <children type="6002">
                 <layoutConstraint xsi:type="notation:Location" y="40"/>
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@activity/@activities.2/@activity/@activities.1/@activity/@activity/@links/@children.2"/>
-            <bendpoints points="[25, 5, -116, -23]$[117, 23, -24, -5]" xsi:type="notation:RelativeBendpoints"/>
+            <bendpoints points="[25, 4, -120, -19]$[121, 19, -24, -4]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
             source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2"
@@ -1353,7 +1359,7 @@
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@activity/@activities.2/@activity/@activities.1/@activity/@activity/@links/@children.3"/>
-            <bendpoints points="[25, 4, -295, -51]$[308, 52, -12, -3]" xsi:type="notation:RelativeBendpoints"/>
+            <bendpoints points="[25, 11, -98, -44]$[111, 49, -12, -6]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
@@ -1415,91 +1421,6 @@
         <bpws:extension mustUnderstand="no" namespace="http://www.tibco.com/bpel/2007/extensions"/>
     </bpws:extensions>
     <bpws:scope name="scope">
-        <bpws:faultHandlers>
-            <bpws:catchAll tibex:faultDetailsVar="FaultDetails"
-                tibex:faultNameVar="FaultName" tibex:xpdlId="f00eeea8-352d-464a-8aab-239d2e1c8bbb">
-                <bpws:scope name="scope1">
-                    <bpws:flow name="flow2">
-                        <bpws:links>
-                            <bpws:link name="EmptyToRenderJSON" tibex:linkType="SUCCESS"/>
-                            <bpws:link name="RenderJSONToLog1" tibex:linkType="SUCCESS"/>
-                        </bpws:links>
-                        <bpws:empty name="Empty" tibex:xpdlId="777ab96f-e3ef-4868-b781-46fc9eea369f">
-                            <bpws:sources>
-                                <bpws:source linkName="EmptyToRenderJSON"/>
-                            </bpws:sources>
-                        </bpws:empty>
-                        <bpws:extensionActivity>
-                            <tibex:activityExtension
-                                inputVariable="RenderJSON-input"
-                                name="RenderJSON"
-                                outputVariable="RenderJSON"
-                                tibex:xpdlId="df06b591-2043-4ff9-a58b-09d8682fe445" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
-                                <bpws:targets>
-                                    <bpws:target linkName="EmptyToRenderJSON"/>
-                                </bpws:targets>
-                                <bpws:sources>
-                                    <bpws:source linkName="RenderJSONToLog1"/>
-                                </bpws:sources>
-                                <tibex:inputBindings>
-                                    <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://tns.tibco.com/bw/json/1762360231862&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;FaultDetails&quot;/>&lt;xsl:template name=&quot;RenderJSON-input&quot; match=&quot;/&quot;>&lt;tns4:statoProcesso>&lt;tns4:codice>&lt;xsl:value-of select=&quot;$FaultDetails/MsgCode&quot;/>&lt;/tns4:codice>&lt;tns4:messaggio>&lt;xsl:value-of select=&quot;$FaultDetails/Msg&quot;/>&lt;/tns4:messaggio>&lt;/tns4:statoProcesso>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
-                                </tibex:inputBindings>
-                                <tibex:config>
-                                    <bwext:BWActivity
-                                    activityTypeID="bw.restjson.JsonRender"
-                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
-                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
-                                    xmlns:restjson="http://ns.tibco.com/bw/palette/restjson" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-                                    <activityConfig>
-                                    <properties name="config" xsi:type="activityconfig:EMFProperty">
-                                    <type href="http://ns.tibco.com/bw/palette/restjson#//JsonRender"/>
-                                    <value
-                                    jsonOutputStyle="None"
-                                    schemaType="Xsd" xsi:type="restjson:JsonRender">
-                                    <inputEditorElement href="platform:/resource/ScarpeFrL/Schemas/pagamento.xsd#//statoProcesso;XSDElementDeclaration=14"/>
-                                    </value>
-                                    </properties>
-                                    </activityConfig>
-                                    </bwext:BWActivity>
-                                </tibex:config>
-                            </tibex:activityExtension>
-                        </bpws:extensionActivity>
-                        <bpws:extensionActivity>
-                            <tibex:activityExtension
-                                inputVariable="Log1-input" name="Log1"
-                                tibex:xpdlId="541ecadd-e102-4639-8b1b-f1214e8d619b" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
-                                <bpws:targets>
-                                    <bpws:target linkName="RenderJSONToLog1"/>
-                                </bpws:targets>
-                                <tibex:inputBindings>
-                                    <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;RenderJSON&quot;/>&lt;xsl:template name=&quot;Log1-input&quot; match=&quot;/&quot;>&lt;tns1:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;$RenderJSON/jsonString&quot;/>&lt;/message>&lt;/tns1:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
-                                </tibex:inputBindings>
-                                <tibex:config>
-                                    <bwext:BWActivity
-                                    activityTypeID="bw.generalactivities.log"
-                                    version="6.0.0.001"
-                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
-                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
-                                    xmlns:generalactivities="http://ns.tibco.com/bw/palette/generalactivities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-                                    <activityConfig>
-                                    <properties name="config" xsi:type="activityconfig:EMFProperty">
-                                    <type href="http://ns.tibco.com/bw/palette/generalactivities#//Log"/>
-                                    <value
-                                    controlBy="Application"
-                                    role="Info"
-                                    suppressJobInfo="true" xsi:type="generalactivities:Log"/>
-                                    </properties>
-                                    </activityConfig>
-                                    </bwext:BWActivity>
-                                </tibex:config>
-                            </tibex:activityExtension>
-                        </bpws:extensionActivity>
-                    </bpws:flow>
-                </bpws:scope>
-            </bpws:catchAll>
-        </bpws:faultHandlers>
         <bpws:flow name="flow">
             <bpws:links>
                 <bpws:link name="TimerToSFTPDir" tibex:linkType="SUCCESS"/>
@@ -1565,8 +1486,7 @@
                     </tibex:config>
                 </tibex:activityExtension>
             </bpws:extensionActivity>
-            <bpws:scope name="ForEach" tibex:group="foreach"
-                tibex:indexToGlobal="false" tibex:xpdlId="05ee01b4-6a00-4a3c-a7db-e0a5f635e238">
+            <bpws:scope name="ForEach" tibex:group="foreach" tibex:xpdlId="05ee01b4-6a00-4a3c-a7db-e0a5f635e238">
                 <bpws:targets>
                     <bpws:target linkName="SFTPDirToForEach"/>
                 </bpws:targets>
@@ -1586,7 +1506,7 @@
                                     <bpws:link
                                     name="GroupStartToCall_renameSFTP" tibex:linkType="SUCCESS"/>
                                     <bpws:link
-                                    name="Call_renameSFTPToLog1" tibex:linkType="SUCCESSWITHNOCONDITION"/>
+                                    name="Call_renameSFTPToLog" tibex:linkType="SUCCESSWITHNOCONDITION"/>
                                     <bpws:link
                                     name="Call_renameSFTPToJMSSendMessage" tibex:linkType="SUCCESSWITHCONDITION"/>
                                     <bpws:link
@@ -1615,7 +1535,7 @@
                                     <bpws:target linkName="GroupStartToCall_renameSFTP"/>
                                     </bpws:targets>
                                     <bpws:sources>
-                                    <bpws:source linkName="Call_renameSFTPToLog1">
+                                    <bpws:source linkName="Call_renameSFTPToLog">
                                     <tibex:DesignExpression>
                                     <tibex:expression
                                     expression="##otherwise##" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
@@ -1647,7 +1567,7 @@
                                     name="Log"
                                     tibex:xpdlId="30b60158-2e58-4e43-8085-27286183159b" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                                     <bpws:targets>
-                                    <bpws:target linkName="Call_renameSFTPToLog1"/>
+                                    <bpws:target linkName="Call_renameSFTPToLog"/>
                                     </bpws:targets>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
