@@ -28,8 +28,8 @@
     <tibex:VariableDescriptor type="MemorySaving">
         <task name="flow1">
             <endingVariables>
-                <variable>get</variable>
                 <variable>select_id_cliente</variable>
+                <variable>get</variable>
             </endingVariables>
         </task>
         <task name="select_id_cliente">
