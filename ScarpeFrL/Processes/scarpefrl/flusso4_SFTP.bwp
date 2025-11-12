@@ -14,6 +14,7 @@
     xmlns:ns6="http://www.tibco.com/namespaces/tnt/plugins/jms"
     xmlns:ns7="http://tns.tibco.com/bw/palette/internal/activityerror+bw.jms.send"
     xmlns:ns8="http://tns.tibco.com/bw/palette/internal/activityerror+bw.restjson.JsonRender"
+    xmlns:ns9="http://tns.tibco.com/bw/palette/internal/accumulateoutput+92712234-c695-460b-920b-c263fe85f636"
     xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912"
     xmlns:sca-bpel="http://docs.oasis-open.org/ns/opencsa/sca-bpel/200801"
     xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
@@ -38,6 +39,11 @@
         <task name="flow1">
             <endingVariables>
                 <variable>Call_renameSFTP</variable>
+            </endingVariables>
+        </task>
+        <task name="Accumulate">
+            <endingVariables>
+                <variable>Accumulate</variable>
             </endingVariables>
         </task>
         <task name="Call_renameSFTP">
@@ -798,6 +804,14 @@
                 </choice>
             </complexType>
         </schema>
+        <xs:schema elementFormDefault="qualified"
+            targetNamespace="http://tns.tibco.com/bw/palette/internal/accumulateoutput+92712234-c695-460b-920b-c263fe85f636"
+            xmlns:tns="http://tns.tibco.com/bw/palette/internal/accumulateoutput+92712234-c695-460b-920b-c263fe85f636" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:element name="AccumulatedOutput" type="tns:AccumulatedOutputType"/>
+            <xs:complexType name="AccumulatedOutputType">
+                <xs:sequence maxOccurs="1" minOccurs="0"/>
+            </xs:complexType>
+        </xs:schema>
     </tibex:Types>
     <tibex:ProcessInfo callable="false" createdBy="LucaValerioNepote"
         createdOn="Wed Nov 05 16:35:20 CET 2025" description=""
@@ -1104,8 +1118,8 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="179"
-                                    xsi:type="notation:Bounds" y="33"/>
+                                    x="189"
+                                    xsi:type="notation:Bounds" y="10"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -1124,7 +1138,7 @@
 
                                     <layoutConstraint
                                     height="234"
-                                    width="365" xsi:type="notation:Bounds"/>
+                                    width="370" xsi:type="notation:Bounds"/>
                                     </children>
                                     <styles xsi:type="notation:SortingStyle"/>
                                     <styles xsi:type="notation:FilteringStyle"/>
@@ -1138,7 +1152,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.2"/>
                                     <layoutConstraint
                                     height="234"
-                                    width="326"
+                                    width="373"
                                     x="15"
                                     xsi:type="notation:Bounds" y="20"/>
                                     </children>
@@ -1190,7 +1204,6 @@
                                     <styles
                                     fontName="Segoe UI"
                                     lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <element href="//0/@process/@activity/@activity/@activities.2/@activity/@activities.1/@activity/@activity/@activities.1"/>
 
                                     <layoutConstraint xsi:type="notation:Bounds"/>
                                     </children>
@@ -1198,7 +1211,6 @@
                                     <styles
                                     fontName="Segoe UI"
                                     lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <element href="//0/@process/@activity/@activity/@activities.2/@activity/@activities.1/@activity/@activity/@activities.1"/>
 
                                     <layoutConstraint xsi:type="notation:Bounds"/>
                                     </children>
@@ -1206,7 +1218,6 @@
                                     <styles
                                     fontName="Segoe UI"
                                     lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <element href="//0/@process/@activity/@activity/@activities.2/@activity/@activities.1/@activity/@activity/@activities.1"/>
 
                                     <layoutConstraint xsi:type="notation:Bounds"/>
                                     </children>
@@ -1214,7 +1225,6 @@
                                     <styles
                                     fontName="Segoe UI"
                                     lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <element href="//0/@process/@activity/@activity/@activities.2/@activity/@activities.1/@activity/@activity/@activities.1"/>
 
                                     <layoutConstraint xsi:type="notation:Bounds"/>
                                     </children>
@@ -1241,7 +1251,7 @@
                                     restoreY="10" xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.2"/>
                                     <layoutConstraint
-                                    height="278" width="366"
+                                    height="278" width="413"
                                     x="278"
                                     xsi:type="notation:Bounds" y="10"/>
                                     </children>
@@ -1258,7 +1268,7 @@
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity"/>
                                     <layoutConstraint height="466"
-                                    width="736" xsi:type="notation:Bounds"/>
+                                    width="762" xsi:type="notation:Bounds"/>
                                 </children>
                                 <styles xsi:type="notation:SortingStyle"/>
                                 <styles xsi:type="notation:FilteringStyle"/>
@@ -1287,7 +1297,7 @@
             </children>
             <styles fontName="Segoe UI" lineColor="0" xsi:type="notation:ShapeStyle"/>
             <element href="//0/@process"/>
-            <layoutConstraint height="542" width="1081" xsi:type="notation:Bounds"/>
+            <layoutConstraint height="542" width="1293" xsi:type="notation:Bounds"/>
         </children>
         <styles xsi:type="notation:DiagramStyle"/>
         <element href="//0"/>
@@ -1407,6 +1417,7 @@
                 <bpws:literal>scarpefrl.JMSConnectionResource</bpws:literal>
             </bpws:from>
         </bpws:variable>
+        <bpws:variable element="ns9:AccumulatedOutput" name="Accumulate" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -1482,13 +1493,12 @@
                     </tibex:config>
                 </tibex:activityExtension>
             </bpws:extensionActivity>
-            <bpws:scope name="ForEach" tibex:group="foreach"
-                tibex:indexToGlobal="false" tibex:xpdlId="05ee01b4-6a00-4a3c-a7db-e0a5f635e238">
+            <bpws:scope name="ForEach" tibex:group="foreach" tibex:xpdlId="05ee01b4-6a00-4a3c-a7db-e0a5f635e238">
                 <bpws:targets>
                     <bpws:target linkName="SFTPDirToForEach"/>
                 </bpws:targets>
                 <bpws:sequence name="sequence" tibex:group="foreach" tibex:xpdlId="a040636e-7146-4c3e-9241-4219776d0b52">
-                    <bpws:empty name="GroupInit" tibex:group="groupInit" tibex:xpdlId="e2b8818a-dcce-4c35-9520-4c21395db00d"/>
+                    <bpws:empty name="GroupInit" tibex:group="groupInit"/>
                     <bpws:forEach counterName="index" name="forEach"
                         parallel="no" tibex:group="foreach" tibex:xpdlId="be438b95-96ef-4398-a656-1f508f9489f9">
                         <tibex:DesignExpression name="final">
@@ -1515,12 +1525,32 @@
                                     <bpws:source linkName="GroupStartToCall_renameSFTP"/>
                                     </bpws:sources>
                                 </bpws:empty>
-                                <bpws:empty name="GroupEnd"
-                                    tibex:group="groupEnd" tibex:xpdlId="0f12d0bf-4e01-481d-b7b0-e73d0e04f209">
+                                <bpws:extensionActivity>
+                                    <tibex:activityExtension
+                                    name="Accumulate"
+                                    outputVariable="Accumulate"
+                                    tibex:group="groupEnd"
+                                    tibex:xpdlId="92712234-c695-460b-920b-c263fe85f636" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                                     <bpws:targets>
                                     <bpws:target linkName="JMSSendMessageToGroupEnd"/>
                                     </bpws:targets>
-                                </bpws:empty>
+                                    <tibex:config>
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.internal.accumulateend"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:internalactivities="http://ns.tibco.com/bw/core/internalactivity" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+                                    <properties
+                                    name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/core/internalactivity#//AccumulateEnd"/>
+                                    <value xsi:type="internalactivities:AccumulateEnd"/>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                    </tibex:config>
+                                    </tibex:activityExtension>
+                                </bpws:extensionActivity>
                                 <bpws:extensionActivity>
                                     <tibex:extActivity
                                     inputVariable="Call_renameSFTP-input"
