@@ -7,6 +7,7 @@
     xmlns:ns="http://www.tibco.com/pe/EngineTypes"
     xmlns:ns0="http://tns.tibco.com/bw/activity/timer/xsd/output"
     xmlns:ns1="http://tns.tibco.com/bw/activity/dir"
+    xmlns:ns10="http://tns.tibco.com/bw/palette/internal/accumulateoutput+e7c0f890-84f8-4574-8e13-16a8a45fbef2"
     xmlns:ns2="http://tns.tibco.com/bw/palette/internal/activityerror+bw.sftp.dir"
     xmlns:ns3="http://www.tibco.com/pe/WriteToLogActivitySchema"
     xmlns:ns4="http://tns.tibco.com/bw/json/1762360231862"
@@ -34,16 +35,13 @@
         <task name="ForEach">
             <endingVariables>
                 <variable>SFTPDir</variable>
-            </endingVariables>
-        </task>
-        <task name="flow1">
-            <endingVariables>
-                <variable>Call_renameSFTP</variable>
+                <variable>Mapper</variable>
             </endingVariables>
         </task>
         <task name="Accumulate">
             <endingVariables>
                 <variable>Accumulate</variable>
+                <variable>Call_renameSFTP</variable>
             </endingVariables>
         </task>
         <task name="Call_renameSFTP">
@@ -60,6 +58,11 @@
             <endingVariables>
                 <variable>JMSSendMessage-input</variable>
                 <variable>JMSSendMessage</variable>
+            </endingVariables>
+        </task>
+        <task name="Mapper">
+            <endingVariables>
+                <variable>Mapper-input</variable>
             </endingVariables>
         </task>
         <task name="RenderJSON">
@@ -890,6 +893,18 @@
                 </choice>
             </complexType>
         </schema>
+        <xs:schema elementFormDefault="qualified"
+            targetNamespace="http://tns.tibco.com/bw/palette/internal/accumulateoutput+e7c0f890-84f8-4574-8e13-16a8a45fbef2"
+            xmlns:Q1="http://tns.tibco.com/bw/json/1762360231862"
+            xmlns:tns="http://tns.tibco.com/bw/palette/internal/accumulateoutput+e7c0f890-84f8-4574-8e13-16a8a45fbef2" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:import namespace="http://tns.tibco.com/bw/json/1762360231862"/>
+            <xs:element name="AccumulatedOutput" type="tns:AccumulatedOutputType"/>
+            <xs:complexType name="AccumulatedOutputType">
+                <xs:sequence maxOccurs="1" minOccurs="0">
+                    <xs:element maxOccurs="unbounded" minOccurs="0" ref="Q1:nome_file"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
     </tibex:Types>
     <tibex:ProcessInfo callable="false" createdBy="LucaValerioNepote"
         createdOn="Wed Nov 05 16:35:20 CET 2025" description=""
@@ -1196,8 +1211,64 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="189"
+                                    x="171"
                                     xsi:type="notation:Bounds" y="10"/>
+                                    </children>
+
+                                    <children type="4002 bw.generalactivities.mapper">
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <children type="4017">
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+
+                                    <element href="//0/@process/@activity/@activity/@activities.2/@activity/@activities.1/@activity/@activity/@activities.5"/>
+
+                                    <layoutConstraint
+                                    height="40"
+                                    width="40"
+                                    x="231"
+                                    xsi:type="notation:Bounds" y="128"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -1552,7 +1623,7 @@
             </children>
             <styles fontName="Segoe UI" lineColor="0" xsi:type="notation:ShapeStyle"/>
             <element href="//0/@process"/>
-            <layoutConstraint height="742" width="1081" xsi:type="notation:Bounds"/>
+            <layoutConstraint height="742" width="1150" xsi:type="notation:Bounds"/>
         </children>
         <styles xsi:type="notation:DiagramStyle"/>
         <element href="//0"/>
@@ -1644,6 +1715,28 @@
             <element href="//0/@process/@activity/@faultHandlers/@catchAll/@activity/@activity/@links/@children.1"/>
             <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.2/@activity/@activities.1/@activity/@activity/@links/@children.4"/>
+            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.2" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@activities.2/@activity/@activities.1/@activity/@activity/@links/@children.5"/>
+            <bendpoints points="[25, -13, -51, 27]$[64, -34, -12, 6]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
         <tibex:namespaceItem
@@ -1703,6 +1796,10 @@
         <bpws:variable element="ns8:ActivityErrorData"
             name="_error_RenderJSON" sca-bpel:internal="true"/>
         <bpws:variable element="ns3:ActivityInput" name="Log1-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns4:nome_file" name="Mapper-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns4:nome_file" name="Mapper" sca-bpel:internal="true"/>
+        <bpws:variable element="ns10:AccumulatedOutput"
+            name="Accumulate" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -1863,13 +1960,19 @@
                     </tibex:config>
                 </tibex:activityExtension>
             </bpws:extensionActivity>
-            <bpws:scope name="ForEach" tibex:group="foreach"
-                tibex:indexToGlobal="false" tibex:xpdlId="05ee01b4-6a00-4a3c-a7db-e0a5f635e238">
+            <bpws:scope name="ForEach" tibex:group="foreach" tibex:xpdlId="05ee01b4-6a00-4a3c-a7db-e0a5f635e238">
                 <bpws:targets>
                     <bpws:target linkName="SFTPDirToForEach"/>
                 </bpws:targets>
                 <bpws:sequence name="sequence" tibex:group="foreach" tibex:xpdlId="a040636e-7146-4c3e-9241-4219776d0b52">
-                    <bpws:empty name="GroupInit" tibex:group="groupInit"/>
+                    <bpws:assign name="GroupInit"
+                        tibex:group="groupInit"
+                        tibex:xpdlId="26ed8b30-b6b1-4bcd-afa8-77718b6ef1ee" validate="no">
+                        <bpws:copy>
+                            <bpws:from expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"><![CDATA[<?xml version="1.0" encoding="UTF-8"?> <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tns="http://tns.tibco.com/bw/palette/internal/accumulateoutput+e7c0f890-84f8-4574-8e13-16a8a45fbef2" version="2.0"> <xsl:template name="Accumulate" match="/"> <tns:AccumulatedOutput/></xsl:template> </xsl:stylesheet>]]></bpws:from>
+                            <bpws:to variable="Accumulate"/>
+                        </bpws:copy>
+                    </bpws:assign>
                     <bpws:forEach counterName="index" name="forEach"
                         parallel="no" tibex:group="foreach" tibex:xpdlId="be438b95-96ef-4398-a656-1f508f9489f9">
                         <tibex:DesignExpression name="final">
@@ -1889,6 +1992,8 @@
                                     name="Call_renameSFTPToJMSSendMessage" tibex:linkType="SUCCESSWITHCONDITION"/>
                                     <bpws:link
                                     name="JMSSendMessageToGroupEnd" tibex:linkType="SUCCESS"/>
+                                    <bpws:link name="LogToMapper" tibex:linkType="SUCCESS"/>
+                                    <bpws:link name="MapperToAccumulate" tibex:linkType="SUCCESS"/>
                                 </bpws:links>
                                 <bpws:empty name="GroupStart"
                                     tibex:group="groupStart" tibex:xpdlId="e2558a23-18df-4f5e-9947-7a45e9069b6a">
@@ -1901,9 +2006,10 @@
                                     name="Accumulate"
                                     outputVariable="Accumulate"
                                     tibex:group="groupEnd"
-                                    tibex:xpdlId="92712234-c695-460b-920b-c263fe85f636" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    tibex:xpdlId="e7c0f890-84f8-4574-8e13-16a8a45fbef2" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                                     <bpws:targets>
                                     <bpws:target linkName="JMSSendMessageToGroupEnd"/>
+                                    <bpws:target linkName="MapperToAccumulate"/>
                                     </bpws:targets>
                                     <tibex:config>
                                     <bwext:BWActivity
@@ -1915,7 +2021,9 @@
                                     <properties
                                     name="config" xsi:type="activityconfig:EMFProperty">
                                     <type href="http://ns.tibco.com/bw/core/internalactivity#//AccumulateEnd"/>
-                                    <value xsi:type="internalactivities:AccumulateEnd"/>
+                                    <value xsi:type="internalactivities:AccumulateEnd">
+                                    <activityNames>Mapper</activityNames>
+                                    </value>
                                     </properties>
                                     </activityConfig>
                                     </bwext:BWActivity>
@@ -1967,6 +2075,9 @@
                                     <bpws:targets>
                                     <bpws:target linkName="Call_renameSFTPToLog"/>
                                     </bpws:targets>
+                                    <bpws:sources>
+                                    <bpws:source linkName="LogToMapper"/>
+                                    </bpws:sources>
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
                                     expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; xmlns:tns4=&quot;http://tns.tibco.com/bw/json/1762360231862&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;Call_renameSFTP&quot;/>&lt;xsl:template name=&quot;Log-input&quot; match=&quot;/&quot;>&lt;tns1:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;$Call_renameSFTP/tns4:messaggio&quot;/>&lt;/message>&lt;/tns1:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
@@ -2024,6 +2135,42 @@
                                     destinationName="registro_fatture"
                                     messagingStyle="Queue"
                                     priority="4" xsi:type="jms:JMSSenderActivityConfiguration"/>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                    </tibex:config>
+                                    </tibex:activityExtension>
+                                </bpws:extensionActivity>
+                                <bpws:extensionActivity>
+                                    <tibex:activityExtension
+                                    inputVariable="Mapper-input"
+                                    name="Mapper"
+                                    outputVariable="Mapper"
+                                    tibex:xpdlId="4e3bd89b-b409-451b-8729-d2d311b163a1" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                    <bpws:targets>
+                                    <bpws:target linkName="LogToMapper"/>
+                                    </bpws:targets>
+                                    <bpws:sources>
+                                    <bpws:source linkName="MapperToAccumulate"/>
+                                    </bpws:sources>
+                                    <tibex:inputBindings>
+                                    <tibex:inputBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://tns.tibco.com/bw/json/1762360231862&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;index&quot;/>&lt;xsl:param name=&quot;SFTPDir&quot;/>&lt;xsl:template name=&quot;Mapper-input&quot; match=&quot;/&quot;>&lt;tns4:nome_file>&lt;xsl:value-of select=&quot;$SFTPDir/DirectoryItems[$index]&quot;/>&lt;/tns4:nome_file>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    </tibex:inputBindings>
+                                    <tibex:config>
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.generalactivities.mapper"
+                                    version="6.0.0.001"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:generalactivities="http://ns.tibco.com/bw/palette/generalactivities"
+                                    xmlns:json_1762360231862="http://tns.tibco.com/bw/json/1762360231862" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+                                    <properties
+                                    name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/generalactivities#//Mapper"/>
+                                    <value
+                                    inputQName="json_1762360231862:nome_file" xsi:type="generalactivities:Mapper"/>
                                     </properties>
                                     </activityConfig>
                                     </bwext:BWActivity>

@@ -628,7 +628,6 @@
                                     <value
                                     inputHeadersQName="input:headersType"
                                     newActivity="true"
-                                    sendMailProtocol="SMTP"
                                     smtpProperty="smtpProperty" xsi:type="mail:SendMail"/>
                                 </properties>
                             </activityConfig>
