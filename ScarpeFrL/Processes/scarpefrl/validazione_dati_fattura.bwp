@@ -822,7 +822,7 @@
                 <bpws:link name="JDBCQueryToEnd" tibex:linkType="SUCCESSWITHCONDITION"/>
                 <bpws:link name="controllo_IDfatturaToThrow" tibex:linkType="SUCCESSWITHNOCONDITION"/>
                 <bpws:link name="JDBCQueryToEnd1" tibex:linkType="SUCCESSWITHCONDITION"/>
-                <bpws:link name="controllo_IDspedToThrow1" tibex:linkType="SUCCESS"/>
+                <bpws:link name="controllo_IDspedToThrow1" tibex:linkType="SUCCESSWITHNOCONDITION"/>
             </bpws:links>
             <bpws:extensionActivity>
                 <tibex:receiveEvent createInstance="yes"
@@ -941,7 +941,13 @@
                             </tibex:DesignExpression>
                             <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[count($controllo_IDsped/Record) = 1]]></bpws:transitionCondition>
                         </bpws:source>
-                        <bpws:source linkName="controllo_IDspedToThrow1"/>
+                        <bpws:source linkName="controllo_IDspedToThrow1">
+                            <tibex:DesignExpression>
+                                <tibex:expression
+                                    expression="##otherwise##" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                            </tibex:DesignExpression>
+                            <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[##otherwise##]]></bpws:transitionCondition>
+                        </bpws:source>
                     </bpws:sources>
                     <tibex:inputBindings>
                         <tibex:inputBinding
