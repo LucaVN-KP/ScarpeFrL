@@ -496,7 +496,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.2"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="407"
+                                    x="439"
                                     xsi:type="notation:Bounds" y="106"/>
                                     </children>
                                     <children type="4002 com.tibco.bw.core.design.process.editor.Activity_4002_Throw">
@@ -578,8 +578,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.4"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="395"
-                                    xsi:type="notation:Bounds" y="209"/>
+                                    x="439"
+                                    xsi:type="notation:Bounds" y="198"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -961,14 +961,15 @@
                         </bpws:links>
                         <bpws:extensionActivity>
                             <tibex:activityExtension
-                                inputVariable="End-input" name="End1"
+                                inputVariable="End-input"
+                                name="End_error"
                                 tibex:xpdlId="4d8126cb-f293-45d7-b033-618f5a52120c" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                                 <bpws:targets>
                                     <bpws:target linkName="Log2ToEnd1"/>
                                 </bpws:targets>
                                 <tibex:inputBindings>
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://tns.tibco.com/bw/json/1762360231862&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;_error&quot;/>&lt;xsl:template name=&quot;End-input&quot; match=&quot;/&quot;>&lt;tns1:statoProcesso>&lt;tns1:codice>&lt;xsl:value-of select=&quot;$_error/MsgCode&quot;/>&lt;/tns1:codice>&lt;tns1:messaggio>&lt;xsl:value-of select=&quot;concat($_error/MsgCode,&amp;quot;: %crlf;&amp;quot;,$_error/Msg)&quot;/>&lt;/tns1:messaggio>&lt;/tns1:statoProcesso>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns1=&quot;http://tns.tibco.com/bw/json/1762360231862&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;_error&quot;/>&lt;xsl:template name=&quot;End-input&quot; match=&quot;/&quot;>&lt;tns1:statoProcesso>&lt;tns1:codice>&lt;xsl:value-of select=&quot;$_error/MsgCode&quot;/>&lt;/tns1:codice>&lt;tns1:messaggio>&lt;xsl:value-of select=&quot;concat(&amp;quot;&amp;#xD;&amp;#xA;&amp;quot;,$_error/MsgCode,&amp;quot;: &amp;#xD;&amp;#xA;&amp;quot;,$_error/Msg)&quot;/>&lt;/tns1:messaggio>&lt;/tns1:statoProcesso>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                 </tibex:inputBindings>
                                 <tibex:config>
                                     <bwext:BWActivity
@@ -999,7 +1000,7 @@
                                 </bpws:sources>
                                 <tibex:inputBindings>
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns3=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;_error&quot;/>&lt;xsl:template name=&quot;Log_Error-input&quot; match=&quot;/&quot;>&lt;tns3:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;concat($_error/MsgCode,&amp;quot;: %crlf;&amp;quot;,$_error/Msg)&quot;/>&lt;/message>&lt;/tns3:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns3=&quot;http://www.tibco.com/pe/WriteToLogActivitySchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;_error&quot;/>&lt;xsl:template name=&quot;Log_Error-input&quot; match=&quot;/&quot;>&lt;tns3:ActivityInput>&lt;message>&lt;xsl:value-of select=&quot;concat(&amp;quot;&amp;#xD;&amp;#xA;&amp;quot;,$_error/MsgCode,&amp;quot;: &amp;#xD;&amp;#xA;&amp;quot;,$_error/Msg)&quot;/>&lt;/message>&lt;/tns3:ActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                 </tibex:inputBindings>
                                 <tibex:config>
                                     <bwext:BWActivity
