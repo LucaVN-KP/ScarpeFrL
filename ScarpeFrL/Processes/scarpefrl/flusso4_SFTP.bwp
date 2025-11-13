@@ -980,8 +980,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="-64"
-                                    xsi:type="notation:Bounds" y="108"/>
+                                    x="-183"
+                                    xsi:type="notation:Bounds" y="79"/>
                                     </children>
                                     <children type="4002 bw.sftp.dir">
                                     <children type="4017">
@@ -1021,8 +1021,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.1"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="80"
-                                    xsi:type="notation:Bounds" y="108"/>
+                                    x="-2"
+                                    xsi:type="notation:Bounds" y="79"/>
                                     </children>
                                     <children type="4018">
                                     <children type="3018">
@@ -1091,8 +1091,8 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="34"
-                                    xsi:type="notation:Bounds" y="10"/>
+                                    x="80"
+                                    xsi:type="notation:Bounds" y="1"/>
                                     </children>
 
                                     <children type="4002 bw.generalactivities.log">
@@ -1211,8 +1211,8 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="171"
-                                    xsi:type="notation:Bounds" y="10"/>
+                                    x="210"
+                                    xsi:type="notation:Bounds" y="1"/>
                                     </children>
 
                                     <children type="4002 bw.generalactivities.mapper">
@@ -1286,8 +1286,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.2/@activity/@activities.1/@activity/@activity"/>
 
                                     <layoutConstraint
-                                    height="234"
-                                    width="370" xsi:type="notation:Bounds"/>
+                                    height="253"
+                                    width="439" xsi:type="notation:Bounds"/>
                                     </children>
                                     <styles xsi:type="notation:SortingStyle"/>
                                     <styles xsi:type="notation:FilteringStyle"/>
@@ -1300,8 +1300,8 @@
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.2"/>
                                     <layoutConstraint
-                                    height="234"
-                                    width="373"
+                                    height="253"
+                                    width="442"
                                     x="15"
                                     xsi:type="notation:Bounds" y="20"/>
                                     </children>
@@ -1400,9 +1400,9 @@
                                     restoreY="10" xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.2"/>
                                     <layoutConstraint
-                                    height="278" width="413"
-                                    x="278"
-                                    xsi:type="notation:Bounds" y="10"/>
+                                    height="297" width="482"
+                                    x="314"
+                                    xsi:type="notation:Bounds" y="13"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -1416,8 +1416,8 @@
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity"/>
-                                    <layoutConstraint height="466"
-                                    width="762" xsi:type="notation:Bounds"/>
+                                    <layoutConstraint height="373"
+                                    width="963" xsi:type="notation:Bounds"/>
                                 </children>
                                 <styles xsi:type="notation:SortingStyle"/>
                                 <styles xsi:type="notation:FilteringStyle"/>
@@ -1427,7 +1427,7 @@
                             <styles xsi:type="bwnotation:BackgroundStyle"/>
                             <styles xsi:type="bwnotation:ResizingStyle"/>
                             <element href="//0/@process/@activity"/>
-                            <layoutConstraint height="454" width="739" xsi:type="notation:Bounds"/>
+                            <layoutConstraint height="373" width="966" xsi:type="notation:Bounds"/>
                         </children>
                         <children type="4022">
                             <children type="3022">
@@ -1614,7 +1614,7 @@
                     <styles xsi:type="bwnotation:BackgroundStyle"/>
                     <styles xsi:type="bwnotation:ResizingStyle"/>
                     <element href="//0/@process/@activity"/>
-                    <layoutConstraint height="690" width="739" x="1"
+                    <layoutConstraint height="574" width="966" x="1"
                         xsi:type="notation:Bounds" y="1"/>
                 </children>
                 <styles xsi:type="notation:SortingStyle"/>
@@ -1623,7 +1623,7 @@
             </children>
             <styles fontName="Segoe UI" lineColor="0" xsi:type="notation:ShapeStyle"/>
             <element href="//0/@process"/>
-            <layoutConstraint height="742" width="1150" xsi:type="notation:Bounds"/>
+            <layoutConstraint height="626" width="1344" xsi:type="notation:Bounds"/>
         </children>
         <styles xsi:type="notation:DiagramStyle"/>
         <element href="//0"/>
@@ -1648,17 +1648,6 @@
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@activity/@activities.2/@activity/@activities.1/@activity/@activity/@links/@children.0"/>
             <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
-        <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.1"/>
-            <bendpoints points="[25, 1, -294, 0]$[133, 0, -186, -1]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
             source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0"
@@ -1737,6 +1726,17 @@
             <element href="//0/@process/@activity/@activity/@activities.2/@activity/@activities.1/@activity/@activity/@links/@children.5"/>
             <bendpoints points="[25, -13, -51, 27]$[64, -34, -12, 6]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.1"/>
+            <bendpoints points="[25, 2, -530, -37]$[366, 25, -189, -14]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
         <tibex:namespaceItem
@@ -1800,6 +1800,7 @@
         <bpws:variable element="ns4:nome_file" name="Mapper" sca-bpel:internal="true"/>
         <bpws:variable element="ns10:AccumulatedOutput"
             name="Accumulate" sca-bpel:internal="true"/>
+        <bpws:variable element="ns4:numero_casuale" name="count"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -1960,7 +1961,8 @@
                     </tibex:config>
                 </tibex:activityExtension>
             </bpws:extensionActivity>
-            <bpws:scope name="ForEach" tibex:group="foreach" tibex:xpdlId="05ee01b4-6a00-4a3c-a7db-e0a5f635e238">
+            <bpws:scope name="ForEach" tibex:group="foreach"
+                tibex:indexToGlobal="false" tibex:xpdlId="05ee01b4-6a00-4a3c-a7db-e0a5f635e238">
                 <bpws:targets>
                     <bpws:target linkName="SFTPDirToForEach"/>
                 </bpws:targets>
@@ -2061,10 +2063,10 @@
                                     <tibex:inputBindings>
                                     <tibex:inputBinding
                                     coercion=""
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://tns.tibco.com/bw/json/1762360231862&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;index&quot;/>&#xa;    &lt;xsl:param name=&quot;SFTPDir&quot;/>&#xa;    &lt;xsl:template name=&quot;CallProcess-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns4:nome_file>&#xa;            &lt;xsl:value-of select=&quot;$SFTPDir/DirectoryItems[$index]&quot;/>&#xa;        &lt;/tns4:nome_file>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://tns.tibco.com/bw/json/1762360231862&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;index&quot;/>&lt;xsl:param name=&quot;SFTPDir&quot;/>&lt;xsl:template name=&quot;Call_renameSFTP-input&quot; match=&quot;/&quot;>&lt;tns4:nome_file>&lt;xsl:value-of select=&quot;$SFTPDir/DirectoryItems[$index]&quot;/>&lt;/tns4:nome_file>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                     </tibex:inputBindings>
                                     <tibex:CallProcess
-                                    subProcessName="scarpefrl.rename_file_SFTP" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"/>
+                                    subProcessName="scarpefrl.spostamento_file" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"/>
                                     </tibex:extActivity>
                                 </bpws:extensionActivity>
                                 <bpws:extensionActivity>

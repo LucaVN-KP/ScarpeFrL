@@ -55,8 +55,8 @@
         </task>
         <task name="flow2">
             <endingVariables>
-                <variable>update_spedizione</variable>
                 <variable>patch</variable>
+                <variable>update_spedizione</variable>
             </endingVariables>
         </task>
         <task name="patchOut">
