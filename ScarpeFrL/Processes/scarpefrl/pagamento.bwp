@@ -2254,7 +2254,7 @@
             </bpws:extensionActivity>
             <bpws:extensionActivity>
                 <tibex:activityExtension inputVariable="stato_processo"
-                    name="Assign" outputVariable="stato_processo"
+                    name="AssignOK" outputVariable="stato_processo"
                     tibex:xpdlId="cb17b16f-22a6-4435-b179-55356247b83d" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:targets>
                         <bpws:target linkName="update_fatturaToEnd"/>
@@ -2285,7 +2285,7 @@
             </bpws:extensionActivity>
             <bpws:extensionActivity>
                 <tibex:activityExtension inputVariable="stato_processo"
-                    name="Assign1" outputVariable="stato_processo"
+                    name="AssignKO" outputVariable="stato_processo"
                     tibex:xpdlId="2cf3991b-29ca-430c-911e-490dd819dc06" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:targets>
                         <bpws:target linkName="spostamentoFilToAssign1"/>

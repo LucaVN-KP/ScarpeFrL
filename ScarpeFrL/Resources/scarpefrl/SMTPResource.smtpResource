@@ -3,13 +3,13 @@
   <identitySet xmi:id="_FKRywL8XEfCP1JLVCCks-A" appliesTo="namedResource" name="HttpClientIdentitySet" provides="confidentiality">
     <sca_ext:intentMap xmi:id="_FKRywb8XEfCP1JLVCCks-A" provides="sca_ext:confidentiality">
       <sca_ext:qualifier xmi:id="_FKRywr8XEfCP1JLVCCks-A" name="transport">
-        <id:IdentityReference xmi:id="_FKRyw78XEfCP1JLVCCks-A" URI="" type="sslclient:SSLClientConfiguration"/>
+        <id:IdentityReference xmi:id="_FKRyw78XEfCP1JLVCCks-A" URI="scarpefrl.SSLClientResource" type="sslclient:SSLClientConfiguration"/>
       </sca_ext:qualifier>
     </sca_ext:intentMap>
   </identitySet>
   <jndi:reference xmi:id="_FOz00L8UEfCP1JLVCCks-A" key="identityJNDIName" type="subject:SubjectConfiguration" value=""/>
-  <jndi:configuration xsi:type="smtp:SmtpConfiguration" xmi:id="_FOz00b8UEfCP1JLVCCks-A" authenticationType="Basic">
-    <tcpDetails xmi:id="_FO2REL8UEfCP1JLVCCks-A" host="smtp.gmail.com" port="587" connectionTimeout="60000"/>
+  <jndi:configuration xsi:type="smtp:SmtpConfiguration" xmi:id="_FOz00b8UEfCP1JLVCCks-A" useTLS="false" authenticationType="Basic">
+    <tcpDetails xmi:id="_FO2REL8UEfCP1JLVCCks-A" host="smtp.gmail.com" port="465" connectionTimeout="60000"/>
     <userCredentials xmi:id="_FO2REb8UEfCP1JLVCCks-A" username="scarpefrl@gmail.com" password="#!Z2YJvE/Z0VrdSNFGD28iVH0MbKNbxtMTH1yY4sTZQGdhITU/jZFA626zQcjuXblv"/>
   </jndi:configuration>
 </jndi:namedResource>

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dataformat="http://ns.tibco.com/bw/palette/dataformat" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmlns:json_1762360231862="http://tns.tibco.com/bw/json/1762360231862" xmi:id="_3eQHYb-1EfCyysliyFsXpw" name="scarpefrl.FattErrorFormatResource" type="dataformat:DataFormat">
-  <imports xmi:id="_9HExEL-1EfCyysliyFsXpw" importType="http://www.w3.org/2001/XMLSchema" namespace="http://tns.tibco.com/bw/json/1762360231862"/>
-  <jndi:configuration xsi:type="dataformat:DataFormat" xmi:id="_3eQHYr-1EfCyysliyFsXpw" formatType="Delimiter separated" colSeparator="," colSeparatorParseRule="Treat all characters as entered as a single column separator string" lineSeparator="New Line" fillCharacter="Space" schemaElementQName="json_1762360231862:contenuto_dir" fieldOffsetsStr="nome_file(0,0)">
-    <fieldOffsets xmi:id="_9IhikL-1EfCyysliyFsXpw" name="nome_file"/>
-  </jndi:configuration>
-</jndi:namedResource>

@@ -22,8 +22,8 @@
 <!-- definisco la variabile contenuto_directory per il server FTP dei pagamenti -->
 <element name="contenuto_dir">
 <complexType>
-<sequence minOccurs="0" maxOccurs="unbounded">
-<element ref="tns:nome_file"/>
+<sequence>
+<element ref="tns:nome_file" minOccurs="0" maxOccurs="unbounded"/>
 </sequence>
 </complexType>
 </element>
