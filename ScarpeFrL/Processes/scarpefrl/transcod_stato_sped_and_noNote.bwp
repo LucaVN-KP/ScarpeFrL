@@ -23,8 +23,8 @@
     <tibex:VariableDescriptor type="MemorySaving">
         <task name="flow">
             <endingVariables>
-                <variable>Start</variable>
                 <variable>transcod_stato_sped</variable>
+                <variable>Start</variable>
             </endingVariables>
         </task>
         <task name="End">

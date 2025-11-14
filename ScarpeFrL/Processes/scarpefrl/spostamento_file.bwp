@@ -792,10 +792,10 @@
                                     <styles fontName="Segoe UI"
                                     lineColor="0" xsi:type="notation:ShapeStyle"/>
                                     <styles xsi:type="bwnotation:BackgroundStyle"/>
-                                    <styles restoreHeight="269"
-                                    restoreWidth="667" xsi:type="bwnotation:ResizingStyle"/>
+                                    <styles restoreHeight="214"
+                                    restoreWidth="727" xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@faultHandlers/@catchAll"/>
-                                    <layoutConstraint height="210"
+                                    <layoutConstraint height="214"
                                     width="727" xsi:type="notation:Bounds"/>
                                 </children>
                                 <styles xsi:type="notation:SortingStyle"/>
