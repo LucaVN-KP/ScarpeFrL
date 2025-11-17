@@ -29,5 +29,4 @@ TIBCO-BW-Edition: bwe
 TIBCO-BW-ConfigProfile: META-INF/default.substvar
 TIBCO-BW-ApplicationModule: META-INF/module.bwm
 TIBCO-BW-JobSharedVariables: META-INF/module.jsv
-TIBCO-BW-ModuleSharedVariables: META-INF/module.msv
 TIBCO-BW-Version: 6.10.0 V23 2023-11-10
