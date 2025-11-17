@@ -1,46 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpws:process exitOnStandardFault="no" name="scarpefrl.Test_SFTP"
-    suppressJoinFailure="yes"
-    targetNamespace="http://xmlns.example.com/20251105123755"
+<bpws:process exitOnStandardFault="no"
+    name="scarpefrl.gestione_sollecito" suppressJoinFailure="yes"
+    targetNamespace="http://xmlns.example.com/20251117150148"
     xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
     xmlns:info="http://www.tibco.com/bw/process/info"
     xmlns:ns="http://www.tibco.com/pe/EngineTypes"
     xmlns:ns0="http://tns.tibco.com/bw/activity/timer/xsd/output"
-    xmlns:ns1="http://tns.tibco.com/bw/activity/getDefaultDir"
-    xmlns:ns10="http://tns.tibco.com/bw/activity/put/input+a6304db4-df37-40b8-972b-06d568d8f811+SFTPPutInputDataASCII"
-    xmlns:ns11="http://tns.tibco.com/bw/activity/output+a6304db4-df37-40b8-972b-06d568d8f811+SFTPPutOutputFile"
-    xmlns:ns12="http://tns.tibco.com/bw/json/1762360231862"
-    xmlns:ns13="activity.jsonRender.output+3c0931d3-d8c4-4572-8ba5-a9c7dbb083b7+ActivityOutputType"
-    xmlns:ns14="http://tns.tibco.com/bw/palette/internal/activityerror+bw.restjson.JsonRender"
-    xmlns:ns15="activity.jsonRender.output+ecdfd252-60a6-4ed5-9e08-2b3c08d6836c+ActivityOutputType"
-    xmlns:ns16="activity.jsonRender.output+a8de045a-21ee-4e6e-9aef-7520301603c4+ActivityOutputType"
-    xmlns:ns17="http://tns.tibco.com/bw/activity/sendmail/xsd/input+f31f10b5-946b-4929-b320-8a464a888090+input"
-    xmlns:ns18="http://tns.tibco.com/bw/palette/internal/activityerror+bw.mail.send"
-    xmlns:ns19="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions"
-    xmlns:ns2="http://tns.tibco.com/bw/palette/internal/activityerror+bw.sftp.getDefaultDir"
-    xmlns:ns20="http://tns.tibco.com/bw/activity/dir"
-    xmlns:ns21="http://tns.tibco.com/bw/palette/internal/activityerror+bw.sftp.dir"
-    xmlns:ns22="http://tns.tibco.com/bw/activity/receivemail/xsd/output+27164eda-4996-45fc-9b33-1fdaff3bbf7f+output"
-    xmlns:ns3="http://www.tibco.com/pe/WriteToLogActivitySchema"
-    xmlns:ns4="http://tns.tibco.com/bw/activity/put/input+0439cb45-6603-4060-aff8-75a0e28ffcfb+SFTPPutInputDataASCII"
-    xmlns:ns5="http://tns.tibco.com/bw/activity/output+0439cb45-6603-4060-aff8-75a0e28ffcfb+SFTPPutOutputFile"
-    xmlns:ns6="http://tns.tibco.com/bw/palette/internal/activityerror+bw.sftp.put"
-    xmlns:ns7="http://tns.tibco.com/bw/activity/get/input+ffe9fe48-675a-494d-8d66-605e44a7a702+SFTPGetInputData"
-    xmlns:ns8="http://tns.tibco.com/bw/activity/get/output+ffe9fe48-675a-494d-8d66-605e44a7a702+SFTPGetOutputASCII"
-    xmlns:ns9="http://tns.tibco.com/bw/palette/internal/activityerror+bw.sftp.get"
+    xmlns:ns1="http://tns.tibco.com/bw/activity/sendmail/xsd/input+0493dbdf-7c8e-4bfc-b338-fe2f5f3ef3d6+input"
+    xmlns:ns2="http://tns.tibco.com/bw/palette/internal/activityerror+bw.mail.send"
     xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912"
     xmlns:sca-bpel="http://docs.oasis-open.org/ns/opencsa/sca-bpel/200801"
     xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
     xmlns:tibprop="http://ns.tibco.com/bw/property" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <tibex:VariableDescriptor type="MemorySaving">
+        <task name="Timer">
+            <endingVariables>
+                <variable>Timer</variable>
+            </endingVariables>
+        </task>
         <task name="SendMail">
             <endingVariables>
                 <variable>SendMail-input</variable>
-            </endingVariables>
-        </task>
-        <task name="ReceiveMail">
-            <endingVariables>
-                <variable>ReceiveMail</variable>
             </endingVariables>
         </task>
     </tibex:VariableDescriptor>
@@ -150,12 +130,6 @@
                         form="unqualified" name="ProcessInstanceId" type="xs:string"/>
                     <xs:element
                         block="extension restriction substitution"
-                        form="unqualified" name="TraceId" type="xs:string"/>
-                    <xs:element
-                        block="extension restriction substitution"
-                        form="unqualified" name="SpanId" type="xs:string"/>
-                    <xs:element
-                        block="extension restriction substitution"
                         form="unqualified" minOccurs="0"
                         name="CustomJobId" type="xs:string"/>
                     <!--xs:element name="RestartedFromCheckpoint" form="unqualified" block="extension restriction substitution" type="xs:boolean"/-->
@@ -213,6 +187,26 @@
         </schema>
         <xs:schema attributeFormDefault="unqualified"
             elementFormDefault="qualified"
+            targetNamespace="http://tns.tibco.com/bw/activity/timer/xsd/output"
+            xmlns:tns="http://tns.tibco.com/bw/activity/timer/xsd/output" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:complexType name="TimerOutputSchemaType">
+                <xs:sequence>
+                    <xs:element form="unqualified" name="Now" type="xs:long"/>
+                    <xs:element form="unqualified" name="Hour" type="xs:int"/>
+                    <xs:element form="unqualified" name="Minute" type="xs:int"/>
+                    <xs:element form="unqualified" name="Second" type="xs:int"/>
+                    <xs:element form="unqualified" name="Week" type="xs:int"/>
+                    <xs:element form="unqualified" name="Month" type="xs:int"/>
+                    <xs:element form="unqualified" name="Year" type="xs:int"/>
+                    <xs:element form="unqualified" name="Date" type="xs:date"/>
+                    <xs:element form="unqualified" name="Time" type="xs:string"/>
+                    <xs:element form="unqualified" name="DayOfMonth" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:element name="TimerOutputSchema" type="tns:TimerOutputSchemaType"/>
+        </xs:schema>
+        <xs:schema attributeFormDefault="unqualified"
+            elementFormDefault="qualified"
             targetNamespace="http://xmlns.tibco.com/encodings/mimefile"
             xmlns:tns="http://xmlns.tibco.com/encodings/mimefile" xmlns:xs="http://www.w3.org/2001/XMLSchema">
             <xs:complexType name="mimeEnvelopeSuperSetType">
@@ -249,9 +243,9 @@
             <xs:element name="mimeEnvelopeElement" type="tns:mimeEnvelopeSuperSetType"/>
         </xs:schema>
         <schema elementFormDefault="qualified"
-            targetNamespace="http://tns.tibco.com/bw/activity/sendmail/xsd/input+f31f10b5-946b-4929-b320-8a464a888090+input"
+            targetNamespace="http://tns.tibco.com/bw/activity/sendmail/xsd/input+0493dbdf-7c8e-4bfc-b338-fe2f5f3ef3d6+input"
             xmlns="http://www.w3.org/2001/XMLSchema"
-            xmlns:tns="http://tns.tibco.com/bw/activity/sendmail/xsd/input+f31f10b5-946b-4929-b320-8a464a888090+input" xmlns:tns1="http://xmlns.tibco.com/encodings/mimefile">
+            xmlns:tns="http://tns.tibco.com/bw/activity/sendmail/xsd/input+0493dbdf-7c8e-4bfc-b338-fe2f5f3ef3d6+input" xmlns:tns1="http://xmlns.tibco.com/encodings/mimefile">
             <import namespace="http://xmlns.tibco.com/encodings/mimefile"/>
             <complexType name="SendMailParametersType">
                 <sequence>
@@ -338,82 +332,11 @@
                 </choice>
             </complexType>
         </schema>
-        <xs:schema attributeFormDefault="unqualified"
-            elementFormDefault="qualified"
-            targetNamespace="http://xmlns.tibco.com/encodings/mime"
-            xmlns:tns="http://xmlns.tibco.com/encodings/mime" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-            <xs:complexType name="mimeEnvelopeSuperSetType">
-                <xs:sequence>
-                    <xs:element form="unqualified" maxOccurs="unbounded"
-                        minOccurs="0" name="mimePart" type="tns:partSuperSetType"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:complexType name="mimeHeadersType">
-                <xs:sequence>
-                    <xs:element form="unqualified" minOccurs="0"
-                        name="content-disposition" type="xs:string"/>
-                    <xs:element form="unqualified" name="content-type" type="xs:string"/>
-                    <xs:element form="unqualified" minOccurs="0"
-                        name="content-transfer-encoding" type="xs:string"/>
-                    <xs:element form="unqualified" minOccurs="0"
-                        name="content-id" type="xs:string"/>
-                    <xs:any maxOccurs="unbounded" minOccurs="0"
-                        namespace="##local" processContents="skip"/>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:complexType name="partSuperSetType">
-                <xs:sequence>
-                    <xs:element form="unqualified" name="mimeHeaders" type="tns:mimeHeadersType"/>
-                    <xs:choice>
-                        <xs:element form="unqualified"
-                            name="binaryContent" type="xs:base64Binary"/>
-                        <xs:element form="unqualified"
-                            name="textContent" type="xs:string"/>
-                    </xs:choice>
-                </xs:sequence>
-            </xs:complexType>
-            <xs:element name="mimeEnvelopeElement" type="tns:mimeEnvelopeSuperSetType"/>
-        </xs:schema>
-        <schema
-            targetNamespace="http://tns.tibco.com/bw/activity/receivemail/xsd/output+27164eda-4996-45fc-9b33-1fdaff3bbf7f+output"
-            xmlns="http://www.w3.org/2001/XMLSchema"
-            xmlns:tns="http://tns.tibco.com/bw/activity/receivemail/xsd/output+27164eda-4996-45fc-9b33-1fdaff3bbf7f+output" xmlns:tns1="http://xmlns.tibco.com/encodings/mime">
-            <import namespace="http://xmlns.tibco.com/encodings/mime"/>
-            <element name="outputClass" type="tns:ReceiveMailParametersType"/>
-            <complexType name="ReceiveMailParametersType">
-                <sequence>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="1" name="from" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="1" name="to" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="cc" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="replyTo" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="subject" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="sentdate" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="Headers" type="tns:headersType"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="bodyText" type="string"/>
-                    <element minOccurs="0" ref="tns1:mimeEnvelopeElement"/>
-                </sequence>
-            </complexType>
-            <complexType name="headersType">
-                <sequence>
-                    <element maxOccurs="1" minOccurs="0"
-                        name="Content-Type" type="string"/>
-                    <any maxOccurs="unbounded" minOccurs="0" namespace="##any"/>
-                </sequence>
-            </complexType>
-        </schema>
     </tibex:Types>
-    <tibex:ProcessInfo callable="false" createdBy="FrancescaMacchiagode"
-        createdOn="Wed Nov 05 12:37:55 CET 2025" description=""
+    <tibex:ProcessInfo callable="false" createdBy="LucaValerioNepote"
+        createdOn="Mon Nov 17 15:01:48 CET 2025" description=""
         extraErrorVars="true" modifiers="public"
-        productVersion="6.11.0 V17 2024-12-09" scalable="true"
+        productVersion="6.10.0 V23 2023-11-10" scalable="true"
         singleton="true" stateless="false" type="IT"/>
     <tibex:ProcessInterface context="" input="" output=""/>
     <tibex:ProcessTemplateConfigurations/>
@@ -442,7 +365,7 @@
                             <children type="3020">
                                 <children type="4005">
                                     <children type="3007">
-                                    <children type="4002 bw.mail.send">
+                                    <children type="4002 bw.generalactivities.timer">
                                     <children type="4017">
                                     <styles
                                     fontName="Segoe UI"
@@ -476,10 +399,10 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="468"
-                                    xsi:type="notation:Bounds" y="133"/>
+                                    x="21"
+                                    xsi:type="notation:Bounds" y="138"/>
                                     </children>
-                                    <children type="4002 bw.mail.receive">
+                                    <children type="4002 bw.mail.send">
                                     <children type="4017">
                                     <styles
                                     fontName="Segoe UI"
@@ -513,8 +436,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.1"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="-1"
-                                    xsi:type="notation:Bounds" y="133"/>
+                                    x="213"
+                                    xsi:type="notation:Bounds" y="138"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -528,8 +451,8 @@
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@activity"/>
-                                    <layoutConstraint height="308"
-                                    width="601" xsi:type="notation:Bounds"/>
+                                    <layoutConstraint height="384"
+                                    width="515" xsi:type="notation:Bounds"/>
                                 </children>
                                 <styles xsi:type="notation:SortingStyle"/>
                                 <styles xsi:type="notation:FilteringStyle"/>
@@ -538,7 +461,8 @@
                             <styles xsi:type="bwnotation:BackgroundStyle"/>
                             <styles xsi:type="bwnotation:ResizingStyle"/>
                             <element href="//0/@process/@activity"/>
-                            <layoutConstraint height="308" width="604" xsi:type="notation:Bounds"/>
+                            <layoutConstraint height="365" width="444"
+                                x="30" xsi:type="notation:Bounds" y="20"/>
                         </children>
                         <styles xsi:type="notation:SortingStyle"/>
                         <styles xsi:type="notation:FilteringStyle"/>
@@ -548,8 +472,7 @@
                     <styles xsi:type="bwnotation:BackgroundStyle"/>
                     <styles xsi:type="bwnotation:ResizingStyle"/>
                     <element href="//0/@process/@activity"/>
-                    <layoutConstraint height="332" width="604" x="1"
-                        xsi:type="notation:Bounds" y="1"/>
+                    <layoutConstraint height="409" width="519" xsi:type="notation:Bounds"/>
                 </children>
                 <styles xsi:type="notation:SortingStyle"/>
                 <styles xsi:type="notation:FilteringStyle"/>
@@ -557,57 +480,33 @@
             </children>
             <styles fontName="Segoe UI" lineColor="0" xsi:type="notation:ShapeStyle"/>
             <element href="//0/@process"/>
-            <layoutConstraint height="384" width="946" xsi:type="notation:Bounds"/>
+            <layoutConstraint height="460" width="860" xsi:type="notation:Bounds"/>
         </children>
         <styles xsi:type="notation:DiagramStyle"/>
         <element href="//0"/>
         <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0" type="4006">
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1" type="4006">
             <children type="6002">
                 <layoutConstraint xsi:type="notation:Location" y="40"/>
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@activity/@links/@children.0"/>
-            <bendpoints points="[25, 0, -444, 0]$[445, 0, -24, 0]" xsi:type="notation:RelativeBendpoints"/>
+            <bendpoints points="[25, 1, -154, 0]$[155, 0, -24, -1]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
         <tibex:namespaceItem
-            namespace="http://tns.tibco.com/bw/activity/put/input+1aad6871-5e06-45f4-a567-76c5f57f83a2+SFTPPutInputDataASCII" prefix="tns"/>
-        <tibex:namespaceItem
-            namespace="http://tns.tibco.com/bw/activity/get/input+e3026c46-5212-4215-b5e2-d7a687217736+SFTPGetInputData" prefix="tns1"/>
-        <tibex:namespaceItem
-            namespace="http://www.tibco.com/pe/WriteToLogActivitySchema" prefix="tns2"/>
-        <tibex:namespaceItem
-            namespace="http://tns.tibco.com/bw/activity/put/input+0439cb45-6603-4060-aff8-75a0e28ffcfb+SFTPPutInputDataASCII" prefix="tns3"/>
-        <tibex:namespaceItem
-            namespace="http://tns.tibco.com/bw/activity/get/input+ffe9fe48-675a-494d-8d66-605e44a7a702+SFTPGetInputData" prefix="tns4"/>
-        <tibex:namespaceItem
-            namespace="http://tns.tibco.com/bw/activity/put/input+a6304db4-df37-40b8-972b-06d568d8f811+SFTPPutInputDataASCII" prefix="tns5"/>
-        <tibex:namespaceItem
-            namespace="http://tns.tibco.com/bw/json/1762360231862" prefix="tns6"/>
-        <tibex:namespaceItem
-            namespace="http://tns.tibco.com/bw/activity/sendmail/xsd/input+f31f10b5-946b-4929-b320-8a464a888090+input" prefix="tns7"/>
-        <tibex:namespaceItem
-            namespace="http://tns.tibco.com/bw/activity/dir" prefix="tns8"/>
+            namespace="http://tns.tibco.com/bw/activity/sendmail/xsd/input+0493dbdf-7c8e-4bfc-b338-fe2f5f3ef3d6+input" prefix="tns"/>
     </tibex:NamespaceRegistry>
-    <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://tns.tibco.com/bw/json/1762360231862"/>
     <bpws:variables>
         <bpws:variable element="ns:ProcessContext"
             name="_processContext" sca-bpel:internal="true"/>
-        <bpws:variable name="SFTPConnectionProperty"
-            sca-bpel:hotUpdate="false" sca-bpel:privateProperty="true"
-            sca-bpel:property="yes"
-            sca-bpel:sharedResourceType="{http://ns.tibco.com/bw/palette/sftpconnection}sftpconnection" type="xsd:string">
-            <bpws:from>
-                <bpws:literal>scarpefrl.SFTPConnectionResource</bpws:literal>
-            </bpws:from>
-        </bpws:variable>
-        <bpws:variable element="ns17:mailActivityInput"
+        <bpws:variable element="ns0:TimerOutputSchema" name="Timer" sca-bpel:internal="true"/>
+        <bpws:variable element="ns1:mailActivityInput"
             name="SendMail-input" sca-bpel:internal="true"/>
-        <bpws:variable element="ns18:ActivityErrorData"
+        <bpws:variable element="ns2:ActivityErrorData"
             name="_error_SendMail" sca-bpel:internal="true"/>
         <bpws:variable element="ns:ErrorReport" name="_error" sca-bpel:internal="true"/>
         <bpws:variable name="smtpProperty" sca-bpel:hotUpdate="false"
@@ -615,15 +514,6 @@
             sca-bpel:sharedResourceType="{http://xsd.tns.tibco.com/bw/models/sharedresource/smtp}SmtpConfiguration" type="xsd:string">
             <bpws:from>
                 <bpws:literal>scarpefrl.SMTPResource</bpws:literal>
-            </bpws:from>
-        </bpws:variable>
-        <bpws:variable element="ns22:outputClass" name="ReceiveMail" sca-bpel:internal="true"/>
-        <bpws:variable name="sslClientResourceProperty"
-            sca-bpel:hotUpdate="false" sca-bpel:privateProperty="true"
-            sca-bpel:property="yes"
-            sca-bpel:sharedResourceType="{http://xsd.tns.tibco.com/bw/sharedresource/trinity/models/sslclient}SSLClientConfiguration" type="xsd:string">
-            <bpws:from>
-                <bpws:literal>scarpefrl.SSLClientResource</bpws:literal>
             </bpws:from>
         </bpws:variable>
     </bpws:variables>
@@ -638,24 +528,54 @@
     <bpws:scope name="scope">
         <bpws:flow name="flow">
             <bpws:links>
-                <bpws:link name="ReceiveMailToSendMail" tibex:linkType="SUCCESS"/>
+                <bpws:link name="TimerToSendMail" tibex:linkType="SUCCESS"/>
             </bpws:links>
+            <bpws:extensionActivity>
+                <tibex:receiveEvent createInstance="yes"
+                    eventTimeout="60" name="Timer"
+                    tibex:xpdlId="3f2a375f-3108-4eaa-a403-8de78e1ce4ed"
+                    variable="Timer" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                    <bpws:sources>
+                        <bpws:source linkName="TimerToSendMail"/>
+                    </bpws:sources>
+                    <tibex:eventSource>
+                        <bwext:BWActivity
+                            activityTypeID="bw.generalactivities.timer"
+                            version="6.0.0.001"
+                            xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                            xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                            xmlns:generalactivities="http://ns.tibco.com/bw/palette/generalactivities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <activityConfig>
+                                <properties name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/generalactivities#//Timer"/>
+                                    <value
+                                    endTime="2025-11-17T15:02:00.970+0100"
+                                    intervalUnit="Second"
+                                    runOnce="true"
+                                    startTime="2025-11-17T15:02:00.970+0100"
+                                    timeInterval="1" xsi:type="generalactivities:Timer"/>
+                                </properties>
+                            </activityConfig>
+                        </bwext:BWActivity>
+                    </tibex:eventSource>
+                </tibex:receiveEvent>
+            </bpws:extensionActivity>
             <bpws:extensionActivity>
                 <tibex:activityExtension inputVariable="SendMail-input"
                     name="SendMail"
-                    tibex:xpdlId="f31f10b5-946b-4929-b320-8a464a888090" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                    tibex:xpdlId="0493dbdf-7c8e-4bfc-b338-fe2f5f3ef3d6" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:targets>
-                        <bpws:target linkName="ReceiveMailToSendMail"/>
+                        <bpws:target linkName="TimerToSendMail"/>
                     </bpws:targets>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns7=&quot;http://tns.tibco.com/bw/activity/sendmail/xsd/input+f31f10b5-946b-4929-b320-8a464a888090+input&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;SendMail-input&quot; match=&quot;/&quot;>&lt;tns7:mailActivityInput>&lt;from>&lt;xsl:value-of select=&quot;'SCARPEfRL'&quot;/>&lt;/from>&lt;to>&lt;xsl:value-of select=&quot;'scarpefrl@gmail.com'&quot;/>&lt;/to>&lt;subject>&lt;xsl:value-of select=&quot;'Mail di prova'&quot;/>&lt;/subject>&lt;bodyElement>&lt;bodyText>&lt;xsl:value-of select=&quot;&amp;quot;MAIL DI PROVA parte7&amp;quot;&quot;/>&lt;/bodyText>&lt;/bodyElement>&lt;/tns7:mailActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://tns.tibco.com/bw/activity/sendmail/xsd/input+0493dbdf-7c8e-4bfc-b338-fe2f5f3ef3d6+input&quot; version=&quot;2.0&quot;>&lt;xsl:template name=&quot;SendMail-input&quot; match=&quot;/&quot;>&lt;tns:mailActivityInput>&lt;from>&lt;xsl:value-of select=&quot;&amp;quot;scarpefrl@gmail.com&amp;quot;&quot;/>&lt;/from>&lt;to>&lt;xsl:value-of select=&quot;&amp;quot;scarpefrl@gmail.com&amp;quot;&quot;/>&lt;/to>&lt;subject>&lt;xsl:value-of select=&quot;&amp;quot;Prova Luca SMTP&amp;quot;&quot;/>&lt;/subject>&lt;/tns:mailActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
                         <bwext:BWActivity activityTypeID="bw.mail.send"
                             xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
                             xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
-                            xmlns:input="http://tns.tibco.com/bw/activity/sendmail/xsd/input+f31f10b5-946b-4929-b320-8a464a888090+input"
+                            xmlns:input="http://tns.tibco.com/bw/activity/sendmail/xsd/input+0493dbdf-7c8e-4bfc-b338-fe2f5f3ef3d6+input"
                             xmlns:mail="http://ns.tibco.com/bw/palette/mail" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
                             <activityConfig>
                                 <properties name="config" xsi:type="activityconfig:EMFProperty">
@@ -669,41 +589,6 @@
                         </bwext:BWActivity>
                     </tibex:config>
                 </tibex:activityExtension>
-            </bpws:extensionActivity>
-            <bpws:extensionActivity>
-                <tibex:receiveEvent createInstance="yes"
-                    eventTimeout="60" name="ReceiveMail"
-                    tibex:xpdlId="27164eda-4996-45fc-9b33-1fdaff3bbf7f"
-                    variable="ReceiveMail" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
-                    <bpws:sources>
-                        <bpws:source linkName="ReceiveMailToSendMail"/>
-                    </bpws:sources>
-                    <tibex:eventSource>
-                        <bwext:BWActivity
-                            activityTypeID="bw.mail.receive"
-                            xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
-                            xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
-                            xmlns:mail="http://ns.tibco.com/bw/palette/mail"
-                            xmlns:output="http://tns.tibco.com/bw/activity/receivemail/xsd/output+27164eda-4996-45fc-9b33-1fdaff3bbf7f+output" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-                            <activityConfig>
-                                <properties name="config" xsi:type="activityconfig:EMFProperty">
-                                    <type href="http://ns.tibco.com/bw/palette/mail#//ReceiveMail"/>
-                                    <value host="pop.gmail.com"
-                                    outputHeadersQName="output:headersType"
-                                    password="#!lqLFl7xNisvMOGHmkipKUXiPPZ3zirwCOlNhaeyoMKINCv4neor39e+dF7zWnOdV"
-                                    port="995"
-                                    receiveMailAuthenticationType="Basic"
-                                    receiveMailProtocol="POP3"
-                                    requiresConfidentiality="true"
-                                    sslClientProperty="sslClientResourceProperty"
-                                    userName="scarpefrl@gmail.com" xsi:type="mail:ReceiveMail">
-                                    <writeToFilePolicy/>
-                                    </value>
-                                </properties>
-                            </activityConfig>
-                        </bwext:BWActivity>
-                    </tibex:eventSource>
-                </tibex:receiveEvent>
             </bpws:extensionActivity>
         </bpws:flow>
     </bpws:scope>
