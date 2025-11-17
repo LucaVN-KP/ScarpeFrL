@@ -162,5 +162,15 @@
 			<useLookupValue>false</useLookupValue>
 			<lookupValue>C:\Users\FrancescaMacchiagode\Desktop\ScarpeFrL\Response_POSTsped.txt</lookupValue>
 		</globalVariable>
+		<globalVariable>
+			<name>//ScarpeFrL//KeyStoreResource_URL</name>
+			<value>C:\TIBCO\BW\tibcojre64\17\lib\security\cacerts</value>
+			<deploymentSettable>false</deploymentSettable>
+			<serviceSettable>false</serviceSettable>
+			<type>String</type>
+			<isOverride>true</isOverride>
+			<useLookupValue>false</useLookupValue>
+			<lookupValue>C:\TIBCO\BW\tibcojre64\17\lib\security\cacerts</lookupValue>
+		</globalVariable>
 	</globalVariables>
 </repository>
