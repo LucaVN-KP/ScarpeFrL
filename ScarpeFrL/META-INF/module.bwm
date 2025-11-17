@@ -141,6 +141,7 @@
   <sca:property xmi:id="_a9RasLSzEfCTXaPwmDO99A" name="FileResponseGETClientiProperty" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="_xpglQLS3EfCTXaPwmDO99A" name="FileResponsePATCHspedizioni" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
   <sca:property xmi:id="_xsLsgLS8EfCFjL2psdPyHg" name="FileResponsePOSTspedizioni" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
+  <sca:property xmi:id="_dL3MAMPDEfCtK8gqhkqkrA" name="KeyStoreResource_URL" type="XMLSchema:string" scaext:simpleValue="" publicAccess="true" scalable="true"/>
   <sca:component xmi:id="_lsZawJojEfCWAJKe-jrClQ" name="ComponentProcess" compositeext:version="1.0.0.qualifier">
     <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_lsb3AJojEfCWAJKe-jrClQ" processName="scarpefrl.Sottoscrizione"/>
   </sca:component>
