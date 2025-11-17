@@ -1761,27 +1761,6 @@
                                     x="377"
                                     xsi:type="notation:Bounds" y="87"/>
                                     </children>
-                                    <children
-                                    description="non so come funziona il for-each nell'input di un'activity"
-                                    fillColor="13369343"
-                                    fontName="Segoe UI"
-                                    lineColor="6737151"
-                                    lineWidth="1"
-                                    transparency="0" type="Note" xsi:type="notation:Shape">
-                                    <children type="DiagramName" xsi:type="notation:BasicDecorationNode">
-                                    <element xsi:nil="true"/>
-                                    </children>
-                                    <children type="Description" xsi:type="notation:BasicDecorationNode">
-                                    <element xsi:nil="true"/>
-                                    </children>
-                                    <styles xsi:type="notation:TextStyle"/>
-                                    <styles xsi:type="notation:LineTypeStyle"/>
-                                    <element xsi:nil="true"/>
-                                    <layoutConstraint
-                                    height="110" width="222"
-                                    x="351"
-                                    xsi:type="notation:Bounds" y="196"/>
-                                    </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
                                     <styles xsi:type="notation:FilteringStyle"/>

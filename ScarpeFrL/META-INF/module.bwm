@@ -190,4 +190,7 @@
   <sca:component xmi:id="_FZJDEL70EfC-TPSmR1J0_g" name="ComponentpagamentoJMS" compositeext:version="1.0.0.qualifier">
     <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_FZJDEb70EfC-TPSmR1J0_g" processName="scarpefrl.pagamentoJMS"/>
   </sca:component>
+  <sca:component xmi:id="_9ZYEEMO9EfCNmL_1J3P9Yw" name="Componentgestione_sollecito" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_9ZYEEcO9EfCNmL_1J3P9Yw" processName="scarpefrl.gestione_sollecito"/>
+  </sca:component>
 </sca:composite>

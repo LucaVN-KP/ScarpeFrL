@@ -596,7 +596,7 @@
                                     backgroundColor="16777215"
                                     gradientEndColor="50431"
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
-                                    <element href="//0/@process/@activity/@activity/@activities.1"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.0"/>
                                     <layoutConstraint
                                     height="40" width="40"
                                     x="203"
@@ -1131,8 +1131,8 @@
                                 </properties>
                             </activityConfig>
                         </bwext:BWActivity>
-                    </tibex:config>
-                </tibex:activityExtension>
+                    </tibex:eventSource>
+                </tibex:receiveEvent>
             </bpws:extensionActivity>
         </bpws:flow>
     </bpws:scope>
