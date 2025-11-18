@@ -10,6 +10,6 @@
   <jndi:reference xmi:id="_FOz00L8UEfCP1JLVCCks-A" key="identityJNDIName" type="subject:SubjectConfiguration" value=""/>
   <jndi:configuration xsi:type="smtp:SmtpConfiguration" xmi:id="_FOz00b8UEfCP1JLVCCks-A" useTLS="false" authenticationType="Basic">
     <tcpDetails xmi:id="_FO2REL8UEfCP1JLVCCks-A" host="smtp.gmail.com" port="465" connectionTimeout="60000"/>
-    <userCredentials xmi:id="_FO2REb8UEfCP1JLVCCks-A" username="scarpefrl@gmail.com" password="#!DqDX9d/yzwObOQk7YBxVcBl651aIuFzP3VeE7R9rXZILgHRlZ+n+RhMqDVmteD5U"/>
+    <userCredentials xmi:id="_FO2REb8UEfCP1JLVCCks-A" username="scarpefrl@gmail.com" password="#!^/nhnkISJTPnJdTYD/8ElOq+G21Ar1th77nYOYITkZF+pN5FeSW9QCU9F1k0Dpj2b"/>
   </jndi:configuration>
 </jndi:namedResource>
