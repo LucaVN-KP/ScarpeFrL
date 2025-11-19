@@ -2093,7 +2093,8 @@
                         subProcessName="banca.simulazione_pagamento" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"/>
                 </tibex:extActivity>
             </bpws:extensionActivity>
-            <bpws:scope name="While" tibex:group="while" tibex:xpdlId="5c6e1bf1-e5b3-48c7-86bd-c78a940b221a">
+            <bpws:scope name="While" tibex:group="while"
+                tibex:indexToGlobal="false" tibex:xpdlId="5c6e1bf1-e5b3-48c7-86bd-c78a940b221a">
                 <bpws:targets>
                     <bpws:target linkName="pag.BancaToWhile"/>
                 </bpws:targets>
