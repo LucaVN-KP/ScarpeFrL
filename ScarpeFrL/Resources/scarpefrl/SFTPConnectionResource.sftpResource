@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jndi:namedResource xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jndi="http://xsd.tns.tibco.com/amf/models/sharedresource/jndi" xmlns:sftpconnection="http://ns.tibco.com/bw/palette/sftpconnection" xmi:id="_2mwFobo5EfCYN62EVx6oYw" name="scarpefrl.SFTPConnectionResource" type="sftpconnection:sftpconnection">
-  <jndi:configuration xsi:type="sftpconnection:SFTPConnection" xmi:id="_2mxTwLo5EfCYN62EVx6oYw" host="localhost" userName="scarpefrl" password="#!^/8ubaNgO+H0FTyBgbWANsblQg3E7LYtrlCv9obc9PcV9UIi4J5Ofjh1a+KhO1OOO"/>
+  <jndi:configuration xsi:type="sftpconnection:SFTPConnection" xmi:id="_2mxTwLo5EfCYN62EVx6oYw" host="localhost" userName="scarpefrl" password="#!TRD9NlZ9ojoZ8hPxN9efR5zE89Z3tW08GP6Ng19MyG1OJN/oOczuDys8wZTGgMQmrVZYYam6jIwhH976FFFyEA=="/>
 </jndi:namedResource>

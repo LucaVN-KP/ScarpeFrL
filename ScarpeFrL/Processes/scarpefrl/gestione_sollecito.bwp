@@ -26,8 +26,8 @@
         <task name="flow">
             <endingVariables>
                 <variable>file</variable>
-                <variable>ReceiveMail</variable>
                 <variable>JDBCQuery</variable>
+                <variable>id_fattura</variable>
             </endingVariables>
         </task>
         <task name="JDBCQuery">
@@ -71,6 +71,12 @@
         <task name="call_gestione_soll_error">
             <endingVariables>
                 <variable>call_gestione_soll_error-input</variable>
+            </endingVariables>
+        </task>
+        <task name="id_fattura">
+            <endingVariables>
+                <variable>id_fattura-input</variable>
+                <variable>ReceiveMail</variable>
             </endingVariables>
         </task>
     </tibex:VariableDescriptor>
@@ -687,8 +693,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.0"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="-82"
-                                    xsi:type="notation:Bounds" y="127"/>
+                                    x="-182"
+                                    xsi:type="notation:Bounds" y="118"/>
                                     </children>
                                     <children type="4002 bw.jdbc.JDBCQuery">
                                     <children type="4017">
@@ -724,8 +730,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.1"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="112"
-                                    xsi:type="notation:Bounds" y="130"/>
+                                    x="97"
+                                    xsi:type="notation:Bounds" y="118"/>
                                     </children>
                                     <children type="4002">
                                     <children type="4017">
@@ -796,8 +802,8 @@
                                     <element href="//0/@process/@activity/@activity/@activities.3"/>
                                     <layoutConstraint
                                     height="40" width="40"
-                                    x="22"
-                                    xsi:type="notation:Bounds" y="127"/>
+                                    x="19"
+                                    xsi:type="notation:Bounds" y="118"/>
                                     </children>
                                     <children type="4002">
                                     <children type="4017">
@@ -976,6 +982,43 @@
                                     <layoutConstraint x="254"
                                     xsi:type="notation:Bounds" y="286"/>
                                     </children>
+                                    <children type="4002 bw.generalactivities.mapper">
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <element href="//0/@process/@activity/@activity/@activities.9"/>
+                                    <layoutConstraint
+                                    height="40" width="40"
+                                    x="-64"
+                                    xsi:type="notation:Bounds" y="118"/>
+                                    </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
                                     <styles xsi:type="notation:FilteringStyle"/>
@@ -1022,17 +1065,6 @@
         <styles xsi:type="notation:DiagramStyle"/>
         <element href="//0"/>
         <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.0"/>
-            <bendpoints points="[25, -4, -120, 0]$[121, 0, -24, 4]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
-        <edges
             source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1"
             target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.2" type="4006">
             <children type="6002">
@@ -1040,7 +1072,7 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.1"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.0"/>
             <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
@@ -1051,7 +1083,7 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.2"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.1"/>
             <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
@@ -1062,7 +1094,7 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.3"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.2"/>
             <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
@@ -1073,7 +1105,7 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.4"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.3"/>
             <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
@@ -1084,7 +1116,7 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.5"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.4"/>
             <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
@@ -1095,7 +1127,7 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.6"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.5"/>
             <bendpoints points="[25, -8, -104, 0]$[105, 0, -24, 8]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
@@ -1106,8 +1138,30 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.7"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.6"/>
             <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.9" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.7"/>
+            <bendpoints points="[18, 25, -46, -63]$[46, 64, -18, -24]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.9"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.3" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.8"/>
+            <bendpoints points="[22, -24, -57, 64]$[57, -63, -22, 25]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
@@ -1186,6 +1240,8 @@
             name="_error_Copy_1_SendMailOK1" sca-bpel:internal="true"/>
         <bpws:variable element="ns9:id_fattura"
             name="call_gestione_soll_error-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns9:id_fattura" name="id_fattura-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns9:id_fattura" name="id_fattura" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -1198,7 +1254,6 @@
     <bpws:scope name="scope">
         <bpws:flow name="flow">
             <bpws:links>
-                <bpws:link name="ReceiveMailToMapper" tibex:linkType="SUCCESSWITHCONDITION"/>
                 <bpws:link name="JDBCQueryToSendMail_fattureout"
                     tibex:label="fatture_out" tibex:linkType="SUCCESSWITHCONDITION"/>
                 <bpws:link name="JDBCQueryToCallProcess_fattureerror"
@@ -1210,6 +1265,8 @@
                 <bpws:link name="Call_pagamentoToSendMailOK" tibex:linkType="SUCCESSWITHCONDITION"/>
                 <bpws:link name="JDBCQueryToCallProcess_inlavorazione"
                     tibex:label="in_lavorazione" tibex:linkType="SUCCESSWITHCONDITION"/>
+                <bpws:link name="ReceiveMailToMapper1" tibex:linkType="SUCCESS"/>
+                <bpws:link name="MapperTofile" tibex:linkType="SUCCESS"/>
             </bpws:links>
             <bpws:extensionActivity>
                 <tibex:receiveEvent createInstance="yes"
@@ -1218,13 +1275,7 @@
                     variable="ReceiveMail" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:targets/>
                     <bpws:sources>
-                        <bpws:source linkName="ReceiveMailToMapper">
-                            <tibex:DesignExpression>
-                                <tibex:expression
-                                    expression="contains($ReceiveMail/from, 'macchiagodenafrancesca@gmail.com')" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
-                            </tibex:DesignExpression>
-                            <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[contains($ReceiveMail/from, 'macchiagodenafrancesca@gmail.com')]]></bpws:transitionCondition>
-                        </bpws:source>
+                        <bpws:source linkName="ReceiveMailToMapper1"/>
                     </bpws:sources>
                     <tibex:eventSource>
                         <bwext:BWActivity
@@ -1292,7 +1343,7 @@
                     </bpws:sources>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+1b2992e9-aebc-438d-ba3e-c56a82266d42+input&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;ReceiveMail&quot;/>&lt;xsl:template name=&quot;JDBCQuery-input&quot; match=&quot;/&quot;>&lt;tns2:jdbcQueryActivityInput>&lt;p_id_fattura>&lt;xsl:choose>&lt;xsl:when test=&quot;exists($ReceiveMail/subject)&quot;>&lt;xsl:value-of select=&quot;$ReceiveMail/subject&quot;/>&lt;/xsl:when>&lt;xsl:otherwise>&lt;xsl:attribute name=&quot;xsi:nil&quot;>true&lt;/xsl:attribute>&lt;/xsl:otherwise>&lt;/xsl:choose>&lt;/p_id_fattura>&lt;/tns2:jdbcQueryActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns2=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+1b2992e9-aebc-438d-ba3e-c56a82266d42+input&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;id_fattura&quot;/>&lt;xsl:template name=&quot;JDBCQuery-input&quot; match=&quot;/&quot;>&lt;tns2:jdbcQueryActivityInput>&lt;p_id_fattura>&lt;xsl:value-of select=&quot;$id_fattura&quot;/>&lt;/p_id_fattura>&lt;/tns2:jdbcQueryActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
                         <bwext:BWActivity
@@ -1330,7 +1381,7 @@
                     </bpws:targets>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns3=&quot;http://tns.tibco.com/bw/activity/sendmail/xsd/input+4cbe57b0-35ad-4ad1-8496-1d05993636b4+input&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;file&quot;/>&#xa;    &lt;xsl:template name=&quot;SendMail-input&quot; match=&quot;/&quot;>&#xa;        &lt;tns3:mailActivityInput>&#xa;            &lt;from>&#xa;                &lt;xsl:value-of select=&quot;'scarpefrl@gmail.com'&quot;/>&#xa;            &lt;/from>&#xa;            &lt;to>&#xa;                &lt;xsl:value-of select=&quot;'scarpefrl@gmail.com'&quot;/>&#xa;            &lt;/to>&#xa;            &lt;bodyElement>&#xa;                &lt;bodyText>&#xa;                    &lt;xsl:value-of select=&quot;concat(&amp;quot;La fattura &amp;quot;, $file, &amp;quot; ci risulta essere stata già pagata.&amp;quot;)&quot;/>&#xa;                &lt;/bodyText>&#xa;            &lt;/bodyElement>&#xa;        &lt;/tns3:mailActivityInput>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns3=&quot;http://tns.tibco.com/bw/activity/sendmail/xsd/input+4cbe57b0-35ad-4ad1-8496-1d05993636b4+input&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;id_fattura&quot;/>&lt;xsl:template name=&quot;SendMail-input&quot; match=&quot;/&quot;>&lt;tns3:mailActivityInput>&lt;from>&lt;xsl:value-of select=&quot;'scarpefrl@gmail.com'&quot;/>&lt;/from>&lt;to>&lt;xsl:value-of select=&quot;'scarpefrl@gmail.com'&quot;/>&lt;/to>&lt;bodyElement>&lt;bodyText>&lt;xsl:value-of select=&quot;concat(&amp;quot;La fattura &amp;quot;, $id_fattura, &amp;quot; ci risulta essere stata già pagata.&amp;quot;)&quot;/>&lt;/bodyText>&lt;/bodyElement>&lt;/tns3:mailActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
                         <bwext:BWActivity activityTypeID="bw.mail.send"
@@ -1344,7 +1395,6 @@
                                     <value
                                     inputHeadersQName="input:headersType"
                                     newActivity="true"
-                                    sendMailProtocol="SMTP"
                                     smtpProperty="smtpProperty" xsi:type="mail:SendMail"/>
                                 </properties>
                             </activityConfig>
@@ -1357,14 +1407,14 @@
                     name="file" outputVariable="file"
                     tibex:xpdlId="036b383b-5987-4e1e-87d4-6e12e99ac586" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:targets>
-                        <bpws:target linkName="ReceiveMailToMapper"/>
+                        <bpws:target linkName="MapperTofile"/>
                     </bpws:targets>
                     <bpws:sources>
                         <bpws:source linkName="MapperToJDBCQuery"/>
                     </bpws:sources>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://tns.tibco.com/bw/json/1762360231862&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;ReceiveMail&quot;/>&lt;xsl:template name=&quot;nome_file-input&quot; match=&quot;/&quot;>&lt;tns4:nome_file>&lt;xsl:value-of select=&quot;concat($ReceiveMail/subject, '.txt')&quot;/>&lt;/tns4:nome_file>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://tns.tibco.com/bw/json/1762360231862&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;id_fattura&quot;/>&lt;xsl:template name=&quot;file-input&quot; match=&quot;/&quot;>&lt;tns4:nome_file>&lt;xsl:value-of select=&quot;concat($id_fattura, '.txt')&quot;/>&lt;/tns4:nome_file>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
                         <bwext:BWActivity
@@ -1447,7 +1497,7 @@
                     <bpws:sources/>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns5=&quot;http://tns.tibco.com/bw/activity/sendmail/xsd/input+73963cbc-32e2-4353-9fbf-401342d534ce+input&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;ReceiveMail&quot;/>&lt;xsl:template name=&quot;SendMailOK-input&quot; match=&quot;/&quot;>&lt;tns5:mailActivityInput>&lt;from>&lt;xsl:value-of select=&quot;&amp;quot;scarpefrl@gmail.com&amp;quot;&quot;/>&lt;/from>&lt;to>&lt;xsl:value-of select=&quot;&amp;quot;eserciziokp@gmail.com&amp;quot;&quot;/>&lt;/to>&lt;subject>&lt;xsl:value-of select=&quot;&amp;quot;[ScarpeFrL] PaymentManagement: fattura saldata&amp;quot;&quot;/>&lt;/subject>&lt;bodyElement>&lt;bodyText>&lt;xsl:value-of select=&quot;concat('Buongiorno, &amp;#xD;&amp;#xA;il pagamento della fattura ',$ReceiveMail/subject, ' è andato a buon fine. &amp;#xD;&amp;#xA; &amp;#xD;&amp;#xA;Cordiali saluti, &amp;#xD;&amp;#xA;il team di Scarpe F.r.L.')&quot;/>&lt;/bodyText>&lt;/bodyElement>&lt;/tns5:mailActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns5=&quot;http://tns.tibco.com/bw/activity/sendmail/xsd/input+73963cbc-32e2-4353-9fbf-401342d534ce+input&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;id_fattura&quot;/>&lt;xsl:template name=&quot;SendMailOK-input&quot; match=&quot;/&quot;>&lt;tns5:mailActivityInput>&lt;from>&lt;xsl:value-of select=&quot;&amp;quot;scarpefrl@gmail.com&amp;quot;&quot;/>&lt;/from>&lt;to>&lt;xsl:value-of select=&quot;&amp;quot;eserciziokp@gmail.com&amp;quot;&quot;/>&lt;/to>&lt;subject>&lt;xsl:value-of select=&quot;&amp;quot;[ScarpeFrL] PaymentManagement: fattura saldata&amp;quot;&quot;/>&lt;/subject>&lt;bodyElement>&lt;bodyText>&lt;xsl:value-of select=&quot;concat('Buongiorno, &amp;#xD;&amp;#xA;il pagamento della fattura ',$id_fattura, ' è andato a buon fine. &amp;#xD;&amp;#xA; &amp;#xD;&amp;#xA;Cordiali saluti, &amp;#xD;&amp;#xA;il team di Scarpe F.r.L.')&quot;/>&lt;/bodyText>&lt;/bodyElement>&lt;/tns5:mailActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
                         <bwext:BWActivity activityTypeID="bw.mail.send"
@@ -1496,11 +1546,45 @@
                     </bpws:targets>
                     <tibex:inputBindings>
                         <tibex:inputBinding coercion=""
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://tns.tibco.com/bw/json/1762360231862&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;ReceiveMail&quot;/>&lt;xsl:template name=&quot;pag.Banca-input&quot; match=&quot;/&quot;>&lt;tns4:id_fattura>&lt;xsl:value-of select=&quot;$ReceiveMail/subject&quot;/>&lt;/tns4:id_fattura>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://tns.tibco.com/bw/json/1762360231862&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;id_fattura&quot;/>&lt;xsl:template name=&quot;call_gestione_soll_error-input&quot; match=&quot;/&quot;>&lt;tns4:id_fattura>&lt;xsl:value-of select=&quot;$id_fattura&quot;/>&lt;/tns4:id_fattura>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:CallProcess
                         subProcessName="scarpefrl.gestione_soll_error" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"/>
                 </tibex:extActivity>
+            </bpws:extensionActivity>
+            <bpws:extensionActivity>
+                <tibex:activityExtension
+                    inputVariable="id_fattura-input" name="id_fattura"
+                    outputVariable="id_fattura"
+                    tibex:xpdlId="6a347030-59f6-4149-8572-b550a4bc370a" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                    <bpws:targets>
+                        <bpws:target linkName="ReceiveMailToMapper1"/>
+                    </bpws:targets>
+                    <bpws:sources>
+                        <bpws:source linkName="MapperTofile"/>
+                    </bpws:sources>
+                    <tibex:inputBindings>
+                        <tibex:inputBinding
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://tns.tibco.com/bw/json/1762360231862&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;ReceiveMail&quot;/>&lt;xsl:template name=&quot;id_fattura-input&quot; match=&quot;/&quot;>&lt;tns4:id_fattura>&lt;xsl:value-of select=&quot;substring-before($ReceiveMail/subject, ' :')&quot;/>&lt;/tns4:id_fattura>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                    </tibex:inputBindings>
+                    <tibex:config>
+                        <bwext:BWActivity
+                            activityTypeID="bw.generalactivities.mapper"
+                            version="6.0.0.001"
+                            xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                            xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                            xmlns:generalactivities="http://ns.tibco.com/bw/palette/generalactivities"
+                            xmlns:json_1762360231862="http://tns.tibco.com/bw/json/1762360231862" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                            <activityConfig>
+                                <properties name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/generalactivities#//Mapper"/>
+                                    <value
+                                    inputQName="json_1762360231862:id_fattura" xsi:type="generalactivities:Mapper"/>
+                                </properties>
+                            </activityConfig>
+                        </bwext:BWActivity>
+                    </tibex:config>
+                </tibex:activityExtension>
             </bpws:extensionActivity>
         </bpws:flow>
     </bpws:scope>
