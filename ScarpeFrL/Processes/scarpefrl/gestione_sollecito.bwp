@@ -26,8 +26,8 @@
         <task name="flow">
             <endingVariables>
                 <variable>file</variable>
-                <variable>JDBCQuery</variable>
                 <variable>ReceiveMail</variable>
+                <variable>JDBCQuery</variable>
             </endingVariables>
         </task>
         <task name="JDBCQuery">
@@ -68,31 +68,9 @@
                 <variable>Call_pagamento1</variable>
             </endingVariables>
         </task>
-        <task name="pag.Banca">
+        <task name="call_gestione_soll_error">
             <endingVariables>
-                <variable>pag.Banca-input</variable>
-            </endingVariables>
-        </task>
-        <task name="SendMailOK1">
-            <endingVariables>
-                <variable>SendMailOK1-input</variable>
-                <variable>pag.Banca</variable>
-                <variable>pagBanca</variable>
-            </endingVariables>
-        </task>
-        <task name="While">
-            <endingVariables>
-                <variable>index</variable>
-            </endingVariables>
-        </task>
-        <task name="pagBanca">
-            <endingVariables>
-                <variable>pagBanca-input</variable>
-            </endingVariables>
-        </task>
-        <task name="SendMail1">
-            <endingVariables>
-                <variable>SendMail1-input</variable>
+                <variable>call_gestione_soll_error-input</variable>
             </endingVariables>
         </task>
     </tibex:VariableDescriptor>
@@ -642,102 +620,6 @@
             </complexType>
             <element name="mailActivityInput" type="tns:SendMailParametersType"/>
         </schema>
-        <schema elementFormDefault="qualified"
-            targetNamespace="http://tns.tibco.com/bw/activity/sendmail/xsd/input+44e5507f-44d8-4c7a-91f8-78d862c944f0+input"
-            xmlns="http://www.w3.org/2001/XMLSchema"
-            xmlns:tns="http://tns.tibco.com/bw/activity/sendmail/xsd/input+44e5507f-44d8-4c7a-91f8-78d862c944f0+input" xmlns:tns1="http://xmlns.tibco.com/encodings/mimefile">
-            <import namespace="http://xmlns.tibco.com/encodings/mimefile"/>
-            <complexType name="SendMailParametersType">
-                <sequence>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="username" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="password" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="1" name="from" type="string"/>
-                    <element form="unqualified" maxOccurs="unbounded"
-                        minOccurs="0" name="to" type="string"/>
-                    <element form="unqualified" maxOccurs="unbounded"
-                        minOccurs="0" name="cc" type="string"/>
-                    <element form="unqualified" maxOccurs="unbounded"
-                        minOccurs="0" name="bcc" type="string"/>
-                    <element form="unqualified" maxOccurs="unbounded"
-                        minOccurs="0" name="replyTo" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="subject" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="sentdate" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="bodyElement" type="tns:bodyType"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="Headers" type="tns:headersType"/>
-                    <element minOccurs="0" ref="tns1:mimeEnvelopeElement"/>
-                </sequence>
-            </complexType>
-            <complexType name="headersType">
-                <sequence>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="Content-Type" type="string"/>
-                </sequence>
-            </complexType>
-            <complexType name="bodyType">
-                <choice>
-                    <element form="unqualified" minOccurs="0"
-                        name="bodyText" type="string"/>
-                    <element form="unqualified" minOccurs="0"
-                        name="fileName" type="string"/>
-                </choice>
-            </complexType>
-            <element name="mailActivityInput" type="tns:SendMailParametersType"/>
-        </schema>
-        <schema elementFormDefault="qualified"
-            targetNamespace="http://tns.tibco.com/bw/activity/sendmail/xsd/input+4657d5dc-01a7-4e41-a9c7-1bf802738226+input"
-            xmlns="http://www.w3.org/2001/XMLSchema"
-            xmlns:tns="http://tns.tibco.com/bw/activity/sendmail/xsd/input+4657d5dc-01a7-4e41-a9c7-1bf802738226+input" xmlns:tns1="http://xmlns.tibco.com/encodings/mimefile">
-            <import namespace="http://xmlns.tibco.com/encodings/mimefile"/>
-            <complexType name="SendMailParametersType">
-                <sequence>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="username" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="password" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="1" name="from" type="string"/>
-                    <element form="unqualified" maxOccurs="unbounded"
-                        minOccurs="0" name="to" type="string"/>
-                    <element form="unqualified" maxOccurs="unbounded"
-                        minOccurs="0" name="cc" type="string"/>
-                    <element form="unqualified" maxOccurs="unbounded"
-                        minOccurs="0" name="bcc" type="string"/>
-                    <element form="unqualified" maxOccurs="unbounded"
-                        minOccurs="0" name="replyTo" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="subject" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="sentdate" type="string"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="bodyElement" type="tns:bodyType"/>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="Headers" type="tns:headersType"/>
-                    <element minOccurs="0" ref="tns1:mimeEnvelopeElement"/>
-                </sequence>
-            </complexType>
-            <complexType name="headersType">
-                <sequence>
-                    <element form="unqualified" maxOccurs="1"
-                        minOccurs="0" name="Content-Type" type="string"/>
-                </sequence>
-            </complexType>
-            <complexType name="bodyType">
-                <choice>
-                    <element form="unqualified" minOccurs="0"
-                        name="bodyText" type="string"/>
-                    <element form="unqualified" minOccurs="0"
-                        name="fileName" type="string"/>
-                </choice>
-            </complexType>
-            <element name="mailActivityInput" type="tns:SendMailParametersType"/>
-        </schema>
     </tibex:Types>
     <tibex:ProcessInfo callable="false" createdBy="LucaValerioNepote"
         createdOn="Mon Nov 17 15:01:48 CET 2025" description=""
@@ -1094,280 +976,6 @@
                                     <layoutConstraint x="254"
                                     xsi:type="notation:Bounds" y="286"/>
                                     </children>
-                                    <children type="4002 bw.mail.send">
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <styles fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <styles
-                                    backgroundColor="16777215"
-                                    gradientEndColor="50431"
-                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
-                                    <element href="//0/@process/@activity/@activity/@activities.9"/>
-                                    <layoutConstraint
-                                    height="40" width="40"
-                                    x="832"
-                                    xsi:type="notation:Bounds" y="286"/>
-                                    </children>
-                                    <children type="4018">
-                                    <children type="3018">
-                                    <children type="4019">
-                                    <children type="3019">
-                                    <styles xsi:type="notation:SortingStyle"/>
-                                    <styles xsi:type="notation:FilteringStyle"/>
-                                    </children>
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <styles xsi:type="bwnotation:BackgroundStyle"/>
-                                    <styles xsi:type="bwnotation:ResizingStyle"/>
-                                    <element href="//0/@process/@activity/@activity/@activities.10/@variables"/>
-                                    <layoutConstraint
-                                    height="20"
-                                    width="865"
-                                    x="30" xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <children type="4020">
-                                    <children type="3020">
-                                    <children type="4005">
-                                    <children type="3007">
-
-                                    <children type="4002 bw.generalactivities.callprocess">
-
-                                    <children type="4017">
-
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-
-                                    <children type="4017">
-
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-
-                                    <children type="4017">
-
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-
-                                    <children type="4017">
-
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-
-                                    <styles
-                                    backgroundColor="16777215"
-                                    gradientEndColor="50431"
-                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
-
-                                    <element href="//0/@process/@activity/@activity/@activities.10/@activity/@activities.1/@activity/@activities.2"/>
-
-                                    <layoutConstraint
-                                    height="40"
-                                    width="40"
-                                    x="38"
-                                    xsi:type="notation:Bounds" y="34"/>
-                                    </children>
-                                    <styles xsi:type="notation:DrawerStyle"/>
-                                    <styles xsi:type="notation:SortingStyle"/>
-                                    <styles xsi:type="notation:FilteringStyle"/>
-                                    </children>
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <styles
-                                    backgroundColor="16777215"
-                                    gradientEndColor="50431"
-                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
-                                    <styles xsi:type="bwnotation:ResizingStyle"/>
-                                    <element href="//0/@process/@activity/@activity/@activities.10/@activity/@activities.1/@activity"/>
-
-                                    <layoutConstraint
-                                    height="129"
-                                    width="202" xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <styles xsi:type="notation:SortingStyle"/>
-                                    <styles xsi:type="notation:FilteringStyle"/>
-                                    </children>
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <styles xsi:type="bwnotation:BackgroundStyle"/>
-                                    <styles xsi:type="bwnotation:ResizingStyle"/>
-                                    <element href="//0/@process/@activity/@activity/@activities.10"/>
-                                    <layoutConstraint
-                                    height="129"
-                                    width="205"
-                                    x="15"
-                                    xsi:type="notation:Bounds" y="20"/>
-                                    </children>
-                                    <children type="4002">
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <styles
-                                    backgroundColor="16777215"
-                                    gradientEndColor="50431"
-                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
-                                    <element href="//0/@process/@activity/@activity/@activities.10/@activity/@activities.1/@activity/@activities.0"/>
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <children type="4002">
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <styles
-                                    backgroundColor="16777215"
-                                    gradientEndColor="50431"
-                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
-                                    <element href="//0/@process/@activity/@activity/@activities.10/@activity/@activities.1/@activity/@activities.1"/>
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <styles xsi:type="notation:SortingStyle"/>
-                                    <styles xsi:type="notation:FilteringStyle"/>
-                                    </children>
-                                    <styles fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <styles xsi:type="bwnotation:BackgroundStyle"/>
-                                    <styles xsi:type="bwnotation:ResizingStyle"/>
-                                    <element href="//0/@process/@activity/@activity/@activities.10"/>
-                                    <layoutConstraint
-                                    height="173" width="245"
-                                    x="465"
-                                    xsi:type="notation:Bounds" y="403"/>
-                                    </children>
-                                    <children type="4002">
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <children type="4017">
-                                    <styles
-                                    fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <layoutConstraint xsi:type="notation:Bounds"/>
-                                    </children>
-                                    <styles fontName="Segoe UI"
-                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
-                                    <styles
-                                    backgroundColor="16777215"
-                                    gradientEndColor="50431"
-                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
-                                    <element href="//0/@process/@activity/@activity/@activities.11"/>
-                                    <layoutConstraint x="778"
-                                    xsi:type="notation:Bounds" y="551"/>
-                                    </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
                                     <styles xsi:type="notation:FilteringStyle"/>
@@ -1501,74 +1109,6 @@
             <element href="//0/@process/@activity/@activity/@links/@children.7"/>
             <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
-        <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.8"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.9" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.8"/>
-            <bendpoints points="[25, -6, -144, 0]$[145, 0, -24, 6]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
-        <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.8"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.10" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.9"/>
-            <bendpoints
-                points="[25, 0, -241, -172]$[58, 0, -208, -172]$[58, 179, -208, 7]$[161, 179, -105, 7]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
-        <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.10/@children.0/@children.2"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.10/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.10/@activity/@activities.1/@activity/@links/@children.0"/>
-            <bendpoints points="[12, -3, -87, 18]$[75, -16, -24, 5]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
-        <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.10/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.10/@children.0/@children.3" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@activities.10/@activity/@activities.1/@activity/@links/@children.1"/>
-            <bendpoints points="[25, -4, -197, 0]$[210, 0, -12, 4]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
-        <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.10"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.11" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.10"/>
-            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
-        <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.10"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.9" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.11"/>
-            <bendpoints
-                points="[105, -58, -207, 114]$[288, -159, -24, 13]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
         <tibex:namespaceItem
@@ -1627,8 +1167,6 @@
             name="SendMail-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns2:ActivityErrorData"
             name="_error_SendMail" sca-bpel:internal="true"/>
-        <bpws:variable element="ns9:id_fattura" name="pag.Banca-input" sca-bpel:internal="true"/>
-        <bpws:variable element="ns9:risposta_banca" name="pag.Banca" sca-bpel:internal="true"/>
         <bpws:variable element="ns9:nome_file" name="file-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns9:nome_file" name="file" sca-bpel:internal="true"/>
         <bpws:variable element="ns9:nome_file"
@@ -1640,22 +1178,14 @@
         <bpws:variable element="ns9:statoProcesso" name="Call_pagamento" sca-bpel:internal="true"/>
         <bpws:variable element="ns10:mailActivityInput"
             name="SendMailOK-input" sca-bpel:internal="true"/>
-        <bpws:variable element="ns2:ActivityErrorData"
-            name="_error_SendMailOK1" sca-bpel:internal="true"/>
         <bpws:variable element="ns9:nome_file"
             name="Call_pagamento-input1" sca-bpel:internal="true"/>
         <bpws:variable element="ns9:statoProcesso"
             name="Call_pagamento1" sca-bpel:internal="true"/>
-        <bpws:variable element="ns11:mailActivityInput"
-            name="SendMailOK1-input" sca-bpel:internal="true"/>
-        <bpws:variable element="ns9:id_fattura" name="pagBanca-input" sca-bpel:internal="true"/>
-        <bpws:variable element="ns9:risposta_banca" name="pagBanca" sca-bpel:internal="true"/>
         <bpws:variable element="ns2:ActivityErrorData"
             name="_error_Copy_1_SendMailOK1" sca-bpel:internal="true"/>
-        <bpws:variable element="ns12:mailActivityInput"
-            name="SendMail1-input" sca-bpel:internal="true"/>
-        <bpws:variable element="ns2:ActivityErrorData"
-            name="_error_SendMail1" sca-bpel:internal="true"/>
+        <bpws:variable element="ns9:id_fattura"
+            name="call_gestione_soll_error-input" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -1680,10 +1210,6 @@
                 <bpws:link name="Call_pagamentoToSendMailOK" tibex:linkType="SUCCESSWITHCONDITION"/>
                 <bpws:link name="JDBCQueryToCallProcess_inlavorazione"
                     tibex:label="in_lavorazione" tibex:linkType="SUCCESSWITHCONDITION"/>
-                <bpws:link name="pag.BancaToSendMailOK1" tibex:linkType="SUCCESSWITHCONDITION"/>
-                <bpws:link name="pag.BancaToWhile" tibex:linkType="SUCCESSWITHNOCONDITION"/>
-                <bpws:link name="WhileToSendMail1" tibex:linkType="SUCCESSWITHNOCONDITION"/>
-                <bpws:link name="WhileToSendMailOK1" tibex:linkType="SUCCESSWITHCONDITION"/>
             </bpws:links>
             <bpws:extensionActivity>
                 <tibex:receiveEvent createInstance="yes"
@@ -1960,176 +1486,21 @@
                 </tibex:extActivity>
             </bpws:extensionActivity>
             <bpws:extensionActivity>
-                <tibex:extActivity inputVariable="pag.Banca-input"
-                    name="pag.Banca" outputVariable="pag.Banca"
+                <tibex:extActivity
+                    inputVariable="call_gestione_soll_error-input"
+                    name="call_gestione_soll_error"
                     tibex:xpdlId="66cad57d-bc83-4dfb-897f-c280378b4dd5"
                     type="bw.generalactivities.callprocess" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:targets>
                         <bpws:target linkName="JDBCQueryToCallProcess_fattureerror"/>
                     </bpws:targets>
-                    <bpws:sources>
-                        <bpws:source linkName="pag.BancaToSendMailOK1">
-                            <tibex:DesignExpression>
-                                <tibex:expression
-                                    expression="$pag.Banca/ns9:codice_risposta='OK'" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
-                            </tibex:DesignExpression>
-                            <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[$pag.Banca/ns9:codice_risposta='OK']]></bpws:transitionCondition>
-                        </bpws:source>
-                        <bpws:source linkName="pag.BancaToWhile">
-                            <tibex:DesignExpression>
-                                <tibex:expression
-                                    expression="##otherwise##" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
-                            </tibex:DesignExpression>
-                            <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[##otherwise##]]></bpws:transitionCondition>
-                        </bpws:source>
-                    </bpws:sources>
                     <tibex:inputBindings>
                         <tibex:inputBinding coercion=""
                             expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://tns.tibco.com/bw/json/1762360231862&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;ReceiveMail&quot;/>&lt;xsl:template name=&quot;pag.Banca-input&quot; match=&quot;/&quot;>&lt;tns4:id_fattura>&lt;xsl:value-of select=&quot;$ReceiveMail/subject&quot;/>&lt;/tns4:id_fattura>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:CallProcess
-                        subProcessName="banca.simulazione_pagamento" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"/>
+                        subProcessName="scarpefrl.gestione_soll_error" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"/>
                 </tibex:extActivity>
-            </bpws:extensionActivity>
-            <bpws:extensionActivity>
-                <tibex:activityExtension
-                    inputVariable="SendMailOK1-input" name="SendMailOK1"
-                    tibex:xpdlId="44e5507f-44d8-4c7a-91f8-78d862c944f0" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
-                    <bpws:targets>
-                        <bpws:target linkName="pag.BancaToSendMailOK1"/>
-                        <bpws:target linkName="WhileToSendMailOK1"/>
-                    </bpws:targets>
-                    <bpws:sources/>
-                    <tibex:inputBindings>
-                        <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns7=&quot;http://tns.tibco.com/bw/activity/sendmail/xsd/input+44e5507f-44d8-4c7a-91f8-78d862c944f0+input&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;ReceiveMail&quot;/>&lt;xsl:template name=&quot;SendMailOK1-input&quot; match=&quot;/&quot;>&lt;tns7:mailActivityInput>&lt;from>&lt;xsl:value-of select=&quot;&amp;quot;scarpefrl@gmail.com&amp;quot;&quot;/>&lt;/from>&lt;to>&lt;xsl:value-of select=&quot;&amp;quot;scarpefrl@gmail.com&amp;quot;&quot;/>&lt;/to>&lt;subject>&lt;xsl:value-of select=&quot;&amp;quot;[ScarpeFrL] PaymentManagement: fattura saldata&amp;quot;&quot;/>&lt;/subject>&lt;bodyElement>&lt;bodyText>&lt;xsl:value-of select=&quot;concat('Buongiorno, &amp;#xD;&amp;#xA;il pagamento della fattura ',$ReceiveMail/subject, ' è andato a buon fine. &amp;#xD;&amp;#xA; &amp;#xD;&amp;#xA;Cordiali saluti, &amp;#xD;&amp;#xA;il team di Scarpe F.r.L.')&quot;/>&lt;/bodyText>&lt;/bodyElement>&lt;/tns7:mailActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
-                    </tibex:inputBindings>
-                    <tibex:config>
-                        <bwext:BWActivity activityTypeID="bw.mail.send"
-                            xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
-                            xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
-                            xmlns:input="http://tns.tibco.com/bw/activity/sendmail/xsd/input+44e5507f-44d8-4c7a-91f8-78d862c944f0+input"
-                            xmlns:mail="http://ns.tibco.com/bw/palette/mail" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-                            <activityConfig>
-                                <properties name="config" xsi:type="activityconfig:EMFProperty">
-                                    <type href="http://ns.tibco.com/bw/palette/mail#//SendMail"/>
-                                    <value
-                                    inputHeadersQName="input:headersType"
-                                    newActivity="true"
-                                    smtpProperty="smtpProperty" xsi:type="mail:SendMail"/>
-                                </properties>
-                            </activityConfig>
-                        </bwext:BWActivity>
-                    </tibex:config>
-                </tibex:activityExtension>
-            </bpws:extensionActivity>
-            <bpws:scope name="While" tibex:group="while" tibex:xpdlId="2bd9174d-bd92-4ddc-99c4-2a62557cf934">
-                <bpws:targets>
-                    <bpws:target linkName="pag.BancaToWhile"/>
-                </bpws:targets>
-                <bpws:sources>
-                    <bpws:source linkName="WhileToSendMail1">
-                        <tibex:DesignExpression>
-                            <tibex:expression expression="##otherwise##" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
-                        </tibex:DesignExpression>
-                        <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[##otherwise##]]></bpws:transitionCondition>
-                    </bpws:source>
-                    <bpws:source linkName="WhileToSendMailOK1">
-                        <tibex:DesignExpression>
-                            <tibex:expression
-                                expression="$pagBanca/ns9:codice_risposta='OK'" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
-                        </tibex:DesignExpression>
-                        <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[$pagBanca/ns9:codice_risposta='OK']]></bpws:transitionCondition>
-                    </bpws:source>
-                </bpws:sources>
-                <bpws:variables>
-                    <bpws:variable name="index" sca-bpel:internal="true" type="xsd:int">
-                        <bpws:from>
-                            <bpws:literal>1</bpws:literal>
-                        </bpws:from>
-                    </bpws:variable>
-                </bpws:variables>
-                <bpws:sequence name="sequence" tibex:group="while">
-                    <bpws:empty name="GroupInit" tibex:group="groupInit"/>
-                    <bpws:while name="while" tibex:counterName="index">
-                        <tibex:DesignExpression>
-                            <tibex:expression
-                                expression="$pagBanca/ns9:codice_risposta='KO' and $index lt 3" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
-                        </tibex:DesignExpression>
-                        <bpws:condition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[$pagBanca/ns9:codice_risposta='KO' and $index lt 3]]></bpws:condition>
-                        <bpws:flow name="flow1">
-                            <bpws:links>
-                                <bpws:link
-                                    name="GroupStartToCallProcess" tibex:linkType="SUCCESS"/>
-                                <bpws:link name="pagBancaToGroupEnd" tibex:linkType="SUCCESS"/>
-                            </bpws:links>
-                            <bpws:empty name="GroupStart"
-                                tibex:group="groupStart" tibex:xpdlId="dcbf92ec-0106-4ada-bf16-6b97968b61bf">
-                                <bpws:sources>
-                                    <bpws:source linkName="GroupStartToCallProcess"/>
-                                </bpws:sources>
-                            </bpws:empty>
-                            <bpws:empty name="GroupEnd"
-                                tibex:group="groupEnd" tibex:xpdlId="ec392111-e03e-4f31-98d4-416d602a349b">
-                                <bpws:targets>
-                                    <bpws:target linkName="pagBancaToGroupEnd"/>
-                                </bpws:targets>
-                            </bpws:empty>
-                            <bpws:extensionActivity>
-                                <tibex:extActivity
-                                    inputVariable="pagBanca-input"
-                                    name="pagBanca"
-                                    outputVariable="pagBanca"
-                                    tibex:xpdlId="a8ffca8c-b6c8-4805-b5e6-9390d2c6b701"
-                                    type="bw.generalactivities.callprocess" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
-                                    <bpws:targets>
-                                    <bpws:target linkName="GroupStartToCallProcess"/>
-                                    </bpws:targets>
-                                    <bpws:sources>
-                                    <bpws:source linkName="pagBancaToGroupEnd"/>
-                                    </bpws:sources>
-                                    <tibex:inputBindings>
-                                    <tibex:inputBinding coercion=""
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns4=&quot;http://tns.tibco.com/bw/json/1762360231862&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;ReceiveMail&quot;/>&lt;xsl:template name=&quot;pagBanca-input&quot; match=&quot;/&quot;>&lt;tns4:id_fattura>&lt;xsl:value-of select=&quot;$ReceiveMail/subject&quot;/>&lt;/tns4:id_fattura>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
-                                    </tibex:inputBindings>
-                                    <tibex:CallProcess
-                                    subProcessName="banca.simulazione_pagamento" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"/>
-                                </tibex:extActivity>
-                            </bpws:extensionActivity>
-                        </bpws:flow>
-                    </bpws:while>
-                </bpws:sequence>
-            </bpws:scope>
-            <bpws:extensionActivity>
-                <tibex:activityExtension inputVariable="SendMail1-input"
-                    name="SendMail1"
-                    tibex:xpdlId="4657d5dc-01a7-4e41-a9c7-1bf802738226" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
-                    <bpws:targets>
-                        <bpws:target linkName="WhileToSendMail1"/>
-                    </bpws:targets>
-                    <tibex:inputBindings>
-                        <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns6=&quot;http://tns.tibco.com/bw/activity/sendmail/xsd/input+4657d5dc-01a7-4e41-a9c7-1bf802738226+input&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;ReceiveMail&quot;/>&lt;xsl:template name=&quot;SendMail1-input&quot; match=&quot;/&quot;>&lt;tns6:mailActivityInput>&lt;from>&lt;xsl:value-of select=&quot;'scarpefrl@gmail.com'&quot;/>&lt;/from>&lt;to>&lt;xsl:value-of select=&quot;'scarpefrl@gmail.com'&quot;/>&lt;/to>&lt;bodyElement>&lt;bodyText>&lt;xsl:value-of select=&quot;concat('Buongiorno, &amp;#xD;&amp;#xA;il pagamento della fattura ',$ReceiveMail/subject, ' non è andato a buon fine per problemi legati al servizi bancari, ritenteremo il pagamento successivamente. &amp;#xD;&amp;#xA;Ci scusiamo per il disagio e restiamo a dispozione per qualsiasi ulteriore chiarimento. &amp;#xD;&amp;#xA; &amp;#xD;&amp;#xA;Cordiali saluti, &amp;#xD;&amp;#xA;il team di Scarpe F.r.L.')&quot;/>&lt;/bodyText>&lt;/bodyElement>&lt;/tns6:mailActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
-                    </tibex:inputBindings>
-                    <tibex:config>
-                        <bwext:BWActivity activityTypeID="bw.mail.send"
-                            xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
-                            xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
-                            xmlns:input="http://tns.tibco.com/bw/activity/sendmail/xsd/input+4657d5dc-01a7-4e41-a9c7-1bf802738226+input"
-                            xmlns:mail="http://ns.tibco.com/bw/palette/mail" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-                            <activityConfig>
-                                <properties name="config" xsi:type="activityconfig:EMFProperty">
-                                    <type href="http://ns.tibco.com/bw/palette/mail#//SendMail"/>
-                                    <value
-                                    inputHeadersQName="input:headersType"
-                                    newActivity="true"
-                                    sendMailProtocol="SMTP"
-                                    smtpProperty="smtpProperty" xsi:type="mail:SendMail"/>
-                                </properties>
-                            </activityConfig>
-                        </bwext:BWActivity>
-                    </tibex:config>
-                </tibex:activityExtension>
             </bpws:extensionActivity>
         </bpws:flow>
     </bpws:scope>
