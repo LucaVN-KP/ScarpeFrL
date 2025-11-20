@@ -24,8 +24,8 @@
             <endingVariables>
                 <variable>Start</variable>
                 <variable>controllo_IDordi</variable>
-                <variable>controllo_IDcliente</variable>
                 <variable>controllo_IDprod</variable>
+                <variable>controllo_IDcliente</variable>
             </endingVariables>
         </task>
         <task name="controllo_IDordi">
