@@ -2079,6 +2079,8 @@
             name="_error_upd_posiz_out" sca-bpel:internal="true"/>
         <bpws:variable element="ns26:DefaultFault"
             name="Throw_json-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns28:ActivityErrorData"
+            name="_error_Throw_json" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
