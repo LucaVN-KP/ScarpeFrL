@@ -193,4 +193,7 @@
   <sca:component xmi:id="_3YIvwMSAEfCc36TJSjhAvA" name="ComponentTest_DB" compositeext:version="1.0.0.qualifier">
     <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_3YIvwcSAEfCc36TJSjhAvA" processName="scarpefrl.Test_DB"/>
   </sca:component>
+  <sca:component xmi:id="_3KVWsMVkEfC6RularD3nvQ" name="ComponentgestioneInt_fatture_error" compositeext:version="1.0.0.qualifier">
+    <scaext:implementation xsi:type="BW:BWComponentImplementation" xmi:id="_3KV9wMVkEfC6RularD3nvQ" processName="scarpefrl.gestioneInt_fatture_error"/>
+  </sca:component>
 </sca:composite>
