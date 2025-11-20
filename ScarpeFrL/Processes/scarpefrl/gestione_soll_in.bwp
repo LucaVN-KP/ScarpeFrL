@@ -8,6 +8,7 @@
     xmlns:ns0="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions"
     xmlns:ns1="http://tns.tibco.com/bw/activity/sendmail/xsd/input+3b6938d9-a450-4bf1-b195-c5e61f29bc72+input"
     xmlns:ns2="http://tns.tibco.com/bw/palette/internal/activityerror+bw.mail.send"
+    xmlns:ns3="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw"
     xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912"
     xmlns:sca-bpel="http://docs.oasis-open.org/ns/opencsa/sca-bpel/200801"
     xmlns:tibex="http://www.tibco.com/bpel/2007/extensions"
@@ -16,8 +17,8 @@
     <tibex:VariableDescriptor type="MemorySaving">
         <task name="flow">
             <endingVariables>
-                <variable>call_pagamento</variable>
                 <variable>call_spostamento</variable>
+                <variable>call_pagamento</variable>
             </endingVariables>
         </task>
         <task name="call_spostamento">
@@ -347,6 +348,18 @@
                     <element maxOccurs="1" minOccurs="0" ref="Q1:InvalidInputException"/>
                     <element maxOccurs="1" minOccurs="0" ref="Q1:UnknownHostException"/>
                     <element maxOccurs="1" minOccurs="0" ref="Q1:SendFailedException"/>
+                </choice>
+            </complexType>
+        </schema>
+        <schema elementFormDefault="unqualified"
+            targetNamespace="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:Q1="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions" xmlns:tns="http://tns.tibco.com/bw/palette/internal/activityerror+com.tibco.bw.core.design.process.editor.Activity_4002_Throw">
+            <import namespace="http://schemas.tibco.com/bw/plugins/basic/6.0/Exceptions"/>
+            <element name="ActivityErrorData" type="tns:ActivityErrorDataType"/>
+            <complexType name="ActivityErrorDataType">
+                <choice>
+                    <element maxOccurs="1" minOccurs="0" ref="Q1:DefaultFault"/>
                 </choice>
             </complexType>
         </schema>
@@ -811,6 +824,10 @@
             name="_error_SendMailOK" sca-bpel:internal="true"/>
         <bpws:variable element="ns0:DefaultFault" name="Throw-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns0:DefaultFault" name="Throw1-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns3:ActivityErrorData"
+            name="_error_Throw" sca-bpel:internal="true"/>
+        <bpws:variable element="ns3:ActivityErrorData"
+            name="_error_Throw1" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>

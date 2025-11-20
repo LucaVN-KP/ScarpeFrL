@@ -2211,9 +2211,8 @@
                             <activityConfig>
                                 <properties name="config" xsi:type="activityconfig:EMFProperty">
                                     <type href="http://ns.tibco.com/bw/palette/generalactivities#//Timer"/>
-                                    <value cronExpression=""
+                                    <value
                                     endTime="2025-11-19T17:29:31.952+0100"
-                                    endTimeForCronJob="2025-11-19T17:29:31.952+0100"
                                     intervalUnit="Minute"
                                     runOnce="true"
                                     startTime="2025-11-19T17:29:31.952+0100"
