@@ -23,9 +23,9 @@
         <task name="flow">
             <endingVariables>
                 <variable>controllo_IDordi</variable>
+                <variable>controllo_IDprod</variable>
                 <variable>controllo_IDcliente</variable>
                 <variable>Start</variable>
-                <variable>controllo_IDprod</variable>
             </endingVariables>
         </task>
         <task name="controllo_IDordi">
