@@ -14,6 +14,7 @@
     xmlns:ns14="http://tns.tibco.com/bw/palette/internal/activityerror+bw.jdbc.SQLDirect"
     xmlns:ns15="http://www.tibco.com/namespaces/tnt/plugins/jdbc+d7eb520a-70d3-4e61-b4e7-207576174d5d+input"
     xmlns:ns16="http://tns.tibco.com/bw/activity/sendmail/xsd/input+37500fcf-337f-4932-b001-47c178f2e34a+input"
+    xmlns:ns17="http://www.tibco.com/namespaces/tnt/plugins/jdbc+40274cc3-dfcb-4470-82d6-85a592a36fe7+input"
     xmlns:ns2="http://tns.tibco.com/bw/json/1762360231862"
     xmlns:ns3="activity.jsonRender.output+9a62e3ad-53ee-4424-a1b4-f5cf9359714b+ActivityOutputType"
     xmlns:ns4="http://tns.tibco.com/bw/palette/internal/activityerror+bw.restjson.JsonRender"
@@ -83,6 +84,12 @@
         <task name="SendMailParse">
             <endingVariables>
                 <variable>SendMailParse-input</variable>
+            </endingVariables>
+        </task>
+        <task name="insert_fatt_canc">
+            <endingVariables>
+                <variable>insert_fatt_canc-input</variable>
+                <variable>insert_fatt_canc</variable>
             </endingVariables>
         </task>
     </tibex:VariableDescriptor>
@@ -1076,6 +1083,24 @@
             </complexType>
             <element name="mailActivityInput" type="tns:SendMailParametersType"/>
         </schema>
+        <schema
+            targetNamespace="http://www.tibco.com/namespaces/tnt/plugins/jdbc+40274cc3-dfcb-4470-82d6-85a592a36fe7+input"
+            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.tibco.com/namespaces/tnt/plugins/jdbc+40274cc3-dfcb-4470-82d6-85a592a36fe7+input">
+            <element name="ActivityInputType">
+                <complexType>
+                    <sequence>
+                        <element maxOccurs="1" minOccurs="1"
+                            name="statement" type="string"/>
+                        <element maxOccurs="1" minOccurs="0"
+                            name="ServerTimeZone" type="string"/>
+                        <element maxOccurs="1" minOccurs="0"
+                            name="timeout" type="long"/>
+                        <element maxOccurs="1" minOccurs="0"
+                            name="maxRows" type="long"/>
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
     </tibex:Types>
     <tibex:ProcessInfo callable="false" createdBy="LucaValerioNepote"
         createdOn="Tue Nov 11 12:46:39 CET 2025" description=""
@@ -1542,7 +1567,7 @@
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <element href="//0/@process/@activity/@faultHandlers/@catchAll/@activity/@activity/@activities.3"/>
                                     <layoutConstraint
-                                    x="491"
+                                    x="587"
                                     xsi:type="notation:Bounds" y="51"/>
                                     </children>
                                     <children type="4002 bw.sftp.removeFile">
@@ -1585,7 +1610,7 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="277"
+                                    x="265"
                                     xsi:type="notation:Bounds" y="51"/>
                                     </children>
                                     <children type="4002 bw.jdbc.SQLDirect">
@@ -1628,7 +1653,7 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="363"
+                                    x="488"
                                     xsi:type="notation:Bounds" y="51"/>
                                     </children>
                                     <children type="4002">
@@ -1669,8 +1694,51 @@
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <element href="//0/@process/@activity/@faultHandlers/@catchAll/@activity/@activity/@activities.6"/>
                                     <layoutConstraint
-                                    x="491"
-                                    xsi:type="notation:Bounds" y="150"/>
+                                    x="587"
+                                    xsi:type="notation:Bounds" y="148"/>
+                                    </children>
+                                    <children type="4002 bw.jdbc.SQLDirect">
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <element href="//0/@process/@activity/@faultHandlers/@catchAll/@activity/@activity/@activities.7"/>
+                                    <layoutConstraint
+                                    height="40"
+                                    width="40"
+                                    x="387"
+                                    xsi:type="notation:Bounds" y="51"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -1685,7 +1753,7 @@
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@faultHandlers/@catchAll/@activity/@activity"/>
                                     <layoutConstraint
-                                    height="250" width="666" xsi:type="notation:Bounds"/>
+                                    height="250" width="729" xsi:type="notation:Bounds"/>
                                     </children>
                                     <styles xsi:type="notation:SortingStyle"/>
                                     <styles xsi:type="notation:FilteringStyle"/>
@@ -1725,7 +1793,7 @@
             </children>
             <styles fontName="Segoe UI" lineColor="0" xsi:type="notation:ShapeStyle"/>
             <element href="//0/@process"/>
-            <layoutConstraint height="629" width="1109" xsi:type="notation:Bounds"/>
+            <layoutConstraint height="629" width="1172" xsi:type="notation:Bounds"/>
         </children>
         <styles xsi:type="notation:DiagramStyle"/>
         <element href="//0"/>
@@ -1830,7 +1898,7 @@
         </edges>
         <edges
             source="//@children.0/@children.4/@children.0/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.4"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.5" type="4006">
+            target="//@children.0/@children.4/@children.0/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.7" type="4006">
             <children type="6002">
                 <layoutConstraint xsi:type="notation:Location" y="40"/>
             </children>
@@ -1848,6 +1916,17 @@
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
             <element href="//0/@process/@activity/@faultHandlers/@catchAll/@activity/@activity/@links/@children.5"/>
+            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.7"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.5" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@faultHandlers/@catchAll/@activity/@activity/@links/@children.6"/>
             <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
@@ -1872,6 +1951,10 @@
             namespace="http://tns.tibco.com/bw/activity/sendmail/xsd/input+37500fcf-337f-4932-b001-47c178f2e34a+input" prefix="tns8"/>
         <tibex:namespaceItem
             namespace="http://www.tibco.com/namespaces/tnt/plugins/jdbc+d7eb520a-70d3-4e61-b4e7-207576174d5d+input" prefix="tns9"/>
+        <tibex:namespaceItem
+            namespace="http://www.tibco.com/namespaces/tnt/plugins/jdbc+40274cc3-dfcb-4470-82d6-85a592a36fe7+input" prefix="tns10"/>
+        <tibex:namespaceItem
+            namespace="http://www.w3.org/2001/XMLSchema" prefix="xsd"/>
     </tibex:NamespaceRegistry>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://tns.tibco.com/bw/json/1762360231862"/>
     <bpws:variables>
@@ -1956,6 +2039,12 @@
         <bpws:variable element="ns6:ActivityErrorData"
             name="_error_SendMailParse" sca-bpel:internal="true"/>
         <bpws:variable element="ns2:id_fattura" name="id_fattura"/>
+        <bpws:variable element="ns17:ActivityInputType"
+            name="insert_fatt_canc-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns13:jdbcGeneralActivityOutput"
+            name="insert_fatt_canc" sca-bpel:internal="true"/>
+        <bpws:variable element="ns14:ActivityErrorData"
+            name="_error_insert_fatt_canc" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -1978,6 +2067,7 @@
                             <bpws:link name="del_posizToSendMail1" tibex:linkType="SUCCESSWITHCONDITION"/>
                             <bpws:link name="SFTPDeleteFileTodel_posiz" tibex:linkType="SUCCESS"/>
                             <bpws:link name="del_posizToSendMail" tibex:linkType="SUCCESSWITHCONDITION"/>
+                            <bpws:link name="SQLDirectTodel_posiz" tibex:linkType="SUCCESS"/>
                         </bpws:links>
                         <bpws:empty name="Empty" tibex:xpdlId="41cfa20d-0d5b-4ef8-b609-db710c36e15d">
                             <bpws:sources>
@@ -2132,7 +2222,7 @@
                                 outputVariable="del_posiz"
                                 tibex:xpdlId="d7eb520a-70d3-4e61-b4e7-207576174d5d" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                                 <bpws:targets>
-                                    <bpws:target linkName="SFTPDeleteFileTodel_posiz"/>
+                                    <bpws:target linkName="SQLDirectTodel_posiz"/>
                                 </bpws:targets>
                                 <bpws:sources>
                                     <bpws:source linkName="del_posizToSendMail1">
@@ -2198,6 +2288,40 @@
                                     inputHeadersQName="input:headersType"
                                     newActivity="true"
                                     smtpProperty="smtpProperty" xsi:type="mail:SendMail"/>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                </tibex:config>
+                            </tibex:activityExtension>
+                        </bpws:extensionActivity>
+                        <bpws:extensionActivity>
+                            <tibex:activityExtension
+                                inputVariable="insert_fatt_canc-input"
+                                name="insert_fatt_canc"
+                                outputVariable="insert_fatt_canc"
+                                tibex:xpdlId="40274cc3-dfcb-4470-82d6-85a592a36fe7" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                <bpws:targets>
+                                    <bpws:target linkName="SFTPDeleteFileTodel_posiz"/>
+                                </bpws:targets>
+                                <bpws:sources>
+                                    <bpws:source linkName="SQLDirectTodel_posiz"/>
+                                </bpws:sources>
+                                <tibex:inputBindings>
+                                    <tibex:inputBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns10=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+40274cc3-dfcb-4470-82d6-85a592a36fe7+input&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;id_fattura&quot;/>&lt;xsl:template name=&quot;SQLDirect-input&quot; match=&quot;/&quot;>&lt;tns10:ActivityInputType>&lt;statement>&lt;xsl:value-of select=&quot;concat('INSERT INTO scarpe.fatture_cancellate(&amp;quot;id_fattura&amp;quot;,&amp;quot;data_cancellazione&amp;quot;) VALUES (', &amp;quot;'&amp;quot;, $id_fattura, &amp;quot;', '&amp;quot;,xsd:string(current-dateTime()),&amp;quot;')&amp;quot;)&quot;/>&lt;/statement>&lt;/tns10:ActivityInputType>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                </tibex:inputBindings>
+                                <tibex:config>
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.jdbc.SQLDirect"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:jdbcPalette="http://ns.tibco.com/bw/palette/jdbc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+                                    <properties name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/jdbc#//SQLDirectActivity"/>
+                                    <value maxRows="100"
+                                    sharedResourceProperty="jdbcProperty"
+                                    timeout="10" xsi:type="jdbcPalette:SQLDirectActivity"/>
                                     </properties>
                                     </activityConfig>
                                     </bwext:BWActivity>

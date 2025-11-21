@@ -20,6 +20,9 @@
     xmlns:ns2="http://tns.tibco.com/bw/palette/internal/activityerror+bw.mail.send"
     xmlns:ns20="http://tns.tibco.com/bw/activity/sendmail/xsd/input+92065c4f-923f-4e92-8274-cec649220f96+input"
     xmlns:ns21="http://tns.tibco.com/bw/activity/sendmail/xsd/input+238bd3af-a8e5-439b-96d8-c688b4562a92+input"
+    xmlns:ns22="http://www.tibco.com/namespaces/tnt/plugins/jdbc+b90db91f-103e-4d85-a089-f713ccb6cba4+input"
+    xmlns:ns23="http://www.tibco.com/namespaces/tnt/plugins/jdbc+b90db91f-103e-4d85-a089-f713ccb6cba4+output"
+    xmlns:ns24="http://tns.tibco.com/bw/activity/sendmail/xsd/input+4de1499c-938d-4ad6-95eb-1964b9f6f531+input"
     xmlns:ns3="http://tns.tibco.com/bw/activity/receivemail/xsd/output+331cd0e8-b8fd-4307-b445-15f55126ec88+output"
     xmlns:ns4="http://www.tibco.com/pe/WriteToLogActivitySchema"
     xmlns:ns5="http://www.tibco.com/namespaces/tnt/plugins/jdbc+1b2992e9-aebc-438d-ba3e-c56a82266d42+input"
@@ -133,6 +136,17 @@
         <task name="Mail_noFattura">
             <endingVariables>
                 <variable>Mail_noFattura-input</variable>
+                <variable>query_fatt_canc</variable>
+            </endingVariables>
+        </task>
+        <task name="query_fatt_canc">
+            <endingVariables>
+                <variable>query_fatt_canc-input</variable>
+            </endingVariables>
+        </task>
+        <task name="Mail_fatt_canc">
+            <endingVariables>
+                <variable>Mail_fatt_canc-input</variable>
             </endingVariables>
         </task>
     </tibex:VariableDescriptor>
@@ -896,6 +910,96 @@
             </complexType>
             <element name="mailActivityInput" type="tns:SendMailParametersType"/>
         </schema>
+        <schema
+            targetNamespace="http://www.tibco.com/namespaces/tnt/plugins/jdbc+b90db91f-103e-4d85-a089-f713ccb6cba4+input"
+            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.tibco.com/namespaces/tnt/plugins/jdbc+b90db91f-103e-4d85-a089-f713ccb6cba4+input">
+            <element name="jdbcQueryActivityInput">
+                <complexType>
+                    <sequence>
+                        <element maxOccurs="1" minOccurs="1"
+                            name="id_fatt" nillable="true" type="string"/>
+                        <element maxOccurs="1" minOccurs="0"
+                            name="ServerTimeZone" type="string"/>
+                        <element maxOccurs="1" minOccurs="0"
+                            name="timeout" type="long"/>
+                        <element maxOccurs="1" minOccurs="0"
+                            name="maxRows" type="long"/>
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
+        <schema
+            targetNamespace="http://www.tibco.com/namespaces/tnt/plugins/jdbc+b90db91f-103e-4d85-a089-f713ccb6cba4+output"
+            xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.tibco.com/namespaces/tnt/plugins/jdbc+b90db91f-103e-4d85-a089-f713ccb6cba4+output">
+            <element name="resultSet">
+                <complexType>
+                    <sequence>
+                        <element maxOccurs="unbounded" minOccurs="0" name="Record">
+                            <complexType>
+                                <sequence>
+                                    <element maxOccurs="1" minOccurs="1"
+                                    name="id_cancellazione" type="int"/>
+                                    <element maxOccurs="1" minOccurs="0"
+                                    name="id_fattura"
+                                    nillable="false" type="string"/>
+                                    <element maxOccurs="1" minOccurs="0"
+                                    name="data_cancellazione"
+                                    nillable="false" type="dateTime"/>
+                                </sequence>
+                            </complexType>
+                        </element>
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
+        <schema elementFormDefault="qualified"
+            targetNamespace="http://tns.tibco.com/bw/activity/sendmail/xsd/input+4de1499c-938d-4ad6-95eb-1964b9f6f531+input"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="http://tns.tibco.com/bw/activity/sendmail/xsd/input+4de1499c-938d-4ad6-95eb-1964b9f6f531+input" xmlns:tns1="http://xmlns.tibco.com/encodings/mimefile">
+            <import namespace="http://xmlns.tibco.com/encodings/mimefile"/>
+            <complexType name="SendMailParametersType">
+                <sequence>
+                    <element form="unqualified" maxOccurs="1"
+                        minOccurs="0" name="username" type="string"/>
+                    <element form="unqualified" maxOccurs="1"
+                        minOccurs="0" name="password" type="string"/>
+                    <element form="unqualified" maxOccurs="1"
+                        minOccurs="1" name="from" type="string"/>
+                    <element form="unqualified" maxOccurs="unbounded"
+                        minOccurs="0" name="to" type="string"/>
+                    <element form="unqualified" maxOccurs="unbounded"
+                        minOccurs="0" name="cc" type="string"/>
+                    <element form="unqualified" maxOccurs="unbounded"
+                        minOccurs="0" name="bcc" type="string"/>
+                    <element form="unqualified" maxOccurs="unbounded"
+                        minOccurs="0" name="replyTo" type="string"/>
+                    <element form="unqualified" maxOccurs="1"
+                        minOccurs="0" name="subject" type="string"/>
+                    <element form="unqualified" maxOccurs="1"
+                        minOccurs="0" name="sentdate" type="string"/>
+                    <element form="unqualified" maxOccurs="1"
+                        minOccurs="0" name="bodyElement" type="tns:bodyType"/>
+                    <element form="unqualified" maxOccurs="1"
+                        minOccurs="0" name="Headers" type="tns:headersType"/>
+                    <element minOccurs="0" ref="tns1:mimeEnvelopeElement"/>
+                </sequence>
+            </complexType>
+            <complexType name="headersType">
+                <sequence>
+                    <element form="unqualified" maxOccurs="1"
+                        minOccurs="0" name="Content-Type" type="string"/>
+                </sequence>
+            </complexType>
+            <complexType name="bodyType">
+                <choice>
+                    <element form="unqualified" minOccurs="0"
+                        name="bodyText" type="string"/>
+                    <element form="unqualified" minOccurs="0"
+                        name="fileName" type="string"/>
+                </choice>
+            </complexType>
+            <element name="mailActivityInput" type="tns:SendMailParametersType"/>
+        </schema>
     </tibex:Types>
     <tibex:ProcessInfo callable="false" createdBy="LucaValerioNepote"
         createdOn="Mon Nov 17 15:01:48 CET 2025" description=""
@@ -1394,7 +1498,7 @@
                                     gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
                                     <element href="//0/@process/@activity/@activity/@activities.12"/>
                                     <layoutConstraint x="794"
-                                    xsi:type="notation:Bounds" y="267"/>
+                                    xsi:type="notation:Bounds" y="261"/>
                                     </children>
                                     <children type="4002">
                                     <children type="4017">
@@ -1747,8 +1851,137 @@
                                     <layoutConstraint
                                     height="40"
                                     width="40"
-                                    x="404"
+                                    x="596"
                                     xsi:type="notation:Bounds" y="50"/>
+                                    </children>
+                                    <children type="4002 com.tibco.bw.core.design.process.editor.Activity_4002_Empty">
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <element href="//0/@process/@activity/@faultHandlers/@catchAll/@activity/@activity/@activities.4"/>
+                                    <layoutConstraint
+                                    height="40"
+                                    width="40"
+                                    x="471"
+                                    xsi:type="notation:Bounds" y="50"/>
+                                    </children>
+                                    <children type="4002 bw.jdbc.JDBCQuery">
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <element href="//0/@process/@activity/@faultHandlers/@catchAll/@activity/@activity/@activities.5"/>
+                                    <layoutConstraint
+                                    height="40"
+                                    width="40"
+                                    x="376"
+                                    xsi:type="notation:Bounds" y="50"/>
+                                    </children>
+                                    <children type="4002 bw.mail.send">
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <children type="4017">
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+
+                                    <layoutConstraint xsi:type="notation:Bounds"/>
+                                    </children>
+                                    <styles
+                                    fontName="Segoe UI"
+                                    lineColor="0" xsi:type="notation:ShapeStyle"/>
+                                    <styles
+                                    backgroundColor="16777215"
+                                    gradientEndColor="50431"
+                                    gradientStartColor="16777215" xsi:type="bwnotation:BackgroundStyle"/>
+                                    <element href="//0/@process/@activity/@faultHandlers/@catchAll/@activity/@activity/@activities.6"/>
+                                    <layoutConstraint
+                                    height="40"
+                                    width="40"
+                                    x="597"
+                                    xsi:type="notation:Bounds" y="156"/>
                                     </children>
                                     <styles xsi:type="notation:DrawerStyle"/>
                                     <styles xsi:type="notation:SortingStyle"/>
@@ -1763,7 +1996,7 @@
                                     <styles xsi:type="bwnotation:ResizingStyle"/>
                                     <element href="//0/@process/@activity/@faultHandlers/@catchAll/@activity/@activity"/>
                                     <layoutConstraint
-                                    height="168" width="703" xsi:type="notation:Bounds"/>
+                                    height="312" width="902" xsi:type="notation:Bounds"/>
                                     </children>
                                     <styles xsi:type="notation:SortingStyle"/>
                                     <styles xsi:type="notation:FilteringStyle"/>
@@ -1921,17 +2154,6 @@
             <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
-            source="//@children.0/@children.4/@children.0/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.2"
-            target="//@children.0/@children.4/@children.0/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.3" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@faultHandlers/@catchAll/@activity/@activity/@links/@children.2"/>
-            <bendpoints points="[25, 1, -77, 0]$[78, 0, -24, -1]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
-        <edges
             source="//@children.0/@children.4/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.8" type="4006">
             <children type="6002">
                 <layoutConstraint xsi:type="notation:Location" y="40"/>
@@ -2073,6 +2295,50 @@
             <element href="//0/@process/@activity/@activity/@links/@children.18"/>
             <bendpoints points="[25, 0, -203, 0]$[204, 0, -24, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.4"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.3" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@faultHandlers/@catchAll/@activity/@activity/@links/@children.2"/>
+            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.2"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.5" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@faultHandlers/@catchAll/@activity/@activity/@links/@children.3"/>
+            <bendpoints points="[25, 22, -88, -78]$[89, 78, -24, -22]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.5"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.4" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@faultHandlers/@catchAll/@activity/@activity/@links/@children.4"/>
+            <bendpoints points="[25, 0, -113, 0]$[114, 0, -24, 0]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.4/@children.0/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.4"
+            target="//@children.0/@children.4/@children.0/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.6" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@faultHandlers/@catchAll/@activity/@activity/@links/@children.5"/>
+            <bendpoints points="[25, 21, -101, -85]$[102, 85, -24, -21]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
         <tibex:namespaceItem
@@ -2105,6 +2371,10 @@
             namespace="http://tns.tibco.com/bw/activity/sendmail/xsd/input+92065c4f-923f-4e92-8274-cec649220f96+input" prefix="tns12"/>
         <tibex:namespaceItem
             namespace="http://tns.tibco.com/bw/activity/sendmail/xsd/input+238bd3af-a8e5-439b-96d8-c688b4562a92+input" prefix="tns13"/>
+        <tibex:namespaceItem
+            namespace="http://www.tibco.com/namespaces/tnt/plugins/jdbc+b90db91f-103e-4d85-a089-f713ccb6cba4+input" prefix="tns14"/>
+        <tibex:namespaceItem
+            namespace="http://tns.tibco.com/bw/activity/sendmail/xsd/input+4de1499c-938d-4ad6-95eb-1964b9f6f531+input" prefix="tns15"/>
     </tibex:NamespaceRegistry>
     <bpws:import importType="http://www.w3.org/2001/XMLSchema" namespace="http://tns.tibco.com/bw/json/1762360231862"/>
     <bpws:variables>
@@ -2168,7 +2438,7 @@
         <bpws:variable element="ns16:mailActivityInput"
             name="Mail_noFattura-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns2:ActivityErrorData"
-            name="_error_SendMail1" sca-bpel:internal="true"/>
+            name="_error_Mail_fatt_canc" sca-bpel:internal="true"/>
         <bpws:variable element="ns17:ActivityErrorData"
             name="_error_Throw" sca-bpel:internal="true"/>
         <bpws:variable element="ns9:id_fattura"
@@ -2190,6 +2460,13 @@
             name="Call_tentativo_error-input" sca-bpel:internal="true"/>
         <bpws:variable element="ns9:statoProcesso"
             name="Call_tentativo_error" sca-bpel:internal="true"/>
+        <bpws:variable element="ns22:jdbcQueryActivityInput"
+            name="query_fatt_canc-input" sca-bpel:internal="true"/>
+        <bpws:variable element="ns23:resultSet" name="query_fatt_canc" sca-bpel:internal="true"/>
+        <bpws:variable element="ns7:ActivityErrorData"
+            name="_error_query_fatt_canc" sca-bpel:internal="true"/>
+        <bpws:variable element="ns24:mailActivityInput"
+            name="Mail_fatt_canc-input" sca-bpel:internal="true"/>
     </bpws:variables>
     <bpws:extensions>
         <bpws:extension mustUnderstand="no" namespace="http://www.eclipse.org/gmf/runtime/1.0.2/notation"/>
@@ -2208,7 +2485,10 @@
                         <bpws:links>
                             <bpws:link name="EmptyToRenderJSON" tibex:linkType="SUCCESS"/>
                             <bpws:link name="RenderJSONToLog" tibex:linkType="SUCCESS"/>
-                            <bpws:link name="Log_errToSendMail1" tibex:linkType="SUCCESSWITHCONDITION"/>
+                            <bpws:link name="Empty2ToMail_noFattura" tibex:linkType="SUCCESSWITHCONDITION"/>
+                            <bpws:link name="Log_errToJDBCQuery1" tibex:linkType="SUCCESSWITHCONDITION"/>
+                            <bpws:link name="JDBCQuery1ToEmpty2" tibex:linkType="SUCCESS"/>
+                            <bpws:link name="Empty2ToSendMail1" tibex:linkType="SUCCESS"/>
                         </bpws:links>
                         <bpws:empty name="Empty" tibex:xpdlId="cfe0a105-2d0e-4f0f-bd1a-08e19829c317">
                             <bpws:sources>
@@ -2260,7 +2540,7 @@
                                     <bpws:target linkName="RenderJSONToLog"/>
                                 </bpws:targets>
                                 <bpws:sources>
-                                    <bpws:source linkName="Log_errToSendMail1">
+                                    <bpws:source linkName="Log_errToJDBCQuery1">
                                     <tibex:DesignExpression>
                                     <tibex:expression
                                     expression="contains($_error/MsgCode,&quot;QUERY.ERROR&quot;)" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
@@ -2298,7 +2578,7 @@
                                 name="Mail_noFattura"
                                 tibex:xpdlId="a95e74fd-895f-447c-b7cc-f670e15e1334" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                                 <bpws:targets>
-                                    <bpws:target linkName="Log_errToSendMail1"/>
+                                    <bpws:target linkName="Empty2ToMail_noFattura"/>
                                 </bpws:targets>
                                 <tibex:inputBindings>
                                     <tibex:inputBinding
@@ -2310,6 +2590,106 @@
                                     xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
                                     xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
                                     xmlns:input="http://tns.tibco.com/bw/activity/sendmail/xsd/input+a95e74fd-895f-447c-b7cc-f670e15e1334+input"
+                                    xmlns:mail="http://ns.tibco.com/bw/palette/mail" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+                                    <properties name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/mail#//SendMail"/>
+                                    <value
+                                    inputHeadersQName="input:headersType"
+                                    newActivity="true"
+                                    smtpProperty="smtpProperty" xsi:type="mail:SendMail"/>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                </tibex:config>
+                            </tibex:activityExtension>
+                        </bpws:extensionActivity>
+                        <bpws:empty name="Empty2" tibex:xpdlId="420a7037-ca99-4c52-a56c-09bbe3e562dd">
+                            <bpws:targets>
+                                <bpws:target linkName="JDBCQuery1ToEmpty2"/>
+                            </bpws:targets>
+                            <bpws:sources>
+                                <bpws:source linkName="Empty2ToMail_noFattura">
+                                    <tibex:DesignExpression>
+                                    <tibex:expression
+                                    expression="count($query_fatt_canc/Record)=0" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                                    </tibex:DesignExpression>
+                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[count($query_fatt_canc/Record)=0]]></bpws:transitionCondition>
+                                </bpws:source>
+                                <bpws:source linkName="Empty2ToSendMail1"/>
+                            </bpws:sources>
+                        </bpws:empty>
+                        <bpws:extensionActivity>
+                            <tibex:activityExtension
+                                inputVariable="query_fatt_canc-input"
+                                name="query_fatt_canc"
+                                outputVariable="query_fatt_canc"
+                                tibex:xpdlId="b90db91f-103e-4d85-a089-f713ccb6cba4" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                <bpws:targets>
+                                    <bpws:target linkName="Log_errToJDBCQuery1"/>
+                                </bpws:targets>
+                                <bpws:sources>
+                                    <bpws:source linkName="JDBCQuery1ToEmpty2"/>
+                                </bpws:sources>
+                                <tibex:inputBindings>
+                                    <tibex:inputBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns14=&quot;http://www.tibco.com/namespaces/tnt/plugins/jdbc+b90db91f-103e-4d85-a089-f713ccb6cba4+input&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;id_fattura&quot;/>&lt;xsl:template name=&quot;query_fatt_canc-input&quot; match=&quot;/&quot;>&lt;tns14:jdbcQueryActivityInput>&lt;id_fatt>&lt;xsl:value-of select=&quot;$id_fattura&quot;/>&lt;/id_fatt>&lt;/tns14:jdbcQueryActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                </tibex:inputBindings>
+                                <tibex:config>
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.jdbc.JDBCQuery"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:jdbcPalette="http://ns.tibco.com/bw/palette/jdbc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                                    <activityConfig>
+                                    <properties name="config" xsi:type="activityconfig:EMFProperty">
+                                    <type href="http://ns.tibco.com/bw/palette/jdbc#//JDBCQueryActivity"/>
+                                    <value maxRows="100"
+                                    sharedResourceProperty="jdbcProperty"
+                                    sqlStatement="SELECT *&#xa;  FROM scarpe.fatture_cancellate&#xa;  WHERE &quot;id_fattura&quot; = ?&#xa;"
+                                    timeout="10" xsi:type="jdbcPalette:JDBCQueryActivity">
+                                    <PreparedParameters
+                                    DataType="12"
+                                    DataTypeDisplayValue="VARCHAR" ParameterName="id_fatt"/>
+                                    <columnMetadata
+                                    columnIndex="1"
+                                    columnName="id_cancellazione"
+                                    dataType="4" typeName="serial"/>
+                                    <columnMetadata
+                                    columnIndex="2"
+                                    columnName="id_fattura"
+                                    dataType="12"
+                                    status="OptionalElement" typeName="varchar"/>
+                                    <columnMetadata
+                                    columnIndex="3"
+                                    columnName="data_cancellazione"
+                                    dataType="93"
+                                    status="OptionalElement" typeName="timestamptz"/>
+                                    </value>
+                                    </properties>
+                                    </activityConfig>
+                                    </bwext:BWActivity>
+                                </tibex:config>
+                            </tibex:activityExtension>
+                        </bpws:extensionActivity>
+                        <bpws:extensionActivity>
+                            <tibex:activityExtension
+                                inputVariable="Mail_fatt_canc-input"
+                                name="Mail_fatt_canc"
+                                tibex:xpdlId="4de1499c-938d-4ad6-95eb-1964b9f6f531" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
+                                <bpws:targets>
+                                    <bpws:target linkName="Empty2ToSendMail1"/>
+                                </bpws:targets>
+                                <tibex:inputBindings>
+                                    <tibex:inputBinding
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns15=&quot;http://tns.tibco.com/bw/activity/sendmail/xsd/input+4de1499c-938d-4ad6-95eb-1964b9f6f531+input&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;id_fattura&quot;/>&lt;xsl:template name=&quot;Mail_fatt_canc-input&quot; match=&quot;/&quot;>&lt;tns15:mailActivityInput>&lt;from>&lt;xsl:value-of select=&quot;'scarpefrl@gmail.com'&quot;/>&lt;/from>&lt;to>&lt;xsl:value-of select=&quot;'scarpefrl@gmail.com'&quot;/>&lt;/to>&lt;bodyElement>&lt;bodyText>&lt;xsl:value-of select=&quot;concat(&amp;quot;La fattura &amp;quot;,$id_fattura,&amp;quot; è stata cancellata, come comunicatovi in precedente mail, per incompatibilità dei dati. Vi preghiamo di inviare la fattura aggiornata con un nuovo id, grazie.&amp;quot;)&quot;/>&lt;/bodyText>&lt;/bodyElement>&lt;/tns15:mailActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                </tibex:inputBindings>
+                                <tibex:config>
+                                    <bwext:BWActivity
+                                    activityTypeID="bw.mail.send"
+                                    xmlns:activityconfig="http://tns.tibco.com/bw/model/activityconfig"
+                                    xmlns:bwext="http://tns.tibco.com/bw/model/core/bwext"
+                                    xmlns:input="http://tns.tibco.com/bw/activity/sendmail/xsd/input+4de1499c-938d-4ad6-95eb-1964b9f6f531+input"
                                     xmlns:mail="http://ns.tibco.com/bw/palette/mail" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
                                     <activityConfig>
                                     <properties name="config" xsi:type="activityconfig:EMFProperty">
@@ -2745,7 +3125,6 @@
                                     <value
                                     inputHeadersQName="input:headersType"
                                     newActivity="true"
-                                    sendMailProtocol="SMTP"
                                     smtpProperty="smtpProperty" xsi:type="mail:SendMail"/>
                                 </properties>
                             </activityConfig>
@@ -2762,7 +3141,7 @@
                     </bpws:targets>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns13=&quot;http://tns.tibco.com/bw/activity/sendmail/xsd/input+238bd3af-a8e5-439b-96d8-c688b4562a92+input&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;id_fattura&quot;/>&lt;xsl:template name=&quot;SendMailKO-input&quot; match=&quot;/&quot;>&lt;tns13:mailActivityInput>&lt;from>&lt;xsl:value-of select=&quot;'scarpefrl@gmail.com'&quot;/>&lt;/from>&lt;to>&lt;xsl:value-of select=&quot;'scarpefrl@gmail.com'&quot;/>&lt;/to>&lt;subject>&lt;xsl:value-of select=&quot;concat($id_fattura, ': errore')&quot;/>&lt;/subject>&lt;Headers>&lt;Content-Type>&lt;xsl:value-of select=&quot;concat('Buongiorno, &amp;#xD;&amp;#xA;il pagamento della fattura ',$id_fattura, ' non è andato a buon fine, ritenteremo il pagamento successivamente. &amp;#xD;&amp;#xA;Ci scusiamo per il disagio e restiamo a dispozione per qualsiasi ulteriore chiarimento. &amp;#xD;&amp;#xA; &amp;#xD;&amp;#xA;Cordiali saluti, &amp;#xD;&amp;#xA;il team di Scarpe F.r.L.')&quot;/>&lt;/Content-Type>&lt;/Headers>&lt;/tns13:mailActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns13=&quot;http://tns.tibco.com/bw/activity/sendmail/xsd/input+238bd3af-a8e5-439b-96d8-c688b4562a92+input&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;id_fattura&quot;/>&lt;xsl:template name=&quot;SendMailKO-input&quot; match=&quot;/&quot;>&lt;tns13:mailActivityInput>&lt;from>&lt;xsl:value-of select=&quot;'scarpefrl@gmail.com'&quot;/>&lt;/from>&lt;to>&lt;xsl:value-of select=&quot;'scarpefrl@gmail.com'&quot;/>&lt;/to>&lt;subject>&lt;xsl:value-of select=&quot;concat($id_fattura, ': errore')&quot;/>&lt;/subject>&lt;bodyElement>&lt;bodyText>&lt;xsl:value-of select=&quot;concat('Buongiorno, &amp;#xD;&amp;#xA;il pagamento della fattura ',$id_fattura, ' non è andato a buon fine, ritenteremo il pagamento successivamente. &amp;#xD;&amp;#xA;Ci scusiamo per il disagio e restiamo a dispozione per qualsiasi ulteriore chiarimento. &amp;#xD;&amp;#xA; &amp;#xD;&amp;#xA;Cordiali saluti, &amp;#xD;&amp;#xA;il team di Scarpe F.r.L.')&quot;/>&lt;/bodyText>&lt;/bodyElement>&lt;Headers/>&lt;/tns13:mailActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
                         <bwext:BWActivity activityTypeID="bw.mail.send"
@@ -2776,7 +3155,6 @@
                                     <value
                                     inputHeadersQName="input:headersType"
                                     newActivity="true"
-                                    sendMailProtocol="SMTP"
                                     smtpProperty="smtpProperty" xsi:type="mail:SendMail"/>
                                 </properties>
                             </activityConfig>

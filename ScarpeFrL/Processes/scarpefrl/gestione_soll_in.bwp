@@ -35,9 +35,9 @@
                 <variable>Throw-input</variable>
             </endingVariables>
         </task>
-        <task name="call_tentativo_error">
+        <task name="call_tentativo_err">
             <endingVariables>
-                <variable>call_tentativo_error-input</variable>
+                <variable>call_tentativo_err-input</variable>
                 <variable>Start</variable>
             </endingVariables>
         </task>
@@ -48,7 +48,7 @@
         </task>
         <task name="Assign1">
             <endingVariables>
-                <variable>call_tentativo_error</variable>
+                <variable>call_tentativo_err</variable>
             </endingVariables>
         </task>
     </tibex:VariableDescriptor>
@@ -467,7 +467,7 @@
                                     <styles xsi:type="notation:LineTypeStyle"/>
                                     <element xsi:nil="true"/>
                                     <layoutConstraint x="116"
-                                    xsi:type="notation:Bounds" y="252"/>
+                                    xsi:type="notation:Bounds" y="273"/>
                                     </children>
                                     <children type="4002">
                                     <children type="4017">
@@ -503,7 +503,7 @@
                                     <element href="//0/@process/@activity/@activity/@activities.5"/>
                                     <layoutConstraint
                                     height="106" x="229"
-                                    xsi:type="notation:Bounds" y="141"/>
+                                    xsi:type="notation:Bounds" y="156"/>
                                     </children>
                                     <children type="4002 bw.generalactivities.bwassign">
                                     <children type="4017">
@@ -690,17 +690,6 @@
             <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
         <edges
-            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.6"
-            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.8" type="4006">
-            <children type="6002">
-                <layoutConstraint xsi:type="notation:Location" y="40"/>
-            </children>
-            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
-            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.6"/>
-            <bendpoints points="[0, 0, 0, 0]$[0, 0, 0, 0]" xsi:type="notation:RelativeBendpoints"/>
-        </edges>
-        <edges
             source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.8"
             target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.1" type="4006">
             <children type="6002">
@@ -708,9 +697,20 @@
             </children>
             <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
             <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
-            <element href="//0/@process/@activity/@activity/@links/@children.7"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.6"/>
             <bendpoints
                 points="[25, 0, -88, 91]$[116, 0, 3, 91]$[116, -66, 3, 25]" xsi:type="notation:RelativeBendpoints"/>
+        </edges>
+        <edges
+            source="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.6"
+            target="//@children.0/@children.3/@children.0/@children.0/@children.0/@children.0/@children.0/@children.0/@children.8" type="4006">
+            <children type="6002">
+                <layoutConstraint xsi:type="notation:Location" y="40"/>
+            </children>
+            <styles lineColor="0" xsi:type="notation:ConnectorStyle"/>
+            <styles fontName="Segoe UI" xsi:type="notation:FontStyle"/>
+            <element href="//0/@process/@activity/@activity/@links/@children.7"/>
+            <bendpoints points="[25, -2, -197, 14]$[198, -14, -24, 2]" xsi:type="notation:RelativeBendpoints"/>
         </edges>
     </notation:Diagram>
     <tibex:NamespaceRegistry enabled="true">
@@ -748,9 +748,9 @@
         <bpws:variable element="tns:statoProcesso" name="End-input"
             sca-bpel:internal="true" tibex:parameter="out"/>
         <bpws:variable element="tns:id_fattura"
-            name="call_tentativo_error-input" sca-bpel:internal="true"/>
+            name="call_tentativo_err-input" sca-bpel:internal="true"/>
         <bpws:variable element="tns:statoProcesso"
-            name="call_tentativo_error" sca-bpel:internal="true"/>
+            name="call_tentativo_err" sca-bpel:internal="true"/>
         <bpws:variable element="tns:statoProcesso" name="stato_processo"/>
     </bpws:variables>
     <bpws:extensions>
@@ -770,8 +770,8 @@
                 <bpws:link name="call_pagamentoToEnd" tibex:linkType="SUCCESSWITHCONDITION"/>
                 <bpws:link name="call_pagamentoToCallProcess" tibex:linkType="SUCCESSWITHNOCONDITION"/>
                 <bpws:link name="AssignToEnd" tibex:linkType="SUCCESS"/>
-                <bpws:link name="call_tentativo_errorToAssign1" tibex:linkType="SUCCESS"/>
                 <bpws:link name="Assign1ToEnd" tibex:linkType="SUCCESS"/>
+                <bpws:link name="call_tentativo_errToAssign1" tibex:linkType="SUCCESS"/>
             </bpws:links>
             <bpws:extensionActivity>
                 <tibex:receiveEvent createInstance="yes"
@@ -893,16 +893,16 @@
             </bpws:throw>
             <bpws:extensionActivity>
                 <tibex:extActivity
-                    inputVariable="call_tentativo_error-input"
-                    name="call_tentativo_error"
-                    outputVariable="call_tentativo_error"
+                    inputVariable="call_tentativo_err-input"
+                    name="call_tentativo_err"
+                    outputVariable="call_tentativo_err"
                     tibex:xpdlId="c11c37fb-3694-482b-82ec-46d36d73853a"
                     type="bw.generalactivities.callprocess" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:targets>
                         <bpws:target linkName="call_pagamentoToCallProcess"/>
                     </bpws:targets>
                     <bpws:sources>
-                        <bpws:source linkName="call_tentativo_errorToAssign1"/>
+                        <bpws:source linkName="call_tentativo_errToAssign1"/>
                     </bpws:sources>
                     <tibex:inputBindings>
                         <tibex:inputBinding coercion=""
@@ -948,14 +948,14 @@
                     name="Assign1" outputVariable="stato_processo"
                     tibex:xpdlId="793deb29-15d9-4aca-bd2e-aed5618282e6" xmlns:tibex="http://www.tibco.com/bpel/2007/extensions">
                     <bpws:targets>
-                        <bpws:target linkName="call_tentativo_errorToAssign1"/>
+                        <bpws:target linkName="call_tentativo_errToAssign1"/>
                     </bpws:targets>
                     <bpws:sources>
                         <bpws:source linkName="Assign1ToEnd"/>
                     </bpws:sources>
                     <tibex:inputBindings>
                         <tibex:inputBinding
-                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://tns.tibco.com/bw/json/1762360231862&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;call_tentativo_error&quot;/>&lt;xsl:template name=&quot;stato_processo&quot; match=&quot;/&quot;>&lt;tns:statoProcesso>&lt;tns:codice>&lt;xsl:value-of select=&quot;$call_tentativo_error/tns:codice&quot;/>&lt;/tns:codice>&lt;tns:messaggio>&lt;xsl:value-of select=&quot;$call_tentativo_error/tns:messaggio&quot;/>&lt;/tns:messaggio>&lt;/tns:statoProcesso>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                            expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns=&quot;http://tns.tibco.com/bw/json/1762360231862&quot; version=&quot;2.0&quot;>&#xa;    &lt;xsl:param name=&quot;call_tentativo_err&quot;/>&#xa;    &lt;xsl:template name=&quot;stato_processo&quot; match=&quot;/&quot;>&#xa;        &lt;tns:statoProcesso>&#xa;            &lt;tns:codice>&#xa;                &lt;xsl:value-of select=&quot;$call_tentativo_err/tns:codice&quot;/>&#xa;            &lt;/tns:codice>&#xa;            &lt;tns:messaggio>&#xa;                &lt;xsl:value-of select=&quot;$call_tentativo_err/tns:messaggio&quot;/>&#xa;            &lt;/tns:messaggio>&#xa;        &lt;/tns:statoProcesso>&#xa;    &lt;/xsl:template>&#xa;&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                     </tibex:inputBindings>
                     <tibex:config>
                         <bwext:BWActivity
