@@ -2488,7 +2488,7 @@
                             <bpws:link name="Empty2ToMail_noFattura" tibex:linkType="SUCCESSWITHCONDITION"/>
                             <bpws:link name="Log_errToJDBCQuery1" tibex:linkType="SUCCESSWITHCONDITION"/>
                             <bpws:link name="JDBCQuery1ToEmpty2" tibex:linkType="SUCCESS"/>
-                            <bpws:link name="Empty2ToSendMail1" tibex:linkType="SUCCESS"/>
+                            <bpws:link name="Empty2ToSendMail1" tibex:linkType="SUCCESSWITHNOCONDITION"/>
                         </bpws:links>
                         <bpws:empty name="Empty" tibex:xpdlId="cfe0a105-2d0e-4f0f-bd1a-08e19829c317">
                             <bpws:sources>
@@ -2582,7 +2582,7 @@
                                 </bpws:targets>
                                 <tibex:inputBindings>
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns9=&quot;http://tns.tibco.com/bw/activity/sendmail/xsd/input+a95e74fd-895f-447c-b7cc-f670e15e1334+input&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;id_fattura&quot;/>&lt;xsl:template name=&quot;Mail_noFattura-input&quot; match=&quot;/&quot;>&lt;tns9:mailActivityInput>&lt;from>&lt;xsl:value-of select=&quot;'scarpefrl@gmail.com'&quot;/>&lt;/from>&lt;to>&lt;xsl:value-of select=&quot;'nepote.luca@gmail.com'&quot;/>&lt;/to>&lt;bodyElement>&lt;bodyText>&lt;xsl:value-of select=&quot;concat(&amp;quot;La fattura &amp;quot;,$id_fattura,&amp;quot; non è stata trovata nel sistema interno. Vi preghiamo di riinviarla, grazie&amp;quot;)&quot;/>&lt;/bodyText>&lt;/bodyElement>&lt;/tns9:mailActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns9=&quot;http://tns.tibco.com/bw/activity/sendmail/xsd/input+a95e74fd-895f-447c-b7cc-f670e15e1334+input&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;id_fattura&quot;/>&lt;xsl:template name=&quot;Mail_noFattura-input&quot; match=&quot;/&quot;>&lt;tns9:mailActivityInput>&lt;from>&lt;xsl:value-of select=&quot;'scarpefrl@gmail.com'&quot;/>&lt;/from>&lt;to>&lt;xsl:value-of select=&quot;'nepote.luca@gmail.com'&quot;/>&lt;/to>&lt;subject>&lt;xsl:value-of select=&quot;concat($id_fattura, ': errore')&quot;/>&lt;/subject>&lt;bodyElement>&lt;bodyText>&lt;xsl:value-of select=&quot;concat(&amp;quot;La fattura &amp;quot;,$id_fattura,&amp;quot; non è stata trovata nel sistema interno. Vi preghiamo di riinviarla, grazie&amp;quot;)&quot;/>&lt;/bodyText>&lt;/bodyElement>&lt;/tns9:mailActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                 </tibex:inputBindings>
                                 <tibex:config>
                                     <bwext:BWActivity
@@ -2616,7 +2616,13 @@
                                     </tibex:DesignExpression>
                                     <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[count($query_fatt_canc/Record)=0]]></bpws:transitionCondition>
                                 </bpws:source>
-                                <bpws:source linkName="Empty2ToSendMail1"/>
+                                <bpws:source linkName="Empty2ToSendMail1">
+                                    <tibex:DesignExpression>
+                                    <tibex:expression
+                                    expression="##otherwise##" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                                    </tibex:DesignExpression>
+                                    <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[##otherwise##]]></bpws:transitionCondition>
+                                </bpws:source>
                             </bpws:sources>
                         </bpws:empty>
                         <bpws:extensionActivity>
@@ -2682,7 +2688,7 @@
                                 </bpws:targets>
                                 <tibex:inputBindings>
                                     <tibex:inputBinding
-                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns15=&quot;http://tns.tibco.com/bw/activity/sendmail/xsd/input+4de1499c-938d-4ad6-95eb-1964b9f6f531+input&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;id_fattura&quot;/>&lt;xsl:template name=&quot;Mail_fatt_canc-input&quot; match=&quot;/&quot;>&lt;tns15:mailActivityInput>&lt;from>&lt;xsl:value-of select=&quot;'scarpefrl@gmail.com'&quot;/>&lt;/from>&lt;to>&lt;xsl:value-of select=&quot;'scarpefrl@gmail.com'&quot;/>&lt;/to>&lt;bodyElement>&lt;bodyText>&lt;xsl:value-of select=&quot;concat(&amp;quot;La fattura &amp;quot;,$id_fattura,&amp;quot; è stata cancellata, come comunicatovi in precedente mail, per incompatibilità dei dati. Vi preghiamo di inviare la fattura aggiornata con un nuovo id, grazie.&amp;quot;)&quot;/>&lt;/bodyText>&lt;/bodyElement>&lt;/tns15:mailActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
+                                    expression="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xa;&lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:tns15=&quot;http://tns.tibco.com/bw/activity/sendmail/xsd/input+4de1499c-938d-4ad6-95eb-1964b9f6f531+input&quot; version=&quot;2.0&quot;>&lt;xsl:param name=&quot;id_fattura&quot;/>&lt;xsl:template name=&quot;Mail_fatt_canc-input&quot; match=&quot;/&quot;>&lt;tns15:mailActivityInput>&lt;from>&lt;xsl:value-of select=&quot;'scarpefrl@gmail.com'&quot;/>&lt;/from>&lt;to>&lt;xsl:value-of select=&quot;'scarpefrl@gmail.com'&quot;/>&lt;/to>&lt;subject>&lt;xsl:value-of select=&quot;concat($id_fattura, ': errore')&quot;/>&lt;/subject>&lt;bodyElement>&lt;bodyText>&lt;xsl:value-of select=&quot;concat(&amp;quot;La fattura &amp;quot;,$id_fattura,&amp;quot; è stata cancellata, come comunicatovi in precedente mail, per incompatibilità dei dati. Vi preghiamo di inviare la fattura aggiornata con un nuovo id, grazie.&amp;quot;)&quot;/>&lt;/bodyText>&lt;/bodyElement>&lt;/tns15:mailActivityInput>&lt;/xsl:template>&lt;/xsl:stylesheet>" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xslt1.0"/>
                                 </tibex:inputBindings>
                                 <tibex:config>
                                     <bwext:BWActivity
@@ -2745,9 +2751,9 @@
                         <bpws:source linkName="ReceiveMailToMapper1">
                             <tibex:DesignExpression>
                                 <tibex:expression
-                                    expression="contains($ReceiveMail/from, 'macchiagodenafrancesca@gmail.com')" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
+                                    expression="contains($ReceiveMail/from, 'nepote.luca@gmail.com')" expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"/>
                             </tibex:DesignExpression>
-                            <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[contains($ReceiveMail/from, 'macchiagodenafrancesca@gmail.com')]]></bpws:transitionCondition>
+                            <bpws:transitionCondition expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"><![CDATA[contains($ReceiveMail/from, 'nepote.luca@gmail.com')]]></bpws:transitionCondition>
                         </bpws:source>
                     </bpws:sources>
                     <tibex:eventSource>
